@@ -1,0 +1,252 @@
+/*-- scss:defaults --*/
+
+// ---------------------------------------------------------------------------
+// Paleta de colores
+// ---------------------------------------------------------------------------
+$c-navy:       #121834;
+$c-blue:       #225faa;
+$c-blue-light: #ddeaf8;
+$c-lavender:   #eeedfe;
+$c-gray-bg:    #f5f5f3;
+$c-text:       #1e1e1e;
+$c-muted:      #666666;
+$c-border:     #e0e0e0;
+
+// ---------------------------------------------------------------------------
+// Variables revealjs
+// ---------------------------------------------------------------------------
+$backgroundColor:            #ffffff;
+$mainColor:                  $c-text;
+$headingColor:               $c-navy;
+$mainFont:                   'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+$headingFont:                'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+$codeFont:                   'IBM Plex Mono', 'Fira Code', 'Courier New', monospace;
+$mainFontSize:               30px;
+$headingFontWeight:          700;
+$headingLetterSpacing:       -0.02em;
+$headingTextTransform:       none;
+$headingTextShadow:          none;
+$linkColor:                  $c-blue;
+$linkColorHover:             darken($c-blue, 12%);
+$selectionBackgroundColor:   $c-blue-light;
+$selectionColor:             $c-navy;
+$blockMargin:                18px;
+
+
+/*-- scss:rules --*/
+
+// ---------------------------------------------------------------------------
+// Importar fuentes desde Google Fonts
+// ---------------------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+// ---------------------------------------------------------------------------
+// Slide base
+// ---------------------------------------------------------------------------
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal p {
+  line-height: 1.65;
+}
+
+// ---------------------------------------------------------------------------
+// Encabezados: línea izquierda azul en h2 (título de sección)
+// ---------------------------------------------------------------------------
+.reveal h2 {
+  font-size: 1.4em;
+  color: $c-navy;
+  border-left: 5px solid $c-blue;
+  padding-left: 14px;
+  margin-bottom: 0.6em;
+}
+
+.reveal h3 {
+  font-size: 1.1em;
+  color: $c-blue;
+  margin-bottom: 0.4em;
+}
+
+// ---------------------------------------------------------------------------
+// Diapositiva de título (generada por Quarto desde el YAML)
+// ---------------------------------------------------------------------------
+.reveal .quarto-title-block,
+#title-slide {
+  background-color: $c-navy !important;
+  color: #ffffff !important;
+
+  .title {
+    color: #ffffff;
+    font-size: 1.8em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.3em;
+  }
+
+  .subtitle {
+    color: $c-blue-light;
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 0.6em;
+  }
+
+  .author, .date, .institute {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75em;
+  }
+
+  a {
+    color: $c-blue-light;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Código
+// ---------------------------------------------------------------------------
+.reveal pre {
+  width: 100%;
+  margin: 0.5em 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
+  border: 1px solid $c-border;
+
+  code {
+    font-family: $codeFont;
+    font-size: 0.78em;
+    padding: 0.8em 1em;
+    line-height: 1.55;
+  }
+}
+
+// Código inline
+.reveal code:not(pre code) {
+  background-color: $c-lavender;
+  color: $c-blue;
+  font-family: $codeFont;
+  font-size: 0.82em;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+// ---------------------------------------------------------------------------
+// Output de código (bloques .cell-output)
+// ---------------------------------------------------------------------------
+.reveal .cell-output {
+  background-color: $c-gray-bg;
+  border-left: 4px solid $c-blue;
+  border-radius: 0 6px 6px 0;
+  font-family: $codeFont;
+  font-size: 0.72em;
+  padding: 0.7em 1em;
+  margin-top: 0.3em;
+  color: #2a2a2a;
+}
+
+// ---------------------------------------------------------------------------
+// Callouts y cajas de énfasis
+// ---------------------------------------------------------------------------
+.reveal .callout {
+  border-radius: 6px;
+  margin: 0.6em 0;
+}
+
+// Caja personalizada "tip" reutilizable como div
+.reveal .tip-box {
+  background-color: $c-blue-light;
+  border-left: 5px solid $c-blue;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88em;
+  margin: 0.6em 0;
+}
+
+// ---------------------------------------------------------------------------
+// Listas
+// ---------------------------------------------------------------------------
+.reveal ul, .reveal ol {
+  margin-left: 0.6em;
+  line-height: 1.7;
+
+  li {
+    margin-bottom: 0.15em;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tablas
+// ---------------------------------------------------------------------------
+.reveal table {
+  font-size: 0.82em;
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    background-color: $c-navy;
+    color: #ffffff;
+    padding: 7px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 6px 12px;
+    border-bottom: 1px solid $c-border;
+  }
+
+  tr:nth-child(even) td {
+    background-color: $c-gray-bg;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Número de diapositiva y pie de página
+// ---------------------------------------------------------------------------
+.reveal .slide-number {
+  background-color: transparent;
+  color: $c-muted;
+  font-size: 0.6em;
+  font-family: $codeFont;
+}
+
+.reveal .footer {
+  color: $c-muted;
+  font-size: 0.55em;
+}
+
+// ---------------------------------------------------------------------------
+// Diapositivas de sección (entre bloques temáticos)
+// ---------------------------------------------------------------------------
+.reveal .slide-background.section-slide {
+  background-color: $c-navy !important;
+}
+
+section.has-dark-background h2,
+section.has-dark-background p {
+  color: #ffffff;
+}
+
+// ---------------------------------------------------------------------------
+// Imágenes
+// ---------------------------------------------------------------------------
+.reveal img {
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  max-width: 100%;
+}
+
+// Figura con caption
+.reveal figcaption {
+  font-size: 0.6em;
+  color: $c-muted;
+  margin-top: 4px;
+  text-align: center;
+}
+
+// ---------------------------------------------------------------------------
+// Columnas (layout de dos paneles código + output)
+// ---------------------------------------------------------------------------
+.reveal .columns {
+  gap: 1.5em;
+  align-items: start;
+}

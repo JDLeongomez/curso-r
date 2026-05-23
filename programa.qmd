@@ -1,0 +1,33 @@
+---
+title: "Programa del curso"
+---
+
+## Objetivos generales
+
+Al finalizar el curso, los participantes serán capaces de:
+
+- Entender la sintaxis básica de R y la lógica de los paquetes.
+- Importar, limpiar y transformar datos con `tidyverse`.
+- Crear visualizaciones publicables con `ggplot2`.
+- Generar reportes reproducibles con Quarto.
+- Realizar análisis exploratorios básicos.
+
+## Contenidos por semana
+
+*Por definir — actualizar cuando se definan los temas de cada sesión.*
+
+## Evaluación
+
+El curso no tiene calificación formal. Para obtener el **certificado de
+participación** se requiere asistencia al 90 % de las sesiones (mínimo 9 de 9
+sesiones — las ausencias justificadas se evalúan caso por caso).
+
+Las dos tareas son ejercicios de exploración y no tienen una nota asociada,
+pero se presentan ante el grupo.
+
+## Recursos
+
+- [The tidyverse style guide](https://style.tidyverse.org/)
+- [R for Data Science (2e)](https://r4ds.hadley.nz/) — Wickham, Çetinkaya-Rundel & Grolemund
+- [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) — Wickham
+- [Quarto documentation](https://quarto.org/docs/)

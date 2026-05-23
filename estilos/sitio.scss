@@ -1,0 +1,179 @@
+/*-- scss:defaults --*/
+
+// ---------------------------------------------------------------------------
+// Paleta (misma que slides.scss para consistencia)
+// ---------------------------------------------------------------------------
+$c-navy:       #121834;
+$c-blue:       #225faa;
+$c-blue-light: #ddeaf8;
+$c-lavender:   #eeedfe;
+$c-gray-bg:    #f5f5f3;
+$c-text:       #1e1e1e;
+$c-muted:      #666666;
+$c-border:     #e0e0e0;
+
+// Variables Bootstrap / Quarto
+$font-family-sans-serif:  'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+$font-family-monospace:   'IBM Plex Mono', 'Fira Code', 'Courier New', monospace;
+$body-color:              $c-text;
+$body-bg:                 #ffffff;
+$link-color:              $c-blue;
+$link-hover-color:        darken($c-blue, 12%);
+$headings-color:          $c-navy;
+$headings-font-weight:    700;
+$navbar-bg:               $c-navy;
+$navbar-fg:               #ffffff;
+$navbar-hl:               $c-blue-light;
+$footer-bg:               $c-navy;
+$footer-fg:               rgba(255, 255, 255, 0.7);
+$code-color:              $c-blue;
+$code-bg:                 $c-lavender;
+
+
+/*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+// ---------------------------------------------------------------------------
+// Navbar
+// ---------------------------------------------------------------------------
+.navbar {
+  border-bottom: 3px solid $c-blue;
+
+  .navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-item .nav-link {
+    font-size: 0.9em;
+    font-weight: 600;
+
+    &:hover, &.active {
+      color: $c-blue-light !important;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Encabezados
+// ---------------------------------------------------------------------------
+h1, h2 {
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  border-bottom: 2px solid $c-blue-light;
+  padding-bottom: 6px;
+  margin-top: 1.6em;
+}
+
+// ---------------------------------------------------------------------------
+// Código inline
+// ---------------------------------------------------------------------------
+code:not(pre code) {
+  background-color: $c-lavender;
+  color: $c-blue;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.88em;
+}
+
+// ---------------------------------------------------------------------------
+// Bloques de código
+// ---------------------------------------------------------------------------
+pre {
+  border: 1px solid $c-border;
+  border-radius: 6px;
+  background-color: $c-gray-bg;
+}
+
+// ---------------------------------------------------------------------------
+// Tabla de sesiones en el index
+// ---------------------------------------------------------------------------
+table.sesiones {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+
+  thead th {
+    background-color: $c-navy;
+    color: #ffffff;
+    padding: 8px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid $c-border;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) td {
+    background-color: $c-gray-bg;
+  }
+
+  tbody tr:hover td {
+    background-color: $c-blue-light;
+  }
+
+  .semana-label {
+    background-color: $c-blue;
+    color: #ffffff;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .tarea-label {
+    background-color: $c-lavender;
+    color: $c-blue;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tarjetas de info del curso (en el hero del index)
+// ---------------------------------------------------------------------------
+.info-card {
+  background-color: $c-gray-bg;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+
+  .info-label {
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: $c-muted;
+    margin-bottom: 4px;
+  }
+
+  .info-value {
+    font-size: 0.95em;
+    font-weight: 700;
+    color: $c-navy;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Footer
+// ---------------------------------------------------------------------------
+.nav-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.82em;
+
+  a {
+    color: $c-blue-light;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+---
+title: "Sesión 1"
+subtitle: "Título de la sesión"
+author: "Juan David Leóngomez"
+institute: "Universidad El Bosque"
+date: "2026-06-03"
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    footer: "Curso de R · Universidad El Bosque · 2026"
+    logo: "../../imagenes/logo.png"  # agrega el logo cuando lo tengas
+    code-line-numbers: true
+    highlight-style: github
+    execute:
+      echo: true
+      warning: false
+      message: false
+---
+
+## Objetivos de esta sesión
+
+- Objetivo 1
+- Objetivo 2
+- Objetivo 3
+
+## Sección de ejemplo: código y output {.smaller}
+
+El bloque de código aparece con resaltado de sintaxis y el output debajo:
+
+```{r}
+library(tidyverse)
+
+palmerpenguins::penguins |>
+  drop_na() |>
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g, colour = species)) +
+  geom_point(alpha = 0.7) +
+  theme_minimal()
+```
+
+## Dos columnas: código y output {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+# Código aquí
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+# Output aquí
+```
+:::
+
+::::
+
+## Diapositiva de sección {background-color="#121834"}
+
+### Próximo bloque temático
+
+---
+
+## Referencias
+
+::: {#refs}
+:::

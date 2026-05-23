@@ -1,0 +1,160 @@
+---
+title: "Maneja, explora y visualiza datos con R"
+subtitle: "Curso gratuito · Universidad El Bosque · Junio 2026"
+---
+
+```{=html}
+<!-- Hero banner -->
+<div style="background-color:#ddeaf8; border-left:5px solid #225faa; border-radius:0 6px 6px 0; padding:18px 22px; margin-bottom:24px;">
+  <p style="margin:0; font-size:0.97em; color:#1e1e1e; line-height:1.7;">
+    ¿Tus datos viven en hojas de Excel difíciles de actualizar? ¿Copias resultados a mano entre programas?
+    <strong>R es la herramienta que usan investigadores de todo el mundo</strong> para organizar datos,
+    crear gráficas listas para publicar y generar reportes reproducibles, y puedes aprenderlo desde cero.
+  </p>
+</div>
+```
+
+## Información general
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin-bottom:28px;">
+  <div class="info-card"><div class="info-label">Horario</div><div class="info-value">10:00 – 12:00 m.</div></div>
+  <div class="info-card"><div class="info-label">Sesiones</div><div class="info-value">9 sesiones · 18 h</div></div>
+  <div class="info-card"><div class="info-label">Modalidad</div><div class="info-value">Presencial</div></div>
+  <div class="info-card"><div class="info-label">Lugar</div><div class="info-value">Universidad El Bosque<br><span style="font-weight:400;font-style:italic;color:#666">(sala por confirmar)</span></div></div>
+  <div class="info-card"><div class="info-label">Costo</div><div class="info-value">Gratuito</div></div>
+  <div class="info-card"><div class="info-label">Requisitos</div><div class="info-value">Ninguno</div></div>
+</div>
+```
+
+> 🎓 El curso otorga **certificado de participación** a quienes cumplan el 90 % de asistencia.
+
+El curso se realizará en una sala de cómputo, así que no necesitas traer tu propio equipo.
+No se requieren conocimientos previos de programación ni estadística.
+
+## Sesiones
+
+```{=html}
+<table class="sesiones">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Fecha</th>
+      <th>Tema</th>
+      <th>Materiales</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- Semana 1 -->
+    <tr>
+      <td colspan="4" style="background-color:#121834;color:#fff;padding:6px 14px;font-size:0.8em;font-weight:700;letter-spacing:0.05em;">
+        SEMANA 1
+      </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Mié 3 jun</td>
+      <td><em>Por definir</em></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jue 4 jun</td>
+      <td><em>Por definir</em></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Vie 5 jun</td>
+      <td><em>Por definir</em></td>
+      <td>— <span class="tarea-label" style="margin-left:8px;">→ Tarea 1</span></td>
+    </tr>
+
+    <!-- Semana 2 -->
+    <tr>
+      <td colspan="4" style="background-color:#121834;color:#fff;padding:6px 14px;font-size:0.8em;font-weight:700;letter-spacing:0.05em;">
+        SEMANA 2
+      </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Mié 10 jun</td>
+      <td><em>Por definir</em> <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 1</span></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Jue 11 jun</td>
+      <td><em>Por definir</em></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Vie 12 jun</td>
+      <td><em>Por definir</em></td>
+      <td>— <span class="tarea-label" style="margin-left:8px;">→ Tarea 2</span></td>
+    </tr>
+
+    <!-- Semana 3 -->
+    <tr>
+      <td colspan="4" style="background-color:#121834;color:#fff;padding:6px 14px;font-size:0.8em;font-weight:700;letter-spacing:0.05em;">
+        SEMANA 3
+      </td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Mié 17 jun</td>
+      <td><em>Por definir</em> <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 2</span></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Jue 18 jun</td>
+      <td><em>Por definir</em></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Vie 19 jun</td>
+      <td><em>Por definir</em></td>
+      <td>—</td>
+    </tr>
+
+  </tbody>
+</table>
+```
+
+## Tareas
+
+- [**Tarea 1** · El concurso de la figura más fea](tareas/tarea1-figura-fea.html)
+- [**Tarea 2** · Presenta un paquete de R](tareas/tarea2-paquete-raro.html)
+
+## Instructor
+
+```{=html}
+<div style="display:flex; align-items:flex-start; gap:16px; background-color:#f5f5f3; border-radius:6px; padding:16px 18px; margin-bottom:24px;">
+  <img src="https://jdleongomez.info/es/author/juan-david-leongomez/avatar_hua6ee7dd946481ff7fe1f6bbb7dccd5d3_86773_270x270_fill_q90_lanczos_center.jpg"
+       width="56" height="56"
+       style="border-radius:50%; object-fit:cover; flex-shrink:0; margin-top:2px;"
+       alt="Juan David Leóngomez" />
+  <div>
+    <div style="font-weight:700; color:#121834; margin-bottom:4px;">Juan David Leóngomez</div>
+    <p style="margin:0; font-size:0.9em; color:#444; line-height:1.65;">
+      Profesor Asociado e investigador de la Universidad El Bosque, investigador de
+      <a href="https://jdleongomez.info/es/lab/"><em>EvoCo</em></a>
+      y líder del grupo de investigación
+      <a href="https://unbosque.portalinvestigacion.com/grupos/302"><em>CODEC</em></a>.
+      Usuario de R y promotor de la ciencia abierta y la reproducibilidad, temas sobre los que crea
+      <a href="https://asesores-psic.netlify.app/#recursos">tutoriales y recursos</a>,
+      así como videos en su canal de YouTube
+      <a href="https://www.youtube.com/@InvestigacionAbierta"><em>Investigación Abierta</em></a>.<br/>
+      Más información: <a href="https://jdleongomez.info/es/">jdleongomez.info</a>
+    </p>
+  </div>
+</div>
+```
+
+## Preguntas
+
+Escribe a [cinvestigapsico@unbosque.edu.co](mailto:cinvestigapsico@unbosque.edu.co)

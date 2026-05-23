@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Curso de R · Junio 2026"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: programa.qmd
+        text: Programa
+      - text: Sesiones
+        menu:
+          - text: "Semana 1"
+          - href: sesiones/s01/slides.html
+            text: "S1 · ..."
+          # etc.
+      - text: Tareas
+        menu:
+          - href: tareas/tarea1-figura-fea.html
+            text: "Tarea 1 · Figura fea"
+          - href: tareas/tarea2-paquete-raro.html
+            text: "Tarea 2 · Paquete raro"
+
+format:
+  html:
+    theme: [cosmo, estilos/sitio.scss]
+    toc: true
+  revealjs:
+    theme: [default, estilos/slides.scss]
+    highlight-style: github
+    code-line-numbers: true
+    slide-number: true
