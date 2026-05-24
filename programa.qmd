@@ -30,4 +30,4 @@ pero se presentan ante el grupo.
 - [The tidyverse style guide](https://style.tidyverse.org/)
 - [R for Data Science (2e)](https://r4ds.hadley.nz/) — Wickham, Çetinkaya-Rundel & Grolemund
 - [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) — Wickham
-- [Quarto documentation](https://quarto.org/docs/)
+- [Quarto documentation](https://quarto.org/docs/guide/)
