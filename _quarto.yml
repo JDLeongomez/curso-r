@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: _site
 
+lang: es
+
 website:
   title: "Curso de R · Junio 2026"
   navbar:
@@ -27,25 +29,11 @@ format:
   html:
     theme: [cosmo, estilos/sitio.scss]
     toc: true
-    text: |
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('.reveal a[href^="http"]').forEach(function(a) {
-            a.setAttribute('target', '_blank');
-            a.setAttribute('rel', 'noopener noreferrer');
-          });
-        });
-        </script>
-  revealjs:
-    theme: [default, estilos/slides.scss]
-    highlight-style: github
-    code-line-numbers: true
-    slide-number: true
     include-after-body:
       text: |
         <script>
         document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('.reveal a[href^="http"]').forEach(function(a) {
+          document.querySelectorAll('a[href^="http"]').forEach(function(a) {
             a.setAttribute('target', '_blank');
             a.setAttribute('rel', 'noopener noreferrer');
           });

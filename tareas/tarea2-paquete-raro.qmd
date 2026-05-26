@@ -1,6 +1,7 @@
 ---
 title: "Tarea 2 · Presenta un paquete de R"
 subtitle: "Asignada al final de la Sesión 6 · Presentación en la Sesión 7"
+format: html
 ---
 
 ## El reto

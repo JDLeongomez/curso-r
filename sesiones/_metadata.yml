@@ -1,0 +1,11 @@
+incremental: true
+include-after-body:
+  text: |
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.reveal a[href^="http"]').forEach(function(a) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
+    });
+    </script>

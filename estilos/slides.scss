@@ -221,9 +221,27 @@ $blockMargin:                18px;
   background-color: $c-navy !important;
 }
 
-section.has-dark-background h2,
-section.has-dark-background p {
-  color: #ffffff;
+section.has-dark-background {
+  h2, p { color: #ffffff; }
+
+  h2 { border-left: none; }
+
+  .parte-num {
+    font-size: 0.42em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.2em;
+  }
+
+  .section-title-text {
+    font-size: 1.75em;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-top: 0;
+  }
 }
 
 // ---------------------------------------------------------------------------

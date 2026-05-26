@@ -157,4 +157,6 @@ No se requieren conocimientos previos de programación ni estadística.
 
 ## Preguntas
 
-Escribe a [cinvestigapsico@unbosque.edu.co](mailto:cinvestigapsico@unbosque.edu.co)
+Para asuntos de R y contenidos del curso, escribe a [jleongomez@unbosque.edu.co](mailto:jleongomez@unbosque.edu.co)
+
+Para asuntos administrativos, escribe a [cinvestigapsico@unbosque.edu.co](mailto:cinvestigapsico@unbosque.edu.co)

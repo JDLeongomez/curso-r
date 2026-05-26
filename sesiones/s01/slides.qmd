@@ -37,9 +37,13 @@ execute:
 
 ## {background-color="#121834"}
 
-### Parte 1
+::: {.parte-num}
+Parte 1
+:::
 
-# R y los lenguajes de programación
+::: {.section-title-text}
+R y los lenguajes de programación
+:::
 
 ---
 
@@ -83,7 +87,7 @@ R es un **lenguaje de programación** diseñado para el análisis estadístico y
 - Estándar de facto en muchas disciplinas científicas
 
 ::: {.tip-box}
-R no es solo un programa de estadística. Es un lenguaje completo con acceso a los recursos del computador: leer archivos, conectarse a internet, generar documentos, crear aplicaciones web, y mucho más.
+R es un lenguaje completo con acceso a todos los recursos del computador: análisis estadístico, manejo de archivos, conexión a internet, generación de documentos, aplicaciones web, y mucho más.
 :::
 
 ---
@@ -92,7 +96,7 @@ R no es solo un programa de estadística. Es un lenguaje completo con acceso a l
 
 **FOSS** = *Free and Open Source Software*
 
-"Free" no significa solo gratuito - significa **libre**:
+"Free" en FOSS significa **libre**:
 
 - Cualquiera puede ver el código fuente y verificar qué hace exactamente
 - Cualquiera puede modificarlo y mejorarlo
@@ -100,13 +104,13 @@ R no es solo un programa de estadística. Es un lenguaje completo con acceso a l
 
 **¿Por qué importa para la ciencia?**
 
-Un análisis en R es reproducible: compartes el script y cualquier persona puede replicar tus resultados exactamente. Con un programa de clic-clic, eso es imposible.
+Un análisis en R es reproducible: el script documenta cada paso, y cualquier persona puede replicar tus resultados exactamente.
 
 ---
 
 ## CRAN: el repositorio central de paquetes
 
-R base hace muchas cosas, pero su verdadero poder viene de los **paquetes**: colecciones de funciones creadas por la comunidad.
+El verdadero poder de R viene de los **paquetes**: colecciones de funciones creadas por la comunidad que amplían R base.
 
 **CRAN** (*Comprehensive R Archive Network*) es el repositorio oficial:
 
@@ -118,15 +122,19 @@ R base hace muchas cosas, pero su verdadero poder viene de los **paquetes**: col
 **Demo en vivo:** veamos cuántos paquetes hay hoy y cuáles se actualizaron recientemente.
 :::
 
-No todo está en CRAN: muchos paquetes viven en GitHub y se instalan con herramientas adicionales.
+Muchos paquetes también viven en GitHub y se instalan con herramientas adicionales.
 
 ---
 
 ## {background-color="#121834"}
 
-### Parte 2
+::: {.parte-num}
+Parte 2
+:::
 
-# El entorno de trabajo
+::: {.section-title-text}
+El entorno de trabajo
+:::
 
 ---
 
@@ -139,9 +147,9 @@ Puedes darle instrucciones a R directamente desde la terminal:
 2 + 2
 ```
 
-Funciona. Pero si cierras la terminal, perdiste todo.
+Funciona, pero al cerrar la terminal pierdes todo lo que escribiste.
 
-**Un script** es simplemente un archivo de texto con extensión `.R`. La extensión le dice al sistema operativo que lo abra con R, pero en realidad es texto plano - puedes abrirlo con cualquier editor.
+**Un script** es un archivo de texto plano con extensión `.R`; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.
 
 ```r
 # mi_primer_script.R
@@ -149,17 +157,13 @@ Funciona. Pero si cierras la terminal, perdiste todo.
 sqrt(16)
 ```
 
-El script es tu **registro permanente** de lo que hiciste. Es la diferencia entre ciencia reproducible y ciencia que nadie puede verificar.
+El script es tu **registro permanente** de lo que hiciste: la base de la reproducibilidad científica.
 
 ---
 
 ## RStudio: el entorno de trabajo
 
-R es el motor. RStudio es la carrocería.
-
-RStudio es un **IDE** (*Integrated Development Environment*): una interfaz que facilita trabajar con R, pero que no *es* R. Todo lo que haces en RStudio lo ejecuta R por debajo.
-
-Es como la diferencia entre el motor de un carro y el tablero de instrumentos: el tablero no mueve el carro, pero hace que conducirlo sea mucho más cómodo.
+R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
 
 - Editor de scripts con resaltado de sintaxis
 - Consola integrada
@@ -189,9 +193,13 @@ Es como la diferencia entre el motor de un carro y el tablero de instrumentos: e
 
 ## {background-color="#121834"}
 
-### Parte 3
+::: {.parte-num}
+Parte 3
+:::
 
-# La sintaxis de R
+::: {.section-title-text}
+La sintaxis de R
+:::
 
 ---
 
@@ -316,9 +324,13 @@ resultado                # ahora sí lo vemos
 
 ## {background-color="#121834"}
 
-### Parte 4
+::: {.parte-num}
+Parte 4
+:::
 
-# Primera figura con `ggplot2`
+::: {.section-title-text}
+Primera figura con `ggplot2`
+:::
 
 ---
 

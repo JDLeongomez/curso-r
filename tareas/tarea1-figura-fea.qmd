@@ -1,6 +1,7 @@
 ---
 title: "Tarea 1 · El concurso de la figura más fea"
 subtitle: "Asignada al final de la Sesión 3 · Presentación en la Sesión 4"
+format: html
 ---
 
 ## El reto
