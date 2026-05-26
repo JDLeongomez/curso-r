@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
+    <title>Taller de R · Junio 2026</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f3;
+      font-family: Arial, sans-serif;
+      color: #222222;
+      color-scheme: light only;
+    "
+  >
+    <!-- Wrapper -->
+    <table
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      bgcolor="#f5f5f3"
+      style="background-color: #f5f5f3"
+    >
+      <tr>
+        <td
+          align="center"
+          style="padding: 24px 12px; background-color: #f5f5f3"
+        >
+          <!-- Card -->
+          <table
+            width="600"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            style="max-width: 600px; width: 100%"
+          >
+            <!-- HEADER -->
+            <tr>
+              <td
+                bgcolor="#ddeaf8"
+                style="background-color: #ddeaf8; padding: 32px 32px 24px 32px"
+              >
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="top">
+                      <!-- Tag -->
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td
+                            bgcolor="#225faa"
+                            style="
+                              background-color: #225faa;
+                              color: #ffffff;
+                              font-size: 12px;
+                              padding: 3px 12px;
+                              letter-spacing: 0.04em;
+                              font-family: Arial, sans-serif;
+                            "
+                          >
+                            <a
+                              href="#"
+                              style="
+                                color: #ffffff;
+                                text-decoration: none;
+                                font-size: 12px;
+                                font-family: Arial, sans-serif;
+                              "
+                              >Curso gratuito &middot; Abierto a toda la
+                              comunidad</a
+                            >
+                          </td>
+                        </tr>
+                      </table>
+                      <p
+                        style="
+                          margin: 14px 0 8px 0;
+                          font-size: 26px;
+                          font-weight: bold;
+                          color: #121834;
+                          line-height: 1.3;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Maneja, explora y visualiza datos con R
+                      </p>
+                      <p
+                        style="
+                          margin: 0;
+                          font-size: 15px;
+                          color: #225faa;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Sin experiencia previa en programaci&oacute;n. Sin
+                        costo.
+                      </p>
+                    </td>
+                    <td
+                      width="90"
+                      valign="middle"
+                      align="right"
+                      style="padding-left: 20px"
+                    >
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/330px-R_logo.svg.png"
+                        height="72"
+                        alt="R"
+                        style="display: block"
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- BODY -->
+            <tr>
+              <td
+                bgcolor="#ffffff"
+                style="
+                  background-color: #ffffff;
+                  border: 1px solid #e5e5e5;
+                  border-top: none;
+                  padding: 28px 32px;
+                "
+              >
+                <!-- Hook -->
+                <p
+                  style="
+                    margin: 0 0 20px 0;
+                    font-size: 15px;
+                    color: #222222;
+                    line-height: 1.7;
+                    font-family: Arial, sans-serif;
+                  "
+                >
+                  &iquest;Tus datos viven en hojas de Excel dif&iacute;ciles de
+                  actualizar? &iquest;Copias resultados a mano entre programas?
+                  <strong style="color: #222222">
+                    R es la herramienta que usan investigadores de todo el
+                    mundo</strong
+                  >
+                  para organizar datos, crear gr&aacute;ficas listas para
+                  publicar y generar reportes reproducibles, y puedes aprenderlo
+                  desde cero.
+                </p>
+
+                <!-- Pills -->
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 20px"
+                >
+                  <tr>
+                    <td style="padding-right: 6px; padding-bottom: 6px">
+                      <span
+                        style="
+                          background-color: #eeedfe;
+                          color: #225faa;
+                          font-size: 13px;
+                          padding: 5px 14px;
+                          font-family: Arial, sans-serif;
+                          display: inline-block;
+                        "
+                        >Manejo de datos</span
+                      >
+                    </td>
+                    <td style="padding-right: 6px; padding-bottom: 6px">
+                      <span
+                        style="
+                          background-color: #eeedfe;
+                          color: #225faa;
+                          font-size: 13px;
+                          padding: 5px 14px;
+                          font-family: Arial, sans-serif;
+                          display: inline-block;
+                        "
+                        >Visualizaci&oacute;n</span
+                      >
+                    </td>
+                    <td style="padding-right: 6px; padding-bottom: 6px">
+                      <span
+                        style="
+                          background-color: #eeedfe;
+                          color: #225faa;
+                          font-size: 13px;
+                          padding: 5px 14px;
+                          font-family: Arial, sans-serif;
+                          display: inline-block;
+                        "
+                        >Reportes reproducibles</span
+                      >
+                    </td>
+                    <td style="padding-bottom: 6px">
+                      <span
+                        style="
+                          background-color: #eeedfe;
+                          color: #225faa;
+                          font-size: 13px;
+                          padding: 5px 14px;
+                          font-family: Arial, sans-serif;
+                          display: inline-block;
+                        "
+                        >100% gratuito</span
+                      >
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Divider -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 16px"
+                >
+                  <tr>
+                    <td
+                      style="
+                        border-top: 1px solid #ebebeb;
+                        font-size: 0;
+                        line-height: 0;
+                      "
+                    >
+                      &nbsp;
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Meta grid: row 1 -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 8px"
+                >
+                  <tr>
+                    <td
+                      width="32%"
+                      bgcolor="#f5f5f3"
+                      style="
+                        background-color: #f5f5f3;
+                        padding: 10px 12px;
+                        vertical-align: top;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 11px;
+                          color: #888888;
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                          margin-bottom: 3px;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Horario
+                      </div>
+                      <div
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          color: #222222;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        10:00 a 12:00 m.
+                      </div>
+                    </td>
+                    <td
+                      width="4%"
+                      bgcolor="#f5f5f3"
+                      style="background-color: #f5f5f3"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      width="32%"
+                      bgcolor="#f5f5f3"
+                      style="
+                        background-color: #f5f5f3;
+                        padding: 10px 12px;
+                        vertical-align: top;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 11px;
+                          color: #888888;
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                          margin-bottom: 3px;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Sesiones
+                      </div>
+                      <div
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          color: #222222;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        9 sesiones &middot; 18 h en total
+                      </div>
+                    </td>
+                    <td
+                      width="4%"
+                      bgcolor="#f5f5f3"
+                      style="background-color: #f5f5f3"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      width="28%"
+                      bgcolor="#f5f5f3"
+                      style="
+                        background-color: #f5f5f3;
+                        padding: 10px 12px;
+                        vertical-align: top;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 11px;
+                          color: #888888;
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                          margin-bottom: 3px;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Modalidad
+                      </div>
+                      <div
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          color: #222222;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Presencial
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Meta grid: row 2 -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 16px"
+                >
+                  <tr>
+                    <td
+                      width="62%"
+                      bgcolor="#f5f5f3"
+                      style="
+                        background-color: #f5f5f3;
+                        padding: 10px 12px;
+                        vertical-align: top;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 11px;
+                          color: #888888;
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                          margin-bottom: 3px;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Lugar
+                      </div>
+                      <div
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          color: #222222;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Universidad El Bosque
+                        <span
+                          style="
+                            font-weight: normal;
+                            font-style: italic;
+                            color: #555555;
+                          "
+                          >(sala por confirmar)</span
+                        >
+                      </div>
+                    </td>
+                    <td
+                      width="4%"
+                      bgcolor="#f5f5f3"
+                      style="background-color: #f5f5f3"
+                    >
+                      &nbsp;
+                    </td>
+                    <td
+                      width="34%"
+                      bgcolor="#f5f5f3"
+                      style="
+                        background-color: #f5f5f3;
+                        padding: 10px 12px;
+                        vertical-align: top;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 11px;
+                          color: #888888;
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                          margin-bottom: 3px;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Cupos
+                      </div>
+                      <div
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          color: #222222;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Limitados
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Dates box -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 16px"
+                >
+                  <tr>
+                    <td
+                      bgcolor="#f5f5f3"
+                      style="background-color: #f5f5f3; padding: 10px 12px"
+                    >
+                      <div
+                        style="
+                          font-size: 11px;
+                          color: #888888;
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                          margin-bottom: 8px;
+                          font-family: Arial, sans-serif;
+                        "
+                      >
+                        Fechas &middot; Junio 2026
+                      </div>
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Mi&eacute; 3</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Jue 4</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Vie 5</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Mi&eacute; 10</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Jue 11</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Vie 12</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Mi&eacute; 17</span
+                            >
+                          </td>
+                          <td style="padding-right: 5px; padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Jue 18</span
+                            >
+                          </td>
+                          <td style="padding-bottom: 5px">
+                            <span
+                              style="
+                                background-color: #eeedfe;
+                                color: #225faa;
+                                font-size: 12px;
+                                font-weight: bold;
+                                padding: 3px 10px;
+                                font-family: Arial, sans-serif;
+                                display: inline-block;
+                              "
+                              >Vie 19</span
+                            >
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Note -->
+                <p
+                  style="
+                    margin: 0 0 10px 0;
+                    font-size: 13px;
+                    color: #666666;
+                    line-height: 1.6;
+                    font-family: Arial, sans-serif;
+                  "
+                >
+                  El curso se realizar&aacute; en una sala de c&oacute;mputo,
+                  as&iacute; que no necesitas traer tu propio equipo. Pero si
+                  quieres aprovechar para dejar R instalado en tu computador
+                  personal, con gusto te ayudamos. No se requieren conocimientos
+                  previos de programaci&oacute;n ni estad&iacute;stica.
+                </p>
+
+                <!-- Cert -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 20px"
+                >
+                  <tr>
+                    <td
+                      bgcolor="#ddeaf8"
+                      style="
+                        background-color: #ddeaf8;
+                        color: #225faa;
+                        font-size: 13px;
+                        padding: 8px 14px;
+                        font-family: Arial, sans-serif;
+                      "
+                    >
+                      &#127891; El curso otorga certificado de
+                      participaci&oacute;n a quienes cumplan el 90&nbsp;% de
+                      asistencia.
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Divider -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 16px"
+                >
+                  <tr>
+                    <td
+                      style="
+                        border-top: 1px solid #ebebeb;
+                        font-size: 0;
+                        line-height: 0;
+                      "
+                    >
+                      &nbsp;
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Instructor -->
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 24px"
+                >
+                  <tr>
+                    <td
+                      bgcolor="#f5f5f3"
+                      style="background-color: #f5f5f3; padding: 12px 14px"
+                    >
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="50"
+                            valign="top"
+                            style="padding-right: 12px"
+                          >
+                            <img
+                              src="https://jdleongomez.info/es/author/juan-david-leongomez/avatar_hua6ee7dd946481ff7fe1f6bbb7dccd5d3_86773_270x270_fill_q90_lanczos_center.jpg"
+                              width="44"
+                              height="44"
+                              style="
+                                display: block;
+                                border-radius: 50%;
+                                object-fit: cover;
+                              "
+                              alt="Juan David Leong&oacute;mez"
+                            />
+                          </td>
+                          <td valign="top">
+                            <div
+                              style="
+                                font-size: 11px;
+                                color: #888888;
+                                text-transform: uppercase;
+                                letter-spacing: 0.06em;
+                                margin-bottom: 3px;
+                                font-family: Arial, sans-serif;
+                              "
+                            >
+                              Instructor
+                            </div>
+                            <div
+                              style="
+                                font-size: 14px;
+                                font-weight: bold;
+                                color: #222222;
+                                margin-bottom: 4px;
+                                font-family: Arial, sans-serif;
+                              "
+                            >
+                              Juan David Leong&oacute;mez
+                            </div>
+                            <p
+                              style="
+                                margin: 0;
+                                font-size: 13px;
+                                color: #555555;
+                                line-height: 1.6;
+                                font-family: Arial, sans-serif;
+                              "
+                            >
+                              Profesor Asociado e investigador de la Universidad
+                              El Bosque, investigador de
+                              <a
+                                href="https://jdleongomez.info/es/lab/"
+                                style="color: #225faa; text-decoration: none"
+                                ><em>EvoCo</em></a
+                              >
+                              y lider del grupo de investigaci&oacute;n
+                              <a
+                                href="https://unbosque.portalinvestigacion.com/grupos/302"
+                                style="color: #225faa; text-decoration: none"
+                                ><em>CODEC</em></a
+                              >. Usuario de R y promotor de la ciencia abierta y
+                              la reproducibilidad, temas sobre los que crea
+                              <a
+                                href="https://asesores-psic.netlify.app/#recursos"
+                                style="color: #225faa; text-decoration: none"
+                                >tutoriales y recursos</a
+                              >, así como videos en su canal de YouTube
+                              <a
+                                href="https://www.youtube.com/@InvestigacionAbierta"
+                                style="color: #225faa; text-decoration: none"
+                                ><em>Investigaci&oacute;n Abierta</em></a
+                              >.<br />
+                              Más información:
+                              <a
+                                href="https://jdleongomez.info/es/"
+                                style="color: #225faa; text-decoration: none"
+                                >jdleongomez.info</a
+                              >
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- CTA -->
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="margin-bottom: 16px"
+                >
+                  <tr>
+                    <td
+                      valign="middle"
+                      bgcolor="#ddeaf8"
+                      style="
+                        background-color: #ddeaf8;
+                        padding: 10px 16px;
+                        font-size: 13px;
+                        color: #225faa;
+                        font-family: Arial, sans-serif;
+                        line-height: 1.4;
+                      "
+                    >
+                      Inscripciones abiertas<br />hasta el lunes 1 de junio
+                    </td>
+                    <td
+                      bgcolor="#121834"
+                      style="background-color: #121834; padding: 10px 22px"
+                    >
+                      <a
+                        href="https://forms.cloud.microsoft/r/2qi8HVm4Gy"
+                        style="
+                          color: #ffffff;
+                          font-size: 14px;
+                          font-weight: bold;
+                          text-decoration: none;
+                          font-family: Arial, sans-serif;
+                        "
+                        >&#9997;&#65039; Inscribirme</a
+                      >
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Footer -->
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td
+                      valign="middle"
+                      style="
+                        font-size: 12px;
+                        color: #888888;
+                        font-family: Arial, sans-serif;
+                      "
+                    >
+                      &iquest;Tienes preguntas? Escribe a
+                      <a
+                        href="mailto:cinvestigapsico@unbosque.edu.co"
+                        style="color: #225faa; text-decoration: none"
+                        >cinvestigapsico@unbosque.edu.co</a
+                      >
+                    </td>
+                    <td
+                      valign="middle"
+                      align="right"
+                      style="padding-left: 16px"
+                    >
+                      <img
+                        src="https://asesores-psic.netlify.app/media/Logo_UI_Largo.png"
+                        width="160"
+                        alt="Unidad de Investigaciones"
+                        style="display: block"
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <!-- End Card -->
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

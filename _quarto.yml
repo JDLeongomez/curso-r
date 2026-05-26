@@ -27,6 +27,15 @@ format:
   html:
     theme: [cosmo, estilos/sitio.scss]
     toc: true
+    text: |
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.reveal a[href^="http"]').forEach(function(a) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+          });
+        });
+        </script>
   revealjs:
     theme: [default, estilos/slides.scss]
     highlight-style: github
@@ -42,3 +51,4 @@ format:
           });
         });
         </script>
+
