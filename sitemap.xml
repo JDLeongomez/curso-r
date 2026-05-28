@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea1-figura-fea.html</loc>
-    <lastmod>2026-05-26T19:04:37.334Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s01/slides.html</loc>
-    <lastmod>2026-05-26T19:04:37.322Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/programa.html</loc>
-    <lastmod>2026-05-26T19:04:37.321Z</lastmod>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s02/slides.html</loc>
+    <lastmod>2026-05-28T17:27:00.669Z</lastmod>
   </url>
   <url>
     <loc>https://JDLeongomez.github.io/curso-r/index.html</loc>
-    <lastmod>2026-05-26T19:04:37.321Z</lastmod>
+    <lastmod>2026-05-28T17:27:00.657Z</lastmod>
   </url>
   <url>
     <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea2-paquete-raro.html</loc>
-    <lastmod>2026-05-26T19:04:37.335Z</lastmod>
+    <lastmod>2026-05-28T17:27:00.686Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/tareas_por_hacer.html</loc>
+    <lastmod>2026-05-28T17:27:00.686Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea1-figura-fea.html</loc>
+    <lastmod>2026-05-28T17:27:00.685Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/programa.html</loc>
+    <lastmod>2026-05-28T17:27:00.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s01/slides.html</loc>
+    <lastmod>2026-05-28T17:27:00.659Z</lastmod>
   </url>
 </urlset>

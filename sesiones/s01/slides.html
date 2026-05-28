@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<link href="../../imagenes/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="author" content="Juan David Leóngomez">
+  <meta name="author" content="Juan David Leongómez">
   <meta name="dcterms.date" content="2026-06-03">
   <title>Curso de R · Junio 2026 – Sesión 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -99,10 +99,11 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-54ee167c454d726747370c0284c3f01c.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-720dda840e642c80b4e1cf8f69941eb4.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-code-focus/codefocus.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -203,7 +204,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Juan David Leóngomez 
+Juan David Leongómez 
 </div>
         <p class="quarto-title-affiliation">
             Universidad El Bosque
@@ -236,7 +237,7 @@ Juan David Leóngomez
 <section id="programas-con-interfaz-vs.-código" class="slide level2">
 <h2>Programas con interfaz vs.&nbsp;código</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:45%;">
 <p><strong>Programa con interfaz gráfica (GUI)</strong></p>
 <ul>
 <li class="fragment">Haces clic en botones y menús</li>
@@ -307,15 +308,36 @@ Juan David Leóngomez
 <section id="de-la-terminal-al-script" class="slide level2">
 <h2>De la terminal al script</h2>
 <p>Puedes darle instrucciones a R directamente desde la terminal:</p>
+<div class="columns">
+<div class="column" style="width:55%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 </div>
 <p>Funciona, pero al cerrar la terminal pierdes todo lo que escribiste.</p>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../imagenes/consola.PNG" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="de-la-terminal-al-script-1" class="slide level2">
+<h2>De la terminal al script</h2>
 <p><strong>Un script</strong> es un archivo de texto plano con extensión <code>.R</code>; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># mi_primer_script.R</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># mi_primer_script.R</span></span>
 <span id="cb2-2"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb2-3"><a></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span></code></pre></div>
 <p>El script es tu <strong>registro permanente</strong> de lo que hiciste: la base de la reproducibilidad científica.</p>
+</section>
+<section id="r-sin-ide-ventanas-sueltas" class="slide level2">
+<h2>R sin IDE: ventanas sueltas</h2>
+<p>R funciona solo, pero cada pieza vive en su propia ventana flotante: consola, editor de scripts, gráficas, entorno… Todo disperso.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../imagenes/interfazRwin.png" class="quarto-figure quarto-figure-center" height="420"></p>
+</figure>
+</div>
 </section>
 <section id="rstudio-el-entorno-de-trabajo" class="slide level2">
 <h2>RStudio: el entorno de trabajo</h2>
@@ -327,16 +349,62 @@ Juan David Leóngomez
 <li class="fragment">Integración con Quarto/RMarkdown, Git, y más</li>
 </ul>
 </section>
-<section id="los-paneles-de-rstudio" class="slide level2 smaller">
+<section id="rstudio-el-entorno-de-trabajo-1" class="slide level2">
+<h2>RStudio: el entorno de trabajo</h2>
+<p>R es el motor. RStudio es la carrocería — un <strong>IDE</strong> (<em>Integrated Development Environment</em>) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../imagenes/perro-r-rstudio.png" class="quarto-figure quarto-figure-center" height="420"></p>
+</figure>
+</div>
+</section>
+<section id="los-paneles-de-rstudio" class="slide level2">
 <h2>Los paneles de RStudio</h2>
-<!--
-  El iframe requiere:
-  1. Que estés autenticado en Cloudflare Zero Trust en este navegador
-  2. Que RStudio Server no envíe X-Frame-Options: SAMEORIGIN
-  Si no carga, abre https://rstd.jdl-svr.lat/ directamente en el navegador.
--->
-<iframe src="https://rstd.jdl-svr.lat/" width="100%" height="520px" style="border:1px solid #e0e0e0; border-radius:6px;">
-</iframe>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../imagenes/cuadrantes.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>A. Editor</strong> — escribes y guardas tus scripts</p>
+<p><strong>B. Consola</strong> — R ejecuta el código aquí</p>
+<p><strong>C. Entorno / Historial</strong> — objetos en memoria</p>
+<p><strong>D. Archivos / Gráficas / Ayuda</strong> — explorador y visualizador</p>
+</div></div>
+</section>
+<section id="configura-rstudio" class="slide level2 smaller">
+<h2>Configura RStudio</h2>
+<p>Abre RStudio y ve a <strong>Tools &gt; Global Options</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>General &gt; Basic</strong></p>
+<ul>
+<li>Desmarca <em>Restore most recently opened project at startup</em></li>
+<li>Desmarca <em>Restore previously open source documents at startup</em></li>
+<li>Desmarca <em>Restore .RData into workspace at startup</em></li>
+<li>En <em>Save workspace to .RData on exit</em> selecciona <em>Never</em></li>
+<li>Desmarca <em>Always save history</em></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Code &gt; Editing</strong> {.incremental}</p>
+<ul>
+<li class="fragment">Marca <em>Use native pipe operator <code>|&gt;</code></em></li>
+</ul>
+<p><strong>Code &gt; Display</strong></p>
+<ul>
+<li class="fragment">Marca <em>Use rainbow parentheses</em></li>
+</ul>
+<p><strong>Code &gt; Saving</strong></p>
+<ul>
+<li class="fragment"><em>Default text encoding</em>: <code>UTF-8</code></li>
+</ul>
+<p><strong>Appearance</strong></p>
+<ul>
+<li class="fragment">Escoge el tema y la fuente que más te gusten</li>
+</ul>
+</div></div>
 </section>
 <section id="section-2" class="slide level2" data-background-color="#121834">
 <h2></h2>
@@ -350,10 +418,14 @@ Juan David Leóngomez
 <section id="funciones-y-argumentos" class="slide level2">
 <h2>Funciones y argumentos</h2>
 <p>Una <strong>función</strong> es como una fábrica: recibe insumos, hace algo con ellos, y produce un resultado.</p>
+
+<img data-src="../../imagenes/fabrica.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="funciones-y-argumentos-1" class="slide level2">
+<h2>Funciones y argumentos</h2>
 <div style="display:flex; align-items:center; gap:20px; margin:20px 0;">
   <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:8px; padding:14px 20px; text-align:center; min-width:140px;">
     <div style="font-size:0.7em; color:#666; margin-bottom:4px;">ARGUMENTOS (insumos)</div>
-    <div style="font-weight:700; color:#225faa;">material = "cuero"<br>talla = 42<br>color = "negro"</div>
+    <div style="font-weight:700; color:#225faa;">material = "cuero"<br>talla = 42<br>color = "azul"</div>
   </div>
   <div style="font-size:2em; color:#225faa;">→</div>
   <div style="background:#121834; border-radius:8px; padding:14px 20px; text-align:center; min-width:140px;">
@@ -366,29 +438,33 @@ Juan David Leóngomez
     <div style="font-size:2em;">👟</div>
   </div>
 </div>
+</section>
+<section id="funciones-y-argumentos-2" class="slide level2">
+<h2>Funciones y argumentos</h2>
 <p>En R, la sintaxis es siempre:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">nombre_funcion</span>(<span class="at">argumento1 =</span> valor1, <span class="at">argumento2 =</span> valor2)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">nombre_funcion</span>(<span class="at">argumento1 =</span> valor1, <span class="at">argumento2 =</span> valor2)</span></code></pre></div>
+<p>El nombre de la función va <strong>antes del paréntesis</strong>.</p>
 <p>Los argumentos van <strong>dentro del paréntesis</strong>, separados por <strong>comas</strong>.</p>
 </section>
-<section id="funciones-reales-en-r" class="slide level2">
-<h2>Funciones reales en R</h2>
+<section id="funciones-en-r" class="slide level2">
+<h2>Funciones en R</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># sqrt() calcula la raíz cuadrada - recibe un número</span></span>
-<span id="cb4-2"><a></a><span class="fu">sqrt</span>(<span class="dv">144</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># sqrt() calcula la raíz cuadrada - recibe un número</span></span>
+<span id="cb4-2"><a></a><span class="fu">sqrt</span>(<span class="dv">144</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># round() redondea - recibe un número y los decimales deseados</span></span>
-<span id="cb6-2"><a></a><span class="fu">round</span>(<span class="fl">3.14159</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># round() redondea - recibe un número y los decimales deseados</span></span>
+<span id="cb6-2"><a></a><span class="fu">round</span>(<span class="fl">3.14159</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.14</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># paste() une texto - recibe los fragmentos y el separador</span></span>
-<span id="cb8-2"><a></a><span class="fu">paste</span>(<span class="st">"Hola"</span>, <span class="st">"mundo"</span>, <span class="at">sep =</span> <span class="st">", "</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># paste() une texto - recibe los fragmentos y el separador</span></span>
+<span id="cb8-2"><a></a><span class="fu">paste</span>(<span class="st">"Hola"</span>, <span class="st">"mundo"</span>, <span class="at">sep =</span> <span class="st">", "</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hola, mundo"</code></pre>
 </div>
@@ -396,47 +472,6 @@ Juan David Leóngomez
 <div class="tip-box">
 <p>Escribe el nombre de cualquier función seguido de <code>?</code> en la consola para ver su documentación: <code>?round</code></p>
 </div>
-</section>
-<section id="vectores-el-tipo-de-dato-básico" class="slide level2">
-<h2>Vectores: el tipo de dato básico</h2>
-<p><code>c()</code> (<em>combine</em>) crea <strong>vectores</strong>: secuencias de valores del mismo tipo.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Vector numérico</span></span>
-<span id="cb10-2"><a></a>edades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">31</span>, <span class="dv">19</span>, <span class="dv">42</span>)</span>
-<span id="cb10-3"><a></a>edades</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 25 31 19 42</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Vector de texto (caracteres entre comillas)</span></span>
-<span id="cb12-2"><a></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Ana"</span>, <span class="st">"Luis"</span>, <span class="st">"Sara"</span>, <span class="st">"Pedro"</span>)</span>
-<span id="cb12-3"><a></a>nombres</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Ana"   "Luis"  "Sara"  "Pedro"</code></pre>
-</div>
-</div>
-<p>Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.</p>
-</section>
-<section id="data-frames-la-base-de-datos-en-r" class="slide level2">
-<h2>Data frames: la base de datos en R</h2>
-<p>Un <strong>data frame</strong> es una tabla: una colección de vectores de igual longitud.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>personas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-2"><a></a>  <span class="at">nombre =</span> nombres,</span>
-<span id="cb14-3"><a></a>  <span class="at">edad   =</span> edades</span>
-<span id="cb14-4"><a></a>)</span>
-<span id="cb14-5"><a></a></span>
-<span id="cb14-6"><a></a>personas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  nombre edad
-1    Ana   25
-2   Luis   31
-3   Sara   19
-4  Pedro   42</code></pre>
-</div>
-</div>
-<p>Es la estructura más común para datos: filas son observaciones, columnas son variables.</p>
 </section>
 <section id="objetos-la-memoria-de-trabajo-de-r" class="slide level2">
 <h2>Objetos: la memoria de trabajo de R</h2>
@@ -452,13 +487,54 @@ Juan David Leóngomez
   </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>resultado <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">144</span>)   <span class="co"># guardamos, no imprimimos</span></span>
-<span id="cb16-2"><a></a>resultado                <span class="co"># ahora sí lo vemos</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>resultado <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">144</span>) <span class="co"># guardamos, no imprimimos</span></span>
+<span id="cb10-2"><a></a>resultado <span class="co"># ahora sí lo vemos</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
 </div>
 <p><strong>Reglas para nombres de objetos:</strong> sin espacios, sin acentos, no empezar con número, distingue mayúsculas (<code>datos</code> ≠ <code>Datos</code>). Convención en tidyverse: <code>snake_case</code>.</p>
+</section>
+<section id="vectores-el-tipo-de-dato-básico" class="slide level2">
+<h2>Vectores: el tipo de dato básico</h2>
+<p><code>c()</code> (<em>combine</em>) crea <strong>vectores</strong>: secuencias de valores del mismo tipo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Vector numérico</span></span>
+<span id="cb12-2"><a></a>edades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">31</span>, <span class="dv">19</span>, <span class="dv">42</span>)</span>
+<span id="cb12-3"><a></a>edades</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25 31 19 42</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Vector de texto (caracteres entre comillas)</span></span>
+<span id="cb14-2"><a></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Ana"</span>, <span class="st">"Luis"</span>, <span class="st">"Sara"</span>, <span class="st">"Pedro"</span>)</span>
+<span id="cb14-3"><a></a>nombres</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Ana"   "Luis"  "Sara"  "Pedro"</code></pre>
+</div>
+</div>
+<p>Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.</p>
+</section>
+<section id="data-frames-la-base-de-datos-en-r" class="slide level2">
+<h2>Data frames: la base de datos en R</h2>
+<p>Un <strong>data frame</strong> es una tabla: una colección de vectores de igual longitud.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a>personas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-2"><a></a>    <span class="at">nombre =</span> nombres,</span>
+<span id="cb16-3"><a></a>    <span class="at">edad   =</span> edades</span>
+<span id="cb16-4"><a></a>)</span>
+<span id="cb16-5"><a></a></span>
+<span id="cb16-6"><a></a>personas</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  nombre edad
+1    Ana   25
+2   Luis   31
+3   Sara   19
+4  Pedro   42</code></pre>
+</div>
+</div>
+<p>Es la estructura más común para datos: filas son observaciones, columnas son variables.</p>
 </section>
 <section id="section-3" class="slide level2" data-background-color="#121834">
 <h2></h2>
@@ -473,51 +549,35 @@ Juan David Leóngomez
 <h2>Instalar y cargar tidyverse</h2>
 <p><code>tidyverse</code> es una <strong>colección de paquetes</strong> diseñados para trabajar juntos. Incluye <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>readr</code>, y más.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Solo la primera vez (instala en el disco)</span></span>
-<span id="cb18-2"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Solo la primera vez (instala en el disco)</span></span>
+<span id="cb18-2"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Cada sesión (carga en memoria)</span></span>
-<span id="cb19-2"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Cada sesión (carga en memoria)</span></span>
+<span id="cb19-2"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
 <div class="tip-box">
 <p><code>install.packages()</code> es como comprar un libro y ponerlo en el estante. <code>library()</code> es como abrirlo y tenerlo en la mesa.</p>
 </div>
 </section>
-<section id="el-dataset-diamonds" class="slide level2">
-<h2>El dataset <code>diamonds</code></h2>
+<section id="el-conjunto-de-datos-diamonds" class="slide level2">
+<h2>El conjunto de datos <code>diamonds</code></h2>
 <p><code>diamonds</code> viene incluido con <code>ggplot2</code>. Contiene información de 53 940 diamantes.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">glimpse</span>(diamonds)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 53,940
-Columns: 10
-$ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…
-$ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…
-$ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…
-$ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …
-$ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…
-$ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…
-$ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…
-$ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…
-$ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…
-$ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…</code></pre>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">View</span>(diamonds)</span></code></pre></div>
 </div>
-</div>
-</section>
+
+<img data-src="../../imagenes/View-diamonds.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="ggplot2-el-lienzo" class="slide level2">
 <h2>ggplot2: el lienzo</h2>
 <p><code>ggplot()</code> crea un lienzo vacío. Le decimos qué datos usar y qué variables mapear a los ejes con <code>aes()</code>.</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb22-2"><a></a>  <span class="at">data    =</span> diamonds,</span>
-<span id="cb22-3"><a></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb22-4"><a></a>    <span class="at">x =</span> carat,</span>
-<span id="cb22-5"><a></a>    <span class="at">y =</span> price</span>
-<span id="cb22-6"><a></a>  )</span>
-<span id="cb22-7"><a></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb21-2"><a></a>    <span class="at">data =</span> diamonds,</span>
+<span id="cb21-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)</span>
+<span id="cb21-4"><a></a>)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -537,11 +597,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb23-2"><a></a>  diamonds,</span>
-<span id="cb23-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)</span>
-<span id="cb23-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb23-5"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb22-2"><a></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -561,11 +618,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb24-2"><a></a>  diamonds,</span>
-<span id="cb24-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)</span>
-<span id="cb24-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb24-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb23-2"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -585,13 +639,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb25-2"><a></a>  diamonds,</span>
-<span id="cb25-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> carat,</span>
-<span id="cb25-4"><a></a>      <span class="at">y =</span> price,</span>
-<span id="cb25-5"><a></a>      <span class="at">colour =</span> cut)</span>
-<span id="cb25-6"><a></a>) <span class="sc">+</span></span>
-<span id="cb25-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb24-2"><a></a>    diamonds,</span>
+<span id="cb24-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)</span>
+<span id="cb24-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb24-5"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -611,14 +663,12 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb26-2"><a></a>  diamonds,</span>
-<span id="cb26-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> carat,</span>
-<span id="cb26-4"><a></a>      <span class="at">y =</span> price,</span>
-<span id="cb26-5"><a></a>      <span class="at">colour =</span> cut)</span>
-<span id="cb26-6"><a></a>) <span class="sc">+</span></span>
-<span id="cb26-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb26-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb25-2"><a></a>    diamonds,</span>
+<span id="cb25-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)</span>
+<span id="cb25-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb25-5"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb25-6"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -638,15 +688,13 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb27-2"><a></a>  diamonds,</span>
-<span id="cb27-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> carat,</span>
-<span id="cb27-4"><a></a>      <span class="at">y =</span> price,</span>
-<span id="cb27-5"><a></a>      <span class="at">colour =</span> cut)</span>
-<span id="cb27-6"><a></a>) <span class="sc">+</span></span>
-<span id="cb27-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb27-8"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb27-9"><a></a>  <span class="fu">scale_colour_viridis_d</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb26-2"><a></a>    diamonds,</span>
+<span id="cb26-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)</span>
+<span id="cb26-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb26-5"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb26-7"><a></a>    <span class="fu">scale_colour_viridis_d</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -662,22 +710,22 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </section>
 <section id="con-qué-datos-seguir-practicando" class="slide level2">
 <h2>¿Con qué datos seguir practicando?</h2>
-<p><code>ggplot2</code> y tidyverse vienen con varios datasets listos para usar:</p>
+<p><code>ggplot2</code> y tidyverse incluyen varios conjuntos de datos listos para usar:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="co"># Ver todos los datasets disponibles en los paquetes cargados</span></span>
-<span id="cb28-2"><a></a><span class="fu">data</span>()</span>
-<span id="cb28-3"><a></a></span>
-<span id="cb28-4"><a></a><span class="co"># Algunos interesantes</span></span>
-<span id="cb28-5"><a></a><span class="fu">glimpse</span>(mpg)        <span class="co"># autos y consumo de combustible</span></span>
-<span id="cb28-6"><a></a><span class="fu">glimpse</span>(gapminder<span class="sc">::</span>gapminder)  <span class="co"># esperanza de vida por país y año</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Ver todos los conjuntos de datos disponibles en los paquetes cargados</span></span>
+<span id="cb27-2"><a></a><span class="fu">data</span>()</span>
+<span id="cb27-3"><a></a></span>
+<span id="cb27-4"><a></a><span class="co"># Algunos interesantes</span></span>
+<span id="cb27-5"><a></a><span class="fu">glimpse</span>(mpg) <span class="co"># autos y consumo de combustible</span></span>
+<span id="cb27-6"><a></a><span class="fu">glimpse</span>(gapminder<span class="sc">::</span>gapminder) <span class="co"># esperanza de vida por país y año</span></span></code></pre></div>
 </div>
 <div class="tip-box">
-<p>Escribe <code>?mpg</code> o <code>?diamonds</code> en la consola para ver la descripción completa de cualquier dataset.</p>
+<p>Escribe <code>?mpg</code> o <code>?diamonds</code> en la consola para ver la descripción completa de cualquier conjunto de datos.</p>
 </div>
 </section>
 <section id="a-practicar" class="slide level2">
 <h2>A practicar</h2>
-<p>Antes de la próxima sesión, elige un dataset de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con <code>ggplot2</code>.</p>
+<p>Antes de la próxima sesión, elige un conjunto de datos de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con <code>ggplot2</code>.</p>
 <p>Experimenta cambiando:</p>
 <ul>
 <li class="fragment">El tipo de geometría (<code>geom_point</code>, <code>geom_jitter</code>, <code>geom_col</code>, <code>geom_histogram</code>…)</li>
@@ -691,6 +739,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../imagenes/favicon.svg" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Curso de R · Universidad El Bosque · Junio 2026</p>
 </div>
@@ -703,6 +752,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
   <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-code-focus/codefocus.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -895,7 +945,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealCodeFocus, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -948,68 +998,6 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
         tabsets.forEach(function(tabset) {
           const tabby = new Tabby('#' + tabset.id);
         });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
-          }
-          return false;
-        }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copiado");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copiado");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
-        }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
             var filterRegex = new RegExp("https:\/\/JDLeongomez\.github\.io\/curso-r\/");

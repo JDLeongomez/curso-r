@@ -1,17 +1,360 @@
 [
   {
+    "objectID": "sesiones/s02/slides.html#agenda",
+    "href": "sesiones/s02/slides.html#agenda",
+    "title": "Sesión 2",
+    "section": "Agenda",
+    "text": "Agenda\n\nGramática de gráficas en capas\nLos datos del día: pingüinos de Palmer\nGeometrías: distribuciones, comparaciones, conteos, tendencias\naes(): mapear variables vs. fijar valores\nEtiquetas con labs()\nTemas y personalización con theme()\nPaletas de colores\nFacetas: facet_wrap() y facet_grid()\nGuardar figuras con ggsave()"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section",
+    "href": "sesiones/s02/slides.html#section",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 1\n\n\nLa gramática de las gráficas"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#ggplot2-y-la-gramática-de-capas",
+    "href": "sesiones/s02/slides.html#ggplot2-y-la-gramática-de-capas",
+    "title": "Sesión 2",
+    "section": "ggplot2 y la gramática de capas",
+    "text": "ggplot2 y la gramática de capas\nggplot2 implementa la Grammar of Graphics de Wilkinson: una figura se construye sumando capas independientes.\n\n  \n    ①\n    datos\n  \n  +\n  \n    ②\n    aes()\n  \n  +\n  \n    ③\n    geom_*()\n  \n  +\n  \n    ④\n    scale_*()\n  \n  +\n  \n    ⑤\n    facet_*()\n  \n  +\n  \n    ⑥\n    theme()\n  \n\nCambiar cualquier capa deja las demás intactas. Eso hace que el código sea modular y fácil de modificar."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#los-datos-del-día-pingüinos-de-palmer",
+    "href": "sesiones/s02/slides.html#los-datos-del-día-pingüinos-de-palmer",
+    "title": "Sesión 2",
+    "section": "Los datos del día: pingüinos de Palmer",
+    "text": "Los datos del día: pingüinos de Palmer\npalmerpenguins contiene medidas de 344 pingüinos de tres especies en la Antártida.\n\nlibrary(palmerpenguins)\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#preparar-los-datos",
+    "href": "sesiones/s02/slides.html#preparar-los-datos",
+    "title": "Sesión 2",
+    "section": "Preparar los datos",
+    "text": "Preparar los datos\npenguins tiene algunos valores faltantes (NA). Los eliminamos antes de graficar.\n\n# vamos a sobreescribir el objeto original para trabajar solo con los datos limpios\npinguinos &lt;- penguins\npinguinos &lt;- drop_na(penguins)\nglimpse(pinguinos)\n\nRows: 333\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6…\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2…\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, 193, 190, 181, 195, 182, 191, 198, 18…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800…\n$ sex               &lt;fct&gt; male, female, female, female, male, female, male, fe…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-1",
+    "href": "sesiones/s02/slides.html#section-1",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 2\n\n\nGeometrías"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#distribuciones-geom_histogram",
+    "href": "sesiones/s02/slides.html#distribuciones-geom_histogram",
+    "title": "Sesión 2",
+    "section": "Distribuciones: geom_histogram()",
+    "text": "Distribuciones: geom_histogram()\nMuestra cómo se distribuyen los valores de una variable continua.\n\n\n\nggplot(\n    pinguinos,\n    aes(x = body_mass_g)\n) +\n    geom_histogram(\n        bins   = 25,\n        fill   = \"darkblue\",\n        colour = \"white\"\n    ) +\n    theme_minimal()\n\n\nbins controla el número de barras. binwidth fija el ancho de cada barra. No uses ambos a la vez.\n\n\n\n\n\n\n\n\n\n\n\n\nTambién existe geom_density() para una curva de densidad suavizada."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#comparaciones-geom_boxplot",
+    "href": "sesiones/s02/slides.html#comparaciones-geom_boxplot",
+    "title": "Sesión 2",
+    "section": "Comparaciones: geom_boxplot()",
+    "text": "Comparaciones: geom_boxplot()\nCompara distribuciones entre grupos. Muestra mediana, cuartiles y valores extremos.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        fill = species\n    )\n) +\n    geom_boxplot() +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_violin() muestra la distribución completa en lugar de solo los cuartiles."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#conteos-geom_bar",
+    "href": "sesiones/s02/slides.html#conteos-geom_bar",
+    "title": "Sesión 2",
+    "section": "Conteos: geom_bar()",
+    "text": "Conteos: geom_bar()\nCuenta observaciones por categoría. Solo necesita x.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        fill = island\n    )\n) +\n    geom_bar(\n        position = \"dodge\"\n    ) +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nposition = \"dodge\" coloca las barras una al lado de la otra. \"stack\" las apila."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#tendencias-geom_line",
+    "href": "sesiones/s02/slides.html#tendencias-geom_line",
+    "title": "Sesión 2",
+    "section": "Tendencias: geom_line()",
+    "text": "Tendencias: geom_line()\nConecta observaciones en orden de x. Útil para series de tiempo.\n\n\n\nggplot(\n    economics,\n    aes(\n        x = date,\n        y = unemploy\n    )\n) +\n    geom_line(\n        colour    = \"#225faa\",\n        linewidth = 0.8\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\neconomics es un conjunto de datos incluido en ggplot2 con indicadores económicos de EE.UU."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#combinar-capas-geométricas",
+    "href": "sesiones/s02/slides.html#combinar-capas-geométricas",
+    "title": "Sesión 2",
+    "section": "Combinar capas geométricas",
+    "text": "Combinar capas geométricas\nSe pueden sumar varios geom_*() en la misma figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        colour = species\n    )\n) +\n    geom_violin(fill = NA) +\n    geom_jitter(\n        width = 0.2,\n        alpha = 0.4,\n        size  = 1.5\n    ) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nLas capas se dibujan en el orden en que se declaran. El violín va primero, los puntos encima."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-2",
+    "href": "sesiones/s02/slides.html#section-2",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 3\n\n\naes(): mapear vs. fijar"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#dentro-de-aes-variable-estética",
+    "href": "sesiones/s02/slides.html#dentro-de-aes-variable-estética",
+    "title": "Sesión 2",
+    "section": "Dentro de aes(): variable → estética",
+    "text": "Dentro de aes(): variable → estética\nCuando una estética depende de los datos, va dentro de aes().\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species\n    )\n) +\n    geom_point(alpha = 0.7) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nCada especie recibe un color distinto según los datos."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#fuera-de-aes-valor-fijo-para-todos",
+    "href": "sesiones/s02/slides.html#fuera-de-aes-valor-fijo-para-todos",
+    "title": "Sesión 2",
+    "section": "Fuera de aes(): valor fijo para todos",
+    "text": "Fuera de aes(): valor fijo para todos\nCuando la estética es un valor constante, va fuera de aes(), directamente en el geom_*().\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g\n    )\n) +\n    geom_point(\n        colour = \"#225faa\",\n        size   = 2,\n        alpha  = 0.6\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nTodos los puntos tienen el mismo color, tamaño y transparencia."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#el-error-más-común-con-aes",
+    "href": "sesiones/s02/slides.html#el-error-más-común-con-aes",
+    "title": "Sesión 2",
+    "section": "El error más común con aes()",
+    "text": "El error más común con aes()\n\n# ❌ Esto NO pinta los puntos de azul\ngeom_point(aes(colour = \"blue\"))\n\n\n\naes(colour = \"blue\") crea una categoría llamada \"blue\" y le asigna el primer color de la paleta por defecto. Para fijar un color, escríbelo fuera de aes(): geom_point(colour = \"blue\")."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#múltiples-mappings-en-aes",
+    "href": "sesiones/s02/slides.html#múltiples-mappings-en-aes",
+    "title": "Sesión 2",
+    "section": "Múltiples mappings en aes()",
+    "text": "Múltiples mappings en aes()\nSe pueden mapear varias variables a distintas estéticas simultáneamente.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species,\n        shape = species\n    )\n) +\n    geom_point(\n        alpha = 0.7,\n        size  = 2.5\n    ) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nMapear colour y shape a la misma variable mejora la accesibilidad: la figura es legible incluso en escala de grises."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-3",
+    "href": "sesiones/s02/slides.html#section-3",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 4\n\n\nEtiquetas con labs()"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#labs-títulos-y-etiquetas",
+    "href": "sesiones/s02/slides.html#labs-títulos-y-etiquetas",
+    "title": "Sesión 2",
+    "section": "labs(): títulos y etiquetas",
+    "text": "labs(): títulos y etiquetas\nlabs() controla todos los textos de la figura: título, subtítulo, ejes, leyenda y nota al pie.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species\n    )\n) +\n    geom_point(alpha = 0.7) +\n    scale_colour_viridis_d() +\n    labs(\n        title    = \"Masa corporal y longitud del pico\",\n        subtitle = \"Pingüinos de Palmer, Antártida\",\n        x        = \"Longitud del pico (mm)\",\n        y        = \"Masa corporal (g)\",\n        colour   = \"Especie\",\n        caption  = \"Datos: Horst, Hill & Gorman (2020)\"\n    ) +\n    theme_minimal()"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-4",
+    "href": "sesiones/s02/slides.html#section-4",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 5\n\n\nTemas y personalización"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#temas-incorporados",
+    "href": "sesiones/s02/slides.html#temas-incorporados",
+    "title": "Sesión 2",
+    "section": "Temas incorporados",
+    "text": "Temas incorporados\nggplot2 incluye varios temas listos para usar.\n\n\n\n# Los más usados\ntheme_minimal() # limpio, sin fondo gris\ntheme_classic() # ejes sin cuadrícula\ntheme_bw() # fondo blanco con cuadrícula\ntheme_void() # sin ejes ni cuadrícula\ntheme_dark() # fondo oscuro\n\nAplícalos sumándolos a la figura:\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g\n    )\n) +\n    geom_boxplot() +\n    theme_classic()"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#personalizar-con-theme",
+    "href": "sesiones/s02/slides.html#personalizar-con-theme",
+    "title": "Sesión 2",
+    "section": "Personalizar con theme()",
+    "text": "Personalizar con theme()\ntheme() permite ajustar cualquier elemento visual de la figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        fill = species\n    )\n) +\n    geom_boxplot() +\n    scale_fill_viridis_d() +\n    theme_minimal() +\n    theme(\n        legend.position = \"none\",\n        panel.grid.minor = element_blank(),\n        axis.title = element_text(\n            size = 12,\n            face = \"bold\"\n        ),\n        plot.title = element_text(\n            hjust = 0.5\n        )\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\nelement_blank() elimina un elemento. element_text() controla fuente, tamaño y color. element_line() y element_rect() hacen lo propio con líneas y rectángulos."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-5",
+    "href": "sesiones/s02/slides.html#section-5",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 6\n\n\nPaletas de colores"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#scale_colour_-y-scale_fill_",
+    "href": "sesiones/s02/slides.html#scale_colour_-y-scale_fill_",
+    "title": "Sesión 2",
+    "section": "scale_colour_*() y scale_fill_*()",
+    "text": "scale_colour_*() y scale_fill_*()\nLas funciones scale_*() controlan cómo se mapean los datos a las estéticas visuales.\n\n# Viridis: perceptualmente uniforme, apto para daltonismo\nscale_colour_viridis_d() # variable discreta\nscale_colour_viridis_c() # variable continua\nscale_colour_viridis_d(option = \"plasma\") # variante: magma, plasma, inferno, cividis\n\n# ColorBrewer: paletas curadas para cartografía y visualización\nscale_colour_brewer(palette = \"Set2\") # discreta\nscale_fill_brewer(palette = \"Blues\") # continua\n\n# Manual: colores definidos a mano\nscale_colour_manual(\n    values = c(\"#121834\", \"#225faa\", \"#ddeaf8\")\n)\n\n\nUsa scale_colour_*() cuando el mapping es colour = y scale_fill_*() cuando es fill =. Son funciones distintas.\n\nHEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos. Por ejemplo, #225faa es un azul específico. En Google busca “selector de color” para obtener el código HEX de cualquier color."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#comparación-de-paletas",
+    "href": "sesiones/s02/slides.html#comparación-de-paletas",
+    "title": "Sesión 2",
+    "section": "Comparación de paletas",
+    "text": "Comparación de paletas\n\n\nViridis\n\n\n\n\n\n\n\n\n\n\nColorBrewer Set2"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-6",
+    "href": "sesiones/s02/slides.html#section-6",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 7\n\n\nFacetas"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#facet_wrap-un-panel-por-categoría",
+    "href": "sesiones/s02/slides.html#facet_wrap-un-panel-por-categoría",
+    "title": "Sesión 2",
+    "section": "facet_wrap(): un panel por categoría",
+    "text": "facet_wrap(): un panel por categoría\nDivide la figura en paneles según los valores de una variable.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = sex\n    )\n) +\n    geom_point(\n        alpha = 0.7,\n        size  = 2\n    ) +\n    facet_wrap(~species) +\n    scale_colour_viridis_d() +\n    theme_minimal()"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#facet_grid-dos-variables-filas-y-columnas",
+    "href": "sesiones/s02/slides.html#facet_grid-dos-variables-filas-y-columnas",
+    "title": "Sesión 2",
+    "section": "facet_grid(): dos variables, filas y columnas",
+    "text": "facet_grid(): dos variables, filas y columnas\nOrganiza los paneles en una cuadrícula con una variable por eje.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g\n    )\n) +\n    geom_point(\n        colour = \"#225faa\",\n        alpha  = 0.6,\n        size   = 1.5\n    ) +\n    facet_grid(sex ~ species) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nLa sintaxis filas ~ columnas define qué variable va en cada dimensión."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-7",
+    "href": "sesiones/s02/slides.html#section-7",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Parte 8\n\n\nGuardar figuras"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#ggsave",
+    "href": "sesiones/s02/slides.html#ggsave",
+    "title": "Sesión 2",
+    "section": "ggsave()",
+    "text": "ggsave()\nGuarda la última figura generada (o la que especifiques) en el formato que elijas.\n\nmi_figura &lt;- ggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm, y = body_mass_g,\n        colour = species, shape = species\n    )\n) +\n    geom_point(alpha = 0.7, size = 2) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n# PNG para presentaciones y web\nggsave(\"figuras/pinguinos.png\",\n    plot  = mi_figura,\n    width = 16, height = 10,\n    units = \"cm\", dpi = 300\n)\n\n# PDF para publicaciones (vectorial, escala sin pérdida)\nggsave(\"figuras/pinguinos.pdf\",\n    plot = mi_figura,\n    width = 16, height = 10,\n    units = \"cm\"\n)\n\n\ndpi = 300 es el estándar para publicación impresa. Para pantalla, dpi = 150 es suficiente. units = \"cm\" permite especificar el tamaño exacto que pedirá la revista."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#la-figura-completa",
+    "href": "sesiones/s02/slides.html#la-figura-completa",
+    "title": "Sesión 2",
+    "section": "La figura completa",
+    "text": "La figura completa\nTodo lo visto en una sola figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species,\n        shape = species\n    )\n) +\n    geom_point(alpha = 0.6, size = 2) +\n    geom_smooth(\n        method    = \"lm\",\n        se        = FALSE,\n        linewidth = 0.8\n    ) +\n    facet_wrap(~island) +\n    scale_colour_viridis_d(\n        name = \"Especie\"\n    ) +\n    scale_shape_discrete(\n        name = \"Especie\"\n    ) +\n    labs(\n        title   = \"Masa y pico por isla\",\n        x       = \"Longitud del pico (mm)\",\n        y       = \"Masa corporal (g)\",\n        caption = \"Datos: Horst et al. (2020)\"\n    ) +\n    theme_minimal() +\n    theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Maneja, explora y visualiza datos con R",
+    "section": "",
+    "text": "¿Tus datos viven en hojas de Excel difíciles de actualizar? ¿Copias resultados a mano entre programas?\n    R es la herramienta que usan investigadores de todo el mundo para organizar datos,\n    crear gráficas listas para publicar y generar reportes reproducibles, y puedes aprenderlo desde cero."
+  },
+  {
+    "objectID": "index.html#información-general",
+    "href": "index.html#información-general",
+    "title": "Maneja, explora y visualiza datos con R",
+    "section": "Información general",
+    "text": "Información general\n\n  Horario10:00 – 12:00 m.\n  Sesiones9 sesiones · 18 h\n  ModalidadPresencial\n  LugarUniversidad El Bosque(sala por confirmar)\n  CostoGratuito\n  RequisitosNinguno\n\n\n🎓 El curso otorga certificado de participación a quienes cumplan el 90 % de asistencia.\n\nEl curso se realizará en una sala de cómputo, así que no necesitas traer tu propio equipo. No se requieren conocimientos previos de programación ni estadística."
+  },
+  {
+    "objectID": "index.html#sesiones",
+    "href": "index.html#sesiones",
+    "title": "Maneja, explora y visualiza datos con R",
+    "section": "Sesiones",
+    "text": "Sesiones\n\n\n\n#\nFecha\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nPor definir\n—\n\n\n2\nJue 4 jun\nPor definir\n—\n\n\n3\nVie 5 jun\nPor definir\n— → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nPor definir Entrega Tarea 1\n—\n\n\n5\nJue 11 jun\nPor definir\n—\n\n\n6\nVie 12 jun\nPor definir\n— → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nPor definir Entrega Tarea 2\n—\n\n\n8\nJue 18 jun\nPor definir\n—\n\n\n9\nVie 19 jun\nPor definir\n—"
+  },
+  {
+    "objectID": "index.html#tareas",
+    "href": "index.html#tareas",
+    "title": "Maneja, explora y visualiza datos con R",
+    "section": "Tareas",
+    "text": "Tareas\n\nTarea 1 · El concurso de la figura más fea\nTarea 2 · Presenta un paquete de R"
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "Maneja, explora y visualiza datos con R",
+    "section": "Instructor",
+    "text": "Instructor\n\n  \n  \n    Juan David Leongómez\n    \n      Profesor Asociado e investigador de la Universidad El Bosque, investigador de\n      EvoCo\n      y líder del grupo de investigación\n      CODEC.\n      Usuario de R y promotor de la ciencia abierta y la reproducibilidad, temas sobre los que crea\n      tutoriales y recursos,\n      así como videos en su canal de YouTube\n      Investigación Abierta.\n      Más información: jdleongomez.info"
+  },
+  {
+    "objectID": "index.html#preguntas",
+    "href": "index.html#preguntas",
+    "title": "Maneja, explora y visualiza datos con R",
+    "section": "Preguntas",
+    "text": "Preguntas\nPara asuntos de R y contenidos del curso, escribe a jleongomez@unbosque.edu.co\nPara asuntos administrativos, escribe a cinvestigapsico@unbosque.edu.co"
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html",
+    "href": "tareas/tarea2-paquete-raro.html",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "",
+    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#el-reto",
+    "href": "tareas/tarea2-paquete-raro.html#el-reto",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "",
+    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
+    "href": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "Lo que debes presentar",
+    "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "href": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "Algunas pistas de por dónde buscar",
+    "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "href": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
+    "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores tú mismo y lo puedas explicar con tus propias palabras."
+  },
+  {
+    "objectID": "tareas_por_hacer.html",
+    "href": "tareas_por_hacer.html",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\nCrear diapositivas sesión 3 — pipe + dplyr\nCrear diapositivas sesión 4 — datos externos, proyectos, rutas relativas\nCrear diapositivas sesión 5 — simulación de datos, funciones, faux\nCrear diapositivas sesión 6 — Quarto, documentos reproducibles\nCrear diapositivas sesión 7 — Quarto avanzado, RevealJS, referencias\nCrear diapositivas sesión 8 — Git y GitHub\nCrear diapositivas sesión 9 — cierre e integración\n\n\n\n\n\nActualizar sección #sesiones en index.qmd con temas y enlaces finales\nActualizar sección #contenidos-por-semana en programa.qmd\n\n\n\n\n\nCrear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nSimulación de datos, funciones, condicionales\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nTarea 2 + Quarto avanzado, RevealJS, referencias\n\n\n\n8\nJue 18\nGit y GitHub\n\n\n\n9\nVie 19\nCierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+  },
+  {
+    "objectID": "tareas_por_hacer.html#curso",
+    "href": "tareas_por_hacer.html#curso",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#configuración-y-setup",
+    "href": "tareas_por_hacer.html#configuración-y-setup",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#diapositivas",
+    "href": "tareas_por_hacer.html#diapositivas",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\nCrear diapositivas sesión 3 — pipe + dplyr\nCrear diapositivas sesión 4 — datos externos, proyectos, rutas relativas\nCrear diapositivas sesión 5 — simulación de datos, funciones, faux\nCrear diapositivas sesión 6 — Quarto, documentos reproducibles\nCrear diapositivas sesión 7 — Quarto avanzado, RevealJS, referencias\nCrear diapositivas sesión 8 — Git y GitHub\nCrear diapositivas sesión 9 — cierre e integración"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#sitio-web",
+    "href": "tareas_por_hacer.html#sitio-web",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Actualizar sección #sesiones en index.qmd con temas y enlaces finales\nActualizar sección #contenidos-por-semana en programa.qmd"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#tareas-para-estudiantes",
+    "href": "tareas_por_hacer.html#tareas-para-estudiantes",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
+    "href": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nSimulación de datos, funciones, condicionales\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nTarea 2 + Quarto avanzado, RevealJS, referencias\n\n\n\n8\nJue 18\nGit y GitHub\n\n\n\n9\nVie 19\nCierre, integración, buenas prácticas"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#tabla-de-comandos",
+    "href": "tareas_por_hacer.html#tabla-de-comandos",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Situación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+  },
+  {
     "objectID": "tareas/tarea1-figura-fea.html",
     "href": "tareas/tarea1-figura-fea.html",
     "title": "Tarea 1 · El concurso de la figura más fea",
     "section": "",
-    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras), y debe mostrar datos reales (puedes usar cualquier dataset disponible en R, como iris, mtcars, palmerpenguins::penguins, gapminder::gapminder, etc.)."
+    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras), y debe mostrar datos reales (puedes usar cualquier conjunto de datos disponible en R, como iris, mtcars, palmerpenguins::penguins, gapminder::gapminder, etc.)."
   },
   {
     "objectID": "tareas/tarea1-figura-fea.html#el-reto",
     "href": "tareas/tarea1-figura-fea.html#el-reto",
     "title": "Tarea 1 · El concurso de la figura más fea",
     "section": "",
-    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras), y debe mostrar datos reales (puedes usar cualquier dataset disponible en R, como iris, mtcars, palmerpenguins::penguins, gapminder::gapminder, etc.)."
+    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras), y debe mostrar datos reales (puedes usar cualquier conjunto de datos disponible en R, como iris, mtcars, palmerpenguins::penguins, gapminder::gapminder, etc.)."
   },
   {
     "objectID": "tareas/tarea1-figura-fea.html#criterios-de-evaluación-de-fealdad",
@@ -33,6 +376,41 @@
     "title": "Tarea 1 · El concurso de la figura más fea",
     "section": "Pistas (de lo que no debes hacer normalmente)",
     "text": "Pistas (de lo que no debes hacer normalmente)\n\n# Algunas funciones que pueden ayudarte en el lado oscuro:\ntheme()         # puedes cambiar ABSOLUTAMENTE TODO el aspecto\nscale_colour_manual()   # paletas de colores propias\nelement_text()  # tamaño, color, ángulo de texto\ncoord_polar()   # transforma cualquier gráfica en algo circular\nannotate()      # agrega texto, líneas, formas encima\n\n\n\n\n\n\n\nTipInspiración\n\n\n\nBusca “chartjunk”, “bad data visualization” o “how not to visualize data” para encontrar ejemplos de lo que el mundo académico considera un pecado. Tu trabajo es superar eso."
+  },
+  {
+    "objectID": "programa.html",
+    "href": "programa.html",
+    "title": "Programa del curso",
+    "section": "",
+    "text": "Este curso cubre el manejo, transformación y visualización de datos en R. No es un curso de estadística: no se abordan pruebas de hipótesis, modelos ni inferencia. El foco está en que puedas importar, organizar y explorar datos, y comunicar resultados visualmente."
+  },
+  {
+    "objectID": "programa.html#objetivos-generales",
+    "href": "programa.html#objetivos-generales",
+    "title": "Programa del curso",
+    "section": "Objetivos generales",
+    "text": "Objetivos generales\nAl finalizar el curso, los participantes serán capaces de:\n\nEntender la sintaxis básica de R y la lógica de los paquetes.\nImportar, limpiar y transformar datos con tidyverse.\nCrear visualizaciones publicables con ggplot2.\nGenerar reportes reproducibles con Quarto.\nRealizar análisis exploratorios básicos."
+  },
+  {
+    "objectID": "programa.html#contenidos-por-semana",
+    "href": "programa.html#contenidos-por-semana",
+    "title": "Programa del curso",
+    "section": "Contenidos por semana",
+    "text": "Contenidos por semana\nPor definir — actualizar cuando se definan los temas de cada sesión."
+  },
+  {
+    "objectID": "programa.html#evaluación",
+    "href": "programa.html#evaluación",
+    "title": "Programa del curso",
+    "section": "Evaluación",
+    "text": "Evaluación\nEl curso no tiene calificación formal. Para obtener el certificado de participación se requiere asistencia al 90 % de las sesiones (mínimo 9 de 9 sesiones — las ausencias justificadas se evalúan caso por caso).\nLas dos tareas son ejercicios de exploración y no tienen una nota asociada, pero se presentan ante el grupo."
+  },
+  {
+    "objectID": "programa.html#recursos",
+    "href": "programa.html#recursos",
+    "title": "Programa del curso",
+    "section": "Recursos",
+    "text": "Recursos\n\nThe tidyverse style guide\nR for Data Science (2e) — Wickham, Çetinkaya-Rundel & Grolemund\nggplot2: Elegant Graphics for Data Analysis — Wickham\nQuarto documentation"
   },
   {
     "objectID": "sesiones/s01/slides.html#agenda",
@@ -88,7 +466,21 @@
     "href": "sesiones/s01/slides.html#de-la-terminal-al-script",
     "title": "Sesión 1",
     "section": "De la terminal al script",
-    "text": "De la terminal al script\nPuedes darle instrucciones a R directamente desde la terminal:\n\n2 + 2\n\nFunciona, pero al cerrar la terminal pierdes todo lo que escribiste.\nUn script es un archivo de texto plano con extensión .R; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.\n# mi_primer_script.R\n2 + 2\nsqrt(16)\nEl script es tu registro permanente de lo que hiciste: la base de la reproducibilidad científica."
+    "text": "De la terminal al script\nPuedes darle instrucciones a R directamente desde la terminal:\n\n\n\n2 + 2\n\nFunciona, pero al cerrar la terminal pierdes todo lo que escribiste."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#de-la-terminal-al-script-1",
+    "href": "sesiones/s01/slides.html#de-la-terminal-al-script-1",
+    "title": "Sesión 1",
+    "section": "De la terminal al script",
+    "text": "De la terminal al script\nUn script es un archivo de texto plano con extensión .R; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.\n# mi_primer_script.R\n2 + 2\nsqrt(16)\nEl script es tu registro permanente de lo que hiciste: la base de la reproducibilidad científica."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#r-sin-ide-ventanas-sueltas",
+    "href": "sesiones/s01/slides.html#r-sin-ide-ventanas-sueltas",
+    "title": "Sesión 1",
+    "section": "R sin IDE: ventanas sueltas",
+    "text": "R sin IDE: ventanas sueltas\nR funciona solo, pero cada pieza vive en su propia ventana flotante: consola, editor de scripts, gráficas, entorno… Todo disperso."
   },
   {
     "objectID": "sesiones/s01/slides.html#rstudio-el-entorno-de-trabajo",
@@ -98,11 +490,25 @@
     "text": "RStudio: el entorno de trabajo\nR es el motor. RStudio es la carrocería — un IDE (Integrated Development Environment) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.\n\nEditor de scripts con resaltado de sintaxis\nConsola integrada\nVisualizador de objetos, gráficas, archivos y ayuda\nIntegración con Quarto/RMarkdown, Git, y más"
   },
   {
+    "objectID": "sesiones/s01/slides.html#rstudio-el-entorno-de-trabajo-1",
+    "href": "sesiones/s01/slides.html#rstudio-el-entorno-de-trabajo-1",
+    "title": "Sesión 1",
+    "section": "RStudio: el entorno de trabajo",
+    "text": "RStudio: el entorno de trabajo\nR es el motor. RStudio es la carrocería — un IDE (Integrated Development Environment) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente."
+  },
+  {
     "objectID": "sesiones/s01/slides.html#los-paneles-de-rstudio",
     "href": "sesiones/s01/slides.html#los-paneles-de-rstudio",
     "title": "Sesión 1",
     "section": "Los paneles de RStudio",
-    "text": "Los paneles de RStudio"
+    "text": "Los paneles de RStudio\n\n\n\n\n\n\n\n\nA. Editor — escribes y guardas tus scripts\nB. Consola — R ejecuta el código aquí\nC. Entorno / Historial — objetos en memoria\nD. Archivos / Gráficas / Ayuda — explorador y visualizador"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#configura-rstudio",
+    "href": "sesiones/s01/slides.html#configura-rstudio",
+    "title": "Sesión 1",
+    "section": "Configura RStudio",
+    "text": "Configura RStudio\nAbre RStudio y ve a Tools &gt; Global Options\n\n\nGeneral &gt; Basic\n\nDesmarca Restore most recently opened project at startup\nDesmarca Restore previously open source documents at startup\nDesmarca Restore .RData into workspace at startup\nEn Save workspace to .RData on exit selecciona Never\nDesmarca Always save history\n\n\nCode &gt; Editing {.incremental}\n\nMarca Use native pipe operator |&gt;\n\nCode &gt; Display\n\nMarca Use rainbow parentheses\n\nCode &gt; Saving\n\nDefault text encoding: UTF-8\n\nAppearance\n\nEscoge el tema y la fuente que más te gusten"
   },
   {
     "objectID": "sesiones/s01/slides.html#section-2",
@@ -116,14 +522,35 @@
     "href": "sesiones/s01/slides.html#funciones-y-argumentos",
     "title": "Sesión 1",
     "section": "Funciones y argumentos",
-    "text": "Funciones y argumentos\nUna función es como una fábrica: recibe insumos, hace algo con ellos, y produce un resultado.\n\n  \n    ARGUMENTOS (insumos)\n    material = \"cuero\"talla = 42color = \"negro\"\n  \n  →\n  \n    FUNCIÓN\n    hacer_zapato()\n  \n  →\n  \n    RESULTADO\n    👟\n  \n\nEn R, la sintaxis es siempre:\nnombre_funcion(argumento1 = valor1, argumento2 = valor2)\nLos argumentos van dentro del paréntesis, separados por comas."
+    "text": "Funciones y argumentos\nUna función es como una fábrica: recibe insumos, hace algo con ellos, y produce un resultado."
   },
   {
-    "objectID": "sesiones/s01/slides.html#funciones-reales-en-r",
-    "href": "sesiones/s01/slides.html#funciones-reales-en-r",
+    "objectID": "sesiones/s01/slides.html#funciones-y-argumentos-1",
+    "href": "sesiones/s01/slides.html#funciones-y-argumentos-1",
     "title": "Sesión 1",
-    "section": "Funciones reales en R",
-    "text": "Funciones reales en R\n\n# sqrt() calcula la raíz cuadrada - recibe un número\nsqrt(144)\n\n[1] 12\n\n\n\n# round() redondea - recibe un número y los decimales deseados\nround(3.14159, digits = 2)\n\n[1] 3.14\n\n\n\n# paste() une texto - recibe los fragmentos y el separador\npaste(\"Hola\", \"mundo\", sep = \", \")\n\n[1] \"Hola, mundo\"\n\n\n\nEscribe el nombre de cualquier función seguido de ? en la consola para ver su documentación: ?round"
+    "section": "Funciones y argumentos",
+    "text": "Funciones y argumentos\n\n  \n    ARGUMENTOS (insumos)\n    material = \"cuero\"talla = 42color = \"azul\"\n  \n  →\n  \n    FUNCIÓN\n    hacer_zapato()\n  \n  →\n  \n    RESULTADO\n    👟"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#funciones-y-argumentos-2",
+    "href": "sesiones/s01/slides.html#funciones-y-argumentos-2",
+    "title": "Sesión 1",
+    "section": "Funciones y argumentos",
+    "text": "Funciones y argumentos\nEn R, la sintaxis es siempre:\nnombre_funcion(argumento1 = valor1, argumento2 = valor2)\nEl nombre de la función va antes del paréntesis.\nLos argumentos van dentro del paréntesis, separados por comas."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#funciones-en-r",
+    "href": "sesiones/s01/slides.html#funciones-en-r",
+    "title": "Sesión 1",
+    "section": "Funciones en R",
+    "text": "Funciones en R\n\n# sqrt() calcula la raíz cuadrada - recibe un número\nsqrt(144)\n\n[1] 12\n\n\n\n# round() redondea - recibe un número y los decimales deseados\nround(3.14159, digits = 2)\n\n[1] 3.14\n\n\n\n# paste() une texto - recibe los fragmentos y el separador\npaste(\"Hola\", \"mundo\", sep = \", \")\n\n[1] \"Hola, mundo\"\n\n\n\nEscribe el nombre de cualquier función seguido de ? en la consola para ver su documentación: ?round"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#objetos-la-memoria-de-trabajo-de-r",
+    "href": "sesiones/s01/slides.html#objetos-la-memoria-de-trabajo-de-r",
+    "title": "Sesión 1",
+    "section": "Objetos: la memoria de trabajo de R",
+    "text": "Objetos: la memoria de trabajo de R\nCuando usas &lt;- para asignar, guardas el resultado en un objeto.\n\n  \n    🧠 OBJETOS (RAM)\n    Existen mientras R está abierto.Rápidos de usar.Se pierden al cerrar la sesión.\n  \n  \n    💾 ARCHIVOS (disco)\n    Permanentes.Los lees con funciones como read.csv().No cambian solos.\n  \n\n\nresultado &lt;- sqrt(144) # guardamos, no imprimimos\nresultado # ahora sí lo vemos\n\n[1] 12\n\n\nReglas para nombres de objetos: sin espacios, sin acentos, no empezar con número, distingue mayúsculas (datos ≠ Datos). Convención en tidyverse: snake_case."
   },
   {
     "objectID": "sesiones/s01/slides.html#vectores-el-tipo-de-dato-básico",
@@ -137,14 +564,7 @@
     "href": "sesiones/s01/slides.html#data-frames-la-base-de-datos-en-r",
     "title": "Sesión 1",
     "section": "Data frames: la base de datos en R",
-    "text": "Data frames: la base de datos en R\nUn data frame es una tabla: una colección de vectores de igual longitud.\n\npersonas &lt;- data.frame(\n  nombre = nombres,\n  edad   = edades\n)\n\npersonas\n\n  nombre edad\n1    Ana   25\n2   Luis   31\n3   Sara   19\n4  Pedro   42\n\n\nEs la estructura más común para datos: filas son observaciones, columnas son variables."
-  },
-  {
-    "objectID": "sesiones/s01/slides.html#objetos-la-memoria-de-trabajo-de-r",
-    "href": "sesiones/s01/slides.html#objetos-la-memoria-de-trabajo-de-r",
-    "title": "Sesión 1",
-    "section": "Objetos: la memoria de trabajo de R",
-    "text": "Objetos: la memoria de trabajo de R\nCuando usas &lt;- para asignar, guardas el resultado en un objeto.\n\n  \n    🧠 OBJETOS (RAM)\n    Existen mientras R está abierto.Rápidos de usar.Se pierden al cerrar la sesión.\n  \n  \n    💾 ARCHIVOS (disco)\n    Permanentes.Los lees con funciones como read.csv().No cambian solos.\n  \n\n\nresultado &lt;- sqrt(144)   # guardamos, no imprimimos\nresultado                # ahora sí lo vemos\n\n[1] 12\n\n\nReglas para nombres de objetos: sin espacios, sin acentos, no empezar con número, distingue mayúsculas (datos ≠ Datos). Convención en tidyverse: snake_case."
+    "text": "Data frames: la base de datos en R\nUn data frame es una tabla: una colección de vectores de igual longitud.\n\npersonas &lt;- data.frame(\n    nombre = nombres,\n    edad   = edades\n)\n\npersonas\n\n  nombre edad\n1    Ana   25\n2   Luis   31\n3   Sara   19\n4  Pedro   42\n\n\nEs la estructura más común para datos: filas son observaciones, columnas son variables."
   },
   {
     "objectID": "sesiones/s01/slides.html#section-3",
@@ -161,178 +581,66 @@
     "text": "Instalar y cargar tidyverse\ntidyverse es una colección de paquetes diseñados para trabajar juntos. Incluye ggplot2, dplyr, tidyr, readr, y más.\n\n# Solo la primera vez (instala en el disco)\ninstall.packages(\"tidyverse\")\n\n\n# Cada sesión (carga en memoria)\nlibrary(tidyverse)\n\n\ninstall.packages() es como comprar un libro y ponerlo en el estante. library() es como abrirlo y tenerlo en la mesa."
   },
   {
-    "objectID": "sesiones/s01/slides.html#el-dataset-diamonds",
-    "href": "sesiones/s01/slides.html#el-dataset-diamonds",
+    "objectID": "sesiones/s01/slides.html#el-conjunto-de-datos-diamonds",
+    "href": "sesiones/s01/slides.html#el-conjunto-de-datos-diamonds",
     "title": "Sesión 1",
-    "section": "El dataset diamonds",
-    "text": "El dataset diamonds\ndiamonds viene incluido con ggplot2. Contiene información de 53 940 diamantes.\n\nglimpse(diamonds)\n\nRows: 53,940\nColumns: 10\n$ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…\n$ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…\n$ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…\n$ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …\n$ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…\n$ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…\n$ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…\n$ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…\n$ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…\n$ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…"
+    "section": "El conjunto de datos diamonds",
+    "text": "El conjunto de datos diamonds\ndiamonds viene incluido con ggplot2. Contiene información de 53 940 diamantes.\n\nView(diamonds)"
   },
   {
     "objectID": "sesiones/s01/slides.html#ggplot2-el-lienzo",
     "href": "sesiones/s01/slides.html#ggplot2-el-lienzo",
     "title": "Sesión 1",
     "section": "ggplot2: el lienzo",
-    "text": "ggplot2: el lienzo\nggplot() crea un lienzo vacío. Le decimos qué datos usar y qué variables mapear a los ejes con aes().\n\n\n\nggplot(\n  data    = diamonds,\n  mapping = aes(\n    x = carat,\n    y = price\n  )\n)"
+    "text": "ggplot2: el lienzo\nggplot() crea un lienzo vacío. Le decimos qué datos usar y qué variables mapear a los ejes con aes().\n\n\n\nggplot(\n    data = diamonds,\n    mapping = aes(x = carat, y = price)\n)"
   },
   {
     "objectID": "sesiones/s01/slides.html#puntos",
     "href": "sesiones/s01/slides.html#puntos",
     "title": "Sesión 1",
     "section": "+ puntos",
-    "text": "+ puntos\nAñadimos una capa geométrica con geom_point().\n\n\n\nggplot(\n  diamonds,\n  aes(x = carat, y = price)\n) +\n  geom_point()"
+    "text": "+ puntos\nAñadimos una capa geométrica con geom_point().\n\n\n\nggplot(diamonds, aes(x = carat, y = price)) +\n    geom_point()"
   },
   {
     "objectID": "sesiones/s01/slides.html#transparencia-alpha",
     "href": "sesiones/s01/slides.html#transparencia-alpha",
     "title": "Sesión 1",
     "section": "+ transparencia (alpha)",
-    "text": "+ transparencia (alpha)\nCon tantos puntos hay sobreposición. alpha controla la transparencia (0 = invisible, 1 = sólido).\n\n\n\nggplot(\n  diamonds,\n  aes(x = carat, y = price)\n) +\n  geom_point(alpha = 0.1)"
+    "text": "+ transparencia (alpha)\nCon tantos puntos hay sobreposición. alpha controla la transparencia (0 = invisible, 1 = sólido).\n\n\n\nggplot(diamonds, aes(x = carat, y = price)) +\n    geom_point(alpha = 0.05)"
   },
   {
     "objectID": "sesiones/s01/slides.html#color-por-variable",
     "href": "sesiones/s01/slides.html#color-por-variable",
     "title": "Sesión 1",
     "section": "+ color por variable",
-    "text": "+ color por variable\nMapeamos colour a cut dentro de aes() para colorear por grupo.\n\n\n\nggplot(\n  diamonds,\n  aes(x = carat,\n      y = price,\n      colour = cut)\n) +\n  geom_point(alpha = 0.1)"
+    "text": "+ color por variable\nMapeamos colour a cut dentro de aes() para colorear por grupo.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1)"
   },
   {
     "objectID": "sesiones/s01/slides.html#tema",
     "href": "sesiones/s01/slides.html#tema",
     "title": "Sesión 1",
     "section": "+ tema",
-    "text": "+ tema\nLos temas controlan la apariencia general. theme_minimal() es un buen punto de partida.\n\n\n\nggplot(\n  diamonds,\n  aes(x = carat,\n      y = price,\n      colour = cut)\n) +\n  geom_point(alpha = 0.1) +\n  theme_minimal()"
+    "text": "+ tema\nLos temas controlan la apariencia general. theme_minimal() es un buen punto de partida.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_minimal()"
   },
   {
     "objectID": "sesiones/s01/slides.html#paleta-de-colores",
     "href": "sesiones/s01/slides.html#paleta-de-colores",
     "title": "Sesión 1",
     "section": "+ paleta de colores",
-    "text": "+ paleta de colores\nscale_colour_viridis_d() aplica la paleta Viridis: diseñada para ser perceptualmente uniforme y accesible.\n\n\n\nggplot(\n  diamonds,\n  aes(x = carat,\n      y = price,\n      colour = cut)\n) +\n  geom_point(alpha = 0.1) +\n  theme_minimal() +\n  scale_colour_viridis_d()"
+    "text": "+ paleta de colores\nscale_colour_viridis_d() aplica la paleta Viridis: diseñada para ser perceptualmente uniforme y accesible.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_minimal() +\n    scale_colour_viridis_d()"
   },
   {
     "objectID": "sesiones/s01/slides.html#con-qué-datos-seguir-practicando",
     "href": "sesiones/s01/slides.html#con-qué-datos-seguir-practicando",
     "title": "Sesión 1",
     "section": "¿Con qué datos seguir practicando?",
-    "text": "¿Con qué datos seguir practicando?\nggplot2 y tidyverse vienen con varios datasets listos para usar:\n\n# Ver todos los datasets disponibles en los paquetes cargados\ndata()\n\n# Algunos interesantes\nglimpse(mpg)        # autos y consumo de combustible\nglimpse(gapminder::gapminder)  # esperanza de vida por país y año\n\n\nEscribe ?mpg o ?diamonds en la consola para ver la descripción completa de cualquier dataset."
+    "text": "¿Con qué datos seguir practicando?\nggplot2 y tidyverse incluyen varios conjuntos de datos listos para usar:\n\n# Ver todos los conjuntos de datos disponibles en los paquetes cargados\ndata()\n\n# Algunos interesantes\nglimpse(mpg) # autos y consumo de combustible\nglimpse(gapminder::gapminder) # esperanza de vida por país y año\n\n\nEscribe ?mpg o ?diamonds en la consola para ver la descripción completa de cualquier conjunto de datos."
   },
   {
     "objectID": "sesiones/s01/slides.html#a-practicar",
     "href": "sesiones/s01/slides.html#a-practicar",
     "title": "Sesión 1",
     "section": "A practicar",
-    "text": "A practicar\nAntes de la próxima sesión, elige un dataset de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con ggplot2.\nExperimenta cambiando:\n\nEl tipo de geometría (geom_point, geom_jitter, geom_col, geom_histogram…)\nLas variables en x, y, colour, size, shape\nEl tema (theme_minimal, theme_classic, theme_bw…)\nLa paleta de colores\n\nNo importa si la figura no queda perfecta. Lo importante es romper el código y ver qué pasa."
-  },
-  {
-    "objectID": "programa.html",
-    "href": "programa.html",
-    "title": "Programa del curso",
-    "section": "",
-    "text": "Al finalizar el curso, los participantes serán capaces de:\n\nEntender la sintaxis básica de R y la lógica de los paquetes.\nImportar, limpiar y transformar datos con tidyverse.\nCrear visualizaciones publicables con ggplot2.\nGenerar reportes reproducibles con Quarto.\nRealizar análisis exploratorios básicos."
-  },
-  {
-    "objectID": "programa.html#objetivos-generales",
-    "href": "programa.html#objetivos-generales",
-    "title": "Programa del curso",
-    "section": "",
-    "text": "Al finalizar el curso, los participantes serán capaces de:\n\nEntender la sintaxis básica de R y la lógica de los paquetes.\nImportar, limpiar y transformar datos con tidyverse.\nCrear visualizaciones publicables con ggplot2.\nGenerar reportes reproducibles con Quarto.\nRealizar análisis exploratorios básicos."
-  },
-  {
-    "objectID": "programa.html#contenidos-por-semana",
-    "href": "programa.html#contenidos-por-semana",
-    "title": "Programa del curso",
-    "section": "Contenidos por semana",
-    "text": "Contenidos por semana\nPor definir — actualizar cuando se definan los temas de cada sesión."
-  },
-  {
-    "objectID": "programa.html#evaluación",
-    "href": "programa.html#evaluación",
-    "title": "Programa del curso",
-    "section": "Evaluación",
-    "text": "Evaluación\nEl curso no tiene calificación formal. Para obtener el certificado de participación se requiere asistencia al 90 % de las sesiones (mínimo 9 de 9 sesiones — las ausencias justificadas se evalúan caso por caso).\nLas dos tareas son ejercicios de exploración y no tienen una nota asociada, pero se presentan ante el grupo."
-  },
-  {
-    "objectID": "programa.html#recursos",
-    "href": "programa.html#recursos",
-    "title": "Programa del curso",
-    "section": "Recursos",
-    "text": "Recursos\n\nThe tidyverse style guide\nR for Data Science (2e) — Wickham, Çetinkaya-Rundel & Grolemund\nggplot2: Elegant Graphics for Data Analysis — Wickham\nQuarto documentation"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Maneja, explora y visualiza datos con R",
-    "section": "",
-    "text": "¿Tus datos viven en hojas de Excel difíciles de actualizar? ¿Copias resultados a mano entre programas?\n    R es la herramienta que usan investigadores de todo el mundo para organizar datos,\n    crear gráficas listas para publicar y generar reportes reproducibles, y puedes aprenderlo desde cero."
-  },
-  {
-    "objectID": "index.html#información-general",
-    "href": "index.html#información-general",
-    "title": "Maneja, explora y visualiza datos con R",
-    "section": "Información general",
-    "text": "Información general\n\n  Horario10:00 – 12:00 m.\n  Sesiones9 sesiones · 18 h\n  ModalidadPresencial\n  LugarUniversidad El Bosque(sala por confirmar)\n  CostoGratuito\n  RequisitosNinguno\n\n\n🎓 El curso otorga certificado de participación a quienes cumplan el 90 % de asistencia.\n\nEl curso se realizará en una sala de cómputo, así que no necesitas traer tu propio equipo. No se requieren conocimientos previos de programación ni estadística."
-  },
-  {
-    "objectID": "index.html#sesiones",
-    "href": "index.html#sesiones",
-    "title": "Maneja, explora y visualiza datos con R",
-    "section": "Sesiones",
-    "text": "Sesiones\n\n\n\n#\nFecha\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nPor definir\n—\n\n\n2\nJue 4 jun\nPor definir\n—\n\n\n3\nVie 5 jun\nPor definir\n— → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nPor definir Entrega Tarea 1\n—\n\n\n5\nJue 11 jun\nPor definir\n—\n\n\n6\nVie 12 jun\nPor definir\n— → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nPor definir Entrega Tarea 2\n—\n\n\n8\nJue 18 jun\nPor definir\n—\n\n\n9\nVie 19 jun\nPor definir\n—"
-  },
-  {
-    "objectID": "index.html#tareas",
-    "href": "index.html#tareas",
-    "title": "Maneja, explora y visualiza datos con R",
-    "section": "Tareas",
-    "text": "Tareas\n\nTarea 1 · El concurso de la figura más fea\nTarea 2 · Presenta un paquete de R"
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "Maneja, explora y visualiza datos con R",
-    "section": "Instructor",
-    "text": "Instructor\n\n  \n  \n    Juan David Leóngomez\n    \n      Profesor Asociado e investigador de la Universidad El Bosque, investigador de\n      EvoCo\n      y líder del grupo de investigación\n      CODEC.\n      Usuario de R y promotor de la ciencia abierta y la reproducibilidad, temas sobre los que crea\n      tutoriales y recursos,\n      así como videos en su canal de YouTube\n      Investigación Abierta.\n      Más información: jdleongomez.info"
-  },
-  {
-    "objectID": "index.html#preguntas",
-    "href": "index.html#preguntas",
-    "title": "Maneja, explora y visualiza datos con R",
-    "section": "Preguntas",
-    "text": "Preguntas\nPara asuntos de R y contenidos del curso, escribe a jleongomez@unbosque.edu.co\nPara asuntos administrativos, escribe a cinvestigapsico@unbosque.edu.co"
-  },
-  {
-    "objectID": "tareas/tarea2-paquete-raro.html",
-    "href": "tareas/tarea2-paquete-raro.html",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "",
-    "text": "R tiene más de 21 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
-  },
-  {
-    "objectID": "tareas/tarea2-paquete-raro.html#el-reto",
-    "href": "tareas/tarea2-paquete-raro.html#el-reto",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "",
-    "text": "R tiene más de 21 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
-  },
-  {
-    "objectID": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
-    "href": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "Lo que debes presentar",
-    "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
-  },
-  {
-    "objectID": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "href": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "Algunas pistas de por dónde buscar",
-    "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
-  },
-  {
-    "objectID": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "href": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
-    "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores tú mismo y lo puedas explicar con tus propias palabras."
+    "text": "A practicar\nAntes de la próxima sesión, elige un conjunto de datos de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con ggplot2.\nExperimenta cambiando:\n\nEl tipo de geometría (geom_point, geom_jitter, geom_col, geom_histogram…)\nLas variables en x, y, colour, size, shape\nEl tema (theme_minimal, theme_classic, theme_bw…)\nLa paleta de colores\n\nNo importa si la figura no queda perfecta. Lo importante es romper el código y ver qué pasa."
   }
 ]
