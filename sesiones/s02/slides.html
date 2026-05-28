@@ -6,7 +6,10 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Juan David Leongómez">
@@ -99,7 +102,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-720dda840e642c80b4e1cf8f69941eb4.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-533db89b96b2bc2cbc4dbeecc111d68b.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -218,7 +221,7 @@ Juan David Leongómez
 <h2>Agenda</h2>
 <ul>
 <li class="fragment">Gramática de gráficas en capas</li>
-<li class="fragment">Los datos del día: pingüinos de Palmer</li>
+<li class="fragment">Los datos que usaremos hoy: pingüinos de Palmer</li>
 <li class="fragment">Geometrías: distribuciones, comparaciones, conteos, tendencias</li>
 <li class="fragment"><code>aes()</code>: mapear variables vs.&nbsp;fijar valores</li>
 <li class="fragment">Etiquetas con <code>labs()</code></li>
@@ -275,32 +278,26 @@ Juan David Leongómez
 </section>
 <section id="los-datos-del-día-pingüinos-de-palmer" class="slide level2">
 <h2>Los datos del día: pingüinos de Palmer</h2>
-<p><code>palmerpenguins</code> contiene medidas de 344 pingüinos de tres especies en la Antártida.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 344
-Columns: 8
-$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
-$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
-$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
-$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
-$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
-$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
-$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
-$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" class="quarto-figure quarto-figure-center" height="300"></a></p>
+</figure>
 </div>
+<p><code>palmerpenguins</code> contiene medidas de 344 pingüinos de tres especies en la Antártida.</p>
+<p>Instala el paquete:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>) <span class="co"># solo la primera vez</span></span></code></pre></div>
 </div>
 </section>
 <section id="preparar-los-datos" class="slide level2">
 <h2>Preparar los datos</h2>
 <p><code>penguins</code> tiene algunos valores faltantes (<code>NA</code>). Los eliminamos antes de graficar.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># vamos a sobreescribir el objeto original para trabajar solo con los datos limpios</span></span>
-<span id="cb3-2"><a></a>pinguinos <span class="ot">&lt;-</span> penguins</span>
-<span id="cb3-3"><a></a>pinguinos <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(penguins)</span>
-<span id="cb3-4"><a></a><span class="fu">glimpse</span>(pinguinos)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-2"><a></a><span class="co"># vamos a sobreescribir el objeto original para trabajar solo con los datos limpios</span></span>
+<span id="cb2-3"><a></a>pinguinos <span class="ot">&lt;-</span> penguins</span>
+<span id="cb2-4"><a></a>pinguinos <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(penguins)</span>
+<span id="cb2-5"><a></a><span class="fu">glimpse</span>(pinguinos)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 333
 Columns: 8
@@ -324,171 +321,398 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>Geometrías</p>
 </div>
 </section>
-<section id="distribuciones-geom_histogram" class="slide level2">
-<h2>Distribuciones: <code>geom_histogram()</code></h2>
-<p>Muestra cómo se distribuyen los valores de una variable continua.</p>
+<section id="dos-familias-de-geometrías" class="slide level2">
+<h2>Dos familias de geometrías</h2>
+<p>Cada <code>geom_*()</code> pertenece a una de dos familias según cuántas variables necesita.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Una variable</strong>: ggplot2 calcula el resto</p>
+<p>Solo defines <code>x</code>. La geometría resume los datos por ti.</p>
+<p><code>x</code> <strong>numérica</strong>: - <code>geom_histogram()</code>: distribución continua - <code>geom_density()</code>: curva de densidad suavizada</p>
+<p><code>x</code> <strong>categórica</strong>: - <code>geom_bar()</code>: contar por categoría</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Dos variables</strong>: defines tanto <code>x</code> como <code>y</code></p>
+<p><code>y</code> es <strong>siempre numérica</strong>. Lo que cambia es <code>x</code>:</p>
+<ul>
+<li class="fragment"><p><code>x</code> <strong>categórica</strong> → comparar grupos <code>geom_boxplot()</code>, <code>geom_violin()</code>, <code>geom_jitter()</code></p></li>
+<li class="fragment"><p><code>x</code> <strong>numérica</strong> → ver relaciones <code>geom_point()</code>, <code>geom_smooth()</code>, <code>geom_line()</code></p></li>
+</ul>
+</div></div>
+</section>
+<section id="section-2" class="slide level2" data-background-color="#225faa">
+<h2></h2>
+<div class="parte-num">
+<p>Una variable · <code>x</code> numérica o categórica</p>
+</div>
+<div class="section-title-text">
+<p>Distribuciones y conteos</p>
+</div>
+</section>
+<section id="geom_histogram-distribución-continua" class="slide level2">
+<h2><code>geom_histogram()</code>: distribución continua</h2>
+<p><code>x</code> <strong>numérica</strong>. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb5-2"><a></a>    pinguinos,</span>
-<span id="cb5-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)</span>
-<span id="cb5-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb5-5"><a></a>    <span class="fu">geom_histogram</span>(</span>
-<span id="cb5-6"><a></a>        <span class="at">bins   =</span> <span class="dv">25</span>,</span>
-<span id="cb5-7"><a></a>        <span class="at">fill   =</span> <span class="st">"darkblue"</span>,</span>
-<span id="cb5-8"><a></a>        <span class="at">colour =</span> <span class="st">"white"</span></span>
-<span id="cb5-9"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb5-10"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb4-2"><a></a>    pinguinos,</span>
+<span id="cb4-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)</span>
+<span id="cb4-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb4-6"><a></a>        <span class="at">bins   =</span> <span class="dv">25</span>,</span>
+<span id="cb4-7"><a></a>        <span class="at">fill   =</span> <span class="st">"#225faa"</span>,</span>
+<span id="cb4-8"><a></a>        <span class="at">colour =</span> <span class="st">"white"</span></span>
+<span id="cb4-9"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb4-10"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 <div class="tip-box">
-<p><code>bins</code> controla el número de barras. <code>binwidth</code> fija el ancho de cada barra. No uses ambos a la vez.</p>
+<p><code>bins</code> fija el número de barras; <code>binwidth</code> fija el ancho de cada una. No uses ambos a la vez.</p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<p>También existe <code>geom_density()</code> para una curva de densidad suavizada.</p>
 </section>
-<section id="comparaciones-geom_boxplot" class="slide level2">
-<h2>Comparaciones: <code>geom_boxplot()</code></h2>
-<p>Compara distribuciones entre grupos. Muestra mediana, cuartiles y valores extremos.</p>
+<section id="geom_density-curva-de-densidad" class="slide level2">
+<h2><code>geom_density()</code>: curva de densidad</h2>
+<p><code>x</code> <strong>numérica</strong>. Versión suavizada del histograma. Útil para comparar distribuciones entre grupos.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb5-2"><a></a>    pinguinos,</span>
+<span id="cb5-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb5-4"><a></a>        <span class="at">x    =</span> body_mass_g,</span>
+<span id="cb5-5"><a></a>        <span class="at">fill =</span> species</span>
+<span id="cb5-6"><a></a>    )</span>
+<span id="cb5-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb5-8"><a></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb5-10"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_bar-conteos-por-categoría" class="slide level2">
+<h2><code>geom_bar()</code>: conteos por categoría</h2>
+<p><code>x</code> <strong>categórica</strong>. Cuenta cuántas observaciones hay en cada grupo. Solo necesita <code>x</code>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb6-2"><a></a>    pinguinos,</span>
 <span id="cb6-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb6-4"><a></a>        <span class="at">x =</span> species,</span>
-<span id="cb6-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb6-6"><a></a>        <span class="at">fill =</span> species</span>
-<span id="cb6-7"><a></a>    )</span>
-<span id="cb6-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb6-9"><a></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb6-10"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb6-11"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb6-4"><a></a>        <span class="at">x    =</span> species,</span>
+<span id="cb6-5"><a></a>        <span class="at">fill =</span> island</span>
+<span id="cb6-6"><a></a>    )</span>
+<span id="cb6-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb6-8"><a></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb6-10"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+</div>
+<div class="tip-box">
+<p><code>position = "dodge"</code> coloca las barras lado a lado. <code>"stack"</code> las apila. <code>"fill"</code> las normaliza al 100%.</p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<p><code>geom_violin()</code> muestra la distribución completa en lugar de solo los cuartiles.</p>
 </section>
-<section id="conteos-geom_bar" class="slide level2">
-<h2>Conteos: <code>geom_bar()</code></h2>
-<p>Cuenta observaciones por categoría. Solo necesita <code>x</code>.</p>
+<section id="section-3" class="slide level2" data-background-color="#225faa">
+<h2></h2>
+<div class="parte-num">
+<p>Dos variables · <code>x</code> + <code>y</code></p>
+</div>
+<div class="section-title-text">
+<p>Relaciones y comparaciones</p>
+</div>
+</section>
+<section id="x-categórica-comparar-grupos" class="slide level2">
+<h2><code>x</code> categórica: comparar grupos</h2>
+<p>Cuando <code>x</code> es una variable categórica (especie, tratamiento, grupo…), las geometrías comparan la distribución de <code>y</code> entre esos grupos.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>geom_boxplot()</code></strong>: Mediana, cuartiles y valores extremos de <code>y</code> por cada nivel de <code>x</code>.</p>
+<p><strong><code>geom_violin()</code></strong>: Como boxplot, pero muestra la forma completa de la distribución.</p>
+<p><strong><code>geom_jitter()</code></strong>: Puntos individuales con pequeño desplazamiento aleatorio para evitar que los puntos se superpongan.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_violin-geom_jitter" class="slide level2">
+<h2><code>geom_violin()</code> + <code>geom_jitter()</code></h2>
+<p>Combinar capas muestra la distribución completa y los datos individuales a la vez.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb7-2"><a></a>    pinguinos,</span>
 <span id="cb7-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb7-4"><a></a>        <span class="at">x =</span> species,</span>
-<span id="cb7-5"><a></a>        <span class="at">fill =</span> island</span>
-<span id="cb7-6"><a></a>    )</span>
-<span id="cb7-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb7-8"><a></a>    <span class="fu">geom_bar</span>(</span>
-<span id="cb7-9"><a></a>        <span class="at">position =</span> <span class="st">"dodge"</span></span>
-<span id="cb7-10"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb7-11"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb7-12"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb7-4"><a></a>        <span class="at">x      =</span> species,</span>
+<span id="cb7-5"><a></a>        <span class="at">y      =</span> body_mass_g,</span>
+<span id="cb7-6"><a></a>        <span class="at">colour =</span> species</span>
+<span id="cb7-7"><a></a>    )</span>
+<span id="cb7-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb7-9"><a></a>    <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a></a>    <span class="fu">geom_jitter</span>(</span>
+<span id="cb7-11"><a></a>        <span class="at">width =</span> <span class="fl">0.2</span>,</span>
+<span id="cb7-12"><a></a>        <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
+<span id="cb7-13"><a></a>        <span class="at">size  =</span> <span class="fl">1.5</span></span>
+<span id="cb7-14"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb7-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<p><code>position = "dodge"</code> coloca las barras una al lado de la otra. <code>"stack"</code> las apila.</p>
+<div class="tip-box">
+<p>Las capas se dibujan en orden: el violín primero, los puntos encima. Cambia el orden y verás la diferencia.</p>
+</div>
 </section>
-<section id="tendencias-geom_line" class="slide level2">
-<h2>Tendencias: <code>geom_line()</code></h2>
-<p>Conecta observaciones en orden de <code>x</code>. Útil para series de tiempo.</p>
+<section id="x-numérica-ver-relaciones" class="slide level2">
+<h2><code>x</code> numérica: ver relaciones</h2>
+<p>Cuando <code>x</code> también es numérica, el objetivo es ver cómo varía <code>y</code> a medida que cambia <code>x</code>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>geom_point()</code></strong>: El diagrama de dispersión clásico. Cada fila del dataframe es un punto. Lo exploraremos en profundidad en la siguiente sección.</p>
+<p><strong><code>geom_smooth()</code></strong>: Añade una línea de tendencia sobre los puntos.</p>
+<p><strong><code>geom_line()</code></strong>: Conecta los puntos en orden de <code>x</code>. Ideal para series de tiempo.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_smooth-línea-de-tendencia" class="slide level2">
+<h2><code>geom_smooth()</code>: línea de tendencia</h2>
+<p>Se superpone sobre <code>geom_point()</code>. El argumento <code>method</code> define el tipo de ajuste.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb8-2"><a></a>    economics,</span>
+<span id="cb8-2"><a></a>    pinguinos,</span>
 <span id="cb8-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb8-4"><a></a>        <span class="at">x =</span> date,</span>
-<span id="cb8-5"><a></a>        <span class="at">y =</span> unemploy</span>
-<span id="cb8-6"><a></a>    )</span>
-<span id="cb8-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb8-8"><a></a>    <span class="fu">geom_line</span>(</span>
-<span id="cb8-9"><a></a>        <span class="at">colour    =</span> <span class="st">"#225faa"</span>,</span>
-<span id="cb8-10"><a></a>        <span class="at">linewidth =</span> <span class="fl">0.8</span></span>
-<span id="cb8-11"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb8-12"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb8-4"><a></a>        <span class="at">x      =</span> bill_length_mm,</span>
+<span id="cb8-5"><a></a>        <span class="at">y      =</span> body_mass_g,</span>
+<span id="cb8-6"><a></a>        <span class="at">colour =</span> species</span>
+<span id="cb8-7"><a></a>    )</span>
+<span id="cb8-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb8-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a></a>    <span class="fu">geom_smooth</span>(</span>
+<span id="cb8-11"><a></a>        <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb8-12"><a></a>        <span class="at">se     =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-13"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb8-14"><a></a>    <span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">"inferno"</span>) <span class="sc">+</span></span>
+<span id="cb8-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<p><code>economics</code> es un conjunto de datos incluido en ggplot2 con indicadores económicos de EE.UU.</p>
+<div class="tip-box">
+<p><code>method = "lm"</code> ajusta una recta. <code>method = "loess"</code> ajusta una curva suave que sigue la tendencia en zonas de x. <code>se = FALSE</code> oculta el intervalo de confianza. Cámbialo por <code>se = TRUE</code> (o borra ese argumento) para mostrarlo.</p>
+</div>
 </section>
-<section id="combinar-capas-geométricas" class="slide level2">
-<h2>Combinar capas geométricas</h2>
-<p>Se pueden sumar varios <code>geom_*()</code> en la misma figura.</p>
+<section id="geom_line-series-de-tiempo" class="slide level2">
+<h2><code>geom_line()</code>: series de tiempo</h2>
+<p>Conecta observaciones en orden de <code>x</code>. Apropiado cuando el orden importa.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb9-2"><a></a>    pinguinos,</span>
+<span id="cb9-2"><a></a>    economics,</span>
 <span id="cb9-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb9-4"><a></a>        <span class="at">x =</span> species,</span>
-<span id="cb9-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb9-6"><a></a>        <span class="at">colour =</span> species</span>
-<span id="cb9-7"><a></a>    )</span>
-<span id="cb9-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb9-9"><a></a>    <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb9-10"><a></a>    <span class="fu">geom_jitter</span>(</span>
-<span id="cb9-11"><a></a>        <span class="at">width =</span> <span class="fl">0.2</span>,</span>
-<span id="cb9-12"><a></a>        <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
-<span id="cb9-13"><a></a>        <span class="at">size  =</span> <span class="fl">1.5</span></span>
-<span id="cb9-14"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb9-15"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb9-16"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb9-4"><a></a>        <span class="at">x =</span> date,</span>
+<span id="cb9-5"><a></a>        <span class="at">y =</span> unemploy</span>
+<span id="cb9-6"><a></a>    )</span>
+<span id="cb9-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb9-8"><a></a>    <span class="fu">geom_line</span>(</span>
+<span id="cb9-9"><a></a>        <span class="at">colour    =</span> <span class="st">"#225faa"</span>,</span>
+<span id="cb9-10"><a></a>        <span class="at">linewidth =</span> <span class="fl">0.8</span></span>
+<span id="cb9-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb9-12"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<p>Las capas se dibujan en el orden en que se declaran. El violín va primero, los puntos encima.</p>
+<div class="tip-box">
+<p><code>economics</code> es un conjunto de datos de <code>ggplot2</code> con indicadores económicos de EE.UU.</p>
+</div>
 </section>
-<section id="section-2" class="slide level2" data-background-color="#121834">
+<section id="qué-geometría-usar" class="slide level2 smaller">
+<h2>¿Qué geometría usar?</h2>
+<p>Algunas sugerencias, pero ¡siempre puedes experimentar!</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Función</th>
+<th>x</th>
+<th>y</th>
+<th>Cuándo usarla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>geom_histogram()</code></td>
+<td>📏 numérica</td>
+<td>—</td>
+<td>Distribución de una variable continua</td>
+</tr>
+<tr class="even">
+<td><code>geom_density()</code></td>
+<td>📏 numérica</td>
+<td>—</td>
+<td>Como histogram, suavizado; útil para comparar grupos</td>
+</tr>
+<tr class="odd">
+<td><code>geom_bar()</code></td>
+<td>📶 categórica</td>
+<td>—</td>
+<td>Contar observaciones por categoría</td>
+</tr>
+<tr class="even">
+<td><code>geom_boxplot()</code></td>
+<td>📶 categórica</td>
+<td>📏 numérica</td>
+<td>Comparar distribuciones entre grupos (mediana y rango)</td>
+</tr>
+<tr class="odd">
+<td><code>geom_violin()</code></td>
+<td>📶 categórica</td>
+<td>📏 numérica</td>
+<td>Como boxplot, muestra la forma completa de la distribución</td>
+</tr>
+<tr class="even">
+<td><code>geom_jitter()</code></td>
+<td>📶 categórica</td>
+<td>📏 numérica</td>
+<td>Puntos individuales, evita solapamiento</td>
+</tr>
+<tr class="odd">
+<td><code>geom_point()</code></td>
+<td>📏 numérica</td>
+<td>📏 numérica</td>
+<td>Relación entre dos variables numéricas (dispersión)</td>
+</tr>
+<tr class="even">
+<td><code>geom_smooth()</code></td>
+<td>📏 numérica</td>
+<td>📏 numérica</td>
+<td>Línea de tendencia sobre un diagrama de puntos</td>
+</tr>
+<tr class="odd">
+<td><code>geom_line()</code></td>
+<td>📆 tiempo / orden</td>
+<td>📏 numérica</td>
+<td>Series de tiempo o datos ordenados</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qué-geometría-usar-1" class="slide level2 smaller">
+<h2>¿Qué geometría usar?</h2>
+<div class="tip-box">
+<p><code>ggplot2</code> tiene muchísimas geometrías más para distintos propósitos: mapas, gráficos de red, etc. Consulta la <a href="https://ggplot2.tidyverse.org/reference/index.html">documentación oficial</a> para verlas.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="section-4" class="slide level2 actividad" data-background-color="#6b1220">
+<h2></h2>
+<div class="actividad-num">
+<p>Actividad · 10 min</p>
+</div>
+<div class="actividad-title">
+<p>Tres figuras, tres geometrías</p>
+</div>
+<div class="actividad-desc">
+<p>Con el dataset <code>pinguinos</code>, crea una figura de cada tipo:</p>
+<ol type="1">
+<li><strong>Distribución</strong> de una variable numérica (solo <code>x</code>)</li>
+<li><strong>Comparación</strong> de una numérica entre grupos (<code>x</code> categórica + <code>y</code> numérica)</li>
+<li><strong>Relación</strong> entre dos variables numéricas (<code>x</code> y <code>y</code> numéricas)</li>
+</ol>
+<p>Añade <code>theme_minimal()</code> y un título con <code>labs()</code>.</p>
+</div>
+</section>
+<section id="section-5" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 3</p>
@@ -520,7 +744,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -553,7 +777,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-21-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -567,10 +791,22 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># ❌ Esto NO pinta los puntos de azul</span></span>
 <span id="cb12-2"><a></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span></code></pre></div>
 </div>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><div class="tip-box">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-23-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="tip-box">
 <p><code>aes(colour = "blue")</code> crea una categoría llamada <code>"blue"</code> y le asigna el primer color de la paleta por defecto. Para fijar un color, escríbelo fuera de <code>aes()</code>: <code>geom_point(colour = "blue")</code>.</p>
 </div>
+</div></div>
 </section>
 <section id="múltiples-mappings-en-aes" class="slide level2">
 <h2>Múltiples mappings en <code>aes()</code></h2>
@@ -591,15 +827,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb13-11"><a></a>        <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
 <span id="cb13-12"><a></a>        <span class="at">size  =</span> <span class="fl">2.5</span></span>
 <span id="cb13-13"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb13-14"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb13-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb13-14"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -607,7 +842,22 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div></div>
 <p>Mapear <code>colour</code> y <code>shape</code> a la misma variable mejora la accesibilidad: la figura es legible incluso en escala de grises.</p>
 </section>
-<section id="section-3" class="slide level2" data-background-color="#121834">
+<section id="section-6" class="slide level2 actividad" data-background-color="#6b1220">
+<h2></h2>
+<div class="actividad-num">
+<p>Actividad · 3 min</p>
+</div>
+<div class="actividad-title">
+<p>El reto del color rojo</p>
+</div>
+<div class="actividad-desc">
+<p>Crea un scatterplot de <code>bill_length_mm</code> vs <code>body_mass_g</code> en <code>pinguinos</code> donde <strong>todos</strong> los puntos sean rojos.</p>
+<ul>
+<li>¿Cómo lo harías?</li>
+</ul>
+</div>
+</section>
+<section id="section-7" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 4</p>
@@ -647,14 +897,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-27-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="section-4" class="slide level2" data-background-color="#121834">
+<section id="section-8" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 5</p>
@@ -693,7 +943,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-30-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -718,23 +968,18 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb17-10"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
 <span id="cb17-11"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb17-12"><a></a>    <span class="fu">theme</span>(</span>
-<span id="cb17-13"><a></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb17-13"><a></a>        <span class="at">legend.position  =</span> <span class="st">"none"</span>,</span>
 <span id="cb17-14"><a></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb17-15"><a></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb17-16"><a></a>            <span class="at">size =</span> <span class="dv">12</span>,</span>
-<span id="cb17-17"><a></a>            <span class="at">face =</span> <span class="st">"bold"</span></span>
-<span id="cb17-18"><a></a>        ),</span>
-<span id="cb17-19"><a></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb17-20"><a></a>            <span class="at">hjust =</span> <span class="fl">0.5</span></span>
-<span id="cb17-21"><a></a>        )</span>
-<span id="cb17-22"><a></a>    )</span></code></pre></div>
+<span id="cb17-15"><a></a>        <span class="at">axis.title       =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb17-16"><a></a>        <span class="at">plot.title       =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb17-17"><a></a>    )</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-32-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -744,7 +989,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><code>element_blank()</code> elimina un elemento. <code>element_text()</code> controla fuente, tamaño y color. <code>element_line()</code> y <code>element_rect()</code> hacen lo propio con líneas y rectángulos.</p>
 </div>
 </section>
-<section id="section-5" class="slide level2" data-background-color="#121834">
+<section id="section-9" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 6</p>
@@ -767,14 +1012,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb18-8"><a></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>) <span class="co"># continua</span></span>
 <span id="cb18-9"><a></a></span>
 <span id="cb18-10"><a></a><span class="co"># Manual: colores definidos a mano</span></span>
-<span id="cb18-11"><a></a><span class="fu">scale_colour_manual</span>(</span>
-<span id="cb18-12"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#121834"</span>, <span class="st">"#225faa"</span>, <span class="st">"#ddeaf8"</span>)</span>
-<span id="cb18-13"><a></a>)</span></code></pre></div>
+<span id="cb18-11"><a></a><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#121834"</span>, <span class="st">"#225faa"</span>, <span class="st">"#ddeaf8"</span>))</span></code></pre></div>
 </div>
 <div class="tip-box">
-<p>Usa <code>scale_colour_*()</code> cuando el mapping es <code>colour =</code> y <code>scale_fill_*()</code> cuando es <code>fill =</code>. Son funciones distintas.</p>
+<p>Usa <code>scale_colour_*()</code> para estéticas <code>colour=</code> y <code>scale_fill_*()</code> para <code>fill=</code>. Algunas geoms tienen borde (<code>colour</code>) y relleno (<code>fill</code>); otras solo usan <code>colour</code>.</p>
 </div>
-<p>HEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos. Por ejemplo, <code>#225faa</code> es un azul específico. En Google busca “selector de color” para obtener el código HEX de cualquier color.</p>
+<div class="fragment smaller">
+<p>HEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos (precedido por <code>#</code>). Por ejemplo, <code>#225faa</code> es un azul específico. En Google busca “selector de color” para obtener el código HEX de cualquier color.</p>
+</div>
 </section>
 <section id="comparación-de-paletas" class="slide level2">
 <h2>Comparación de paletas</h2>
@@ -785,7 +1030,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-34-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -796,14 +1041,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-35-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="section-6" class="slide level2" data-background-color="#121834">
+<section id="section-10" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 7</p>
@@ -830,16 +1075,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb19-10"><a></a>        <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
 <span id="cb19-11"><a></a>        <span class="at">size  =</span> <span class="dv">2</span></span>
 <span id="cb19-12"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb19-13"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>species) <span class="sc">+</span></span>
-<span id="cb19-14"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb19-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb19-13"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-37-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -865,14 +1108,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb20-11"><a></a>        <span class="at">size   =</span> <span class="fl">1.5</span></span>
 <span id="cb20-12"><a></a>    ) <span class="sc">+</span></span>
 <span id="cb20-13"><a></a>    <span class="fu">facet_grid</span>(sex <span class="sc">~</span> species) <span class="sc">+</span></span>
-<span id="cb20-14"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb20-14"><a></a>    <span class="fu">theme_linedraw</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-39-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -880,7 +1123,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div></div>
 <p>La sintaxis <code>filas ~ columnas</code> define qué variable va en cada dimensión.</p>
 </section>
-<section id="section-7" class="slide level2" data-background-color="#121834">
+<section id="section-11" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 8</p>
@@ -892,6 +1135,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <section id="ggsave" class="slide level2">
 <h2><code>ggsave()</code></h2>
 <p>Guarda la última figura generada (o la que especifiques) en el formato que elijas.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a>mi_figura <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb21-2"><a></a>    pinguinos,</span>
@@ -918,15 +1163,17 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb21-23"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span></span>
 <span id="cb21-24"><a></a>)</span></code></pre></div>
 </div>
+</div><div class="column" style="width:40%;">
 <div class="tip-box">
 <p><code>dpi = 300</code> es el estándar para publicación impresa. Para pantalla, <code>dpi = 150</code> es suficiente. <code>units = "cm"</code> permite especificar el tamaño exacto que pedirá la revista.</p>
 </div>
+</div></div>
 </section>
 <section id="la-figura-completa" class="slide level2">
 <h2>La figura completa</h2>
 <p>Todo lo visto en una sola figura.</p>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:43%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb22-2"><a></a>    pinguinos,</span>
@@ -939,37 +1186,192 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb22-9"><a></a>) <span class="sc">+</span></span>
 <span id="cb22-10"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb22-11"><a></a>    <span class="fu">geom_smooth</span>(</span>
-<span id="cb22-12"><a></a>        <span class="at">method    =</span> <span class="st">"lm"</span>,</span>
-<span id="cb22-13"><a></a>        <span class="at">se        =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-12"><a></a>        <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb22-13"><a></a>        <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb22-14"><a></a>        <span class="at">linewidth =</span> <span class="fl">0.8</span></span>
 <span id="cb22-15"><a></a>    ) <span class="sc">+</span></span>
 <span id="cb22-16"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span></span>
-<span id="cb22-17"><a></a>    <span class="fu">scale_colour_viridis_d</span>(</span>
-<span id="cb22-18"><a></a>        <span class="at">name =</span> <span class="st">"Especie"</span></span>
-<span id="cb22-19"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb22-20"><a></a>    <span class="fu">scale_shape_discrete</span>(</span>
-<span id="cb22-21"><a></a>        <span class="at">name =</span> <span class="st">"Especie"</span></span>
-<span id="cb22-22"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb22-23"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb22-24"><a></a>        <span class="at">title   =</span> <span class="st">"Masa y pico por isla"</span>,</span>
-<span id="cb22-25"><a></a>        <span class="at">x       =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
-<span id="cb22-26"><a></a>        <span class="at">y       =</span> <span class="st">"Masa corporal (g)"</span>,</span>
-<span id="cb22-27"><a></a>        <span class="at">caption =</span> <span class="st">"Datos: Horst et al. (2020)"</span></span>
-<span id="cb22-28"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb22-29"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb22-30"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
+<span id="cb22-17"><a></a>    <span class="fu">scale_colour_brewer</span>(</span>
+<span id="cb22-18"><a></a>        <span class="at">name =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb22-19"><a></a>        <span class="at">palette =</span> <span class="st">"Dark2"</span></span>
+<span id="cb22-20"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb22-21"><a></a>    <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Especie"</span>) <span class="sc">+</span></span>
+<span id="cb22-22"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb22-23"><a></a>        <span class="at">title =</span> <span class="st">"Masa y pico por isla"</span>,</span>
+<span id="cb22-24"><a></a>        <span class="at">x =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
+<span id="cb22-25"><a></a>        <span class="at">y =</span> <span class="st">"Masa corporal (g)"</span>,</span>
+<span id="cb22-26"><a></a>        <span class="at">caption =</span> <span class="st">"Datos: Horst et al. (2020)"</span></span>
+<span id="cb22-27"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb22-28"><a></a>    <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb22-29"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:57%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-42-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="slides_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+</section>
+<section id="section-12" class="slide level2" data-background-color="#121834">
+<h2></h2>
+<div class="parte-num">
+<p>Antes de terminar…</p>
+</div>
+<div class="section-title-text">
+<p>Quiz rápido</p>
+</div>
+</section>
+<section id="quiz-1-de-5" class="slide level2">
+<h2>Quiz · 1 de 5</h2>
+<p><strong>¿De qué color quedan los puntos con este código?</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(pinguinos, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb23-2"><a></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span></code></pre></div>
+<ul>
+<li><ol type="a">
+<li>Azul: le pasamos el texto <code>"blue"</code> como color</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>El primer color de la paleta por defecto de ggplot2</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Transparente: dentro de <code>aes()</code> no se puede fijar un color</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Rojo: siempre usa el primer color de la paleta activa</li>
+</ol></li>
+</ul>
+<div class="fragment">
+<div class="respuesta">
+<p>✓ <strong>b)</strong> <code>aes(colour = "blue")</code> crea una categoría llamada <code>"blue"</code> y le asigna el primer color de la paleta por defecto. Para fijar azul de verdad: <code>geom_point(colour = "blue")</code>, fuera de <code>aes()</code>.</p>
+</div>
+</div>
+</section>
+<section id="quiz-2-de-5" class="slide level2">
+<h2>Quiz · 2 de 5</h2>
+<p><strong>¿Qué función de escala Viridis completaría correctamente esta figura?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(pinguinos, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">colour =</span> island)) <span class="sc">+</span></span>
+<span id="cb24-2"><a></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb24-3"><a></a>    ???</span></code></pre></div>
+</div>
+<ul>
+<li><ol type="a">
+<li><code>scale_colour_viridis_d()</code>: <code>island</code> es categórica, pero el mapping es <code>colour</code></li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>scale_fill_viridis_c()</code>: el mapping es <code>colour</code>, pero <code>island</code> no es continua</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li><code>scale_fill_viridis_d()</code>: el mapping es <code>colour</code> e <code>island</code> es categórica</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li><code>scale_fill_viridis_b()</code>: <code>_b</code> es para variables continuas en intervalos</li>
+</ol></li>
+</ul>
+<div class="fragment">
+<div class="respuesta">
+<p>✓ <strong>c)</strong> Dos reglas: la función debe coincidir con la estética (<code>colour</code> → <code>scale_colour_*</code>), y el sufijo con el tipo de variable (<code>island</code> es categórica → <code>_d</code>).</p>
+</div>
+</div>
+</section>
+<section id="quiz-3-de-5" class="slide level2">
+<h2>Quiz · 3 de 5</h2>
+<p><strong>¿Cuál es la diferencia principal entre <code>geom_boxplot()</code> y <code>geom_violin()</code>?</strong></p>
+<ul>
+<li><ol type="a">
+<li>Son idénticos: solo cambia la forma visual</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>geom_boxplot()</code> muestra mediana y cuartiles; <code>geom_violin()</code> muestra la forma completa de la distribución</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li><code>geom_violin()</code> es para variables continuas; <code>geom_boxplot()</code> para categóricas</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li><code>geom_boxplot()</code> necesita <code>x</code> e <code>y</code>; <code>geom_violin()</code> solo necesita <code>x</code></li>
+</ol></li>
+</ul>
+<div class="fragment">
+<div class="respuesta">
+<p>✓ <strong>b)</strong> El boxplot resume la distribución en cinco números. El violín muestra toda la forma (incluyendo si hay uno o dos picos, colas, etc. Por eso se combinan bien).</p>
+</div>
+</div>
+</section>
+<section id="quiz-4-de-5" class="slide level2">
+<h2>Quiz · 4 de 5</h2>
+<p><strong>¿Qué produce <code>facet_wrap(~species)</code> en una figura de <code>pinguinos</code>?</strong></p>
+<ul>
+<li><ol type="a">
+<li>Colorea cada especie con un color distinto</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Filtra las observaciones sin especie identificada</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Tres paneles separados, uno por cada especie</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Una tabla con el conteo de observaciones por especie</li>
+</ol></li>
+</ul>
+<div class="fragment">
+<div class="respuesta">
+<p>✓ <strong>c)</strong> <code>facet_wrap()</code> divide la figura en paneles, uno por cada valor único de la variable indicada. Con <code>~species</code> y tres especies, obtienes tres paneles con la misma escala.</p>
+</div>
+</div>
+</section>
+<section id="quiz-5-de-5" class="slide level2">
+<h2>Quiz · 5 de 5</h2>
+<p><strong>¿Para qué sirve <code>labs()</code> en una figura de ggplot2?</strong></p>
+<ul>
+<li><ol type="a">
+<li>Carga las librerías necesarias para graficar</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Controla la escala de los ejes (logarítmica, invertida, etc.)</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Define el tipo de geometría que se va a dibujar</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Controla todos los textos: título, subtítulo, ejes, leyenda y nota al pie</li>
+</ol></li>
+</ul>
+<div class="fragment">
+<div class="respuesta">
+<p>✓ <strong>d)</strong> <code>labs()</code> gestiona todos los textos de la figura. Sin <code>labs()</code>, los ejes muestran el nombre de la variable tal como está en la base de datos y no hay título.</p>
+</div>
+</div>
+</section>
+<section id="a-practicar" class="slide level2">
+<h2>A practicar</h2>
+<p>Antes de la próxima sesión, usa el dataset <code>gapminder</code> para crear una figura que explore la relación entre esperanza de vida y PIB per cápita.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb25-2"><a></a><span class="fu">glimpse</span>(gapminder)</span></code></pre></div>
+</div>
+<p>Experimenta con:</p>
+<ul>
+<li class="fragment">Color por continente (<code>colour = continent</code>)</li>
+<li class="fragment">Facetas por año (<code>facet_wrap(~year)</code>) o filtra un año concreto</li>
+<li class="fragment">Escala logarítmica en x: <code>scale_x_log10()</code></li>
+<li class="fragment"><code>labs()</code> con título, ejes y fuente</li>
+<li class="fragment"><code>ggsave()</code> para guardar el resultado</li>
+</ul>
+</section>
+<section id="section-13" class="slide level2" data-background-color="#121834">
+<h2></h2>
+<div class="parte-num">
+<p>Hasta la próxima sesión</p>
+</div>
+<div class="section-title-text">
+<p>¡Gracias!</p>
+</div>
 
 
 </section>
@@ -1342,6 +1744,38 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
       });
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

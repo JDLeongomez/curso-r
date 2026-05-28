@@ -4,7 +4,7 @@
     "href": "sesiones/s02/slides.html#agenda",
     "title": "Sesión 2",
     "section": "Agenda",
-    "text": "Agenda\n\nGramática de gráficas en capas\nLos datos del día: pingüinos de Palmer\nGeometrías: distribuciones, comparaciones, conteos, tendencias\naes(): mapear variables vs. fijar valores\nEtiquetas con labs()\nTemas y personalización con theme()\nPaletas de colores\nFacetas: facet_wrap() y facet_grid()\nGuardar figuras con ggsave()"
+    "text": "Agenda\n\nGramática de gráficas en capas\nLos datos que usaremos hoy: pingüinos de Palmer\nGeometrías: distribuciones, comparaciones, conteos, tendencias\naes(): mapear variables vs. fijar valores\nEtiquetas con labs()\nTemas y personalización con theme()\nPaletas de colores\nFacetas: facet_wrap() y facet_grid()\nGuardar figuras con ggsave()"
   },
   {
     "objectID": "sesiones/s02/slides.html#section",
@@ -25,14 +25,14 @@
     "href": "sesiones/s02/slides.html#los-datos-del-día-pingüinos-de-palmer",
     "title": "Sesión 2",
     "section": "Los datos del día: pingüinos de Palmer",
-    "text": "Los datos del día: pingüinos de Palmer\npalmerpenguins contiene medidas de 344 pingüinos de tres especies en la Antártida.\n\nlibrary(palmerpenguins)\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+    "text": "Los datos del día: pingüinos de Palmer\n\n\n\n\n\npalmerpenguins contiene medidas de 344 pingüinos de tres especies en la Antártida.\nInstala el paquete:\n\ninstall.packages(\"palmerpenguins\") # solo la primera vez"
   },
   {
     "objectID": "sesiones/s02/slides.html#preparar-los-datos",
     "href": "sesiones/s02/slides.html#preparar-los-datos",
     "title": "Sesión 2",
     "section": "Preparar los datos",
-    "text": "Preparar los datos\npenguins tiene algunos valores faltantes (NA). Los eliminamos antes de graficar.\n\n# vamos a sobreescribir el objeto original para trabajar solo con los datos limpios\npinguinos &lt;- penguins\npinguinos &lt;- drop_na(penguins)\nglimpse(pinguinos)\n\nRows: 333\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6…\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2…\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, 193, 190, 181, 195, 182, 191, 198, 18…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800…\n$ sex               &lt;fct&gt; male, female, female, female, male, female, male, fe…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+    "text": "Preparar los datos\npenguins tiene algunos valores faltantes (NA). Los eliminamos antes de graficar.\n\nlibrary(palmerpenguins)\n# vamos a sobreescribir el objeto original para trabajar solo con los datos limpios\npinguinos &lt;- penguins\npinguinos &lt;- drop_na(penguins)\nglimpse(pinguinos)\n\nRows: 333\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6…\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2…\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, 193, 190, 181, 195, 182, 191, 198, 18…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800…\n$ sex               &lt;fct&gt; male, female, female, female, male, female, male, fe…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
   },
   {
     "objectID": "sesiones/s02/slides.html#section-1",
@@ -42,43 +42,106 @@
     "text": "Parte 2\n\n\nGeometrías"
   },
   {
-    "objectID": "sesiones/s02/slides.html#distribuciones-geom_histogram",
-    "href": "sesiones/s02/slides.html#distribuciones-geom_histogram",
+    "objectID": "sesiones/s02/slides.html#dos-familias-de-geometrías",
+    "href": "sesiones/s02/slides.html#dos-familias-de-geometrías",
     "title": "Sesión 2",
-    "section": "Distribuciones: geom_histogram()",
-    "text": "Distribuciones: geom_histogram()\nMuestra cómo se distribuyen los valores de una variable continua.\n\n\n\nggplot(\n    pinguinos,\n    aes(x = body_mass_g)\n) +\n    geom_histogram(\n        bins   = 25,\n        fill   = \"darkblue\",\n        colour = \"white\"\n    ) +\n    theme_minimal()\n\n\nbins controla el número de barras. binwidth fija el ancho de cada barra. No uses ambos a la vez.\n\n\n\n\n\n\n\n\n\n\n\n\nTambién existe geom_density() para una curva de densidad suavizada."
-  },
-  {
-    "objectID": "sesiones/s02/slides.html#comparaciones-geom_boxplot",
-    "href": "sesiones/s02/slides.html#comparaciones-geom_boxplot",
-    "title": "Sesión 2",
-    "section": "Comparaciones: geom_boxplot()",
-    "text": "Comparaciones: geom_boxplot()\nCompara distribuciones entre grupos. Muestra mediana, cuartiles y valores extremos.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        fill = species\n    )\n) +\n    geom_boxplot() +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_violin() muestra la distribución completa en lugar de solo los cuartiles."
-  },
-  {
-    "objectID": "sesiones/s02/slides.html#conteos-geom_bar",
-    "href": "sesiones/s02/slides.html#conteos-geom_bar",
-    "title": "Sesión 2",
-    "section": "Conteos: geom_bar()",
-    "text": "Conteos: geom_bar()\nCuenta observaciones por categoría. Solo necesita x.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        fill = island\n    )\n) +\n    geom_bar(\n        position = \"dodge\"\n    ) +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nposition = \"dodge\" coloca las barras una al lado de la otra. \"stack\" las apila."
-  },
-  {
-    "objectID": "sesiones/s02/slides.html#tendencias-geom_line",
-    "href": "sesiones/s02/slides.html#tendencias-geom_line",
-    "title": "Sesión 2",
-    "section": "Tendencias: geom_line()",
-    "text": "Tendencias: geom_line()\nConecta observaciones en orden de x. Útil para series de tiempo.\n\n\n\nggplot(\n    economics,\n    aes(\n        x = date,\n        y = unemploy\n    )\n) +\n    geom_line(\n        colour    = \"#225faa\",\n        linewidth = 0.8\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\neconomics es un conjunto de datos incluido en ggplot2 con indicadores económicos de EE.UU."
-  },
-  {
-    "objectID": "sesiones/s02/slides.html#combinar-capas-geométricas",
-    "href": "sesiones/s02/slides.html#combinar-capas-geométricas",
-    "title": "Sesión 2",
-    "section": "Combinar capas geométricas",
-    "text": "Combinar capas geométricas\nSe pueden sumar varios geom_*() en la misma figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        colour = species\n    )\n) +\n    geom_violin(fill = NA) +\n    geom_jitter(\n        width = 0.2,\n        alpha = 0.4,\n        size  = 1.5\n    ) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nLas capas se dibujan en el orden en que se declaran. El violín va primero, los puntos encima."
+    "section": "Dos familias de geometrías",
+    "text": "Dos familias de geometrías\nCada geom_*() pertenece a una de dos familias según cuántas variables necesita.\n\n\nUna variable: ggplot2 calcula el resto\nSolo defines x. La geometría resume los datos por ti.\nx numérica: - geom_histogram(): distribución continua - geom_density(): curva de densidad suavizada\nx categórica: - geom_bar(): contar por categoría\n\nDos variables: defines tanto x como y\ny es siempre numérica. Lo que cambia es x:\n\nx categórica → comparar grupos geom_boxplot(), geom_violin(), geom_jitter()\nx numérica → ver relaciones geom_point(), geom_smooth(), geom_line()"
   },
   {
     "objectID": "sesiones/s02/slides.html#section-2",
     "href": "sesiones/s02/slides.html#section-2",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Una variable · x numérica o categórica\n\n\nDistribuciones y conteos"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#geom_histogram-distribución-continua",
+    "href": "sesiones/s02/slides.html#geom_histogram-distribución-continua",
+    "title": "Sesión 2",
+    "section": "geom_histogram(): distribución continua",
+    "text": "geom_histogram(): distribución continua\nx numérica. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.\n\n\n\nggplot(\n    pinguinos,\n    aes(x = body_mass_g)\n) +\n    geom_histogram(\n        bins   = 25,\n        fill   = \"#225faa\",\n        colour = \"white\"\n    ) +\n    theme_minimal()\n\n\nbins fija el número de barras; binwidth fija el ancho de cada una. No uses ambos a la vez."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#geom_density-curva-de-densidad",
+    "href": "sesiones/s02/slides.html#geom_density-curva-de-densidad",
+    "title": "Sesión 2",
+    "section": "geom_density(): curva de densidad",
+    "text": "geom_density(): curva de densidad\nx numérica. Versión suavizada del histograma. Útil para comparar distribuciones entre grupos.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x    = body_mass_g,\n        fill = species\n    )\n) +\n    geom_density(alpha = 0.4) +\n    scale_fill_viridis_d() +\n    theme_minimal()"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#geom_bar-conteos-por-categoría",
+    "href": "sesiones/s02/slides.html#geom_bar-conteos-por-categoría",
+    "title": "Sesión 2",
+    "section": "geom_bar(): conteos por categoría",
+    "text": "geom_bar(): conteos por categoría\nx categórica. Cuenta cuántas observaciones hay en cada grupo. Solo necesita x.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x    = species,\n        fill = island\n    )\n) +\n    geom_bar(position = \"dodge\") +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\nposition = \"dodge\" coloca las barras lado a lado. \"stack\" las apila. \"fill\" las normaliza al 100%."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-3",
+    "href": "sesiones/s02/slides.html#section-3",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Dos variables · x + y\n\n\nRelaciones y comparaciones"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#x-categórica-comparar-grupos",
+    "href": "sesiones/s02/slides.html#x-categórica-comparar-grupos",
+    "title": "Sesión 2",
+    "section": "x categórica: comparar grupos",
+    "text": "x categórica: comparar grupos\nCuando x es una variable categórica (especie, tratamiento, grupo…), las geometrías comparan la distribución de y entre esos grupos.\n\n\ngeom_boxplot(): Mediana, cuartiles y valores extremos de y por cada nivel de x.\ngeom_violin(): Como boxplot, pero muestra la forma completa de la distribución.\ngeom_jitter(): Puntos individuales con pequeño desplazamiento aleatorio para evitar que los puntos se superpongan."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#geom_violin-geom_jitter",
+    "href": "sesiones/s02/slides.html#geom_violin-geom_jitter",
+    "title": "Sesión 2",
+    "section": "geom_violin() + geom_jitter()",
+    "text": "geom_violin() + geom_jitter()\nCombinar capas muestra la distribución completa y los datos individuales a la vez.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x      = species,\n        y      = body_mass_g,\n        colour = species\n    )\n) +\n    geom_violin(fill = NA) +\n    geom_jitter(\n        width = 0.2,\n        alpha = 0.4,\n        size  = 1.5\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\nLas capas se dibujan en orden: el violín primero, los puntos encima. Cambia el orden y verás la diferencia."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#x-numérica-ver-relaciones",
+    "href": "sesiones/s02/slides.html#x-numérica-ver-relaciones",
+    "title": "Sesión 2",
+    "section": "x numérica: ver relaciones",
+    "text": "x numérica: ver relaciones\nCuando x también es numérica, el objetivo es ver cómo varía y a medida que cambia x.\n\n\ngeom_point(): El diagrama de dispersión clásico. Cada fila del dataframe es un punto. Lo exploraremos en profundidad en la siguiente sección.\ngeom_smooth(): Añade una línea de tendencia sobre los puntos.\ngeom_line(): Conecta los puntos en orden de x. Ideal para series de tiempo."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#geom_smooth-línea-de-tendencia",
+    "href": "sesiones/s02/slides.html#geom_smooth-línea-de-tendencia",
+    "title": "Sesión 2",
+    "section": "geom_smooth(): línea de tendencia",
+    "text": "geom_smooth(): línea de tendencia\nSe superpone sobre geom_point(). El argumento method define el tipo de ajuste.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x      = bill_length_mm,\n        y      = body_mass_g,\n        colour = species\n    )\n) +\n    geom_point(alpha = 0.4) +\n    geom_smooth(\n        method = \"lm\",\n        se     = FALSE\n    ) +\n    scale_colour_viridis_d(option = \"inferno\") +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\nmethod = \"lm\" ajusta una recta. method = \"loess\" ajusta una curva suave que sigue la tendencia en zonas de x. se = FALSE oculta el intervalo de confianza. Cámbialo por se = TRUE (o borra ese argumento) para mostrarlo."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#geom_line-series-de-tiempo",
+    "href": "sesiones/s02/slides.html#geom_line-series-de-tiempo",
+    "title": "Sesión 2",
+    "section": "geom_line(): series de tiempo",
+    "text": "geom_line(): series de tiempo\nConecta observaciones en orden de x. Apropiado cuando el orden importa.\n\n\n\nggplot(\n    economics,\n    aes(\n        x = date,\n        y = unemploy\n    )\n) +\n    geom_line(\n        colour    = \"#225faa\",\n        linewidth = 0.8\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\neconomics es un conjunto de datos de ggplot2 con indicadores económicos de EE.UU."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#qué-geometría-usar",
+    "href": "sesiones/s02/slides.html#qué-geometría-usar",
+    "title": "Sesión 2",
+    "section": "¿Qué geometría usar?",
+    "text": "¿Qué geometría usar?\nAlgunas sugerencias, pero ¡siempre puedes experimentar!\n\n\n\n\n\n\n\n\n\nFunción\nx\ny\nCuándo usarla\n\n\n\n\ngeom_histogram()\n📏 numérica\n—\nDistribución de una variable continua\n\n\ngeom_density()\n📏 numérica\n—\nComo histogram, suavizado; útil para comparar grupos\n\n\ngeom_bar()\n📶 categórica\n—\nContar observaciones por categoría\n\n\ngeom_boxplot()\n📶 categórica\n📏 numérica\nComparar distribuciones entre grupos (mediana y rango)\n\n\ngeom_violin()\n📶 categórica\n📏 numérica\nComo boxplot, muestra la forma completa de la distribución\n\n\ngeom_jitter()\n📶 categórica\n📏 numérica\nPuntos individuales, evita solapamiento\n\n\ngeom_point()\n📏 numérica\n📏 numérica\nRelación entre dos variables numéricas (dispersión)\n\n\ngeom_smooth()\n📏 numérica\n📏 numérica\nLínea de tendencia sobre un diagrama de puntos\n\n\ngeom_line()\n📆 tiempo / orden\n📏 numérica\nSeries de tiempo o datos ordenados"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#qué-geometría-usar-1",
+    "href": "sesiones/s02/slides.html#qué-geometría-usar-1",
+    "title": "Sesión 2",
+    "section": "¿Qué geometría usar?",
+    "text": "¿Qué geometría usar?\n\nggplot2 tiene muchísimas geometrías más para distintos propósitos: mapas, gráficos de red, etc. Consulta la documentación oficial para verlas."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-4",
+    "href": "sesiones/s02/slides.html#section-4",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Actividad · 10 min\n\n\nTres figuras, tres geometrías\n\n\nCon el dataset pinguinos, crea una figura de cada tipo:\n\nDistribución de una variable numérica (solo x)\nComparación de una numérica entre grupos (x categórica + y numérica)\nRelación entre dos variables numéricas (x y y numéricas)\n\nAñade theme_minimal() y un título con labs()."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-5",
+    "href": "sesiones/s02/slides.html#section-5",
     "title": "Sesión 2",
     "section": "",
     "text": "Parte 3\n\n\naes(): mapear vs. fijar"
@@ -102,18 +165,25 @@
     "href": "sesiones/s02/slides.html#el-error-más-común-con-aes",
     "title": "Sesión 2",
     "section": "El error más común con aes()",
-    "text": "El error más común con aes()\n\n# ❌ Esto NO pinta los puntos de azul\ngeom_point(aes(colour = \"blue\"))\n\n\n\naes(colour = \"blue\") crea una categoría llamada \"blue\" y le asigna el primer color de la paleta por defecto. Para fijar un color, escríbelo fuera de aes(): geom_point(colour = \"blue\")."
+    "text": "El error más común con aes()\n\n# ❌ Esto NO pinta los puntos de azul\ngeom_point(aes(colour = \"blue\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\naes(colour = \"blue\") crea una categoría llamada \"blue\" y le asigna el primer color de la paleta por defecto. Para fijar un color, escríbelo fuera de aes(): geom_point(colour = \"blue\")."
   },
   {
     "objectID": "sesiones/s02/slides.html#múltiples-mappings-en-aes",
     "href": "sesiones/s02/slides.html#múltiples-mappings-en-aes",
     "title": "Sesión 2",
     "section": "Múltiples mappings en aes()",
-    "text": "Múltiples mappings en aes()\nSe pueden mapear varias variables a distintas estéticas simultáneamente.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species,\n        shape = species\n    )\n) +\n    geom_point(\n        alpha = 0.7,\n        size  = 2.5\n    ) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nMapear colour y shape a la misma variable mejora la accesibilidad: la figura es legible incluso en escala de grises."
+    "text": "Múltiples mappings en aes()\nSe pueden mapear varias variables a distintas estéticas simultáneamente.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species,\n        shape = species\n    )\n) +\n    geom_point(\n        alpha = 0.7,\n        size  = 2.5\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nMapear colour y shape a la misma variable mejora la accesibilidad: la figura es legible incluso en escala de grises."
   },
   {
-    "objectID": "sesiones/s02/slides.html#section-3",
-    "href": "sesiones/s02/slides.html#section-3",
+    "objectID": "sesiones/s02/slides.html#section-6",
+    "href": "sesiones/s02/slides.html#section-6",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Actividad · 3 min\n\n\nEl reto del color rojo\n\n\nCrea un scatterplot de bill_length_mm vs body_mass_g en pinguinos donde todos los puntos sean rojos.\n\n¿Cómo lo harías?"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-7",
+    "href": "sesiones/s02/slides.html#section-7",
     "title": "Sesión 2",
     "section": "",
     "text": "Parte 4\n\n\nEtiquetas con labs()"
@@ -126,8 +196,8 @@
     "text": "labs(): títulos y etiquetas\nlabs() controla todos los textos de la figura: título, subtítulo, ejes, leyenda y nota al pie.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species\n    )\n) +\n    geom_point(alpha = 0.7) +\n    scale_colour_viridis_d() +\n    labs(\n        title    = \"Masa corporal y longitud del pico\",\n        subtitle = \"Pingüinos de Palmer, Antártida\",\n        x        = \"Longitud del pico (mm)\",\n        y        = \"Masa corporal (g)\",\n        colour   = \"Especie\",\n        caption  = \"Datos: Horst, Hill & Gorman (2020)\"\n    ) +\n    theme_minimal()"
   },
   {
-    "objectID": "sesiones/s02/slides.html#section-4",
-    "href": "sesiones/s02/slides.html#section-4",
+    "objectID": "sesiones/s02/slides.html#section-8",
+    "href": "sesiones/s02/slides.html#section-8",
     "title": "Sesión 2",
     "section": "",
     "text": "Parte 5\n\n\nTemas y personalización"
@@ -144,11 +214,11 @@
     "href": "sesiones/s02/slides.html#personalizar-con-theme",
     "title": "Sesión 2",
     "section": "Personalizar con theme()",
-    "text": "Personalizar con theme()\ntheme() permite ajustar cualquier elemento visual de la figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        fill = species\n    )\n) +\n    geom_boxplot() +\n    scale_fill_viridis_d() +\n    theme_minimal() +\n    theme(\n        legend.position = \"none\",\n        panel.grid.minor = element_blank(),\n        axis.title = element_text(\n            size = 12,\n            face = \"bold\"\n        ),\n        plot.title = element_text(\n            hjust = 0.5\n        )\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\nelement_blank() elimina un elemento. element_text() controla fuente, tamaño y color. element_line() y element_rect() hacen lo propio con líneas y rectángulos."
+    "text": "Personalizar con theme()\ntheme() permite ajustar cualquier elemento visual de la figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = species,\n        y = body_mass_g,\n        fill = species\n    )\n) +\n    geom_boxplot() +\n    scale_fill_viridis_d() +\n    theme_minimal() +\n    theme(\n        legend.position  = \"none\",\n        panel.grid.minor = element_blank(),\n        axis.title       = element_text(size = 12, face = \"bold\"),\n        plot.title       = element_text(hjust = 0.5)\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\nelement_blank() elimina un elemento. element_text() controla fuente, tamaño y color. element_line() y element_rect() hacen lo propio con líneas y rectángulos."
   },
   {
-    "objectID": "sesiones/s02/slides.html#section-5",
-    "href": "sesiones/s02/slides.html#section-5",
+    "objectID": "sesiones/s02/slides.html#section-9",
+    "href": "sesiones/s02/slides.html#section-9",
     "title": "Sesión 2",
     "section": "",
     "text": "Parte 6\n\n\nPaletas de colores"
@@ -158,7 +228,7 @@
     "href": "sesiones/s02/slides.html#scale_colour_-y-scale_fill_",
     "title": "Sesión 2",
     "section": "scale_colour_*() y scale_fill_*()",
-    "text": "scale_colour_*() y scale_fill_*()\nLas funciones scale_*() controlan cómo se mapean los datos a las estéticas visuales.\n\n# Viridis: perceptualmente uniforme, apto para daltonismo\nscale_colour_viridis_d() # variable discreta\nscale_colour_viridis_c() # variable continua\nscale_colour_viridis_d(option = \"plasma\") # variante: magma, plasma, inferno, cividis\n\n# ColorBrewer: paletas curadas para cartografía y visualización\nscale_colour_brewer(palette = \"Set2\") # discreta\nscale_fill_brewer(palette = \"Blues\") # continua\n\n# Manual: colores definidos a mano\nscale_colour_manual(\n    values = c(\"#121834\", \"#225faa\", \"#ddeaf8\")\n)\n\n\nUsa scale_colour_*() cuando el mapping es colour = y scale_fill_*() cuando es fill =. Son funciones distintas.\n\nHEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos. Por ejemplo, #225faa es un azul específico. En Google busca “selector de color” para obtener el código HEX de cualquier color."
+    "text": "scale_colour_*() y scale_fill_*()\nLas funciones scale_*() controlan cómo se mapean los datos a las estéticas visuales.\n\n# Viridis: perceptualmente uniforme, apto para daltonismo\nscale_colour_viridis_d() # variable discreta\nscale_colour_viridis_c() # variable continua\nscale_colour_viridis_d(option = \"plasma\") # variante: magma, plasma, inferno, cividis\n\n# ColorBrewer: paletas curadas para cartografía y visualización\nscale_colour_brewer(palette = \"Set2\") # discreta\nscale_fill_brewer(palette = \"Blues\") # continua\n\n# Manual: colores definidos a mano\nscale_colour_manual(values = c(\"#121834\", \"#225faa\", \"#ddeaf8\"))\n\n\nUsa scale_colour_*() para estéticas colour= y scale_fill_*() para fill=. Algunas geoms tienen borde (colour) y relleno (fill); otras solo usan colour.\n\n\nHEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos (precedido por #). Por ejemplo, #225faa es un azul específico. En Google busca “selector de color” para obtener el código HEX de cualquier color."
   },
   {
     "objectID": "sesiones/s02/slides.html#comparación-de-paletas",
@@ -168,8 +238,8 @@
     "text": "Comparación de paletas\n\n\nViridis\n\n\n\n\n\n\n\n\n\n\nColorBrewer Set2"
   },
   {
-    "objectID": "sesiones/s02/slides.html#section-6",
-    "href": "sesiones/s02/slides.html#section-6",
+    "objectID": "sesiones/s02/slides.html#section-10",
+    "href": "sesiones/s02/slides.html#section-10",
     "title": "Sesión 2",
     "section": "",
     "text": "Parte 7\n\n\nFacetas"
@@ -179,18 +249,18 @@
     "href": "sesiones/s02/slides.html#facet_wrap-un-panel-por-categoría",
     "title": "Sesión 2",
     "section": "facet_wrap(): un panel por categoría",
-    "text": "facet_wrap(): un panel por categoría\nDivide la figura en paneles según los valores de una variable.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = sex\n    )\n) +\n    geom_point(\n        alpha = 0.7,\n        size  = 2\n    ) +\n    facet_wrap(~species) +\n    scale_colour_viridis_d() +\n    theme_minimal()"
+    "text": "facet_wrap(): un panel por categoría\nDivide la figura en paneles según los valores de una variable.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = sex\n    )\n) +\n    geom_point(\n        alpha = 0.7,\n        size  = 2\n    ) +\n    facet_wrap(~species)"
   },
   {
     "objectID": "sesiones/s02/slides.html#facet_grid-dos-variables-filas-y-columnas",
     "href": "sesiones/s02/slides.html#facet_grid-dos-variables-filas-y-columnas",
     "title": "Sesión 2",
     "section": "facet_grid(): dos variables, filas y columnas",
-    "text": "facet_grid(): dos variables, filas y columnas\nOrganiza los paneles en una cuadrícula con una variable por eje.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g\n    )\n) +\n    geom_point(\n        colour = \"#225faa\",\n        alpha  = 0.6,\n        size   = 1.5\n    ) +\n    facet_grid(sex ~ species) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nLa sintaxis filas ~ columnas define qué variable va en cada dimensión."
+    "text": "facet_grid(): dos variables, filas y columnas\nOrganiza los paneles en una cuadrícula con una variable por eje.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g\n    )\n) +\n    geom_point(\n        colour = \"#225faa\",\n        alpha  = 0.6,\n        size   = 1.5\n    ) +\n    facet_grid(sex ~ species) +\n    theme_linedraw()\n\n\n\n\n\n\n\n\n\n\n\n\nLa sintaxis filas ~ columnas define qué variable va en cada dimensión."
   },
   {
-    "objectID": "sesiones/s02/slides.html#section-7",
-    "href": "sesiones/s02/slides.html#section-7",
+    "objectID": "sesiones/s02/slides.html#section-11",
+    "href": "sesiones/s02/slides.html#section-11",
     "title": "Sesión 2",
     "section": "",
     "text": "Parte 8\n\n\nGuardar figuras"
@@ -200,14 +270,70 @@
     "href": "sesiones/s02/slides.html#ggsave",
     "title": "Sesión 2",
     "section": "ggsave()",
-    "text": "ggsave()\nGuarda la última figura generada (o la que especifiques) en el formato que elijas.\n\nmi_figura &lt;- ggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm, y = body_mass_g,\n        colour = species, shape = species\n    )\n) +\n    geom_point(alpha = 0.7, size = 2) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n# PNG para presentaciones y web\nggsave(\"figuras/pinguinos.png\",\n    plot  = mi_figura,\n    width = 16, height = 10,\n    units = \"cm\", dpi = 300\n)\n\n# PDF para publicaciones (vectorial, escala sin pérdida)\nggsave(\"figuras/pinguinos.pdf\",\n    plot = mi_figura,\n    width = 16, height = 10,\n    units = \"cm\"\n)\n\n\ndpi = 300 es el estándar para publicación impresa. Para pantalla, dpi = 150 es suficiente. units = \"cm\" permite especificar el tamaño exacto que pedirá la revista."
+    "text": "ggsave()\nGuarda la última figura generada (o la que especifiques) en el formato que elijas.\n\n\n\nmi_figura &lt;- ggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm, y = body_mass_g,\n        colour = species, shape = species\n    )\n) +\n    geom_point(alpha = 0.7, size = 2) +\n    scale_colour_viridis_d() +\n    theme_minimal()\n\n# PNG para presentaciones y web\nggsave(\"figuras/pinguinos.png\",\n    plot  = mi_figura,\n    width = 16, height = 10,\n    units = \"cm\", dpi = 300\n)\n\n# PDF para publicaciones (vectorial, escala sin pérdida)\nggsave(\"figuras/pinguinos.pdf\",\n    plot = mi_figura,\n    width = 16, height = 10,\n    units = \"cm\"\n)\n\n\n\ndpi = 300 es el estándar para publicación impresa. Para pantalla, dpi = 150 es suficiente. units = \"cm\" permite especificar el tamaño exacto que pedirá la revista."
   },
   {
     "objectID": "sesiones/s02/slides.html#la-figura-completa",
     "href": "sesiones/s02/slides.html#la-figura-completa",
     "title": "Sesión 2",
     "section": "La figura completa",
-    "text": "La figura completa\nTodo lo visto en una sola figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species,\n        shape = species\n    )\n) +\n    geom_point(alpha = 0.6, size = 2) +\n    geom_smooth(\n        method    = \"lm\",\n        se        = FALSE,\n        linewidth = 0.8\n    ) +\n    facet_wrap(~island) +\n    scale_colour_viridis_d(\n        name = \"Especie\"\n    ) +\n    scale_shape_discrete(\n        name = \"Especie\"\n    ) +\n    labs(\n        title   = \"Masa y pico por isla\",\n        x       = \"Longitud del pico (mm)\",\n        y       = \"Masa corporal (g)\",\n        caption = \"Datos: Horst et al. (2020)\"\n    ) +\n    theme_minimal() +\n    theme(legend.position = \"bottom\")"
+    "text": "La figura completa\nTodo lo visto en una sola figura.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g,\n        colour = species,\n        shape = species\n    )\n) +\n    geom_point(alpha = 0.6, size = 2) +\n    geom_smooth(\n        method = \"lm\",\n        se = FALSE,\n        linewidth = 0.8\n    ) +\n    facet_wrap(~island) +\n    scale_colour_brewer(\n        name = \"Especie\",\n        palette = \"Dark2\"\n    ) +\n    scale_shape_discrete(name = \"Especie\") +\n    labs(\n        title = \"Masa y pico por isla\",\n        x = \"Longitud del pico (mm)\",\n        y = \"Masa corporal (g)\",\n        caption = \"Datos: Horst et al. (2020)\"\n    ) +\n    theme_linedraw() +\n    theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-12",
+    "href": "sesiones/s02/slides.html#section-12",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Antes de terminar…\n\n\nQuiz rápido"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#quiz-1-de-5",
+    "href": "sesiones/s02/slides.html#quiz-1-de-5",
+    "title": "Sesión 2",
+    "section": "Quiz · 1 de 5",
+    "text": "Quiz · 1 de 5\n¿De qué color quedan los puntos con este código?\nggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +\n    geom_point(aes(colour = \"blue\"))\n\n\nAzul: le pasamos el texto \"blue\" como color\n\n\nEl primer color de la paleta por defecto de ggplot2\n\n\nTransparente: dentro de aes() no se puede fijar un color\n\n\nRojo: siempre usa el primer color de la paleta activa\n\n\n\n\n✓ b) aes(colour = \"blue\") crea una categoría llamada \"blue\" y le asigna el primer color de la paleta por defecto. Para fijar azul de verdad: geom_point(colour = \"blue\"), fuera de aes()."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#quiz-2-de-5",
+    "href": "sesiones/s02/slides.html#quiz-2-de-5",
+    "title": "Sesión 2",
+    "section": "Quiz · 2 de 5",
+    "text": "Quiz · 2 de 5\n¿Qué función de escala Viridis completaría correctamente esta figura?\n\nggplot(pinguinos, aes(x = species, y = body_mass_g, colour = island)) +\n    geom_jitter() + \n    ???\n\n\n\nscale_colour_viridis_d(): island es categórica, pero el mapping es colour\n\n\nscale_fill_viridis_c(): el mapping es colour, pero island no es continua\n\n\nscale_fill_viridis_d(): el mapping es colour e island es categórica\n\n\nscale_fill_viridis_b(): _b es para variables continuas en intervalos\n\n\n\n\n✓ c) Dos reglas: la función debe coincidir con la estética (colour → scale_colour_*), y el sufijo con el tipo de variable (island es categórica → _d)."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#quiz-3-de-5",
+    "href": "sesiones/s02/slides.html#quiz-3-de-5",
+    "title": "Sesión 2",
+    "section": "Quiz · 3 de 5",
+    "text": "Quiz · 3 de 5\n¿Cuál es la diferencia principal entre geom_boxplot() y geom_violin()?\n\n\nSon idénticos: solo cambia la forma visual\n\n\ngeom_boxplot() muestra mediana y cuartiles; geom_violin() muestra la forma completa de la distribución\n\n\ngeom_violin() es para variables continuas; geom_boxplot() para categóricas\n\n\ngeom_boxplot() necesita x e y; geom_violin() solo necesita x\n\n\n\n\n✓ b) El boxplot resume la distribución en cinco números. El violín muestra toda la forma (incluyendo si hay uno o dos picos, colas, etc. Por eso se combinan bien)."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#quiz-4-de-5",
+    "href": "sesiones/s02/slides.html#quiz-4-de-5",
+    "title": "Sesión 2",
+    "section": "Quiz · 4 de 5",
+    "text": "Quiz · 4 de 5\n¿Qué produce facet_wrap(~species) en una figura de pinguinos?\n\n\nColorea cada especie con un color distinto\n\n\nFiltra las observaciones sin especie identificada\n\n\nTres paneles separados, uno por cada especie\n\n\nUna tabla con el conteo de observaciones por especie\n\n\n\n\n✓ c) facet_wrap() divide la figura en paneles, uno por cada valor único de la variable indicada. Con ~species y tres especies, obtienes tres paneles con la misma escala."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#quiz-5-de-5",
+    "href": "sesiones/s02/slides.html#quiz-5-de-5",
+    "title": "Sesión 2",
+    "section": "Quiz · 5 de 5",
+    "text": "Quiz · 5 de 5\n¿Para qué sirve labs() en una figura de ggplot2?\n\n\nCarga las librerías necesarias para graficar\n\n\nControla la escala de los ejes (logarítmica, invertida, etc.)\n\n\nDefine el tipo de geometría que se va a dibujar\n\n\nControla todos los textos: título, subtítulo, ejes, leyenda y nota al pie\n\n\n\n\n✓ d) labs() gestiona todos los textos de la figura. Sin labs(), los ejes muestran el nombre de la variable tal como está en la base de datos y no hay título."
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#a-practicar",
+    "href": "sesiones/s02/slides.html#a-practicar",
+    "title": "Sesión 2",
+    "section": "A practicar",
+    "text": "A practicar\nAntes de la próxima sesión, usa el dataset gapminder para crear una figura que explore la relación entre esperanza de vida y PIB per cápita.\n\nlibrary(gapminder)\nglimpse(gapminder)\n\nExperimenta con:\n\nColor por continente (colour = continent)\nFacetas por año (facet_wrap(~year)) o filtra un año concreto\nEscala logarítmica en x: scale_x_log10()\nlabs() con título, ejes y fuente\nggsave() para guardar el resultado"
+  },
+  {
+    "objectID": "sesiones/s02/slides.html#section-13",
+    "href": "sesiones/s02/slides.html#section-13",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Hasta la próxima sesión\n\n\n¡Gracias!"
   },
   {
     "objectID": "index.html",
@@ -221,14 +347,14 @@
     "href": "index.html#información-general",
     "title": "Maneja, explora y visualiza datos con R",
     "section": "Información general",
-    "text": "Información general\n\n  Horario10:00 – 12:00 m.\n  Sesiones9 sesiones · 18 h\n  ModalidadPresencial\n  LugarUniversidad El Bosque(sala por confirmar)\n  CostoGratuito\n  RequisitosNinguno\n\n\n🎓 El curso otorga certificado de participación a quienes cumplan el 90 % de asistencia.\n\nEl curso se realizará en una sala de cómputo, así que no necesitas traer tu propio equipo. No se requieren conocimientos previos de programación ni estadística."
+    "text": "Información general\n\n  Horario10:00 – 12:00 m.\n  Sesiones9 sesiones · 18 h\n  ModalidadPresencial\n  LugarUniversidad El BosqueSala de cómputo\n  CostoGratuito\n  RequisitosNinguno\n\n\n🎓 El curso otorga certificado de participación a quienes cumplan el 90 % de asistencia.\n\nEl curso se realizará en una sala de cómputo, así que no necesitas traer tu propio equipo. No se requieren conocimientos previos de programación ni estadística."
   },
   {
     "objectID": "index.html#sesiones",
     "href": "index.html#sesiones",
     "title": "Maneja, explora y visualiza datos con R",
     "section": "Sesiones",
-    "text": "Sesiones\n\n\n\n#\nFecha\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nPor definir\n—\n\n\n2\nJue 4 jun\nPor definir\n—\n\n\n3\nVie 5 jun\nPor definir\n— → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nPor definir Entrega Tarea 1\n—\n\n\n5\nJue 11 jun\nPor definir\n—\n\n\n6\nVie 12 jun\nPor definir\n— → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nPor definir Entrega Tarea 2\n—\n\n\n8\nJue 18 jun\nPor definir\n—\n\n\n9\nVie 19 jun\nPor definir\n—"
+    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-404\nIntro a R, RStudio, sintaxis y primera figura\nDiapositivas\n\n\n2\nJue 4 jun\nA-402\nggplot2: la gramática de las gráficas\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nPipe nativo y dplyr\n— → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-404\nDatos externos, proyectos y rutas relativas Entrega Tarea 1\n—\n\n\n5\nJue 11 jun\nA-404\nSimulación de datos, funciones y condicionales\n—\n\n\n6\nVie 12 jun\nB-211\nDocumentos reproducibles con Quarto\n— → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto avanzado, RevealJS y referencias Entrega Tarea 2\n—\n\n\n8\nJue 18 jun\nA-404\nGit y GitHub\n—\n\n\n9\nVie 19 jun\nA-402\nCierre, integración y buenas prácticas\n—"
   },
   {
     "objectID": "index.html#tareas",
@@ -396,14 +522,14 @@
     "href": "programa.html#contenidos-por-semana",
     "title": "Programa del curso",
     "section": "Contenidos por semana",
-    "text": "Contenidos por semana\nPor definir — actualizar cuando se definan los temas de cada sesión."
+    "text": "Contenidos por semana\n\nSemana 1 — 3, 4 y 5 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n1\nMiércoles 3 jun\nA-404\nIntro a R y RStudio · Sintaxis básica · Primera figura con ggplot2\n\n\n2\nJueves 4 jun\nA-402\nggplot2: la gramática de las gráficas · Geometrías · aes() · Temas y paletas\n\n\n3\nViernes 5 jun\nA-402\nPipe nativo \\|&gt; · Transformación de datos con dplyr\n\n\n\nTarea 1 asignada al final de la sesión 3.\n\n\nSemana 2 — 10, 11 y 12 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n4\nMiércoles 10 jun\nA-404\nDatos externos · Proyectos de RStudio · Rutas relativas · CSV y Excel\n\n\n5\nJueves 11 jun\nA-404\nSimulación de datos · Funciones · Condicionales\n\n\n6\nViernes 12 jun\nB-211\nDocumentos reproducibles con Quarto\n\n\n\nEntrega Tarea 1 al inicio de la sesión 4. Tarea 2 asignada al final de la sesión 6.\n\n\nSemana 3 — 17, 18 y 19 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n7\nMiércoles 17 jun\nA-404\nQuarto avanzado · Presentaciones RevealJS · Referencias bibliográficas\n\n\n8\nJueves 18 jun\nA-404\nControl de versiones con Git y GitHub\n\n\n9\nViernes 19 jun\nA-402\nCierre · Integración de herramientas · Buenas prácticas\n\n\n\nEntrega Tarea 2 al inicio de la sesión 7."
   },
   {
     "objectID": "programa.html#evaluación",
     "href": "programa.html#evaluación",
     "title": "Programa del curso",
     "section": "Evaluación",
-    "text": "Evaluación\nEl curso no tiene calificación formal. Para obtener el certificado de participación se requiere asistencia al 90 % de las sesiones (mínimo 9 de 9 sesiones — las ausencias justificadas se evalúan caso por caso).\nLas dos tareas son ejercicios de exploración y no tienen una nota asociada, pero se presentan ante el grupo."
+    "text": "Evaluación\nEl curso no tiene calificación. Para obtener el certificado de participación se requiere asistencia al 90 % de las sesiones (mínimo 8 de 9 sesiones).\nLas dos tareas son solamente ejercicios de exploración y no se califican, pero se presentan ante el grupo."
   },
   {
     "objectID": "programa.html#recursos",
@@ -473,7 +599,7 @@
     "href": "sesiones/s01/slides.html#de-la-terminal-al-script-1",
     "title": "Sesión 1",
     "section": "De la terminal al script",
-    "text": "De la terminal al script\nUn script es un archivo de texto plano con extensión .R; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.\n# mi_primer_script.R\n2 + 2\nsqrt(16)\nEl script es tu registro permanente de lo que hiciste: la base de la reproducibilidad científica."
+    "text": "De la terminal al script\nUn script es un archivo de texto plano con extensión .R; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.\n# mi_primer_script.R\n2 + 2\nsqrt(16)\nEl script es tu registro permanente de lo que hiciste. Es la base de la reproducibilidad científica."
   },
   {
     "objectID": "sesiones/s01/slides.html#r-sin-ide-ventanas-sueltas",
@@ -516,6 +642,20 @@
     "title": "Sesión 1",
     "section": "",
     "text": "Parte 3\n\n\nLa sintaxis de R"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#comentarios",
+    "href": "sesiones/s01/slides.html#comentarios",
+    "title": "Sesión 1",
+    "section": "Comentarios: #",
+    "text": "Comentarios: #\nTodo lo que sigue a # en una línea es ignorado por R (es un mensaje para humanos).\n# Calcular el índice de masa corporal\npeso &lt;- 70       # kg\naltura &lt;- 1.75   # metros\nimc &lt;- peso / altura^2\n\n# Resultado\nimc\nLos comentarios son para ti dentro de seis meses, para tu colaboradora, y para cualquiera que quiera entender o reproducir tu análisis.\n\nUn buen comentario explica qué hace un código, y/o por qué se hizo algo.\n¡No olvides comentar tus scripts! Es parte de la buena práctica de programación y ciencia abierta."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#un-script-bien-organizado-y-comentado",
+    "href": "sesiones/s01/slides.html#un-script-bien-organizado-y-comentado",
+    "title": "Sesión 1",
+    "section": "Un script bien organizado y comentado",
+    "text": "Un script bien organizado y comentado\n⬇ Descargar script\n# =========================================================\n# Ejemplo de script organizado y comentado en R\n# =========================================================\n\n# ---------------------------------------------------------\n# 1. Cargar paquetes necesarios\n# ---------------------------------------------------------\n\n# Cargar tidyverse para manipulación y visualización de datos\nlibrary(tidyverse)\n\n# ---------------------------------------------------------\n# 2. Crear un conjunto de datos de ejemplo\n# ---------------------------------------------------------\n\n# Fijar semilla para que los resultados sean reproducibles\nset.seed(123)\n\n# Crear datos simulados\ndatos &lt;- tibble(\n  participante = 1:20,\n  puntaje      = rnorm(20, mean = 75, sd = 10),\n  grupo        = rep(c(\"Control\", \"Experimental\"), each = 10)\n)\n\n# ---------------------------------------------------------\n# 3. Resumen descriptivo\n# ---------------------------------------------------------\n\n# Calcular promedio y desviación estándar de puntajes por grupo\nresumen &lt;- datos |&gt;\n  group_by(grupo) |&gt;\n  summarise(\n    promedio   = mean(puntaje),\n    desviacion = sd(puntaje)\n  )\n\nprint(resumen)\n\n# ---------------------------------------------------------\n# 4. Visualización\n# ---------------------------------------------------------\n\n# Crear gráfico de distribución de puntajes por grupo\ncolores &lt;- c(\"Control\" = \"#225faa\", \"Experimental\" = \"#6b1220\")\n\nggplot(datos, aes(x = grupo, y = puntaje, fill = grupo, colour = grupo)) +\n  geom_violin(alpha = 0.2, width = 0.7, linewidth = 0.4) +\n  geom_boxplot(width = 0.12, alpha = 0.8, outlier.shape = NA, linewidth = 0.6) +\n  geom_jitter(width = 0.07, size = 2.8, alpha = 0.75) +\n  stat_summary(fun = mean, geom = \"point\", shape = 23,\n               size = 4.5, fill = \"white\", colour = \"grey25\") +\n  scale_fill_manual(values = colores) +\n  scale_colour_manual(values = colores) +\n  labs(\n    title    = \"Distribución de puntajes por grupo\",\n    subtitle = \"Cada punto = un participante · El rombo señala la media grupal\",\n    x = NULL, y = \"Puntaje\", caption = \"Datos simulados · set.seed(123)\"\n  ) +\n  theme_minimal(base_size = 14) +\n  theme(\n    legend.position    = \"none\",\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor   = element_blank(),\n    plot.title         = element_text(face = \"bold\", size = 16),\n    plot.subtitle      = element_text(colour = \"grey50\", size = 11),\n    axis.text.x        = element_text(size = 13, face = \"bold\")\n  )"
   },
   {
     "objectID": "sesiones/s01/slides.html#funciones-y-argumentos",
@@ -592,7 +732,7 @@
     "href": "sesiones/s01/slides.html#ggplot2-el-lienzo",
     "title": "Sesión 1",
     "section": "ggplot2: el lienzo",
-    "text": "ggplot2: el lienzo\nggplot() crea un lienzo vacío. Le decimos qué datos usar y qué variables mapear a los ejes con aes().\n\n\n\nggplot(\n    data = diamonds,\n    mapping = aes(x = carat, y = price)\n)"
+    "text": "ggplot2: el lienzo\nggplot() crea un lienzo. Definimos qué datos usar y qué variables mapear a los ejes con aes().\n\n\n\nggplot(\n    data = diamonds,\n    mapping = aes(x = carat, y = price)\n)"
   },
   {
     "objectID": "sesiones/s01/slides.html#puntos",
@@ -620,27 +760,97 @@
     "href": "sesiones/s01/slides.html#tema",
     "title": "Sesión 1",
     "section": "+ tema",
-    "text": "+ tema\nLos temas controlan la apariencia general. theme_minimal() es un buen punto de partida.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_minimal()"
+    "text": "+ tema\nLos temas controlan la apariencia general. theme_minimal() es un buen punto de partida.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_linedraw()"
   },
   {
     "objectID": "sesiones/s01/slides.html#paleta-de-colores",
     "href": "sesiones/s01/slides.html#paleta-de-colores",
     "title": "Sesión 1",
     "section": "+ paleta de colores",
-    "text": "+ paleta de colores\nscale_colour_viridis_d() aplica la paleta Viridis: diseñada para ser perceptualmente uniforme y accesible.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_minimal() +\n    scale_colour_viridis_d()"
+    "text": "+ paleta de colores\nViridis tiene tres variantes según el tipo de variable mapeada, y dos funciones según la estética usada.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_minimal() +\n    scale_colour_viridis_d(option = \"magma\")\n\n\ncut es categórica → _d (discrete). Usa scale_colour_* cuando el mapping es colour =, y scale_fill_* cuando es fill =."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#viridis-_d-_c-y-_b",
+    "href": "sesiones/s01/slides.html#viridis-_d-_c-y-_b",
+    "title": "Sesión 1",
+    "section": "Viridis: _d, _c y _b",
+    "text": "Viridis: _d, _c y _b\nCuando la variable es numérica continua, usa _c (gradiente suave) o _b (intervalos discretos).\n\n\n\n# sin tema ni paleta\nggplot(\n    faithfuld,\n    aes(waiting, eruptions, fill = density)\n) +\n    geom_tile()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n    faithfuld,\n    aes(waiting, eruptions, fill = density)\n) +\n    geom_tile() +\n    scale_fill_viridis_c(option = \"plasma\")\n\n\n\n\n\n\n\n\n\n\n5% ::: {.column width=“33%”}\nggplot(\n    faithfuld,\n    aes(waiting, eruptions, fill = density)\n) +\n    geom_tile() +\n    scale_fill_viridis_b(option = \"plasma\")\n\n\n\n\n\n\n\n\n\n\n:::::"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#etiquetas-con-labs",
+    "href": "sesiones/s01/slides.html#etiquetas-con-labs",
+    "title": "Sesión 1",
+    "section": "+ etiquetas con labs()",
+    "text": "+ etiquetas con labs()\nlabs() controla todos los textos de la figura: título, subtítulo, ejes y leyenda.\n\n\n\nggplot(\n    diamonds,\n    aes(x = carat, y = price, colour = cut)\n) +\n    geom_point(alpha = 0.1) +\n    theme_minimal() +\n    scale_colour_viridis_d(option = \"magma\") +\n    labs(\n        title    = \"Precio según peso del diamante\",\n        subtitle = \"Color según calidad del corte\",\n        caption  = \"Fuente: conjunto de datos diamonds (ggplot2)\",\n        x        = \"Peso (quilates)\",\n        y        = \"Precio (USD)\",\n        colour   = \"Corte\"\n    )"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#section-4",
+    "href": "sesiones/s01/slides.html#section-4",
+    "title": "Sesión 1",
+    "section": "",
+    "text": "Actividad · 10 min\n\n\nModifica la figura\n\n\nPartiendo del código que acabamos de ver, cambia al menos dos cosas:\n\nLas variables en x y/o y (prueba depth, table, carat, price)\nLa variable de color (cut, color, clarity)\n\n¿Qué relaciones encuentras?"
   },
   {
     "objectID": "sesiones/s01/slides.html#con-qué-datos-seguir-practicando",
     "href": "sesiones/s01/slides.html#con-qué-datos-seguir-practicando",
     "title": "Sesión 1",
     "section": "¿Con qué datos seguir practicando?",
-    "text": "¿Con qué datos seguir practicando?\nggplot2 y tidyverse incluyen varios conjuntos de datos listos para usar:\n\n# Ver todos los conjuntos de datos disponibles en los paquetes cargados\ndata()\n\n# Algunos interesantes\nglimpse(mpg) # autos y consumo de combustible\nglimpse(gapminder::gapminder) # esperanza de vida por país y año\n\n\nEscribe ?mpg o ?diamonds en la consola para ver la descripción completa de cualquier conjunto de datos."
+    "text": "¿Con qué datos seguir practicando?\nggplot2 y tidyverse incluyen varias bases de datos listas para usar:\n\n# Ver todas las bases de datos disponibles en los paquetes cargados\ndata()\n\n# Algunos interesantes\nglimpse(mpg) # autos y consumo de combustible\nglimpse(gapminder::gapminder) # esperanza de vida por país y año\n\n\nEscribe ?mpg, ?diamonds o ?[nombre_de_los_datos] en la consola para ver la descripción completa de cualquier base de datos."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#section-5",
+    "href": "sesiones/s01/slides.html#section-5",
+    "title": "Sesión 1",
+    "section": "",
+    "text": "Antes de terminar…\n\n\nQuiz rápido"
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#quiz-1-de-5",
+    "href": "sesiones/s01/slides.html#quiz-1-de-5",
+    "title": "Sesión 1",
+    "section": "Quiz · 1 de 5",
+    "text": "Quiz · 1 de 5\nR y RStudio son básicamente lo mismo; solo cambia el nombre.\n\n\nVerdad: RStudio es el nombre oficial de R desde 2011\n\n\nVerdad: son el mismo programa con dos interfaces\n\n\nFalso: R es el lenguaje; RStudio es un entorno que facilita trabajar con R\n\n\nFalso: R fue reemplazado por RStudio en 2015\n\n\n\n\n✓ c) R es el motor (el perro); RStudio es la pinta: un entorno cómodo para escribir y organizar código (sin R no hace nada)."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#quiz-2-de-5",
+    "href": "sesiones/s01/slides.html#quiz-2-de-5",
+    "title": "Sesión 1",
+    "section": "Quiz · 2 de 5",
+    "text": "Quiz · 2 de 5\n¿Qué es sqrt en este código?\nsqrt(144)\n\n\nUn argumento: es el valor que se le pasa a la operación\n\n\nUna función: es la instrucción que le damos a R\n\n\nUn objeto: es un resultado guardado en memoria\n\n\nUn operador: como + o &lt;-\n\n\n\n\n✓ b) sqrt es una función: una instrucción con nombre que recibe insumos y produce un resultado. 144 es su argumento."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#quiz-3-de-5",
+    "href": "sesiones/s01/slides.html#quiz-3-de-5",
+    "title": "Sesión 1",
+    "section": "Quiz · 3 de 5",
+    "text": "Quiz · 3 de 5\n¿Qué es digits = 2 en este código?\nround(3.14159, digits = 2)\n\n\nUna función: calcula el número de decimales\n\n\nUn objeto: guarda el valor 2 en memoria\n\n\nUn argumento: le indica a round() cuántos decimales conservar\n\n\nUn operador: asigna 2 a la variable digits\n\n\n\n\n✓ c) digits = 2 es un argumento: un parámetro (es este caso con nombre “digits”) que modifica el comportamiento de la función. digits es el nombre del argumento; 2 es su valor."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#quiz-4-de-5",
+    "href": "sesiones/s01/slides.html#quiz-4-de-5",
+    "title": "Sesión 1",
+    "section": "Quiz · 4 de 5",
+    "text": "Quiz · 4 de 5\n¿Qué hace &lt;- en este código?\nresultado &lt;- sqrt(144)\n\n\nCompara si resultado y sqrt(144) son iguales\n\n\nImprime el resultado de sqrt(144) en pantalla\n\n\nDefine una función nueva llamada resultado\n\n\nGuarda el resultado de sqrt(144) en un objeto llamado resultado\n\n\n\n\n✓ d) &lt;- es el operador de asignación: evalúa lo que está a la derecha y guarda el resultado en el objeto nombrado a la izquierda. Después puedes usar resultado en cualquier parte del código."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#quiz-5-de-5",
+    "href": "sesiones/s01/slides.html#quiz-5-de-5",
+    "title": "Sesión 1",
+    "section": "Quiz · 5 de 5",
+    "text": "Quiz · 5 de 5\n¿Qué tipo de cosa es aes(x = carat, y = price) aquí?\nggplot(diamonds, aes(x = carat, y = price))\n\n\nUn data frame: contiene los datos de diamonds\n\n\nUna capa geométrica: define cómo se dibujan los puntos\n\n\nUn argumento de ggplot() que a su vez es una función\n\n\nEl nombre del tema visual de la figura\n\n\n\n\n✓ c) aes() es una función (tiene nombre y paréntesis), pero aquí aparece dentro de ggplot() como uno de sus argumentos. En R, pasar funciones como argumentos de otras funciones es completamente normal ¡y hace que sea poderosísimo!"
   },
   {
     "objectID": "sesiones/s01/slides.html#a-practicar",
     "href": "sesiones/s01/slides.html#a-practicar",
     "title": "Sesión 1",
     "section": "A practicar",
-    "text": "A practicar\nAntes de la próxima sesión, elige un conjunto de datos de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con ggplot2.\nExperimenta cambiando:\n\nEl tipo de geometría (geom_point, geom_jitter, geom_col, geom_histogram…)\nLas variables en x, y, colour, size, shape\nEl tema (theme_minimal, theme_classic, theme_bw…)\nLa paleta de colores\n\nNo importa si la figura no queda perfecta. Lo importante es romper el código y ver qué pasa."
+    "text": "A practicar\nAntes de la próxima sesión, elige un conjunto de datos de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con ggplot2.\nExperimenta cambiando:\n\nEl tipo de geometría (geom_point, geom_jitter, geom_col, geom_histogram…)\nLas variables en x, y, colour, size, shape\nEl tema (theme_minimal, theme_classic, theme_bw, theme_dark…)\nLa paleta de colores\nLas etiquetas con labs()\n\nNo importa si la figura no queda perfecta. Lo importante es jugar con el código y ver qué pasa."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#section-6",
+    "href": "sesiones/s01/slides.html#section-6",
+    "title": "Sesión 1",
+    "section": "",
+    "text": "Hasta la próxima sesión\n\n\n¡Gracias!"
   }
 ]
