@@ -167,7 +167,7 @@ Funciona, pero al cerrar la terminal pierdes todo lo que escribiste.
 sqrt(16)
 ```
 
-El script es tu **registro permanente** de lo que hiciste: la base de la reproducibilidad científica.
+El script es tu **registro permanente** de lo que hiciste. Es la base de la reproducibilidad científica.
 
 ------------------------------------------------------------------------
 
@@ -269,11 +269,112 @@ La sintaxis de R
 
 ------------------------------------------------------------------------
 
+## Comentarios: `#`
+
+Todo lo que sigue a `#` en una línea es ignorado por R (es un mensaje para humanos).
+
+```r
+# Calcular el índice de masa corporal
+peso <- 70       # kg
+altura <- 1.75   # metros
+imc <- peso / altura^2
+
+# Resultado
+imc
+```
+
+Los comentarios son para ti dentro de seis meses, para tu colaboradora, y para cualquiera que quiera entender o reproducir tu análisis.
+
+::: tip-box
+Un buen comentario explica qué hace un código, y/o por qué se hizo algo.
+
+**¡No olvides comentar tus scripts!** Es parte de la buena práctica de programación y ciencia abierta.
+:::
+
+------------------------------------------------------------------------
+
+## Un script bien organizado y comentado {.smaller}
+
+[⬇ Descargar script](script_ejemplo.R)
+
+```{.r style="max-height: 390px; overflow-y: auto;"}
+# =========================================================
+# Ejemplo de script organizado y comentado en R
+# =========================================================
+
+# ---------------------------------------------------------
+# 1. Cargar paquetes necesarios
+# ---------------------------------------------------------
+
+# Cargar tidyverse para manipulación y visualización de datos
+library(tidyverse)
+
+# ---------------------------------------------------------
+# 2. Crear un conjunto de datos de ejemplo
+# ---------------------------------------------------------
+
+# Fijar semilla para que los resultados sean reproducibles
+set.seed(123)
+
+# Crear datos simulados
+datos <- tibble(
+  participante = 1:20,
+  puntaje      = rnorm(20, mean = 75, sd = 10),
+  grupo        = rep(c("Control", "Experimental"), each = 10)
+)
+
+# ---------------------------------------------------------
+# 3. Resumen descriptivo
+# ---------------------------------------------------------
+
+# Calcular promedio y desviación estándar de puntajes por grupo
+resumen <- datos |>
+  group_by(grupo) |>
+  summarise(
+    promedio   = mean(puntaje),
+    desviacion = sd(puntaje)
+  )
+
+print(resumen)
+
+# ---------------------------------------------------------
+# 4. Visualización
+# ---------------------------------------------------------
+
+# Crear gráfico de distribución de puntajes por grupo
+colores <- c("Control" = "#225faa", "Experimental" = "#6b1220")
+
+ggplot(datos, aes(x = grupo, y = puntaje, fill = grupo, colour = grupo)) +
+  geom_violin(alpha = 0.2, width = 0.7, linewidth = 0.4) +
+  geom_boxplot(width = 0.12, alpha = 0.8, outlier.shape = NA, linewidth = 0.6) +
+  geom_jitter(width = 0.07, size = 2.8, alpha = 0.75) +
+  stat_summary(fun = mean, geom = "point", shape = 23,
+               size = 4.5, fill = "white", colour = "grey25") +
+  scale_fill_manual(values = colores) +
+  scale_colour_manual(values = colores) +
+  labs(
+    title    = "Distribución de puntajes por grupo",
+    subtitle = "Cada punto = un participante · El rombo señala la media grupal",
+    x = NULL, y = "Puntaje", caption = "Datos simulados · set.seed(123)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position    = "none",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor   = element_blank(),
+    plot.title         = element_text(face = "bold", size = 16),
+    plot.subtitle      = element_text(colour = "grey50", size = 11),
+    axis.text.x        = element_text(size = 13, face = "bold")
+  )
+```
+
+------------------------------------------------------------------------
+
 ## Funciones y argumentos
 
 Una **función** es como una fábrica: recibe insumos, hace algo con ellos, y produce un resultado.
 
-![](../../imagenes/fabrica.gif){fig-align="center"}
+![](../../imagenes/fabrica.gif){fig-align="center" width="50%"}
 
 ------------------------------------------------------------------------
 
@@ -441,13 +542,13 @@ library(tidyverse)
 View(diamonds)
 ```
 
-![](../../imagenes/View-diamonds.png){fig-align="center" width="80%"}
+![](../../imagenes/View-diamonds.png){fig-align="center" width="50%"}
 
 ------------------------------------------------------------------------
 
 ## ggplot2: el lienzo
 
-`ggplot()` crea un lienzo vacío. Le decimos qué datos usar y qué variables mapear a los ejes con `aes()`.
+`ggplot()` crea un lienzo. Definimos qué datos usar y qué variables mapear a los ejes con `aes()`.
 
 ::::: columns
 ::: {.column width="45%"}
@@ -558,7 +659,7 @@ ggplot(
     aes(x = carat, y = price, colour = cut)
 ) +
     geom_point(alpha = 0.1) +
-    theme_minimal()
+    theme_linedraw()
 ```
 :::
 
@@ -567,7 +668,7 @@ ggplot(
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
     geom_point(alpha = 0.1) +
-    theme_minimal()
+    theme_linedraw()
 ```
 :::
 :::::
@@ -576,7 +677,7 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
 
 ## + paleta de colores
 
-`scale_colour_viridis_d()` aplica la paleta Viridis: diseñada para ser perceptualmente uniforme y accesible.
+Viridis tiene tres variantes según el tipo de variable mapeada, y dos funciones según la estética usada.
 
 ::::: columns
 ::: {.column width="45%"}
@@ -588,7 +689,121 @@ ggplot(
 ) +
     geom_point(alpha = 0.1) +
     theme_minimal() +
-    scale_colour_viridis_d()
+    scale_colour_viridis_d(option = "magma")
+```
+
+::: tip-box
+`cut` es **categórica** → `_d` (*discrete*). Usa `scale_colour_*` cuando el mapping es `colour =`, y `scale_fill_*` cuando es `fill =`.
+:::
+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| echo: false
+ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
+    geom_point(alpha = 0.1) +
+    theme_minimal() +
+    scale_colour_viridis_d(option = "magma")
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Viridis: `_d`, `_c` y `_b` {.smaller}
+
+Cuando la variable es **numérica continua**, usa `_c` (gradiente suave) o `_b` (intervalos discretos).
+
+::::: columns
+::: {.column width="33%"}
+```{r}
+#| eval: false
+# sin tema ni paleta
+ggplot(
+    faithfuld,
+    aes(waiting, eruptions, fill = density)
+) +
+    geom_tile()
+```
+
+```{r}
+#| echo: false
+#| fig-height: 7
+ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+    geom_tile() +
+    theme_minimal()
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+#| eval: false
+ggplot(
+    faithfuld,
+    aes(waiting, eruptions, fill = density)
+) +
+    geom_tile() +
+    scale_fill_viridis_c(option = "plasma")
+```
+
+```{r}
+#| echo: false
+#| fig-height: 7
+ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+    geom_tile() +
+    scale_fill_viridis_c(option = "plasma") +
+    theme_minimal()
+```
+:::
+5%
+::: {.column width="33%"}
+```{r}
+#| eval: false
+ggplot(
+    faithfuld,
+    aes(waiting, eruptions, fill = density)
+) +
+    geom_tile() +
+    scale_fill_viridis_b(option = "plasma")
+```
+
+```{r}
+#| echo: false
+#| fig-height: 7
+ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+    geom_tile() +
+    scale_fill_viridis_b(option = "plasma") +
+    theme_minimal()
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## + etiquetas con `labs()`
+
+`labs()` controla todos los textos de la figura: título, subtítulo, ejes y leyenda.
+
+::::: columns
+::: {.column width="45%"}
+```{r}
+#| eval: false
+ggplot(
+    diamonds,
+    aes(x = carat, y = price, colour = cut)
+) +
+    geom_point(alpha = 0.1) +
+    theme_minimal() +
+    scale_colour_viridis_d(option = "magma") +
+    labs(
+        title    = "Precio según peso del diamante",
+        subtitle = "Color según calidad del corte",
+        caption  = "Fuente: conjunto de datos diamonds (ggplot2)",
+        x        = "Peso (quilates)",
+        y        = "Precio (USD)",
+        colour   = "Corte"
+    )
 ```
 :::
 
@@ -598,20 +813,51 @@ ggplot(
 ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
     geom_point(alpha = 0.1) +
     theme_minimal() +
-    scale_colour_viridis_d()
+    scale_colour_viridis_d(option = "magma") +
+    labs(
+        title    = "Precio según peso del diamante",
+        subtitle = "Color según calidad del corte",
+        caption  = "Fuente: conjunto de datos diamonds (ggplot2)",
+        x        = "Peso (quilates)",
+        y        = "Precio (USD)",
+        colour   = "Corte"
+    )
 ```
 :::
 :::::
 
 ------------------------------------------------------------------------
 
+##  {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 10 min
+:::
+
+::: actividad-title
+Modifica la figura
+:::
+
+::: actividad-desc
+Partiendo del código que acabamos de ver, cambia al menos dos cosas:
+
+:::: nonincremental
+- Las variables en `x` y/o `y` (prueba `depth`, `table`, `carat`, `price`)
+- La variable de color (`cut`, `color`, `clarity`)
+::::
+
+¿Qué relaciones encuentras?
+:::
+
+------------------------------------------------------------------------
+
 ## ¿Con qué datos seguir practicando?
 
-`ggplot2` y tidyverse incluyen varios conjuntos de datos listos para usar:
+`ggplot2` y `tidyverse` incluyen varias bases de datos listas para usar:
 
 ```{r}
 #| eval: false
-# Ver todos los conjuntos de datos disponibles en los paquetes cargados
+# Ver todas las bases de datos disponibles en los paquetes cargados
 data()
 
 # Algunos interesantes
@@ -620,7 +866,132 @@ glimpse(gapminder::gapminder) # esperanza de vida por país y año
 ```
 
 ::: tip-box
-Escribe `?mpg` o `?diamonds` en la consola para ver la descripción completa de cualquier conjunto de datos.
+Escribe `?mpg`, `?diamonds` o `?[nombre_de_los_datos]` en la consola para ver la descripción completa de cualquier base de datos.
+:::
+
+------------------------------------------------------------------------
+
+##  {background-color="#121834"}
+
+::: parte-num
+Antes de terminar...
+:::
+
+::: section-title-text
+Quiz rápido
+:::
+
+------------------------------------------------------------------------
+
+## Quiz · 1 de 5
+
+**R y RStudio son básicamente lo mismo; solo cambia el nombre.**
+
+::: nonincremental
+- a) Verdad: RStudio es el nombre oficial de R desde 2011
+- b) Verdad: son el mismo programa con dos interfaces
+- c) Falso: R es el lenguaje; RStudio es un entorno que facilita trabajar con R
+- d) Falso: R fue reemplazado por RStudio en 2015
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** R es el motor (el perro); RStudio es la pinta: un entorno cómodo para escribir y organizar código (sin R no hace nada).<br>
+![](../../imagenes/perro-r-rstudio.png){fig-align="center" height="80px"}
+:::
+:::
+
+
+------------------------------------------------------------------------
+
+## Quiz · 2 de 5
+
+**¿Qué es `sqrt` en este código?**
+
+```r
+sqrt(144)
+```
+
+::: nonincremental
+- a) Un argumento: es el valor que se le pasa a la operación
+- b) Una función: es la instrucción que le damos a R
+- c) Un objeto: es un resultado guardado en memoria
+- d) Un operador: como `+` o `<-`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** `sqrt` es una **función**: una instrucción con nombre que recibe insumos y produce un resultado. `144` es su **argumento**.
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Quiz · 3 de 5
+
+**¿Qué es `digits = 2` en este código?**
+
+```r
+round(3.14159, digits = 2)
+```
+
+::: nonincremental
+- a) Una función: calcula el número de decimales
+- b) Un objeto: guarda el valor 2 en memoria
+- c) Un argumento: le indica a `round()` cuántos decimales conservar
+- d) Un operador: asigna 2 a la variable `digits`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `digits = 2` es un **argumento**: un parámetro (es este caso con nombre "`digits`") que modifica el comportamiento de la función. `digits` es el nombre del argumento; `2` es su valor.
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Quiz · 4 de 5
+
+**¿Qué hace `<-` en este código?**
+
+```r
+resultado <- sqrt(144)
+```
+
+::: nonincremental
+- a) Compara si `resultado` y `sqrt(144)` son iguales
+- b) Imprime el resultado de `sqrt(144)` en pantalla
+- c) Define una función nueva llamada `resultado`
+- d) Guarda el resultado de `sqrt(144)` en un objeto llamado `resultado`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **d)** `<-` es el **operador de asignación**: evalúa lo que está a la derecha y guarda el resultado en el objeto nombrado a la izquierda. Después puedes usar `resultado` en cualquier parte del código.
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Quiz · 5 de 5
+
+**¿Qué tipo de cosa es `aes(x = carat, y = price)` aquí?**
+
+```r
+ggplot(diamonds, aes(x = carat, y = price))
+```
+
+::: nonincremental
+- a) Un data frame: contiene los datos de `diamonds`
+- b) Una capa geométrica: define cómo se dibujan los puntos
+- c) Un argumento de `ggplot()` que a su vez es una función
+- d) El nombre del tema visual de la figura
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `aes()` es una **función** (tiene nombre y paréntesis), pero aquí aparece *dentro* de `ggplot()` como uno de sus **argumentos**. En R, pasar funciones como argumentos de otras funciones es completamente normal ¡y hace que sea poderosísimo!
+:::
 :::
 
 ------------------------------------------------------------------------
@@ -633,7 +1004,11 @@ Experimenta cambiando:
 
 -   El tipo de geometría (`geom_point`, `geom_jitter`, `geom_col`, `geom_histogram`...)
 -   Las variables en `x`, `y`, `colour`, `size`, `shape`
--   El tema (`theme_minimal`, `theme_classic`, `theme_bw`...)
+-   El tema (`theme_minimal`, `theme_classic`, `theme_bw`, `theme_dark`...)
 -   La paleta de colores
+-   Las etiquetas con `labs()`
 
-No importa si la figura no queda perfecta. Lo importante es romper el código y ver qué pasa.
+No importa si la figura no queda perfecta. Lo importante es jugar con el código y ver qué pasa.
+
+{{< include ../_fin.qmd >}}
+

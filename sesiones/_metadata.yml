@@ -2,6 +2,7 @@ logo: ../imagenes/favicon.svg
 code-copy: false
 incremental: true
 auto-animate: true
+lightbox: true
 revealjs-plugins:
   - codefocus
 include-after-body:

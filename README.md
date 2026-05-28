@@ -1,6 +1,8 @@
 # Curso de R · Universidad El Bosque · Junio 2026
 
-![](imagenes/favicon.svg)
+<div align="center">
+  <img src="imagenes/favicon.svg" alt="favicon" width="64" />
+</div>
 
 Materiales del curso introductorio **Maneja, explora y visualiza datos con R**,
 ofrecido de forma gratuita en la Universidad El Bosque (Bogotá, Colombia).

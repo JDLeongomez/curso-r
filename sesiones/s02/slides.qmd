@@ -34,7 +34,7 @@ pinguinos <- penguins |> drop_na()
 ## Agenda
 
 - Gramática de gráficas en capas
-- Los datos del día: pingüinos de Palmer
+- Los datos que usaremos hoy: pingüinos de Palmer
 - Geometrías: distribuciones, comparaciones, conteos, tendencias
 - `aes()`: mapear variables vs. fijar valores
 - Etiquetas con `labs()`
@@ -101,11 +101,15 @@ Cambiar cualquier capa deja las demás intactas. Eso hace que el código sea mod
 
 ## Los datos del día: pingüinos de Palmer
 
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){fig-align="center" height="300px"}
+
 `palmerpenguins` contiene medidas de 344 pingüinos de tres especies en la Antártida.
 
+Instala el paquete:
+
 ```{r}
-library(palmerpenguins)
-glimpse(penguins)
+#| eval: false
+install.packages("palmerpenguins") # solo la primera vez
 ```
 
 ---
@@ -115,6 +119,7 @@ glimpse(penguins)
 `penguins` tiene algunos valores faltantes (`NA`). Los eliminamos antes de graficar.
 
 ```{r}
+library(palmerpenguins)
 # vamos a sobreescribir el objeto original para trabajar solo con los datos limpios
 pinguinos <- penguins
 pinguinos <- drop_na(penguins)
@@ -135,9 +140,54 @@ Geometrías
 
 ---
 
-## Distribuciones: `geom_histogram()`
+## Dos familias de geometrías
 
-Muestra cómo se distribuyen los valores de una variable continua.
+Cada `geom_*()` pertenece a una de dos familias según cuántas variables necesita.
+
+:::: {.columns}
+::: {.column width="50%"}
+**Una variable**: ggplot2 calcula el resto
+
+Solo defines `x`. La geometría resume los datos por ti.
+
+`x` **numérica**:
+- `geom_histogram()`: distribución continua
+- `geom_density()`: curva de densidad suavizada
+
+`x` **categórica**:
+- `geom_bar()`: contar por categoría
+:::
+
+::: {.column width="50%"}
+**Dos variables**: defines tanto `x` como `y`
+
+`y` es **siempre numérica**. Lo que cambia es `x`:
+
+- `x` **categórica** → comparar grupos
+  `geom_boxplot()`, `geom_violin()`, `geom_jitter()`
+
+- `x` **numérica** → ver relaciones
+  `geom_point()`, `geom_smooth()`, `geom_line()`
+:::
+::::
+
+---
+
+## {background-color="#225faa"}
+
+::: {.parte-num}
+Una variable · `x` numérica o categórica
+:::
+
+::: {.section-title-text}
+Distribuciones y conteos
+:::
+
+---
+
+## `geom_histogram()`: distribución continua
+
+`x` **numérica**. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -149,34 +199,32 @@ ggplot(
 ) +
     geom_histogram(
         bins   = 25,
-        fill   = "darkblue",
+        fill   = "#225faa",
         colour = "white"
     ) +
     theme_minimal()
 ```
 
 ::: {.tip-box}
-`bins` controla el número de barras. `binwidth` fija el ancho de cada barra. No uses ambos a la vez.
+`bins` fija el número de barras; `binwidth` fija el ancho de cada una. No uses ambos a la vez.
+:::
 :::
 
-:::
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(x = body_mass_g)) +
-    geom_histogram(bins = 25, fill = "darkblue", colour = "white") +
+    geom_histogram(bins = 25, fill = "#225faa", colour = "white") +
     theme_minimal()
 ```
 :::
 ::::
 
-También existe `geom_density()` para una curva de densidad suavizada.
-
 ---
 
-## Comparaciones: `geom_boxplot()`
+## `geom_density()`: curva de densidad
 
-Compara distribuciones entre grupos. Muestra mediana, cuartiles y valores extremos.
+`x` **numérica**. Versión suavizada del histograma. Útil para comparar distribuciones entre grupos.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -185,34 +233,32 @@ Compara distribuciones entre grupos. Muestra mediana, cuartiles y valores extrem
 ggplot(
     pinguinos,
     aes(
-        x = species,
-        y = body_mass_g,
+        x    = body_mass_g,
         fill = species
     )
 ) +
-    geom_boxplot() +
+    geom_density(alpha = 0.4) +
     scale_fill_viridis_d() +
     theme_minimal()
 ```
 :::
+
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
-ggplot(pinguinos, aes(x = species, y = body_mass_g, fill = species)) +
-    geom_boxplot() +
+ggplot(pinguinos, aes(x = body_mass_g, fill = species)) +
+    geom_density(alpha = 0.4) +
     scale_fill_viridis_d() +
     theme_minimal()
 ```
 :::
 ::::
 
-`geom_violin()` muestra la distribución completa en lugar de solo los cuartiles.
-
 ---
 
-## Conteos: `geom_bar()`
+## `geom_bar()`: conteos por categoría
 
-Cuenta observaciones por categoría. Solo necesita `x`.
+`x` **categórica**. Cuenta cuántas observaciones hay en cada grupo. Solo necesita `x`.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -221,17 +267,20 @@ Cuenta observaciones por categoría. Solo necesita `x`.
 ggplot(
     pinguinos,
     aes(
-        x = species,
+        x    = species,
         fill = island
     )
 ) +
-    geom_bar(
-        position = "dodge"
-    ) +
+    geom_bar(position = "dodge") +
     scale_fill_viridis_d() +
     theme_minimal()
 ```
+
+::: {.tip-box}
+`position = "dodge"` coloca las barras lado a lado. `"stack"` las apila. `"fill"` las normaliza al 100%.
 :::
+:::
+
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
@@ -243,13 +292,168 @@ ggplot(pinguinos, aes(x = species, fill = island)) +
 :::
 ::::
 
-`position = "dodge"` coloca las barras una al lado de la otra. `"stack"` las apila.
+---
+
+## {background-color="#225faa"}
+
+::: {.parte-num}
+Dos variables · `x` + `y`
+:::
+
+::: {.section-title-text}
+Relaciones y comparaciones
+:::
 
 ---
 
-## Tendencias: `geom_line()`
+## `x` categórica: comparar grupos
 
-Conecta observaciones en orden de `x`. Útil para series de tiempo.
+Cuando `x` es una variable categórica (especie, tratamiento, grupo...), las geometrías comparan la distribución de `y` entre esos grupos.
+
+:::: {.columns}
+::: {.column width="50%"}
+**`geom_boxplot()`**: Mediana, cuartiles y valores extremos de `y` por cada nivel de `x`.
+
+**`geom_violin()`**: Como boxplot, pero muestra la forma completa de la distribución.
+
+**`geom_jitter()`**: Puntos individuales con pequeño desplazamiento aleatorio para evitar que los puntos se superpongan.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g, fill = species)) +
+    geom_boxplot(alpha = 0.6) +
+    scale_fill_viridis_d() +
+    labs(x = "Especie", y = "Masa corporal (g)") +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+:::
+::::
+
+---
+
+## `geom_violin()` + `geom_jitter()`
+
+Combinar capas muestra la distribución completa y los datos individuales a la vez.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x      = species,
+        y      = body_mass_g,
+        colour = species
+    )
+) +
+    geom_violin(fill = NA) +
+    geom_jitter(
+        width = 0.2,
+        alpha = 0.4,
+        size  = 1.5
+    ) +
+    theme_minimal()
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g, colour = species)) +
+    geom_violin(fill = NA) +
+    geom_jitter(width = 0.2, alpha = 0.4, size = 1.5) +
+    theme_minimal()
+```
+:::
+::::
+
+::: {.tip-box}
+Las capas se dibujan en orden: el violín primero, los puntos encima. Cambia el orden y verás la diferencia.
+:::
+
+---
+
+## `x` numérica: ver relaciones
+
+Cuando `x` también es numérica, el objetivo es ver cómo varía `y` a medida que cambia `x`.
+
+:::: {.columns}
+::: {.column width="50%"}
+**`geom_point()`**: El diagrama de dispersión clásico. Cada fila del dataframe es un punto.
+Lo exploraremos en profundidad en la siguiente sección.
+
+**`geom_smooth()`**: Añade una línea de tendencia sobre los puntos.
+
+**`geom_line()`**: Conecta los puntos en orden de `x`. Ideal para series de tiempo.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
+    geom_point(colour = "#225faa", alpha = 0.5) +
+    geom_smooth(method = "lm", colour = "#121834", se = TRUE) +
+    labs(x = "Longitud del pico (mm)", y = "Masa corporal (g)") +
+    theme_minimal()
+```
+:::
+::::
+
+---
+
+## `geom_smooth()`: línea de tendencia
+
+Se superpone sobre `geom_point()`. El argumento `method` define el tipo de ajuste.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x      = bill_length_mm,
+        y      = body_mass_g,
+        colour = species
+    )
+) +
+    geom_point(alpha = 0.4) +
+    geom_smooth(
+        method = "lm",
+        se     = FALSE
+    ) +
+    scale_colour_viridis_d(option = "inferno") +
+    theme_minimal()
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = species)) +
+    geom_point(alpha = 0.4) +
+    geom_smooth(method = "lm", se = FALSE) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+::: {.tip-box}
+`method = "lm"` ajusta una recta. `method = "loess"` ajusta una curva suave que sigue la tendencia en zonas de x. `se = FALSE` oculta el intervalo de confianza. Cámbialo por `se = TRUE` (o borra ese argumento) para mostrarlo.
+:::
+
+---
+
+## `geom_line()`: series de tiempo
+
+Conecta observaciones en orden de `x`. Apropiado cuando el orden importa.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -268,7 +472,9 @@ ggplot(
     ) +
     theme_minimal()
 ```
+
 :::
+
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
@@ -279,49 +485,69 @@ ggplot(economics, aes(x = date, y = unemploy)) +
 :::
 ::::
 
-`economics` es un conjunto de datos incluido en ggplot2 con indicadores económicos de EE.UU.
+::: {.tip-box}
+`economics` es un conjunto de datos de `ggplot2` con indicadores económicos de EE.UU.
+:::
 
 ---
 
-## Combinar capas geométricas
+## ¿Qué geometría usar? {.smaller}
 
-Se pueden sumar varios `geom_*()` en la misma figura.
+Algunas sugerencias, pero ¡siempre puedes experimentar!
+
+| Función | x | y | Cuándo usarla |
+|---|---|---|---|
+| `geom_histogram()` | 📏 numérica | — | Distribución de una variable continua |
+| `geom_density()` | 📏 numérica | — | Como histogram, suavizado; útil para comparar grupos |
+| `geom_bar()` | 📶 categórica | — | Contar observaciones por categoría |
+| `geom_boxplot()` | 📶 categórica | 📏 numérica | Comparar distribuciones entre grupos (mediana y rango) |
+| `geom_violin()` | 📶 categórica | 📏 numérica | Como boxplot, muestra la forma completa de la distribución |
+| `geom_jitter()` | 📶 categórica | 📏 numérica | Puntos individuales, evita solapamiento |
+| `geom_point()` | 📏 numérica | 📏 numérica | Relación entre dos variables numéricas (dispersión) |
+| `geom_smooth()` | 📏 numérica | 📏 numérica | Línea de tendencia sobre un diagrama de puntos |
+| `geom_line()` | 📆 tiempo / orden | 📏 numérica | Series de tiempo o datos ordenados |
+
+---
+
+## ¿Qué geometría usar? {.smaller}
+
+::: {.tip-box}
+`ggplot2` tiene muchísimas geometrías más para distintos propósitos: mapas, gráficos de red, etc. Consulta la [documentación oficial](https://ggplot2.tidyverse.org/reference/index.html) para verlas.
+:::
 
 :::: {.columns}
+
 ::: {.column width="50%"}
-```{r}
-#| eval: false
-ggplot(
-    pinguinos,
-    aes(
-        x = species,
-        y = body_mass_g,
-        colour = species
-    )
-) +
-    geom_violin(fill = NA) +
-    geom_jitter(
-        width = 0.2,
-        alpha = 0.4,
-        size  = 1.5
-    ) +
-    scale_colour_viridis_d() +
-    theme_minimal()
-```
+![](https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png){fig-align="center" width="90%"}
 :::
+
 ::: {.column width="50%"}
-```{r}
-#| echo: false
-ggplot(pinguinos, aes(x = species, y = body_mass_g, colour = species)) +
-    geom_violin(fill = NA) +
-    geom_jitter(width = 0.2, alpha = 0.4, size = 1.5) +
-    scale_colour_viridis_d() +
-    theme_minimal()
-```
+![](https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png){fig-align="center" width="70%"}
 :::
+
 ::::
 
-Las capas se dibujan en el orden en que se declaran. El violín va primero, los puntos encima.
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 10 min
+:::
+
+::: actividad-title
+Tres figuras, tres geometrías
+:::
+
+::: {.actividad-desc .nonincremental}
+Con el dataset `pinguinos`, crea una figura de cada tipo:
+
+1. **Distribución** de una variable numérica (solo `x`)
+2. **Comparación** de una numérica entre grupos (`x` categórica + `y` numérica)
+3. **Relación** entre dos variables numéricas (`x` y `y` numéricas)
+
+Añade `theme_minimal()` y un título con `labs()`.
+:::
 
 ---
 
@@ -418,16 +644,24 @@ Todos los puntos tienen el mismo color, tamaño y transparencia.
 geom_point(aes(colour = "blue"))
 ```
 
+:::: {.columns}
+
+::: {.column width="60%"}
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
     geom_point(aes(colour = "blue")) +
     theme_minimal()
 ```
+:::
 
+::: {.column  width="40%"}
 ::: {.tip-box}
 `aes(colour = "blue")` crea una categoría llamada `"blue"` y le asigna el primer color de la paleta por defecto. Para fijar un color, escríbelo fuera de `aes()`: `geom_point(colour = "blue")`.
 :::
+:::
+
+::::
 
 ---
 
@@ -452,7 +686,6 @@ ggplot(
         alpha = 0.7,
         size  = 2.5
     ) +
-    scale_colour_viridis_d() +
     theme_minimal()
 ```
 :::
@@ -463,14 +696,31 @@ ggplot(pinguinos, aes(
     x = bill_length_mm, y = body_mass_g,
     colour = species, shape = species
 )) +
-    geom_point(alpha = 0.7, size = 2.5) +
-    scale_colour_viridis_d() +
+    geom_point(alpha = 0.7, size = 3) +
     theme_minimal()
 ```
 :::
 ::::
 
 Mapear `colour` y `shape` a la misma variable mejora la accesibilidad: la figura es legible incluso en escala de grises.
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 3 min
+:::
+
+::: actividad-title
+El reto del color rojo
+:::
+
+::: {.actividad-desc .nonincremental}
+Crea un scatterplot de `bill_length_mm` vs `body_mass_g` en `pinguinos` donde **todos** los puntos sean rojos.
+
+- ¿Cómo lo harías?
+:::
 
 ---
 
@@ -611,15 +861,10 @@ ggplot(
     scale_fill_viridis_d() +
     theme_minimal() +
     theme(
-        legend.position = "none",
+        legend.position  = "none",
         panel.grid.minor = element_blank(),
-        axis.title = element_text(
-            size = 12,
-            face = "bold"
-        ),
-        plot.title = element_text(
-            hjust = 0.5
-        )
+        axis.title       = element_text(size = 12, face = "bold"),
+        plot.title       = element_text(hjust = 0.5)
     )
 ```
 :::
@@ -674,16 +919,16 @@ scale_colour_brewer(palette = "Set2") # discreta
 scale_fill_brewer(palette = "Blues") # continua
 
 # Manual: colores definidos a mano
-scale_colour_manual(
-    values = c("#121834", "#225faa", "#ddeaf8")
-)
+scale_colour_manual(values = c("#121834", "#225faa", "#ddeaf8"))
 ```
 
 ::: {.tip-box}
-Usa `scale_colour_*()` cuando el mapping es `colour =` y `scale_fill_*()` cuando es `fill =`. Son funciones distintas.
+Usa `scale_colour_*()` para estéticas `colour=` y `scale_fill_*()` para `fill=`. Algunas geoms tienen borde (`colour`) y relleno (`fill`); otras solo usan `colour`.
 :::
 
-HEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos. Por ejemplo, `#225faa` es un azul específico. En Google busca "selector de color" para obtener el código HEX de cualquier color.
+::: {.fragment .smaller}
+HEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos (precedido por `#`). Por ejemplo, `#225faa` es un azul específico. En Google busca "selector de color" para obtener el código HEX de cualquier color.
+:::
 
 ---
 
@@ -750,9 +995,7 @@ ggplot(
         alpha = 0.7,
         size  = 2
     ) +
-    facet_wrap(~species) +
-    scale_colour_viridis_d() +
-    theme_minimal()
+    facet_wrap(~species)
 ```
 :::
 ::: {.column width="50%"}
@@ -760,9 +1003,7 @@ ggplot(
 #| echo: false
 ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = sex)) +
     geom_point(alpha = 0.7, size = 2) +
-    facet_wrap(~species) +
-    scale_colour_viridis_d() +
-    theme_minimal()
+    facet_wrap(~species)
 ```
 :::
 ::::
@@ -790,7 +1031,7 @@ ggplot(
         size   = 1.5
     ) +
     facet_grid(sex ~ species) +
-    theme_minimal()
+    theme_linedraw()
 ```
 :::
 ::: {.column width="50%"}
@@ -799,7 +1040,7 @@ ggplot(
 ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
     geom_point(colour = "#225faa", alpha = 0.6, size = 1.5) +
     facet_grid(sex ~ species) +
-    theme_minimal()
+    theme_linedraw()
 ```
 :::
 ::::
@@ -824,6 +1065,9 @@ Guardar figuras
 
 Guarda la última figura generada (o la que especifiques) en el formato que elijas.
 
+:::: {.columns}
+
+::: {.column width="60%"}
 ```{r}
 #| eval: false
 mi_figura <- ggplot(
@@ -851,10 +1095,15 @@ ggsave("figuras/pinguinos.pdf",
     units = "cm"
 )
 ```
+:::
 
+::: {.column width="40%"}
 ::: {.tip-box}
 `dpi = 300` es el estándar para publicación impresa. Para pantalla, `dpi = 150` es suficiente. `units = "cm"` permite especificar el tamaño exacto que pedirá la revista.
 :::
+:::
+
+::::
 
 ---
 
@@ -863,7 +1112,7 @@ ggsave("figuras/pinguinos.pdf",
 Todo lo visto en una sola figura.
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="43%"}
 ```{r}
 #| eval: false
 ggplot(
@@ -877,28 +1126,27 @@ ggplot(
 ) +
     geom_point(alpha = 0.6, size = 2) +
     geom_smooth(
-        method    = "lm",
-        se        = FALSE,
+        method = "lm",
+        se = FALSE,
         linewidth = 0.8
     ) +
     facet_wrap(~island) +
-    scale_colour_viridis_d(
-        name = "Especie"
+    scale_colour_brewer(
+        name = "Especie",
+        palette = "Dark2"
     ) +
-    scale_shape_discrete(
-        name = "Especie"
-    ) +
+    scale_shape_discrete(name = "Especie") +
     labs(
-        title   = "Masa y pico por isla",
-        x       = "Longitud del pico (mm)",
-        y       = "Masa corporal (g)",
+        title = "Masa y pico por isla",
+        x = "Longitud del pico (mm)",
+        y = "Masa corporal (g)",
         caption = "Datos: Horst et al. (2020)"
     ) +
-    theme_minimal() +
+    theme_linedraw() +
     theme(legend.position = "bottom")
 ```
 :::
-::: {.column width="50%"}
+::: {.column width="57%"}
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(
@@ -908,7 +1156,7 @@ ggplot(pinguinos, aes(
     geom_point(alpha = 0.6, size = 2) +
     geom_smooth(method = "lm", se = FALSE, linewidth = 0.8) +
     facet_wrap(~island) +
-    scale_colour_viridis_d(name = "Especie") +
+    scale_colour_brewer(name = "Especie", palette = "Dark2") +
     scale_shape_discrete(name = "Especie") +
     labs(
         title   = "Masa y pico por isla",
@@ -916,8 +1164,149 @@ ggplot(pinguinos, aes(
         y       = "Masa corporal (g)",
         caption = "Datos: Horst et al. (2020)"
     ) +
-    theme_minimal() +
+    theme_linedraw() +
     theme(legend.position = "bottom")
 ```
 :::
 ::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Antes de terminar...
+:::
+
+::: section-title-text
+Quiz rápido
+:::
+
+---
+
+## Quiz · 1 de 5
+
+**¿De qué color quedan los puntos con este código?**
+
+```r
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
+    geom_point(aes(colour = "blue"))
+```
+
+::: nonincremental
+- a) Azul: le pasamos el texto `"blue"` como color
+- b) El primer color de la paleta por defecto de ggplot2
+- c) Transparente: dentro de `aes()` no se puede fijar un color
+- d) Rojo: siempre usa el primer color de la paleta activa
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** `aes(colour = "blue")` crea una categoría llamada `"blue"` y le asigna el primer color de la paleta por defecto. Para fijar azul de verdad: `geom_point(colour = "blue")`, fuera de `aes()`.
+:::
+:::
+
+---
+
+## Quiz · 2 de 5
+
+**¿Qué función de escala Viridis completaría correctamente esta figura?**
+
+```{r}
+#| eval: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g, colour = island)) +
+    geom_jitter() + 
+    ???
+```
+
+::: nonincremental
+- a) `scale_colour_viridis_d()`: `island`  es categórica, pero el mapping es `colour`
+- b) `scale_fill_viridis_c()`:  el mapping es `colour`, pero `island` no es continua
+- c) `scale_fill_viridis_d()`: el mapping es `colour` e `island` es categórica
+- d) `scale_fill_viridis_b()`: `_b` es para variables continuas en intervalos
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** Dos reglas: la función debe coincidir con la estética (`colour` → `scale_colour_*`), y el sufijo con el tipo de variable (`island` es categórica → `_d`).
+:::
+:::
+
+---
+
+## Quiz · 3 de 5
+
+**¿Cuál es la diferencia principal entre `geom_boxplot()` y `geom_violin()`?**
+
+::: nonincremental
+- a) Son idénticos: solo cambia la forma visual
+- b) `geom_boxplot()` muestra mediana y cuartiles; `geom_violin()` muestra la forma completa de la distribución
+- c) `geom_violin()` es para variables continuas; `geom_boxplot()` para categóricas
+- d) `geom_boxplot()` necesita `x` e `y`; `geom_violin()` solo necesita `x`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** El boxplot resume la distribución en cinco números. El violín muestra toda la forma (incluyendo si hay uno o dos picos, colas, etc. Por eso se combinan bien).
+:::
+:::
+
+---
+
+## Quiz · 4 de 5
+
+**¿Qué produce `facet_wrap(~species)` en una figura de `pinguinos`?**
+
+::: nonincremental
+- a) Colorea cada especie con un color distinto
+- b) Filtra las observaciones sin especie identificada
+- c) Tres paneles separados, uno por cada especie
+- d) Una tabla con el conteo de observaciones por especie
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `facet_wrap()` divide la figura en paneles, uno por cada valor único de la variable indicada. Con `~species` y tres especies, obtienes tres paneles con la misma escala.
+:::
+:::
+
+---
+
+## Quiz · 5 de 5
+
+**¿Para qué sirve `labs()` en una figura de ggplot2?**
+
+::: nonincremental
+- a) Carga las librerías necesarias para graficar
+- b) Controla la escala de los ejes (logarítmica, invertida, etc.)
+- c) Define el tipo de geometría que se va a dibujar
+- d) Controla todos los textos: título, subtítulo, ejes, leyenda y nota al pie
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **d)** `labs()` gestiona todos los textos de la figura. Sin `labs()`, los ejes muestran el nombre de la variable tal como está en la base de datos y no hay título.
+:::
+:::
+
+---
+
+## A practicar
+
+Antes de la próxima sesión, usa el dataset `gapminder` para crear una figura que explore la relación entre esperanza de vida y PIB per cápita.
+
+```{r}
+#| eval: false
+library(gapminder)
+glimpse(gapminder)
+```
+
+Experimenta con:
+
+- Color por continente (`colour = continent`)
+- Facetas por año (`facet_wrap(~year)`) o filtra un año concreto
+- Escala logarítmica en x: `scale_x_log10()`
+- `labs()` con título, ejes y fuente
+- `ggsave()` para guardar el resultado
+
+{{< include ../_fin.qmd >}}

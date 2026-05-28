@@ -6,6 +6,7 @@
 $c-navy:       #121834;
 $c-blue:       #225faa;
 $c-blue-light: #ddeaf8;
+$c-activity:   #6b1220;
 $c-lavender:   #eeedfe;
 $c-gray-bg:    #f5f5f3;
 $c-text:       #1e1e1e;
@@ -111,12 +112,24 @@ $blockMargin:                18px;
 
 // Caja personalizada "tip" reutilizable como div
 .reveal .tip-box {
-  background-color: $c-blue-light;
+  background-color: $c-navy;
   border-left: 5px solid $c-blue;
   border-radius: 0 6px 6px 0;
   padding: 10px 16px;
   font-size: 0.88em;
   margin: 0.6em 0;
+  color: rgba(255, 255, 255, 0.9);
+
+  code {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: $c-blue-light;
+  }
+
+  > *:first-child::before {
+    content: "💡";
+    margin-right: 0.45em;
+    font-size: 0.95em;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -225,4 +238,65 @@ section.has-dark-background {
 .reveal .columns {
   gap: 1.5em;
   align-items: start;
+}
+
+// ---------------------------------------------------------------------------
+// Quiz: respuesta correcta revelada con fragmento
+// ---------------------------------------------------------------------------
+.reveal .respuesta {
+  background-color: #1a5c38;
+  border-left: 5px solid #6fcf97;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.9em;
+  margin-top: 0.8em;
+  color: rgba(255, 255, 255, 0.95);
+
+  code {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Diapositivas de actividad
+// Uso: ## {background-color="#6b1220" .actividad}
+// ---------------------------------------------------------------------------
+section.actividad.has-dark-background {
+  h2 { display: none; }
+
+  .actividad-num {
+    font-size: 0.42em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 0.3em;
+  }
+
+  .actividad-title {
+    font-size: 1.75em;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    border-left: 5px solid rgba(255, 255, 255, 0.4);
+    padding-left: 16px;
+  }
+
+  .actividad-desc {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.6;
+    padding-left: 21px;
+    margin-top: 0.2em;
+
+    code {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+  }
 }
