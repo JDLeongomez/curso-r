@@ -1,0 +1,923 @@
+---
+title: "Sesión 2"
+subtitle: "ggplot2: la gramática de las gráficas"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-04"
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    footer: "Curso de R · Universidad El Bosque · Junio 2026"
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    transition-speed: fast
+    width: 1280
+    height: 720
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(palmerpenguins)
+pinguinos <- penguins |> drop_na()
+```
+
+## Agenda
+
+- Gramática de gráficas en capas
+- Los datos del día: pingüinos de Palmer
+- Geometrías: distribuciones, comparaciones, conteos, tendencias
+- `aes()`: mapear variables vs. fijar valores
+- Etiquetas con `labs()`
+- Temas y personalización con `theme()`
+- Paletas de colores
+- Facetas: `facet_wrap()` y `facet_grid()`
+- Guardar figuras con `ggsave()`
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 1
+:::
+
+::: {.section-title-text}
+La gramática de las gráficas
+:::
+
+---
+
+## ggplot2 y la gramática de capas
+
+ggplot2 implementa la *Grammar of Graphics* de Wilkinson: una figura se construye sumando capas independientes.
+
+```{=html}
+<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:20px 0 10px 0;">
+  <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:6px; padding:10px 16px; text-align:center; min-width:110px;">
+    <div style="font-size:0.62em; color:#666; margin-bottom:3px;">①</div>
+    <div style="font-weight:700; color:#225faa; font-size:0.85em; font-family:monospace;">datos</div>
+  </div>
+  <div style="font-size:1.8em; color:#225faa; font-weight:300;">+</div>
+  <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:6px; padding:10px 16px; text-align:center; min-width:110px;">
+    <div style="font-size:0.62em; color:#666; margin-bottom:3px;">②</div>
+    <div style="font-weight:700; color:#225faa; font-size:0.85em; font-family:monospace;">aes()</div>
+  </div>
+  <div style="font-size:1.8em; color:#225faa; font-weight:300;">+</div>
+  <div style="background:#121834; border-radius:6px; padding:10px 16px; text-align:center; min-width:110px;">
+    <div style="font-size:0.62em; color:#aaa; margin-bottom:3px;">③</div>
+    <div style="font-weight:700; color:#fff; font-size:0.85em; font-family:monospace;">geom_*()</div>
+  </div>
+  <div style="font-size:1.8em; color:#225faa; font-weight:300;">+</div>
+  <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:6px; padding:10px 16px; text-align:center; min-width:110px;">
+    <div style="font-size:0.62em; color:#666; margin-bottom:3px;">④</div>
+    <div style="font-weight:700; color:#225faa; font-size:0.85em; font-family:monospace;">scale_*()</div>
+  </div>
+  <div style="font-size:1.8em; color:#225faa; font-weight:300;">+</div>
+  <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:6px; padding:10px 16px; text-align:center; min-width:110px;">
+    <div style="font-size:0.62em; color:#666; margin-bottom:3px;">⑤</div>
+    <div style="font-weight:700; color:#225faa; font-size:0.85em; font-family:monospace;">facet_*()</div>
+  </div>
+  <div style="font-size:1.8em; color:#225faa; font-weight:300;">+</div>
+  <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:6px; padding:10px 16px; text-align:center; min-width:110px;">
+    <div style="font-size:0.62em; color:#666; margin-bottom:3px;">⑥</div>
+    <div style="font-weight:700; color:#225faa; font-size:0.85em; font-family:monospace;">theme()</div>
+  </div>
+</div>
+```
+
+Cambiar cualquier capa deja las demás intactas. Eso hace que el código sea modular y fácil de modificar.
+
+---
+
+## Los datos del día: pingüinos de Palmer
+
+`palmerpenguins` contiene medidas de 344 pingüinos de tres especies en la Antártida.
+
+```{r}
+library(palmerpenguins)
+glimpse(penguins)
+```
+
+---
+
+## Preparar los datos
+
+`penguins` tiene algunos valores faltantes (`NA`). Los eliminamos antes de graficar.
+
+```{r}
+# vamos a sobreescribir el objeto original para trabajar solo con los datos limpios
+pinguinos <- penguins
+pinguinos <- drop_na(penguins)
+glimpse(pinguinos)
+```
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 2
+:::
+
+::: {.section-title-text}
+Geometrías
+:::
+
+---
+
+## Distribuciones: `geom_histogram()`
+
+Muestra cómo se distribuyen los valores de una variable continua.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(x = body_mass_g)
+) +
+    geom_histogram(
+        bins   = 25,
+        fill   = "darkblue",
+        colour = "white"
+    ) +
+    theme_minimal()
+```
+
+::: {.tip-box}
+`bins` controla el número de barras. `binwidth` fija el ancho de cada barra. No uses ambos a la vez.
+:::
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = body_mass_g)) +
+    geom_histogram(bins = 25, fill = "darkblue", colour = "white") +
+    theme_minimal()
+```
+:::
+::::
+
+También existe `geom_density()` para una curva de densidad suavizada.
+
+---
+
+## Comparaciones: `geom_boxplot()`
+
+Compara distribuciones entre grupos. Muestra mediana, cuartiles y valores extremos.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = species,
+        y = body_mass_g,
+        fill = species
+    )
+) +
+    geom_boxplot() +
+    scale_fill_viridis_d() +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g, fill = species)) +
+    geom_boxplot() +
+    scale_fill_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+`geom_violin()` muestra la distribución completa en lugar de solo los cuartiles.
+
+---
+
+## Conteos: `geom_bar()`
+
+Cuenta observaciones por categoría. Solo necesita `x`.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = species,
+        fill = island
+    )
+) +
+    geom_bar(
+        position = "dodge"
+    ) +
+    scale_fill_viridis_d() +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, fill = island)) +
+    geom_bar(position = "dodge") +
+    scale_fill_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+`position = "dodge"` coloca las barras una al lado de la otra. `"stack"` las apila.
+
+---
+
+## Tendencias: `geom_line()`
+
+Conecta observaciones en orden de `x`. Útil para series de tiempo.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    economics,
+    aes(
+        x = date,
+        y = unemploy
+    )
+) +
+    geom_line(
+        colour    = "#225faa",
+        linewidth = 0.8
+    ) +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(economics, aes(x = date, y = unemploy)) +
+    geom_line(colour = "#225faa", linewidth = 0.8) +
+    theme_minimal()
+```
+:::
+::::
+
+`economics` es un conjunto de datos incluido en ggplot2 con indicadores económicos de EE.UU.
+
+---
+
+## Combinar capas geométricas
+
+Se pueden sumar varios `geom_*()` en la misma figura.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = species,
+        y = body_mass_g,
+        colour = species
+    )
+) +
+    geom_violin(fill = NA) +
+    geom_jitter(
+        width = 0.2,
+        alpha = 0.4,
+        size  = 1.5
+    ) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g, colour = species)) +
+    geom_violin(fill = NA) +
+    geom_jitter(width = 0.2, alpha = 0.4, size = 1.5) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+Las capas se dibujan en el orden en que se declaran. El violín va primero, los puntos encima.
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 3
+:::
+
+::: {.section-title-text}
+`aes()`: mapear vs. fijar
+:::
+
+---
+
+## Dentro de `aes()`: variable → estética
+
+Cuando una estética depende de los datos, va **dentro de `aes()`**.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g,
+        colour = species
+    )
+) +
+    geom_point(alpha = 0.7) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = species)) +
+    geom_point(alpha = 0.7) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+Cada especie recibe un color distinto según los datos.
+
+---
+
+## Fuera de `aes()`: valor fijo para todos
+
+Cuando la estética es un valor constante, va **fuera de `aes()`**, directamente en el `geom_*()`.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g
+    )
+) +
+    geom_point(
+        colour = "#225faa",
+        size   = 2,
+        alpha  = 0.6
+    ) +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
+    geom_point(colour = "#225faa", size = 2, alpha = 0.6) +
+    theme_minimal()
+```
+:::
+::::
+
+Todos los puntos tienen el mismo color, tamaño y transparencia.
+
+---
+
+## El error más común con `aes()`
+
+```{r}
+#| eval: false
+# ❌ Esto NO pinta los puntos de azul
+geom_point(aes(colour = "blue"))
+```
+
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
+    geom_point(aes(colour = "blue")) +
+    theme_minimal()
+```
+
+::: {.tip-box}
+`aes(colour = "blue")` crea una categoría llamada `"blue"` y le asigna el primer color de la paleta por defecto. Para fijar un color, escríbelo fuera de `aes()`: `geom_point(colour = "blue")`.
+:::
+
+---
+
+## Múltiples mappings en `aes()`
+
+Se pueden mapear varias variables a distintas estéticas simultáneamente.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g,
+        colour = species,
+        shape = species
+    )
+) +
+    geom_point(
+        alpha = 0.7,
+        size  = 2.5
+    ) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(
+    x = bill_length_mm, y = body_mass_g,
+    colour = species, shape = species
+)) +
+    geom_point(alpha = 0.7, size = 2.5) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+Mapear `colour` y `shape` a la misma variable mejora la accesibilidad: la figura es legible incluso en escala de grises.
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 4
+:::
+
+::: {.section-title-text}
+Etiquetas con `labs()`
+:::
+
+---
+
+## `labs()`: títulos y etiquetas
+
+`labs()` controla todos los textos de la figura: título, subtítulo, ejes, leyenda y nota al pie.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g,
+        colour = species
+    )
+) +
+    geom_point(alpha = 0.7) +
+    scale_colour_viridis_d() +
+    labs(
+        title    = "Masa corporal y longitud del pico",
+        subtitle = "Pingüinos de Palmer, Antártida",
+        x        = "Longitud del pico (mm)",
+        y        = "Masa corporal (g)",
+        colour   = "Especie",
+        caption  = "Datos: Horst, Hill & Gorman (2020)"
+    ) +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = species)) +
+    geom_point(alpha = 0.7) +
+    scale_colour_viridis_d() +
+    labs(
+        title    = "Masa corporal y longitud del pico",
+        subtitle = "Pingüinos de Palmer, Antártida",
+        x        = "Longitud del pico (mm)",
+        y        = "Masa corporal (g)",
+        colour   = "Especie",
+        caption  = "Datos: Horst, Hill & Gorman (2020)"
+    ) +
+    theme_minimal()
+```
+:::
+::::
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 5
+:::
+
+::: {.section-title-text}
+Temas y personalización
+:::
+
+---
+
+## Temas incorporados
+
+ggplot2 incluye varios temas listos para usar.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+# Los más usados
+theme_minimal() # limpio, sin fondo gris
+theme_classic() # ejes sin cuadrícula
+theme_bw() # fondo blanco con cuadrícula
+theme_void() # sin ejes ni cuadrícula
+theme_dark() # fondo oscuro
+```
+
+Aplícalos sumándolos a la figura:
+
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = species,
+        y = body_mass_g
+    )
+) +
+    geom_boxplot() +
+    theme_classic()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g)) +
+    geom_boxplot(fill = "#ddeaf8", colour = "#225faa") +
+    theme_classic()
+```
+:::
+::::
+
+---
+
+## Personalizar con `theme()`
+
+`theme()` permite ajustar cualquier elemento visual de la figura.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = species,
+        y = body_mass_g,
+        fill = species
+    )
+) +
+    geom_boxplot() +
+    scale_fill_viridis_d() +
+    theme_minimal() +
+    theme(
+        legend.position = "none",
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(
+            size = 12,
+            face = "bold"
+        ),
+        plot.title = element_text(
+            hjust = 0.5
+        )
+    )
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = species, y = body_mass_g, fill = species)) +
+    geom_boxplot() +
+    scale_fill_viridis_d() +
+    theme_minimal() +
+    theme(
+        legend.position  = "none",
+        panel.grid.minor = element_blank(),
+        axis.title       = element_text(size = 12, face = "bold"),
+        plot.title       = element_text(hjust = 0.5)
+    )
+```
+:::
+::::
+
+::: {.tip-box}
+`element_blank()` elimina un elemento. `element_text()` controla fuente, tamaño y color. `element_line()` y `element_rect()` hacen lo propio con líneas y rectángulos.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 6
+:::
+
+::: {.section-title-text}
+Paletas de colores
+:::
+
+---
+
+## `scale_colour_*()` y `scale_fill_*()`
+
+Las funciones `scale_*()` controlan cómo se mapean los datos a las estéticas visuales.
+
+```{r}
+#| eval: false
+# Viridis: perceptualmente uniforme, apto para daltonismo
+scale_colour_viridis_d() # variable discreta
+scale_colour_viridis_c() # variable continua
+scale_colour_viridis_d(option = "plasma") # variante: magma, plasma, inferno, cividis
+
+# ColorBrewer: paletas curadas para cartografía y visualización
+scale_colour_brewer(palette = "Set2") # discreta
+scale_fill_brewer(palette = "Blues") # continua
+
+# Manual: colores definidos a mano
+scale_colour_manual(
+    values = c("#121834", "#225faa", "#ddeaf8")
+)
+```
+
+::: {.tip-box}
+Usa `scale_colour_*()` cuando el mapping es `colour =` y `scale_fill_*()` cuando es `fill =`. Son funciones distintas.
+:::
+
+HEX es un formato de color que combina rojo, verde y azul en un código de 6 dígitos. Por ejemplo, `#225faa` es un azul específico. En Google busca "selector de color" para obtener el código HEX de cualquier color.
+
+---
+
+## Comparación de paletas
+
+:::: {.columns}
+::: {.column width="50%"}
+**Viridis**
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = species)) +
+    geom_point(alpha = 0.7, size = 2) +
+    scale_colour_viridis_d() +
+    labs(title = "scale_colour_viridis_d()", colour = "Especie") +
+    theme_minimal() +
+    theme(plot.title = element_text(size = 11, face = "bold"))
+```
+:::
+::: {.column width="50%"}
+**ColorBrewer Set2**
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = species)) +
+    geom_point(alpha = 0.7, size = 2) +
+    scale_colour_brewer(palette = "Set2") +
+    labs(title = 'scale_colour_brewer(palette = "Set2")', colour = "Especie") +
+    theme_minimal() +
+    theme(plot.title = element_text(size = 11, face = "bold"))
+```
+:::
+::::
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 7
+:::
+
+::: {.section-title-text}
+Facetas
+:::
+
+---
+
+## `facet_wrap()`: un panel por categoría
+
+Divide la figura en paneles según los valores de una variable.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g,
+        colour = sex
+    )
+) +
+    geom_point(
+        alpha = 0.7,
+        size  = 2
+    ) +
+    facet_wrap(~species) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g, colour = sex)) +
+    geom_point(alpha = 0.7, size = 2) +
+    facet_wrap(~species) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+```
+:::
+::::
+
+---
+
+## `facet_grid()`: dos variables, filas y columnas
+
+Organiza los paneles en una cuadrícula con una variable por eje.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g
+    )
+) +
+    geom_point(
+        colour = "#225faa",
+        alpha  = 0.6,
+        size   = 1.5
+    ) +
+    facet_grid(sex ~ species) +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
+    geom_point(colour = "#225faa", alpha = 0.6, size = 1.5) +
+    facet_grid(sex ~ species) +
+    theme_minimal()
+```
+:::
+::::
+
+La sintaxis `filas ~ columnas` define qué variable va en cada dimensión.
+
+---
+
+## {background-color="#121834"}
+
+::: {.parte-num}
+Parte 8
+:::
+
+::: {.section-title-text}
+Guardar figuras
+:::
+
+---
+
+## `ggsave()`
+
+Guarda la última figura generada (o la que especifiques) en el formato que elijas.
+
+```{r}
+#| eval: false
+mi_figura <- ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm, y = body_mass_g,
+        colour = species, shape = species
+    )
+) +
+    geom_point(alpha = 0.7, size = 2) +
+    scale_colour_viridis_d() +
+    theme_minimal()
+
+# PNG para presentaciones y web
+ggsave("figuras/pinguinos.png",
+    plot  = mi_figura,
+    width = 16, height = 10,
+    units = "cm", dpi = 300
+)
+
+# PDF para publicaciones (vectorial, escala sin pérdida)
+ggsave("figuras/pinguinos.pdf",
+    plot = mi_figura,
+    width = 16, height = 10,
+    units = "cm"
+)
+```
+
+::: {.tip-box}
+`dpi = 300` es el estándar para publicación impresa. Para pantalla, `dpi = 150` es suficiente. `units = "cm"` permite especificar el tamaño exacto que pedirá la revista.
+:::
+
+---
+
+## La figura completa
+
+Todo lo visto en una sola figura.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(
+        x = bill_length_mm,
+        y = body_mass_g,
+        colour = species,
+        shape = species
+    )
+) +
+    geom_point(alpha = 0.6, size = 2) +
+    geom_smooth(
+        method    = "lm",
+        se        = FALSE,
+        linewidth = 0.8
+    ) +
+    facet_wrap(~island) +
+    scale_colour_viridis_d(
+        name = "Especie"
+    ) +
+    scale_shape_discrete(
+        name = "Especie"
+    ) +
+    labs(
+        title   = "Masa y pico por isla",
+        x       = "Longitud del pico (mm)",
+        y       = "Masa corporal (g)",
+        caption = "Datos: Horst et al. (2020)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+ggplot(pinguinos, aes(
+    x = bill_length_mm, y = body_mass_g,
+    colour = species, shape = species
+)) +
+    geom_point(alpha = 0.6, size = 2) +
+    geom_smooth(method = "lm", se = FALSE, linewidth = 0.8) +
+    facet_wrap(~island) +
+    scale_colour_viridis_d(name = "Especie") +
+    scale_shape_discrete(name = "Especie") +
+    labs(
+        title   = "Masa y pico por isla",
+        x       = "Longitud del pico (mm)",
+        y       = "Masa corporal (g)",
+        caption = "Datos: Horst et al. (2020)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+```
+:::
+::::

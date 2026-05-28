@@ -137,9 +137,9 @@ No se requieren conocimientos previos de programación ni estadística.
   <img src="https://jdleongomez.info/es/author/juan-david-leongomez/avatar_hua6ee7dd946481ff7fe1f6bbb7dccd5d3_86773_270x270_fill_q90_lanczos_center.jpg"
        width="56" height="56"
        style="border-radius:50%; object-fit:cover; flex-shrink:0; margin-top:2px;"
-       alt="Juan David Leóngomez" />
+       alt="Juan David Leongómez" />
   <div>
-    <div style="font-weight:700; color:#121834; margin-bottom:4px;">Juan David Leóngomez</div>
+    <div style="font-weight:700; color:#121834; margin-bottom:4px;">Juan David Leongómez</div>
     <p style="margin:0; font-size:0.9em; color:#444; line-height:1.65;">
       Profesor Asociado e investigador de la Universidad El Bosque, investigador de
       <a href="https://jdleongomez.info/es/lab/"><em>EvoCo</em></a>

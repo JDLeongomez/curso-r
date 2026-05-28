@@ -12,4 +12,6 @@
 # OS
 .DS_Store
 Thumbs.db
+.cl*/
 **/*.quarto_ipynb
+.positai

@@ -102,48 +102,6 @@ $blockMargin:                18px;
 }
 
 // ---------------------------------------------------------------------------
-// Código
-// ---------------------------------------------------------------------------
-.reveal pre {
-  width: 100%;
-  margin: 0.5em 0;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
-  border: 1px solid $c-border;
-
-  code {
-    font-family: $codeFont;
-    font-size: 0.78em;
-    padding: 0.8em 1em;
-    line-height: 1.55;
-  }
-}
-
-// Código inline
-.reveal code:not(pre code) {
-  background-color: $c-lavender;
-  color: $c-blue;
-  font-family: $codeFont;
-  font-size: 0.82em;
-  padding: 0.1em 0.4em;
-  border-radius: 3px;
-}
-
-// ---------------------------------------------------------------------------
-// Output de código (bloques .cell-output)
-// ---------------------------------------------------------------------------
-.reveal .cell-output {
-  background-color: $c-gray-bg;
-  border-left: 4px solid $c-blue;
-  border-radius: 0 6px 6px 0;
-  font-family: $codeFont;
-  font-size: 0.72em;
-  padding: 0.7em 1em;
-  margin-top: 0.3em;
-  color: #2a2a2a;
-}
-
-// ---------------------------------------------------------------------------
 // Callouts y cajas de énfasis
 // ---------------------------------------------------------------------------
 .reveal .callout {

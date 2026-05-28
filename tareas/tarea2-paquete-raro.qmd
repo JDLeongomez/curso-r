@@ -6,7 +6,7 @@ format: html
 
 ## El reto
 
-R tiene más de 21 000 paquetes en CRAN y miles más en GitHub.
+R tiene más de 23 000 paquetes en CRAN y miles más en GitHub.
 Algunos son serios y ampliamente usados. Otros hacen cosas absurdas,
 inesperadas o simplemente raras, y eso los hace fascinantes.
 

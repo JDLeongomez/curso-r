@@ -1,7 +1,7 @@
 ---
 title: "Sesión 1"
 subtitle: "Introducción a R y RStudio"
-author: "Juan David Leóngomez"
+author: "Juan David Leongómez"
 institute: "Universidad El Bosque"
 date: "2026-06-03"
 lang: es
@@ -26,38 +26,37 @@ execute:
 
 ## Agenda
 
-- ¿Qué es un lenguaje de programación y qué es R?
-- FOSS y ciencia abierta
-- El ecosistema de paquetes: CRAN
-- Scripts y el entorno RStudio
-- Funciones, argumentos y objetos
-- Primera figura con `ggplot2`
+-   ¿Qué es un lenguaje de programación y qué es R?
+-   FOSS y ciencia abierta
+-   El ecosistema de paquetes: CRAN
+-   Scripts y el entorno RStudio
+-   Funciones, argumentos y objetos
+-   Primera figura con `ggplot2`
 
----
+------------------------------------------------------------------------
 
-## {background-color="#121834"}
+##  {background-color="#121834"}
 
-::: {.parte-num}
+::: parte-num
 Parte 1
 :::
 
-::: {.section-title-text}
+::: section-title-text
 R y los lenguajes de programación
 :::
 
----
+------------------------------------------------------------------------
 
 ## Programas con interfaz vs. código
 
-:::: {.columns}
-
-::: {.column width="50%"}
+::::: columns
+::: {.column width="45%"}
 **Programa con interfaz gráfica (GUI)**
 
-- Haces clic en botones y menús
-- Solo puedes hacer lo que el programa ya tiene implementado
-- Cambias un parámetro → repites el proceso completo a mano
-- Difícil de compartir exactamente lo que hiciste
+-   Haces clic en botones y menús
+-   Solo puedes hacer lo que el programa ya tiene implementado
+-   Cambias un parámetro → repites el proceso completo a mano
+-   Difícil de compartir exactamente lo que hiciste
 
 *Ejemplos: Excel, SPSS, GraphPad*
 :::
@@ -65,32 +64,31 @@ R y los lenguajes de programación
 ::: {.column width="50%"}
 **Lenguaje de programación**
 
-- Le das instrucciones escritas al computador
-- Puedes hacer (casi) cualquier cosa que el computador pueda hacer
-- Cambias una línea → todo se recalcula solo
-- Puedes compartir exactamente qué hiciste, paso a paso
+-   Le das instrucciones escritas al computador
+-   Puedes hacer (casi) cualquier cosa que el computador pueda hacer
+-   Cambias una línea → todo se recalcula solo
+-   Puedes compartir exactamente qué hiciste, paso a paso
 
 *Ejemplos: R, Python, Julia*
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ## ¿Qué es R?
 
 R es un **lenguaje de programación** diseñado para el análisis estadístico y la visualización de datos.
 
-- Gratuito y de código abierto (FOSS)
-- Creado en 1993 por Ross Ihaka y Robert Gentleman (Universidad de Auckland)
-- Mantenido por el **R Core Team** y una comunidad global enorme
-- Estándar de facto en muchas disciplinas científicas
+-   Gratuito y de código abierto (FOSS)
+-   Creado en 1993 por Ross Ihaka y Robert Gentleman (Universidad de Auckland)
+-   Mantenido por el **R Core Team** y una comunidad global enorme
+-   Estándar de facto en muchas disciplinas científicas
 
-::: {.tip-box}
+::: tip-box
 R es un lenguaje completo con acceso a todos los recursos del computador: análisis estadístico, manejo de archivos, conexión a internet, generación de documentos, aplicaciones web, y mucho más.
 :::
 
----
+------------------------------------------------------------------------
 
 ## FOSS y ciencia abierta
 
@@ -98,15 +96,15 @@ R es un lenguaje completo con acceso a todos los recursos del computador: análi
 
 "Free" en FOSS significa **libre**:
 
-- Cualquiera puede ver el código fuente y verificar qué hace exactamente
-- Cualquiera puede modificarlo y mejorarlo
-- No depende de una empresa que puede cambiar precios o descontinuarlo
+-   Cualquiera puede ver el código fuente y verificar qué hace exactamente
+-   Cualquiera puede modificarlo y mejorarlo
+-   No depende de una empresa que puede cambiar precios o descontinuarlo
 
 **¿Por qué importa para la ciencia?**
 
 Un análisis en R es reproducible: el script documenta cada paso, y cualquier persona puede replicar tus resultados exactamente.
 
----
+------------------------------------------------------------------------
 
 ## CRAN: el repositorio central de paquetes
 
@@ -114,44 +112,56 @@ El verdadero poder de R viene de los **paquetes**: colecciones de funciones crea
 
 **CRAN** (*Comprehensive R Archive Network*) es el repositorio oficial:
 
-- [cran.r-project.org](https://cran.r-project.org)
-- Más de 23 000 paquetes disponibles
-- Cada día se publican o actualizan decenas
+-   [cran.r-project.org](https://cran.r-project.org)
+-   Más de 23 000 paquetes disponibles
+-   Cada día se publican o actualizan decenas
 
-::: {.tip-box}
+::: tip-box
 **Demo en vivo:** veamos cuántos paquetes hay hoy y cuáles se actualizaron recientemente.
 :::
 
 Muchos paquetes también viven en GitHub y se instalan con herramientas adicionales.
 
----
+------------------------------------------------------------------------
 
-## {background-color="#121834"}
+##  {background-color="#121834"}
 
-::: {.parte-num}
+::: parte-num
 Parte 2
 :::
 
-::: {.section-title-text}
+::: section-title-text
 El entorno de trabajo
 :::
 
----
+------------------------------------------------------------------------
 
 ## De la terminal al script
 
 Puedes darle instrucciones a R directamente desde la terminal:
 
+::::: columns
+::: {.column width="55%"}
 ```{r}
 #| eval: false
 2 + 2
 ```
 
 Funciona, pero al cerrar la terminal pierdes todo lo que escribiste.
+:::
+
+::: {.column width="45%"}
+![](../../imagenes/consola.PNG){fig-align="center"}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## De la terminal al script
 
 **Un script** es un archivo de texto plano con extensión `.R`; la extensión indica al sistema operativo que lo abra con R, y cualquier editor puede abrirlo.
 
-```r
+``` r
 # mi_primer_script.R
 2 + 2
 sqrt(16)
@@ -159,59 +169,121 @@ sqrt(16)
 
 El script es tu **registro permanente** de lo que hiciste: la base de la reproducibilidad científica.
 
----
+------------------------------------------------------------------------
+
+## R sin IDE: ventanas sueltas
+
+R funciona solo, pero cada pieza vive en su propia ventana flotante: consola, editor de scripts, gráficas, entorno... Todo disperso.
+
+![](../../imagenes/interfazRwin.png){fig-align="center" height="420px"}
+
+------------------------------------------------------------------------
 
 ## RStudio: el entorno de trabajo
 
 R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
 
-- Editor de scripts con resaltado de sintaxis
-- Consola integrada
-- Visualizador de objetos, gráficas, archivos y ayuda
-- Integración con Quarto/RMarkdown, Git, y más
+-   Editor de scripts con resaltado de sintaxis
+-   Consola integrada
+-   Visualizador de objetos, gráficas, archivos y ayuda
+-   Integración con Quarto/RMarkdown, Git, y más
 
----
+------------------------------------------------------------------------
 
-## Los paneles de RStudio {.smaller}
 
-```{=html}
-<!--
-  El iframe requiere:
-  1. Que estés autenticado en Cloudflare Zero Trust en este navegador
-  2. Que RStudio Server no envíe X-Frame-Options: SAMEORIGIN
-  Si no carga, abre https://rstd.jdl-svr.lat/ directamente en el navegador.
--->
-<iframe
-  src="https://rstd.jdl-svr.lat/"
-  width="100%"
-  height="520px"
-  style="border:1px solid #e0e0e0; border-radius:6px;">
-</iframe>
-```
+## RStudio: el entorno de trabajo
 
----
+R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
 
-## {background-color="#121834"}
+![](../../imagenes/perro-r-rstudio.png){fig-align="center" height="420px"}
 
-::: {.parte-num}
+------------------------------------------------------------------------
+
+## Los paneles de RStudio
+
+::::: columns
+::: {.column width="50%"}
+![](../../imagenes/cuadrantes.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+**A. Editor** — escribes y guardas tus scripts
+
+**B. Consola** — R ejecuta el código aquí
+
+**C. Entorno / Historial** — objetos en memoria
+
+**D. Archivos / Gráficas / Ayuda** — explorador y visualizador
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Configura RStudio {.smaller}
+
+Abre RStudio y ve a **Tools > Global Options**
+
+::::: columns
+::: {.column width="50%" .nonincremental}
+**General > Basic**
+
+- Desmarca *Restore most recently opened project at startup*
+- Desmarca *Restore previously open source documents at startup*
+- Desmarca *Restore .RData into workspace at startup*
+- En *Save workspace to .RData on exit* selecciona *Never*
+- Desmarca *Always save history*
+
+:::
+
+::: {.column width="50%"}
+**Code > Editing** {.incremental}
+
+- Marca *Use native pipe operator `|>`*
+
+**Code > Display**
+
+- Marca *Use rainbow parentheses*
+
+**Code > Saving**
+
+- *Default text encoding*: `UTF-8`
+
+**Appearance**
+
+- Escoge el tema y la fuente que más te gusten
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+##  {background-color="#121834"}
+
+::: parte-num
 Parte 3
 :::
 
-::: {.section-title-text}
+::: section-title-text
 La sintaxis de R
 :::
 
----
+------------------------------------------------------------------------
 
 ## Funciones y argumentos
 
 Una **función** es como una fábrica: recibe insumos, hace algo con ellos, y produce un resultado.
 
+![](../../imagenes/fabrica.gif){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Funciones y argumentos
+
 ```{=html}
 <div style="display:flex; align-items:center; gap:20px; margin:20px 0;">
   <div style="background:#ddeaf8; border:2px solid #225faa; border-radius:8px; padding:14px 20px; text-align:center; min-width:140px;">
     <div style="font-size:0.7em; color:#666; margin-bottom:4px;">ARGUMENTOS (insumos)</div>
-    <div style="font-weight:700; color:#225faa;">material = "cuero"<br>talla = 42<br>color = "negro"</div>
+    <div style="font-weight:700; color:#225faa;">material = "cuero"<br>talla = 42<br>color = "azul"</div>
   </div>
   <div style="font-size:2em; color:#225faa;">→</div>
   <div style="background:#121834; border-radius:8px; padding:14px 20px; text-align:center; min-width:140px;">
@@ -226,17 +298,23 @@ Una **función** es como una fábrica: recibe insumos, hace algo con ellos, y pr
 </div>
 ```
 
+------------------------------------------------------------------------
+
+## Funciones y argumentos
+
 En R, la sintaxis es siempre:
 
-```r
+``` r
 nombre_funcion(argumento1 = valor1, argumento2 = valor2)
 ```
 
+El nombre de la función va **antes del paréntesis**. 
+
 Los argumentos van **dentro del paréntesis**, separados por **comas**.
 
----
+------------------------------------------------------------------------
 
-## Funciones reales en R
+## Funciones en R
 
 ```{r}
 # sqrt() calcula la raíz cuadrada - recibe un número
@@ -253,48 +331,11 @@ round(3.14159, digits = 2)
 paste("Hola", "mundo", sep = ", ")
 ```
 
-::: {.tip-box}
+::: tip-box
 Escribe el nombre de cualquier función seguido de `?` en la consola para ver su documentación: `?round`
 :::
 
----
-
-## Vectores: el tipo de dato básico
-
-`c()` (*combine*) crea **vectores**: secuencias de valores del mismo tipo.
-
-```{r}
-# Vector numérico
-edades <- c(25, 31, 19, 42)
-edades
-```
-
-```{r}
-# Vector de texto (caracteres entre comillas)
-nombres <- c("Ana", "Luis", "Sara", "Pedro")
-nombres
-```
-
-Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.
-
----
-
-## Data frames: la base de datos en R
-
-Un **data frame** es una tabla: una colección de vectores de igual longitud.
-
-```{r}
-personas <- data.frame(
-  nombre = nombres,
-  edad   = edades
-)
-
-personas
-```
-
-Es la estructura más común para datos: filas son observaciones, columnas son variables.
-
----
+------------------------------------------------------------------------
 
 ## Objetos: la memoria de trabajo de R
 
@@ -314,25 +355,62 @@ Cuando usas `<-` para **asignar**, guardas el resultado en un **objeto**.
 ```
 
 ```{r}
-resultado <- sqrt(144)   # guardamos, no imprimimos
-resultado                # ahora sí lo vemos
+resultado <- sqrt(144) # guardamos, no imprimimos
+resultado # ahora sí lo vemos
 ```
 
 **Reglas para nombres de objetos:** sin espacios, sin acentos, no empezar con número, distingue mayúsculas (`datos` ≠ `Datos`). Convención en tidyverse: `snake_case`.
 
----
+------------------------------------------------------------------------
 
-## {background-color="#121834"}
+## Vectores: el tipo de dato básico
 
-::: {.parte-num}
+`c()` (*combine*) crea **vectores**: secuencias de valores del mismo tipo.
+
+```{r}
+# Vector numérico
+edades <- c(25, 31, 19, 42)
+edades
+```
+
+```{r}
+# Vector de texto (caracteres entre comillas)
+nombres <- c("Ana", "Luis", "Sara", "Pedro")
+nombres
+```
+
+Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.
+
+------------------------------------------------------------------------
+
+## Data frames: la base de datos en R
+
+Un **data frame** es una tabla: una colección de vectores de igual longitud.
+
+```{r}
+personas <- data.frame(
+    nombre = nombres,
+    edad   = edades
+)
+
+personas
+```
+
+Es la estructura más común para datos: filas son observaciones, columnas son variables.
+
+------------------------------------------------------------------------
+
+##  {background-color="#121834"}
+
+::: parte-num
 Parte 4
 :::
 
-::: {.section-title-text}
+::: section-title-text
 Primera figura con `ggplot2`
 :::
 
----
+------------------------------------------------------------------------
 
 ## Instalar y cargar tidyverse
 
@@ -349,220 +427,213 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-::: {.tip-box}
+::: tip-box
 `install.packages()` es como comprar un libro y ponerlo en el estante. `library()` es como abrirlo y tenerlo en la mesa.
 :::
 
----
+------------------------------------------------------------------------
 
-## El dataset `diamonds`
+## El conjunto de datos `diamonds`
 
 `diamonds` viene incluido con `ggplot2`. Contiene información de 53 940 diamantes.
 
 ```{r}
-glimpse(diamonds)
+View(diamonds)
 ```
 
----
+![](../../imagenes/View-diamonds.png){fig-align="center" width="80%"}
+
+------------------------------------------------------------------------
 
 ## ggplot2: el lienzo
 
 `ggplot()` crea un lienzo vacío. Le decimos qué datos usar y qué variables mapear a los ejes con `aes()`.
 
-:::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
 ggplot(
-  data    = diamonds,
-  mapping = aes(
-    x = carat,
-    y = price
-  )
+    data = diamonds,
+    mapping = aes(x = carat, y = price)
 )
 ```
 :::
+
 ::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price))
 ```
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## + puntos
 
 Añadimos una **capa geométrica** con `geom_point()`.
 
-:::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
-ggplot(
-  diamonds,
-  aes(x = carat, y = price)
-) +
-  geom_point()
+ggplot(diamonds, aes(x = carat, y = price)) +
+    geom_point()
 ```
 :::
+
 ::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_point()
+    geom_point()
 ```
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## + transparencia (`alpha`)
 
 Con tantos puntos hay sobreposición. `alpha` controla la transparencia (0 = invisible, 1 = sólido).
 
-:::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
-ggplot(
-  diamonds,
-  aes(x = carat, y = price)
-) +
-  geom_point(alpha = 0.1)
+ggplot(diamonds, aes(x = carat, y = price)) +
+    geom_point(alpha = 0.05)
 ```
 :::
+
 ::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_point(alpha = 0.1)
+    geom_point(alpha = 0.1)
 ```
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## + color por variable
 
 Mapeamos `colour` a `cut` dentro de `aes()` para colorear por grupo.
 
-:::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
 ggplot(
-  diamonds,
-  aes(x = carat,
-      y = price,
-      colour = cut)
+    diamonds,
+    aes(x = carat, y = price, colour = cut)
 ) +
-  geom_point(alpha = 0.1)
+    geom_point(alpha = 0.1)
 ```
 :::
+
 ::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
-  geom_point(alpha = 0.1)
+    geom_point(alpha = 0.1)
 ```
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## + tema
 
 Los temas controlan la apariencia general. `theme_minimal()` es un buen punto de partida.
 
-:::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
 ggplot(
-  diamonds,
-  aes(x = carat,
-      y = price,
-      colour = cut)
+    diamonds,
+    aes(x = carat, y = price, colour = cut)
 ) +
-  geom_point(alpha = 0.1) +
-  theme_minimal()
+    geom_point(alpha = 0.1) +
+    theme_minimal()
 ```
 :::
+
 ::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
-  geom_point(alpha = 0.1) +
-  theme_minimal()
+    geom_point(alpha = 0.1) +
+    theme_minimal()
 ```
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## + paleta de colores
 
 `scale_colour_viridis_d()` aplica la paleta Viridis: diseñada para ser perceptualmente uniforme y accesible.
 
-:::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
 ggplot(
-  diamonds,
-  aes(x = carat,
-      y = price,
-      colour = cut)
+    diamonds,
+    aes(x = carat, y = price, colour = cut)
 ) +
-  geom_point(alpha = 0.1) +
-  theme_minimal() +
-  scale_colour_viridis_d()
+    geom_point(alpha = 0.1) +
+    theme_minimal() +
+    scale_colour_viridis_d()
 ```
 :::
+
 ::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
-  geom_point(alpha = 0.1) +
-  theme_minimal() +
-  scale_colour_viridis_d()
+    geom_point(alpha = 0.1) +
+    theme_minimal() +
+    scale_colour_viridis_d()
 ```
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## ¿Con qué datos seguir practicando?
 
-`ggplot2` y tidyverse vienen con varios datasets listos para usar:
+`ggplot2` y tidyverse incluyen varios conjuntos de datos listos para usar:
 
 ```{r}
 #| eval: false
-# Ver todos los datasets disponibles en los paquetes cargados
+# Ver todos los conjuntos de datos disponibles en los paquetes cargados
 data()
 
 # Algunos interesantes
-glimpse(mpg)        # autos y consumo de combustible
-glimpse(gapminder::gapminder)  # esperanza de vida por país y año
+glimpse(mpg) # autos y consumo de combustible
+glimpse(gapminder::gapminder) # esperanza de vida por país y año
 ```
 
-::: {.tip-box}
-Escribe `?mpg` o `?diamonds` en la consola para ver la descripción completa de cualquier dataset.
+::: tip-box
+Escribe `?mpg` o `?diamonds` en la consola para ver la descripción completa de cualquier conjunto de datos.
 :::
 
----
+------------------------------------------------------------------------
 
 ## A practicar
 
-Antes de la próxima sesión, elige un dataset de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con `ggplot2`.
+Antes de la próxima sesión, elige un conjunto de datos de los que vimos (o cualquier otro que encuentres) y crea al menos una figura con `ggplot2`.
 
 Experimenta cambiando:
 
-- El tipo de geometría (`geom_point`, `geom_jitter`, `geom_col`, `geom_histogram`...)
-- Las variables en `x`, `y`, `colour`, `size`, `shape`
-- El tema (`theme_minimal`, `theme_classic`, `theme_bw`...)
-- La paleta de colores
+-   El tipo de geometría (`geom_point`, `geom_jitter`, `geom_col`, `geom_histogram`...)
+-   Las variables en `x`, `y`, `colour`, `size`, `shape`
+-   El tema (`theme_minimal`, `theme_classic`, `theme_bw`...)
+-   La paleta de colores
 
 No importa si la figura no queda perfecta. Lo importante es romper el código y ver qué pasa.

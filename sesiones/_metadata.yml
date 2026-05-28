@@ -1,4 +1,9 @@
+logo: ../imagenes/favicon.svg
+code-copy: false
 incremental: true
+auto-animate: true
+revealjs-plugins:
+  - codefocus
 include-after-body:
   text: |
     <script>

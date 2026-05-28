@@ -6,7 +6,10 @@ lang: es
 
 website:
   title: "Curso de R · Junio 2026"
+  favicon: imagenes/favicon.svg
   navbar:
+    logo: imagenes/favicon.svg
+    logo-alt: "Curso de R"
     left:
       - href: index.qmd
         text: Inicio
@@ -14,10 +17,27 @@ website:
         text: Programa
       - text: Sesiones
         menu:
-          - text: "Semana 1"
+          - text: "— Semana 1 —"
           - href: sesiones/s01/slides.html
-            text: "S1 · ..."
-          # etc.
+            text: "S1 · Introducción a R y RStudio"
+          - href: sesiones/s02/slides.html
+            text: "S2 · ggplot2: la gramática de las gráficas"
+          - href: sesiones/s03/slides.html
+            text: "S3 · Pipe nativo y dplyr"
+          - text: "— Semana 2 —"
+          - href: sesiones/s04/slides.html
+            text: "S4 · Datos externos, proyectos y CSV"
+          - href: sesiones/s05/slides.html
+            text: "S5 · Simulación de datos y funciones"
+          - href: sesiones/s06/slides.html
+            text: "S6 · Documentos reproducibles con Quarto"
+          - text: "— Semana 3 —"
+          - href: sesiones/s07/slides.html
+            text: "S7 · Quarto avanzado, RevealJS y referencias"
+          - href: sesiones/s08/slides.html
+            text: "S8 · Git y GitHub"
+          - href: sesiones/s09/slides.html
+            text: "S9 · Cierre e integración"
       - text: Tareas
         menu:
           - href: tareas/tarea1-figura-fea.html

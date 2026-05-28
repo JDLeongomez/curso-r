@@ -13,7 +13,7 @@ confusa y estéticamente ofensiva que seas capaz de producir**.
 
 La única regla es que el gráfico debe generarse **completamente en R**,
 usando `ggplot2` (y los paquetes que quieras), y debe mostrar datos reales
-(puedes usar cualquier dataset disponible en R, como `iris`, `mtcars`,
+(puedes usar cualquier conjunto de datos disponible en R, como `iris`, `mtcars`,
 `palmerpenguins::penguins`, `gapminder::gapminder`, etc.).
 
 ## Criterios de evaluación (de fealdad)

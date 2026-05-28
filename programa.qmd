@@ -2,6 +2,8 @@
 title: "Programa del curso"
 ---
 
+Este curso cubre el manejo, transformación y visualización de datos en R. No es un curso de estadística: no se abordan pruebas de hipótesis, modelos ni inferencia. El foco está en que puedas importar, organizar y explorar datos, y comunicar resultados visualmente.
+
 ## Objetivos generales
 
 Al finalizar el curso, los participantes serán capaces de:
