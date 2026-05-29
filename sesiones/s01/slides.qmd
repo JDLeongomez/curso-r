@@ -756,7 +756,7 @@ ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
     theme_minimal()
 ```
 :::
-5%
+
 ::: {.column width="33%"}
 ```{r}
 #| eval: false

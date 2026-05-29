@@ -23,7 +23,7 @@ curso-r/
 ├── tareas/
 │   ├── tarea1-figura-fea.qmd
 │   └── tarea2-paquete-raro.qmd
-├── datos/                  # Datasets compartidos
+├── datos/                  # Bases de datos compartidas
 ├── estilos/
 │   ├── slides.scss         # Tema visual de las presentaciones
 │   └── sitio.scss          # Tema visual del sitio web

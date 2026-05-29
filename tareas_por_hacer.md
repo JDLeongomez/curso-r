@@ -24,9 +24,10 @@
 ## Diapositivas
 
 - [x] Crear diapositivas sesión 1 (borrador completo)
-- [ ] Mejorar diapositivas sesión 1
+- [x] Mejorar diapositivas sesión 1
 - [x] Crear diapositivas sesión 2 — ggplot2 en profundidad
-- [ ] Crear diapositivas sesión 3 — pipe + dplyr
+- [x] Crear diapositivas sesión 3 — pipe + dplyr
+  - [x] Crear `sesiones/s03/datos/encuesta_bruta.xlsx` (base de datos GAD-7 simulada con problemas típicos de Excel)
 - [ ] Crear diapositivas sesión 4 — datos externos, proyectos, rutas relativas
 - [ ] Crear diapositivas sesión 5 — simulación de datos, funciones, faux
 - [ ] Crear diapositivas sesión 6 — Quarto, documentos reproducibles
