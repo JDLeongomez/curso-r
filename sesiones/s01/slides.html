@@ -850,14 +850,16 @@ Juan David Leongómez
 </div>
 </div>
 </div>
-</div><p>5% ::: {.column width=“33%”}</p><div class="cell">
+</div><div class="column" style="width:33%;">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb31-2"><a></a>    faithfuld,</span>
 <span id="cb31-3"><a></a>    <span class="fu">aes</span>(waiting, eruptions, <span class="at">fill =</span> density)</span>
 <span id="cb31-4"><a></a>) <span class="sc">+</span></span>
 <span id="cb31-5"><a></a>    <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
 <span id="cb31-6"><a></a>    <span class="fu">scale_fill_viridis_b</span>(<span class="at">option =</span> <span class="st">"plasma"</span>)</span></code></pre></div>
-</div><div class="cell">
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -866,8 +868,7 @@ Juan David Leongómez
 </div>
 </div>
 </div>
-</div>
-<p>:::::</p>
+</div></div>
 </section>
 <section id="etiquetas-con-labs" class="slide level2">
 <h2>+ etiquetas con <code>labs()</code></h2>
