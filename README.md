@@ -1,7 +1,7 @@
 # Curso de R · Universidad El Bosque · Junio 2026
 
 <div align="center">
-  <img src="imagenes/favicon.svg" alt="favicon" width="64" />
+  <img src="imagenes/favicon.svg" alt="favicon" width="250" />
 </div>
 
 Materiales del curso introductorio **Maneja, explora y visualiza datos con R**,
