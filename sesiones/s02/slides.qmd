@@ -1,6 +1,6 @@
 ---
 title: "Sesión 2"
-subtitle: "ggplot2: la gramática de las gráficas"
+subtitle: "Visualizaciones con ggplot2"
 author: "Juan David Leongómez"
 institute: "Universidad El Bosque"
 date: "2026-06-04"
@@ -14,7 +14,6 @@ format:
     code-line-numbers: true
     highlight-style: github
     transition: fade
-    transition-speed: fast
     width: 1280
     height: 720
 execute:

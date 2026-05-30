@@ -3,6 +3,8 @@ title: "Maneja, explora y visualiza datos con R"
 subtitle: "Curso gratuito · Universidad El Bosque · Junio 2026"
 ---
 
+![Curso de R · Junio 2026](imagenes/logo.svg)
+
 ```{=html}
 <!-- Hero banner -->
 <div style="background-color:#ddeaf8; border-left:5px solid #225faa; border-radius:0 6px 6px 0; padding:18px 22px; margin-bottom:24px;">
@@ -56,22 +58,22 @@ No se requieren conocimientos previos de programación ni estadística.
     <tr>
       <td>1</td>
       <td>Mié 3 jun</td>
-      <td>A-404</td>
-      <td>Intro a R, RStudio, sintaxis y primera figura</td>
+      <td><span class="salon-a402">A-402</span></td>
+      <td>Primeros pasos en R y RStudio</td>
       <td><a href="sesiones/s01/slides.html">Diapositivas</a></td>
     </tr>
     <tr>
       <td>2</td>
       <td>Jue 4 jun</td>
-      <td>A-402</td>
-      <td>ggplot2: la gramática de las gráficas</td>
+      <td><span class="salon-a402">A-402</span></td>
+      <td>Visualizaciones con ggplot2</td>
       <td><a href="sesiones/s02/slides.html">Diapositivas</a></td>
     </tr>
     <tr>
       <td>3</td>
       <td>Vie 5 jun</td>
-      <td>A-402</td>
-      <td>Pipe nativo y dplyr</td>
+      <td><span class="salon-a402">A-402</span></td>
+      <td>Manejo y transformación de datos con dplyr y pipes</td>
       <td>— <span class="tarea-label" style="margin-left:8px;">→ Tarea 1</span></td>
     </tr>
 
@@ -84,22 +86,22 @@ No se requieren conocimientos previos de programación ni estadística.
     <tr>
       <td>4</td>
       <td>Mié 10 jun</td>
-      <td>A-404</td>
-      <td>Datos externos, proyectos y rutas relativas <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 1</span></td>
+      <td><span class="salon-a402">A-402</span></td>
+      <td>Importar y organizar datos: Excel, CSV y proyectos de R <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 1</span></td>
       <td>—</td>
     </tr>
     <tr>
       <td>5</td>
       <td>Jue 11 jun</td>
-      <td>A-404</td>
-      <td>Simulación de datos, funciones y condicionales</td>
+      <td><span class="salon-a402">A-402</span></td>
+      <td>Automatización de análisis con funciones y simulación</td>
       <td>—</td>
     </tr>
     <tr>
       <td>6</td>
       <td>Vie 12 jun</td>
-      <td>B-211</td>
-      <td>Documentos reproducibles con Quarto</td>
+      <td><span class="salon-b211">B-211</span></td>
+      <td>Reportes reproducibles con Quarto</td>
       <td>— <span class="tarea-label" style="margin-left:8px;">→ Tarea 2</span></td>
     </tr>
 
@@ -112,22 +114,22 @@ No se requieren conocimientos previos de programación ni estadística.
     <tr>
       <td>7</td>
       <td>Mié 17 jun</td>
-      <td>A-404</td>
-      <td>Quarto avanzado, RevealJS y referencias <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 2</span></td>
+      <td><span class="salon-a404">A-404</span></td>
+      <td>Documentos y presentaciones con Quarto <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 2</span></td>
       <td>—</td>
     </tr>
     <tr>
       <td>8</td>
       <td>Jue 18 jun</td>
-      <td>A-404</td>
-      <td>Git y GitHub</td>
+      <td><span class="salon-a404">A-404</span></td>
+      <td>Versiones y colaboración con Git y GitHub</td>
       <td>—</td>
     </tr>
     <tr>
       <td>9</td>
       <td>Vie 19 jun</td>
-      <td>A-402</td>
-      <td>Cierre, integración y buenas prácticas</td>
+      <td><span class="salon-a402">A-402</span></td>
+      <td>Herramientas y buenas prácticas de trabajo en R</td>
       <td>—</td>
     </tr>
 

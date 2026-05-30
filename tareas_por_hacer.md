@@ -28,21 +28,25 @@
 - [x] Crear diapositivas sesión 2 — ggplot2 en profundidad
 - [x] Crear diapositivas sesión 3 — pipe + dplyr
   - [x] Crear `sesiones/s03/datos/encuesta_bruta.xlsx` (base de datos GAD-7 simulada con problemas típicos de Excel)
-- [ ] Crear diapositivas sesión 4 — datos externos, proyectos, rutas relativas
-- [ ] Crear diapositivas sesión 5 — simulación de datos, funciones, faux
-- [ ] Crear diapositivas sesión 6 — Quarto, documentos reproducibles
-- [ ] Crear diapositivas sesión 7 — Quarto avanzado, RevealJS, referencias
-- [ ] Crear diapositivas sesión 8 — Git y GitHub
-- [ ] Crear diapositivas sesión 9 — cierre e integración
+  - [x] Añadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)
+- [x] Crear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R
+- [ ] Crear diapositivas sesión 5 — Automatización de análisis con funciones y simulación
+- [ ] Crear diapositivas sesión 6 — Reportes reproducibles con Quarto
+- [ ] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
+- [ ] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
+- [ ] Crear diapositivas sesión 9 — Herramientas y buenas prácticas de trabajo en R
 
 ## Sitio web
 
-- [ ] Actualizar sección `#sesiones` en `index.qmd` con temas y enlaces finales
-- [ ] Actualizar sección `#contenidos-por-semana` en `programa.qmd`
+- [x] Actualizar sección `#sesiones` en `index.qmd` (temas, salones con colores)
+- [x] Actualizar sección `#contenidos-por-semana` en `programa.qmd` (temas, salones con colores)
+- [ ] Añadir enlace a diapositivas en `index.qmd` a medida que se completen (s04–s09)
 
 ## Tareas para estudiantes
 
 - [x] Crear `tareas/tarea1-figura-fea.qmd` (concurso ggplot2 feo)
+- [x] Crear `tareas/tarea1/` (carpeta en el repo para guardar scripts recibidos)
+- [x] Carpeta OneDrive para entregas de Tarea 1 — enlace en `tarea1-figura-fea.qmd` y en s03
 - [x] Crear `tareas/tarea2-paquete-raro.qmd` (presentar paquete de R)
 
 ---
@@ -57,8 +61,8 @@
 | 4 | Mié 10  | *Tarea 1* + datos externos, proyectos, CSV        |                  |
 | 5 | Jue 11  | Simulación de datos, funciones, condicionales     |                  |
 | 6 | Vie 12  | Documentos reproducibles (Quarto)                 | **← Tarea 2**    |
-| 7 | Mié 17  | *Tarea 2* + Quarto avanzado, RevealJS, referencias|                  |
-| 8 | Jue 18  | Git y GitHub                                      |                  |
+| 7 | Mié 17  | *Tarea 2* + Quarto: tablas, citas y formatos      |                  |
+| 8 | Jue 18  | Quarto: figuras, integración y publicación        |                  |
 | 9 | Vie 19  | Cierre, integración, buenas prácticas             |                  |
 
 ## Tabla de comandos

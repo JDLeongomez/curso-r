@@ -9,3 +9,15 @@ Hasta la próxima sesión
 ::: section-title-text
 ¡Gracias!
 :::
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {style="text-align: center; margin-top: 0em;"}
+![](../../imagenes/qr-code.svg){width="300px"}
+[jdleongomez.github.io/curso-r]{style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;"}
+:::
+:::
+::: {.column width="60%"}
+![](../../imagenes/logo.svg){width="100%" fig-pos="middle"}
+:::
+::::

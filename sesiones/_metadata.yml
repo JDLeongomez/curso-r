@@ -1,4 +1,12 @@
 logo: ../imagenes/favicon.svg
+title-slide-attributes:
+  data-background-color: "#121834"
+  data-background-image: ../../imagenes/logo.svg
+  data-background-position: "top center"
+  data-background-size: "20%"
+date-format: long
+background-transition: fade
+transition-speed: default
 code-copy: false
 incremental: true
 auto-animate: true

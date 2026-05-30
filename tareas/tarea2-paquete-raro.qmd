@@ -57,6 +57,6 @@ Tienes **máximo 5 minutos**.
 ## ¿Puedo usar un paquete "serio"?
 
 Sí, siempre y cuando sea algo que genuinamente te interese y que no hayamos
-visto en el curso. Lo importante es que lo explores tú mismo y lo puedas
+visto en el curso. Lo importante es que lo explores y lo puedas
 explicar con tus propias palabras.
 :::

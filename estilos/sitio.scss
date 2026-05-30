@@ -139,6 +139,33 @@ table.sesiones {
 }
 
 // ---------------------------------------------------------------------------
+// Badges de salón (tabla de sesiones y programa)
+// ---------------------------------------------------------------------------
+.salon-a402, .salon-a404, .salon-b211 {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+
+.salon-a402 {
+  background-color: $c-blue-light;
+  color: #1a4070;
+}
+
+.salon-a404 {
+  background-color: $c-lavender;
+  color: #3d2fa0;
+}
+
+.salon-b211 {
+  background-color: #d4f0e4;
+  color: #1a5c38;
+}
+
+// ---------------------------------------------------------------------------
 // Tarjetas de info del curso (en el hero del index)
 // ---------------------------------------------------------------------------
 .info-card {

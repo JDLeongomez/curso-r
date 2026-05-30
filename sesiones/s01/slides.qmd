@@ -1,6 +1,6 @@
 ---
 title: "Sesión 1"
-subtitle: "Introducción a R y RStudio"
+subtitle: "Primeros pasos en R y RStudio"
 author: "Juan David Leongómez"
 institute: "Universidad El Bosque"
 date: "2026-06-03"
@@ -14,7 +14,6 @@ format:
     code-line-numbers: true
     highlight-style: github
     transition: fade
-    transition-speed: fast
     width: 1280
     height: 720
 execute:
@@ -23,6 +22,28 @@ execute:
   message: false
   cache: true
 ---
+
+## El sitio del curso {background-color="#121834"}
+
+::::: columns
+::: {.column width="55%"}
+**Aquí encontrarás todo el material del curso:**
+
+- Diapositivas de cada sesión
+- Archivos de datos para las actividades
+- Enunciados de las tareas
+
+Ábrelo ahora en tu teléfono o computador.
+:::
+
+::: {.column width="45%" style="text-align: center;"}
+![](../../imagenes/qr-code.svg){width="240px" style="margin-bottom: 0.2em;"}
+
+[jdleongomez.github.io/curso-r]{style="color: rgba(255,255,255,0.7); font-size: 0.6em; letter-spacing: 0.03em;"}
+:::
+:::::
+
+
 
 ## Agenda
 
@@ -33,7 +54,7 @@ execute:
 -   Funciones, argumentos y objetos
 -   Primera figura con `ggplot2`
 
-------------------------------------------------------------------------
+
 
 ##  {background-color="#121834"}
 
@@ -45,7 +66,7 @@ Parte 1
 R y los lenguajes de programación
 :::
 
-------------------------------------------------------------------------
+
 
 ## Programas con interfaz vs. código
 
@@ -73,7 +94,7 @@ R y los lenguajes de programación
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## ¿Qué es R?
 
@@ -88,7 +109,7 @@ R es un **lenguaje de programación** diseñado para el análisis estadístico y
 R es un lenguaje completo con acceso a todos los recursos del computador: análisis estadístico, manejo de archivos, conexión a internet, generación de documentos, aplicaciones web, y mucho más.
 :::
 
-------------------------------------------------------------------------
+
 
 ## FOSS y ciencia abierta
 
@@ -104,7 +125,7 @@ R es un lenguaje completo con acceso a todos los recursos del computador: análi
 
 Un análisis en R es reproducible: el script documenta cada paso, y cualquier persona puede replicar tus resultados exactamente.
 
-------------------------------------------------------------------------
+
 
 ## CRAN: el repositorio central de paquetes
 
@@ -122,7 +143,7 @@ El verdadero poder de R viene de los **paquetes**: colecciones de funciones crea
 
 Muchos paquetes también viven en GitHub y se instalan con herramientas adicionales.
 
-------------------------------------------------------------------------
+
 
 ##  {background-color="#121834"}
 
@@ -134,7 +155,7 @@ Parte 2
 El entorno de trabajo
 :::
 
-------------------------------------------------------------------------
+
 
 ## De la terminal al script
 
@@ -155,7 +176,7 @@ Funciona, pero al cerrar la terminal pierdes todo lo que escribiste.
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## De la terminal al script
 
@@ -169,7 +190,7 @@ sqrt(16)
 
 El script es tu **registro permanente** de lo que hiciste. Es la base de la reproducibilidad científica.
 
-------------------------------------------------------------------------
+
 
 ## R sin IDE: ventanas sueltas
 
@@ -177,7 +198,7 @@ R funciona solo, pero cada pieza vive en su propia ventana flotante: consola, ed
 
 ![](../../imagenes/interfazRwin.png){fig-align="center" height="420px"}
 
-------------------------------------------------------------------------
+
 
 ## RStudio: el entorno de trabajo
 
@@ -188,7 +209,7 @@ R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development
 -   Visualizador de objetos, gráficas, archivos y ayuda
 -   Integración con Quarto/RMarkdown, Git, y más
 
-------------------------------------------------------------------------
+
 
 
 ## RStudio: el entorno de trabajo
@@ -197,7 +218,7 @@ R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development
 
 ![](../../imagenes/perro-r-rstudio.png){fig-align="center" height="420px"}
 
-------------------------------------------------------------------------
+
 
 ## Los paneles de RStudio
 
@@ -217,7 +238,7 @@ R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## Configura RStudio {.smaller}
 
@@ -255,7 +276,7 @@ Abre RStudio y ve a **Tools > Global Options**
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ##  {background-color="#121834"}
 
@@ -267,7 +288,7 @@ Parte 3
 La sintaxis de R
 :::
 
-------------------------------------------------------------------------
+
 
 ## Comentarios: `#`
 
@@ -291,7 +312,7 @@ Un buen comentario explica qué hace un código, y/o por qué se hizo algo.
 **¡No olvides comentar tus scripts!** Es parte de la buena práctica de programación y ciencia abierta.
 :::
 
-------------------------------------------------------------------------
+
 
 ## Un script bien organizado y comentado {.smaller}
 
@@ -368,7 +389,7 @@ ggplot(datos, aes(x = grupo, y = puntaje, fill = grupo, colour = grupo)) +
   )
 ```
 
-------------------------------------------------------------------------
+
 
 ## Funciones y argumentos
 
@@ -376,7 +397,7 @@ Una **función** es como una fábrica: recibe insumos, hace algo con ellos, y pr
 
 ![](../../imagenes/fabrica.gif){fig-align="center" width="50%"}
 
-------------------------------------------------------------------------
+
 
 ## Funciones y argumentos
 
@@ -399,7 +420,7 @@ Una **función** es como una fábrica: recibe insumos, hace algo con ellos, y pr
 </div>
 ```
 
-------------------------------------------------------------------------
+
 
 ## Funciones y argumentos
 
@@ -413,7 +434,7 @@ El nombre de la función va **antes del paréntesis**.
 
 Los argumentos van **dentro del paréntesis**, separados por **comas**.
 
-------------------------------------------------------------------------
+
 
 ## Funciones en R
 
@@ -436,7 +457,7 @@ paste("Hola", "mundo", sep = ", ")
 Escribe el nombre de cualquier función seguido de `?` en la consola para ver su documentación: `?round`
 :::
 
-------------------------------------------------------------------------
+
 
 ## Objetos: la memoria de trabajo de R
 
@@ -462,7 +483,7 @@ resultado # ahora sí lo vemos
 
 **Reglas para nombres de objetos:** sin espacios, sin acentos, no empezar con número, distingue mayúsculas (`datos` ≠ `Datos`). Convención en tidyverse: `snake_case`.
 
-------------------------------------------------------------------------
+
 
 ## Vectores: el tipo de dato básico
 
@@ -482,7 +503,7 @@ nombres
 
 Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.
 
-------------------------------------------------------------------------
+
 
 ## Data frames: la base de datos en R
 
@@ -499,7 +520,7 @@ personas
 
 Es la estructura más común para datos: filas son observaciones, columnas son variables.
 
-------------------------------------------------------------------------
+
 
 ##  {background-color="#121834"}
 
@@ -511,7 +532,7 @@ Parte 4
 Primera figura con `ggplot2`
 :::
 
-------------------------------------------------------------------------
+
 
 ## Instalar y cargar tidyverse
 
@@ -532,7 +553,7 @@ library(tidyverse)
 `install.packages()` es como comprar un libro y ponerlo en el estante. `library()` es como abrirlo y tenerlo en la mesa.
 :::
 
-------------------------------------------------------------------------
+
 
 ## El conjunto de datos `diamonds`
 
@@ -544,7 +565,7 @@ View(diamonds)
 
 ![](../../imagenes/View-diamonds.png){fig-align="center" width="50%"}
 
-------------------------------------------------------------------------
+
 
 ## ggplot2: el lienzo
 
@@ -569,7 +590,7 @@ ggplot(diamonds, aes(x = carat, y = price))
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## + puntos
 
@@ -593,7 +614,7 @@ ggplot(diamonds, aes(x = carat, y = price)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## + transparencia (`alpha`)
 
@@ -617,7 +638,7 @@ ggplot(diamonds, aes(x = carat, y = price)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## + color por variable
 
@@ -644,7 +665,7 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## + tema
 
@@ -673,7 +694,7 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## + paleta de colores
 
@@ -709,7 +730,7 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## Viridis: `_d`, `_c` y `_b` {.smaller}
 
@@ -779,7 +800,7 @@ ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ## + etiquetas con `labs()`
 
@@ -826,7 +847,7 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 ##  {background-color="#6b1220" .actividad}
 
@@ -849,7 +870,7 @@ Partiendo del código que acabamos de ver, cambia al menos dos cosas:
 ¿Qué relaciones encuentras?
 :::
 
-------------------------------------------------------------------------
+
 
 ## ¿Con qué datos seguir practicando?
 
@@ -869,7 +890,7 @@ glimpse(gapminder::gapminder) # esperanza de vida por país y año
 Escribe `?mpg`, `?diamonds` o `?[nombre_de_los_datos]` en la consola para ver la descripción completa de cualquier base de datos.
 :::
 
-------------------------------------------------------------------------
+
 
 ##  {background-color="#121834"}
 
@@ -881,7 +902,7 @@ Antes de terminar...
 Quiz rápido
 :::
 
-------------------------------------------------------------------------
+
 
 ## Quiz · 1 de 5
 
@@ -902,7 +923,7 @@ Quiz rápido
 :::
 
 
-------------------------------------------------------------------------
+
 
 ## Quiz · 2 de 5
 
@@ -925,7 +946,7 @@ sqrt(144)
 :::
 :::
 
-------------------------------------------------------------------------
+
 
 ## Quiz · 3 de 5
 
@@ -948,7 +969,7 @@ round(3.14159, digits = 2)
 :::
 :::
 
-------------------------------------------------------------------------
+
 
 ## Quiz · 4 de 5
 
@@ -971,7 +992,7 @@ resultado <- sqrt(144)
 :::
 :::
 
-------------------------------------------------------------------------
+
 
 ## Quiz · 5 de 5
 
@@ -994,7 +1015,7 @@ ggplot(diamonds, aes(x = carat, y = price))
 :::
 :::
 
-------------------------------------------------------------------------
+
 
 ## A practicar
 

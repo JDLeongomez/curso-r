@@ -1,0 +1,620 @@
+---
+title: "Sesión 4"
+subtitle: "Importar y organizar datos: Excel, CSV y proyectos de R"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-10"
+date-format: long
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    footer: "Curso de R · Universidad El Bosque · Junio 2026"
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(readxl)
+
+notas <- read_csv2("datos/notas.csv")
+asistencia <- read_excel("datos/registro.xlsx", sheet = "Asistencia")
+calificaciones <- read_excel("datos/registro.xlsx",
+    sheet = "Calificaciones", skip = 2
+)
+```
+
+## Agenda
+
+- Tarea 1: el concurso de la figura más fea
+- Proyectos de R y rutas relativas
+- Importar CSV: `read_csv()` y el problema latinoamericano
+- Importar Excel: `read_excel()` con argumentos clave
+- Guardar datos procesados
+- El flujo de trabajo reproducible
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Tarea 1
+:::
+
+::: section-title-text
+El concurso de la figura más fea
+:::
+
+---
+
+## Las presentaciones {.smaller}
+
+Cada persona tiene **máximo 3 minutos**:
+
+:::: nonincremental
+1. Muestra tu figura en pantalla
+2. Explica brevemente qué decisiones tomaste para hacerla horrible
+3. El grupo vota por la más fea
+::::
+
+::: tip-box
+Mientras presentas, mantén el *script* abierto: puede que alguien quiera ver el código de algún truco que usaste.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1
+:::
+
+::: section-title-text
+Proyectos de R
+:::
+
+---
+
+## El error más común al empezar
+
+Abrir un archivo sin proyecto lleva a escribir la ruta completa:
+
+```r
+notas <- read_csv("C:/Users/Ana/Documents/Uni/Tercer semestre/datos/notas.csv")
+```
+
+Ese código solo funciona en el computador de Ana, en esa sesión. Al día siguiente, si mueve la carpeta, ya no funcionará. En el computador de otra persona, nunca funciona.
+
+::: tip-box
+La solución no es poner la ruta completa, sino fijar un punto de referencia y usar rutas relativas.
+:::
+
+---
+
+## Rutas relativas vs. absolutas {.smaller}
+
+::::: columns
+::: {.column width="60%"}
+**Ruta absoluta** · desde la raíz del sistema
+
+Windows: `C:/Users/Ana/Documents/Uni/Tercer semestre/datos/notas.csv` <br>
+Linux/Mac: `/home/ana/uni/tercer_semestre/datos/notas.csv`
+
+Solo funciona en ese computador y esa carpeta. Si cambia alguno, se rompe.
+
+::: {.fragment}
+**Ruta relativa** · desde una carpeta de referencia
+
+`datos/notas.csv` (¡funciona igual en Windows, Linux o Mac!)
+
+Funciona en cualquier computador, siempre que haya una referencia fija desde la que partir.
+:::
+:::
+
+::: {.column width="40%"}
+```{=html}
+<div style="font-family: monospace; font-size: 0.82em; line-height: 2; padding: 0.9em 1.1em; background: rgba(255,255,255,0.05); border-radius: 8px;">
+  <div style="color: #666;">📁 C:/Users/Ana/Documents/…</div>
+  <div style="color: #666; padding-left: 1.5em;">└─ 📁 Tercer semestre/</div>
+  <div style="color: #5b9ad5; font-weight: bold; padding-left: 3em;">└─ 📁 mi_proyecto/</div>
+  <div style="color: #7db87d; padding-left: 4.5em;">└─ 📁 datos/</div>
+  <div style="color: #7db87d; padding-left: 6em;">└─ 📄 notas.csv</div>
+</div>
+<div style="font-family: sans-serif; font-size: 0.72em; margin-top: 0.8em; color: #aaa; display: flex; gap: 1.4em;">
+  <span><span style="color: #666;">▮</span> solo en este equipo</span>
+  <span><span style="color: #5b9ad5;">▮</span> directorio de trabajo</span>
+  <span><span style="color: #7db87d;">▮</span> ruta relativa</span>
+</div>
+```
+:::
+:::::
+
+---
+
+## El directorio de trabajo {.smaller}
+
+Esa carpeta de referencia se llama **directorio de trabajo**. Puedes verla con:
+
+```{r}
+#| eval: false
+getwd()
+```
+
+```
+[1] "C:/Users/Ana/Documents"
+```
+
+El problema es que el directorio de trabajo varía según cómo abriste R, y rara vez coincide con donde guardaste los archivos del proyecto. Por eso una ruta como `"datos/notas.csv"` falla:
+
+```
+Error: cannot open file 'datos/notas.csv': No such file or directory
+```
+
+Lo que necesitas es una forma de fijar el directorio de trabajo en la carpeta de tu proyecto, de forma automática y permanente.
+
+---
+
+## ¿Qué es un proyecto de R? {.smaller}
+
+Un archivo `.Rproj` convierte una carpeta en el punto de partida de tu sesión de trabajo.
+
+Al abrir el proyecto, RStudio:
+
+:::: nonincremental
+1. Fija el directorio de trabajo en esa carpeta
+2. Restaura el *script* y el entorno de la sesión anterior
+3. Permite usar **rutas relativas** desde esa carpeta
+::::
+
+```r
+# Con el proyecto abierto, esto funciona en cualquier computador
+notas <- read_csv("datos/notas.csv")
+```
+
+::: tip-box
+Crear proyecto: **File > New Project... > New Directory > New Project**. 
+
+Dale un **nombre sin espacios** (será el nombre de la carpeta), y **selecciona dentro de la ubicación** de esa nueva carpeta en tu computador
+:::
+
+---
+
+## Estructura recomendada de carpetas
+
+```
+mi_proyecto/
+├── mi_proyecto.Rproj   ← el punto de partida
+├── datos/              ← archivos originales (no se tocan)
+├── figuras/            ← figuras exportadas
+└── scripts/            ← tus archivos .R
+    └── analisis.R
+```
+
+Los datos originales van en `datos/` y **no se modifican nunca**. El *script* en `scripts/` hace todo el trabajo. Si algo sale mal, basta con corregir el *script* y volver a ejecutarlo.
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 5 min
+:::
+
+::: actividad-title
+Crea tu proyecto del curso
+:::
+
+::: actividad-desc
+:::: nonincremental
+1. **File > New Project... > New Directory > New Project**
+2. Nómbralo `curso_r` y elige una ubicación fácil de encontrar
+   - Ahí verás que en la esquina superior derecha de RStudio aparece el nombre del proyecto
+3. Dentro del proyecto, crea las carpetas `datos/`, `figuras/` y `scripts/`
+4. Abre un *script* nuevo (**File > New File > R Script**) y guárdalo en `scripts/` como `sesion4.R`
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 2
+:::
+
+::: section-title-text
+Importar CSV
+:::
+
+---
+
+## ¿Qué es un archivo CSV?
+
+CSV (*Comma-Separated Values*) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. Si abres un CSV en un editor de texto, verás algo así:
+
+```
+id,carrera,estadistica,metodologia
+1,Psicología,4.8,3.5
+2,Medicina,3.7,4.1
+```
+
+A diferencia de Excel, no hay fórmulas, colores ni metadatos ocultos. Lo que ves es lo que hay.
+
+---
+
+## `read_csv()`: el formato internacional
+
+`read_csv()` espera **coma** como separador y **punto** como decimal (estándar internacional):
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+library(tidyverse)
+
+notas <- read_csv("datos/notas.csv")
+glimpse(notas)
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+read_csv("datos/notas.csv", show_col_types = FALSE) |> glimpse()
+```
+:::
+:::::
+
+Las columnas numéricas se leen como texto (`<chr>`) porque el separador es `;` y el decimal es `,`. Nada funciona.
+
+---
+
+## El problema latinoamericano
+
+En Excel configurado en español, al exportar a CSV se usa **punto y coma** como separador y **coma** como decimal:
+
+```
+id;carrera;estadistica;metodologia
+1;Psicología;4,8;3,5
+```
+
+La solución es `read_csv2()`, que asume exactamente ese formato:
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+notas <- read_csv2("datos/notas.csv")
+glimpse(notas)
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+notas |> glimpse()
+```
+:::
+:::::
+
+Ahora `estadistica`, `metodologia` y `seminario` son numéricas (`<dbl>`).
+
+---
+
+## Argumentos útiles de `read_csv()` y `read_csv2()`
+
+| Argumento | Qué hace | Ejemplo |
+|---|---|---|
+| `skip` | Omite las primeras *n* filas | `skip = 2` |
+| `na` | Define qué valores se tratan como `NA` | `na = c("", "N/A", "nd")` |
+| `col_names` | Proporciona nombres de columna | `col_names = c("id", "nota")` |
+| `n_max` | Lee solo las primeras *n* observaciones | `n_max = 100` |
+| `col_types` | Fuerza el tipo de cada columna | `col_types = "ccd"` |
+
+::: tip-box
+Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, `skip` es tu primera herramienta. Prueba con `skip = 1`, revisa el resultado, y ajusta.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 7 min
+:::
+
+::: actividad-title
+Carga y explora `notas.csv`
+:::
+
+::: actividad-desc
+[⬇ Descargar `notas.csv`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv)
+
+Guarda el archivo en la carpeta `datos/` de tu proyecto. Luego en tu *script*:
+
+:::: nonincremental
+1. Carga el archivo con `read_csv2()` y asígnalo a `notas`
+2. Usa `glimpse()` para verificar que las columnas numéricas son `<dbl>`
+3. Calcula el promedio de `estadistica` por carrera con `group_by()` + `summarise()`
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 3
+:::
+
+::: section-title-text
+Importar Excel
+:::
+
+---
+
+## `read_excel()`: recordatorio rápido
+
+Ya lo usamos en la Sesión 3 con `encuesta_bruta.xlsx`. La función viene del paquete `readxl`:
+
+::::: columns
+::: {.column width="41%"}
+```{r}
+#| eval: false
+library(readxl)
+
+# Carga la primera hoja por defecto
+asistencia <- read_excel("datos/registro.xlsx")
+glimpse(asistencia)
+```
+:::
+::: {.column width="59%"}
+```{r}
+#| echo: false
+asistencia |> glimpse()
+```
+:::
+:::::
+
+Sin argumentos extra, carga la primera hoja del archivo.
+
+---
+
+## Múltiples hojas: el argumento `sheet`
+
+Un libro Excel puede tener varias hojas. Primero, mira qué hojas hay:
+
+```{r}
+excel_sheets("datos/registro.xlsx")
+```
+
+Luego elige la que necesitas:
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+calificaciones <- read_excel(
+    "datos/registro.xlsx",
+    sheet = "Calificaciones",
+    skip  = 2
+)
+glimpse(calificaciones)
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+calificaciones |> glimpse()
+```
+:::
+:::::
+
+`skip = 2` omite la fila de título y la fila vacía, igual que en `encuesta_bruta.xlsx`.
+
+---
+
+## Argumentos útiles de `read_excel()`
+
+| Argumento | Qué hace | Ejemplo |
+|---|---|---|
+| `sheet` | Nombre o número de hoja | `sheet = "Datos"` o `sheet = 2` |
+| `skip` | Omite las primeras *n* filas | `skip = 2` |
+| `range` | Rango de celdas específico | `range = "A3:F50"` |
+| `na` | Valores que se tratarán como `NA` | `na = c("", "n/d")` |
+| `col_types` | Tipo forzado por columna | `col_types = c("numeric", "text", "skip")` |
+
+::: tip-box
+Cuando hay columnas extra por anotaciones fuera de la tabla (las columnas `...15`, `...16` de la Sesión 3), usa `select(-starts_with("..."))` después de cargar para eliminarlas.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 7 min
+:::
+
+::: actividad-title
+Carga ambas hojas de `registro.xlsx`
+:::
+
+::: actividad-desc
+[⬇ Descargar `registro.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx)
+
+Guarda el archivo en `datos/`. Luego:
+
+:::: nonincremental
+1. Usa `excel_sheets()` para ver los nombres de las hojas
+2. Carga `"Asistencia"` sin argumentos extra. Asígnalo a un objeto
+3. Carga `"Calificaciones"` con `skip = 2`. Asígnalo a otro objeto
+4. Compara los dos objetos con `glimpse()`
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 4
+:::
+
+::: section-title-text
+Guardar y organizar
+:::
+
+---
+
+## Guardar datos procesados
+
+Una vez limpios y transformados, puedes guardar los datos para no tener que repetir el proceso cada vez.
+
+::::: columns
+::: {.column width="50%"}
+**CSV: portátil y universal**
+
+```{r}
+#| eval: false
+# Para compartir con otros programas
+write_csv(notas, "datos/notas_limpias.csv")
+
+# Para CSV latinoamericano
+write_csv2(notas, "datos/notas_limpias.csv")
+```
+
+Cualquier programa puede abrirlo.
+:::
+::: {.column width="50%"}
+**RDS: rápido y fiel**
+
+```{r}
+#| eval: false
+# Guarda el objeto exactamente como está en R
+saveRDS(notas, "datos/notas_limpias.rds")
+
+# Para cargarlo después
+notas <- readRDS("datos/notas_limpias.rds")
+```
+
+Conserva tipos, factores y atributos. Solo funciona en R.
+:::
+:::::
+
+::: tip-box
+Guarda los datos procesados en `datos/` con un nombre diferente al original (por ejemplo, `notas_limpias.csv`). **El archivo original nunca se toca**.
+:::
+
+---
+
+## El *script* autocontenido
+
+Un buen *script* de análisis sigue siempre el mismo esquema:
+
+```{r}
+#| eval: false
+# 1. Paquetes
+library(tidyverse)
+library(readxl)
+
+# 2. Importar datos originales
+notas <- read_csv2("datos/notas.csv")
+
+# 3. Limpiar y transformar
+notas <- notas |>
+    mutate(promedio = (estadistica + metodologia + seminario) / 3)
+
+# 4. Analizar
+notas |>
+    group_by(carrera) |>
+    summarise(promedio_carrera = mean(promedio, na.rm = TRUE))
+
+# 5. Exportar resultados (figuras, datos procesados)
+write_csv(notas, "datos/notas_procesadas.csv")
+```
+
+Cualquier persona que tenga el proyecto y ejecute este *script* obtiene exactamente el mismo resultado.
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Antes de terminar...
+:::
+
+::: section-title-text
+Quiz rápido
+:::
+
+---
+
+## Quiz · 1 de 3
+
+**Tienes un CSV exportado desde Excel en español con esta primera línea: `id;carrera;nota`. ¿Cuál función usas para cargarlo correctamente?**
+
+::: nonincremental
+- a) `read_csv("datos/archivo.csv")`
+- b) `read_csv2("datos/archivo.csv")`
+- c) `read_excel("datos/archivo.csv")`
+- d) `read_table("datos/archivo.csv")`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** `read_csv2()` espera punto y coma como separador y coma como decimal, el estándar de Excel configurado en español. `read_csv()` esperaría coma como separador y devolvería todo en una sola columna.
+:::
+:::
+
+---
+
+## Quiz · 2 de 3
+
+**Un archivo Excel tiene tres hojas: `"Datos"`, `"Resumen"` y `"Notas"`. La hoja `"Resumen"` empieza con dos filas de encabezado antes de los datos. ¿Cuál código la carga correctamente?**
+
+::: nonincremental
+- a) `read_excel("archivo.xlsx")`
+- b) `read_excel("archivo.xlsx", sheet = "Resumen")`
+- c) `read_excel("archivo.xlsx", sheet = "Resumen", skip = 2)`
+- d) `read_excel("archivo.xlsx", skip = 2)`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** Necesitas `sheet = "Resumen"` para seleccionar la hoja correcta (sin esto carga la primera) y `skip = 2` para omitir las dos filas de encabezado antes de los datos.
+:::
+:::
+
+---
+
+## Quiz · 3 de 3
+
+**¿Cuál es la ventaja principal de trabajar dentro de un proyecto `.Rproj`?**
+
+::: nonincremental
+- a) El código se ejecuta más rápido porque R optimiza automáticamente
+- b) Las rutas relativas funcionan desde cualquier computador sin modificar el código
+- c) Se instalan automáticamente todos los paquetes necesarios
+- d) No es necesario guardar los *scripts* manualmente
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** El proyecto fija el directorio de trabajo en su propia carpeta. Así, `read_csv("datos/notas.csv")` funciona igual en tu computador, en el de un colega o en el tuyo dentro de seis meses, siempre que la estructura de carpetas se mantenga.
+:::
+:::
+
+---
+
+{{< include ../_fin.qmd >}}

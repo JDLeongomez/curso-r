@@ -12,9 +12,7 @@ Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer:
 confusa y estéticamente ofensiva que seas capaz de producir**.
 
 La única regla es que el gráfico debe generarse **completamente en R**,
-usando `ggplot2` (y los paquetes que quieras), y debe mostrar datos reales
-(puedes usar cualquier conjunto de datos disponible en R, como `iris`, `mtcars`,
-`palmerpenguins::penguins`, `gapminder::gapminder`, etc.).
+usando `ggplot2` (y los paquetes que quieras).
 
 ## Criterios de evaluación (de fealdad)
 
@@ -26,9 +24,27 @@ usando `ggplot2` (y los paquetes que quieras), y debe mostrar datos reales
 
 ## Lo que debes entregar
 
-Un script `.R` o documento `.qmd` con el código que produce tu figura.
-Guárdalo en la carpeta `tareas/tarea1/` con tu nombre en el nombre del archivo,
-por ejemplo: `tarea1_maria_garcia.R`.
+Un *script* `.R` con el código que produce tu figura.
+Nómbralo con tu nombre, por ejemplo: `tarea1_maria_garcia.R`, y **súbelo a la
+[carpeta compartida de OneDrive](https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgCeBz0ZIgE8Q7pb3asBbZiWATaUw6mmJh4-K3UuslEvgiU?e=MozWcw)**
+antes de la Sesión 4.
+
+El script debe comenzar por cargar los paquetes necesarios al inicio, por ejemplo:
+
+```{r}
+#| eval: false
+# Cargar paquetes necesarios
+library(ggplot2)
+library(ggthemes)
+
+# Aquí va el código para crear tu figura fea...
+ggplot(..., aes(...)) +
+    geom_...() +
+    theme_...() +
+    scale_...() +
+    annotate(...) +
+    coord_...(...)
+```
 
 Lo presentas en la Sesión 4 (máximo 3 minutos): muestras el código y el resultado.
 El grupo vota por la más fea.
@@ -38,11 +54,11 @@ El grupo vota por la más fea.
 ```{r}
 #| eval: false
 # Algunas funciones que pueden ayudarte en el lado oscuro:
-theme()         # puedes cambiar ABSOLUTAMENTE TODO el aspecto
-scale_colour_manual()   # paletas de colores propias
-element_text()  # tamaño, color, ángulo de texto
-coord_polar()   # transforma cualquier gráfica en algo circular
-annotate()      # agrega texto, líneas, formas encima
+theme() # puedes cambiar ABSOLUTAMENTE TODO el aspecto
+scale_colour_manual() # paletas de colores propias
+element_text() # tamaño, color, ángulo de texto
+coord_polar() # transforma cualquier gráfica en algo circular
+annotate() # agrega texto, líneas, formas encima
 ```
 
 ::: {.callout-tip}

@@ -19,25 +19,25 @@ website:
         menu:
           - text: "— Semana 1 —"
           - href: sesiones/s01/slides.html
-            text: "S1 · Introducción a R y RStudio"
+            text: "S1 · Primeros pasos en R y RStudio"
           - href: sesiones/s02/slides.html
-            text: "S2 · ggplot2: la gramática de las gráficas"
+            text: "S2 · Visualizaciones con ggplot2"
           - href: sesiones/s03/slides.html
-            text: "S3 · Pipe nativo y dplyr"
+            text: "S3 · Manejo y transformación de datos"
           - text: "— Semana 2 —"
           - href: sesiones/s04/slides.html
-            text: "S4 · Datos externos, proyectos y CSV"
+            text: "S4 · Importar y organizar datos"
           - href: sesiones/s05/slides.html
-            text: "S5 · Simulación de datos y funciones"
+            text: "S5 · Funciones y automatización"
           - href: sesiones/s06/slides.html
-            text: "S6 · Documentos reproducibles con Quarto"
+            text: "S6 · Reportes reproducibles con Quarto"
           - text: "— Semana 3 —"
           - href: sesiones/s07/slides.html
-            text: "S7 · Quarto avanzado, RevealJS y referencias"
+            text: "S7 · Documentos y presentaciones con Quarto"
           - href: sesiones/s08/slides.html
-            text: "S8 · Git y GitHub"
+            text: "S8 · Versiones y colaboración con Git y GitHub"
           - href: sesiones/s09/slides.html
-            text: "S9 · Cierre e integración"
+            text: "S9 · Herramientas y buenas prácticas"
       - text: Tareas
         menu:
           - href: tareas/tarea1-figura-fea.html

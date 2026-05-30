@@ -2,6 +2,8 @@
 title: "Programa del curso"
 ---
 
+![Curso de R · Junio 2026](imagenes/logo.svg)
+
 Este curso cubre el manejo, transformación y visualización de datos en R. No es un curso de estadística: no se abordan pruebas de hipótesis, modelos ni inferencia. El foco está en que puedas importar, organizar y explorar datos, y comunicar resultados visualmente.
 
 ## Objetivos generales
@@ -20,9 +22,9 @@ Al finalizar el curso, los participantes serán capaces de:
 
 | # | Día | Salón | Tema |
 |---|-----|-------|------|
-| 1 | Miércoles 3 jun | A-404 | Intro a R y RStudio · Sintaxis básica · Primera figura con ggplot2 |
-| 2 | Jueves 4 jun | A-402 | ggplot2: la gramática de las gráficas · Geometrías · `aes()` · Temas y paletas |
-| 3 | Viernes 5 jun | A-402 | Pipe nativo `\|>` · Transformación de datos con `dplyr` |
+| 1 | Miércoles 3 jun | <span class="salon-a402">A-402</span> | Primeros pasos en R y RStudio · Sintaxis básica · Primera figura con ggplot2 |
+| 2 | Jueves 4 jun | <span class="salon-a402">A-402</span> | Visualizaciones con ggplot2 · Geometrías · `aes()` · Temas y paletas |
+| 3 | Viernes 5 jun | <span class="salon-a402">A-402</span> | Manejo y transformación de datos con dplyr y pipes |
 
 **Tarea 1** asignada al final de la sesión 3.
 
@@ -30,9 +32,9 @@ Al finalizar el curso, los participantes serán capaces de:
 
 | # | Día | Salón | Tema |
 |---|-----|-------|------|
-| 4 | Miércoles 10 jun | A-404 | Datos externos · Proyectos de RStudio · Rutas relativas · CSV y Excel |
-| 5 | Jueves 11 jun | A-404 | Simulación de datos · Funciones · Condicionales |
-| 6 | Viernes 12 jun | B-211 | Documentos reproducibles con Quarto |
+| 4 | Miércoles 10 jun | <span class="salon-a402">A-402</span> | Importar y organizar datos: Excel, CSV y proyectos de R |
+| 5 | Jueves 11 jun | <span class="salon-a402">A-402</span> | Automatización de análisis con funciones y simulación |
+| 6 | Viernes 12 jun | <span class="salon-b211">B-211</span> | Reportes reproducibles con Quarto |
 
 **Entrega Tarea 1** al inicio de la sesión 4. **Tarea 2** asignada al final de la sesión 6.
 
@@ -40,9 +42,9 @@ Al finalizar el curso, los participantes serán capaces de:
 
 | # | Día | Salón | Tema |
 |---|-----|-------|------|
-| 7 | Miércoles 17 jun | A-404 | Quarto avanzado · Presentaciones RevealJS · Referencias bibliográficas |
-| 8 | Jueves 18 jun | A-404 | Control de versiones con Git y GitHub |
-| 9 | Viernes 19 jun | A-402 | Cierre · Integración de herramientas · Buenas prácticas |
+| 7 | Miércoles 17 jun | <span class="salon-a404">A-404</span> | Documentos y presentaciones con Quarto · Referencias bibliográficas |
+| 8 | Jueves 18 jun | <span class="salon-a404">A-404</span> | Versiones y colaboración con Git y GitHub |
+| 9 | Viernes 19 jun | <span class="salon-a402">A-402</span> | Herramientas y buenas prácticas de trabajo en R |
 
 **Entrega Tarea 2** al inicio de la sesión 7.
 

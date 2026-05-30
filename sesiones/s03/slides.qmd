@@ -1,9 +1,10 @@
 ---
 title: "Sesión 3"
-subtitle: "Pipe nativo y dplyr"
+subtitle: "Manejo y transformación de datos con dplyr y pipes"
 author: "Juan David Leongómez"
 institute: "Universidad El Bosque"
 date: "2026-06-05"
+date-format: long
 lang: es
 format:
   revealjs:
@@ -14,7 +15,6 @@ format:
     code-line-numbers: true
     highlight-style: github
     transition: fade
-    transition-speed: fast
     width: 1280
     height: 720
 execute:
@@ -98,7 +98,7 @@ Esta es una hoja de Excel típica: filas de título, celdas combinadas, columnas
 
 ## Descargar y cargar los datos {.smaller}
 
-[⬇ Descargar `encuesta_bruta.xlsx`](https://jdleongomez.github.io/curso-r/sesiones/s03/datos/encuesta_bruta.xlsx)
+[⬇ Descargar `encuesta_bruta.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx)
 
 Guarda el archivo en tu computador. Para cargarlo sin necesitar conocer rutas, usa el menú de RStudio:
 
@@ -1246,5 +1246,240 @@ Algunas preguntas posibles:
 - ¿Varía el puntaje de ansiedad según el semestre?
 - ¿Hay diferencias entre carreras en los niveles de ansiedad severa?
 - ¿Cómo se distribuye la edad según el nivel de ansiedad?
+
+---
+
+##  {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Tarea 1
+:::
+
+::: actividad-title
+El concurso de la figura más fea
+:::
+
+::: actividad-desc
+Para la Sesión 4 · Entrega el *script* · El grupo vota
+:::
+
+---
+
+## Tarea 1: el concurso de la figura más fea
+
+**Tu misión**: crear la figura estadística más horrible, ilegible y estéticamente ofensiva que seas capaz de producir en R.
+
+- Debe generarse completamente con `ggplot2` (y los paquetes que quieras)
+- Guarda el *script* `.R` con tu nombre y [súbelo aquí](https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgCeBz0ZIgE8Q7pb3asBbZiWATaUw6mmJh4-K3UuslEvgiU?e=MozWcw)
+- El script debe comenzar por cargar los paquetes necesarios
+- La presentas en la Sesión 4: **máximo 3 minutos**, muestras código y figura
+- El grupo vota por la más fea
+
+::: tip-box
+[→ Instrucciones completas y criterios de evaluación](../../tareas/tarea1-figura-fea.html)
+
+[→ Otro ejemplo de inspiración (código)](https://gist.github.com/emilyriederer/2bf4f67d7e198f8359b61706c82e42ee)
+:::
+
+---
+
+## Inspiración (1 de 2) {.smaller}
+
+*Nicole Daniela Sierra, 2026*
+
+::::: columns
+::: {.column width="35%"}
+```{r}
+#| eval: false
+labs(
+    title = "GRAFICA HIPER PROFESIONAL",
+    subtitle = "ANALISIS SUPER CIENTIFICO",
+    caption = "100% REAL",
+    x = "EDaAaAaAD",
+    y = "ESTREeEEeEs"
+) +
+    scale_color_manual(
+        values = c("#FFFF00", "#FF0000")
+    ) +
+    theme(
+        plot.background = element_rect(
+            fill = "#FF00FF"
+        ),
+        panel.background = element_rect(
+            fill = "#00FFFF"
+        ),
+        panel.grid.major = element_line(
+            color = "#00FF00", linewidth = 3
+        )
+    )
+```
+:::
+::: {.column width="65%"}
+```{r}
+#| echo: false
+#| warning: false
+#| fig-height: 4.5
+#| out-width: "100%"
+set.seed(123)
+datos_n <- data.frame(
+    Genero = rep(c("Hombre", "Mujer"), each = 100),
+    Edad   = rnorm(200, 25, 5),
+    Estres = rnorm(200, 50, 10),
+    Cafe   = sample(1:20, 200, replace = TRUE)
+)
+ggplot(datos_n, aes(
+    x = Edad, y = Estres,
+    color = Genero, shape = Genero,
+    size = Cafe
+)) +
+    geom_point(alpha = 1) +
+    geom_smooth(
+        method = "lm", color = "#00FF00",
+        linewidth = 4, se = TRUE
+    ) +
+    geom_text(aes(label = round(Edad)),
+        color = "#FF00FF", angle = 60, size = 3
+    ) +
+    labs(
+        title = "GRAFICA HIPER PROFESIONAL",
+        subtitle = "ANALISIS SUPER CIENTIFICO",
+        caption = "100% REAL",
+        x = "EDaAaAaAD", y = "ESTREeEEeEs"
+    ) +
+    scale_color_manual(values = c("#FFFF00", "#FF0000")) +
+    theme(
+        panel.background = element_rect(fill = "#00FFFF"),
+        plot.background = element_rect(fill = "#FF00FF"),
+        panel.grid.major = element_line(
+            color = "#00FF00",
+            linewidth = 3
+        ),
+        panel.grid.minor = element_line(
+            color = "#FFA500",
+            linewidth = 2
+        ),
+        text = element_text(
+            family = "mono",
+            face = "bold.italic",
+            size = 24,
+            color = "#0000FF"
+        ),
+        axis.text.x = element_text(
+            angle = 90, size = 18,
+            color = "#FF4500"
+        ),
+        axis.text.y = element_text(
+            angle = 45, size = 18,
+            color = "#ADFF2F"
+        ),
+        legend.background = element_rect(fill = "#FFFF00"),
+        legend.position = "bottom"
+    )
+```
+:::
+:::::
+
+---
+
+## Inspiración (2 de 2) {.smaller}
+
+*Ana Sofía Reyes, 2025*
+
+::::: columns
+::: {.column width="35%"}
+```{r}
+#| eval: false
+theme_dark() +
+    theme(
+        panel.background = element_rect(
+            fill = "yellow"
+        ),
+        plot.background = element_rect(
+            fill = "pink"
+        ),
+        legend.background = element_rect(
+            fill = "cyan"
+        )
+    ) +
+    annotate("text",
+        x = 15, y = 300,
+        label = "MUCHOS DATOS",
+        color = "red", size = 10,
+        angle = 45
+    ) +
+    annotate("text",
+        x = 30, y = 50,
+        label = "💥 CARROS 💥",
+        color = "darkgreen", size = 12,
+        angle = -30
+    )
+```
+:::
+::: {.column width="65%"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 4.5
+#| out-width: "100%"
+ggplot(mtcars, aes(
+    x = mpg, y = hp,
+    color = factor(cyl),
+    size = wt,
+    shape = factor(gear)
+)) +
+    geom_point() +
+    geom_smooth(
+        method = "lm", se = TRUE,
+        color = "limegreen",
+        linetype = "dotdash",
+        fill = "magenta"
+    ) +
+    theme_dark() +
+    theme(
+        panel.background = element_rect(fill = "yellow"),
+        plot.background = element_rect(fill = "pink"),
+        legend.background = element_rect(fill = "cyan"),
+        legend.text = element_text(
+            size = 16, color = "orange",
+            face = "italic"
+        ),
+        axis.text = element_text(
+            size = 18, color = "red",
+            face = "bold.italic"
+        ),
+        axis.title = element_text(
+            size = 22, color = "blue",
+            face = "bold"
+        ),
+        plot.title = element_text(
+            size = 28, color = "green",
+            face = "bold.italic",
+            hjust = 0.1
+        )
+    ) +
+    labs(
+        title = "GRÁFICA HORRIBLE: Caballos de fuerza vs Consumo",
+        x = "Millas por galón (mpg)",
+        y = "Caballos de fuerza (hp)",
+        color = "Cilindros",
+        size = "Peso del vehículo",
+        shape = "Marchas"
+    ) +
+    scale_color_manual(values = c("cyan", "orange", "purple")) +
+    scale_size_continuous(range = c(5, 20)) +
+    annotate("text",
+        x = 15, y = 300,
+        label = "MUCHOS DATOS", color = "red",
+        size = 10, angle = 45
+    ) +
+    annotate("text",
+        x = 30, y = 50,
+        label = "💥 CARROS 💥", color = "darkgreen",
+        size = 12, angle = -30
+    )
+```
+:::
+:::::
 
 {{< include ../_fin.qmd >}}
