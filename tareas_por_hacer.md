@@ -41,6 +41,7 @@
 - [x] Actualizar sección `#sesiones` en `index.qmd` (temas, salones con colores)
 - [x] Actualizar sección `#contenidos-por-semana` en `programa.qmd` (temas, salones con colores)
 - [ ] Añadir enlace a diapositivas en `index.qmd` a medida que se completen (s04–s09)
+  - [ ] s04 — enlace pendiente de publicar
 
 ## Tareas para estudiantes
 
