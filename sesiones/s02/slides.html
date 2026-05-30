@@ -13,7 +13,6 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Juan David Leongómez">
-  <meta name="dcterms.date" content="2026-06-04">
   <title>Curso de R · Junio 2026 – Sesión 2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -102,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-533db89b96b2bc2cbc4dbeecc111d68b.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2151fa2d83d8b00c7ea2f1c09e61c5da.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -200,9 +199,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-color="#121834" data-background-image="../../imagenes/logo.svg" data-background-position="top center" data-background-size="20%" class="quarto-title-block center">
   <h1 class="title">Sesión 2</h1>
-  <p class="subtitle">ggplot2: la gramática de las gráficas</p>
+  <p class="subtitle">Visualizaciones con ggplot2</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -215,7 +214,7 @@ Juan David Leongómez
     </div>
 </div>
 
-  <p class="date">2026-06-04</p>
+  <p class="date">4 de junio de 2026</p>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
@@ -1372,6 +1371,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="section-title-text">
 <p>¡Gracias!</p>
 </div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div style="text-align: center; margin-top: 0em;">
+<p><img data-src="../../imagenes/qr-code.svg" width="300"> <span style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;">jdleongomez.github.io/curso-r</span></p>
+</div>
+</div><div class="column" style="width:60%;">
+<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
+</div></div>
 
 
 </section>
@@ -1541,11 +1548,11 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
         transition: 'fade',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'fast',
+        transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,

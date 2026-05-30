@@ -13,7 +13,6 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Juan David Leongómez">
-  <meta name="dcterms.date" content="2026-06-03">
   <title>Curso de R · Junio 2026 – Sesión 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -102,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-533db89b96b2bc2cbc4dbeecc111d68b.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2151fa2d83d8b00c7ea2f1c09e61c5da.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -200,9 +199,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-color="#121834" data-background-image="../../imagenes/logo.svg" data-background-position="top center" data-background-size="20%" class="quarto-title-block center">
   <h1 class="title">Sesión 1</h1>
-  <p class="subtitle">Introducción a R y RStudio</p>
+  <p class="subtitle">Primeros pasos en R y RStudio</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -215,7 +214,23 @@ Juan David Leongómez
     </div>
 </div>
 
-  <p class="date">2026-06-03</p>
+  <p class="date">3 de junio de 2026</p>
+</section>
+<section id="el-sitio-del-curso" class="slide level2" data-background-color="#121834">
+<h2>El sitio del curso</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Aquí encontrarás todo el material del curso:</strong></p>
+<ul>
+<li class="fragment">Diapositivas de cada sesión</li>
+<li class="fragment">Archivos de datos para las actividades</li>
+<li class="fragment">Enunciados de las tareas</li>
+</ul>
+<p>Ábrelo ahora en tu teléfono o computador.</p>
+</div><div class="column" style="text-align: center;">
+<p><a href="../../imagenes/qr-code.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="../../imagenes/qr-code.svg" style="margin-bottom: 0.2em;" width="240"></a></p>
+<p><span style="color: rgba(255,255,255,0.7); font-size: 0.6em; letter-spacing: 0.03em;">jdleongomez.github.io/curso-r</span></p>
+</div></div>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
@@ -320,7 +335,7 @@ Juan David Leongómez
 </div><div class="column" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../imagenes/consola.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="../../imagenes/consola.PNG" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../imagenes/consola.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../imagenes/consola.PNG" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div></div>
@@ -338,7 +353,7 @@ Juan David Leongómez
 <p>R funciona solo, pero cada pieza vive en su propia ventana flotante: consola, editor de scripts, gráficas, entorno… Todo disperso.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../imagenes/interfazRwin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../imagenes/interfazRwin.png" class="quarto-figure quarto-figure-center" height="420"></a></p>
+<p><a href="../../imagenes/interfazRwin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../imagenes/interfazRwin.png" class="quarto-figure quarto-figure-center" height="420"></a></p>
 </figure>
 </div>
 </section>
@@ -357,7 +372,7 @@ Juan David Leongómez
 <p>R es el motor. RStudio es la carrocería — un <strong>IDE</strong> (<em>Integrated Development Environment</em>) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../imagenes/perro-r-rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../imagenes/perro-r-rstudio.png" class="quarto-figure quarto-figure-center" height="420"></a></p>
+<p><a href="../../imagenes/perro-r-rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../imagenes/perro-r-rstudio.png" class="quarto-figure quarto-figure-center" height="420"></a></p>
 </figure>
 </div>
 </section>
@@ -367,7 +382,7 @@ Juan David Leongómez
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../imagenes/cuadrantes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../imagenes/cuadrantes.png" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../imagenes/cuadrantes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../imagenes/cuadrantes.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
@@ -511,7 +526,7 @@ Juan David Leongómez
 <p>Una <strong>función</strong> es como una fábrica: recibe insumos, hace algo con ellos, y produce un resultado.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../imagenes/fabrica.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../imagenes/fabrica.gif" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
+<p><a href="../../imagenes/fabrica.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="../../imagenes/fabrica.gif" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
 </figure>
 </div>
 </section>
@@ -663,7 +678,7 @@ Juan David Leongómez
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../imagenes/View-diamonds.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="../../imagenes/View-diamonds.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
+<p><a href="../../imagenes/View-diamonds.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../imagenes/View-diamonds.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
 </figure>
 </div>
 </section>
@@ -683,7 +698,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -704,7 +719,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -725,7 +740,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -749,7 +764,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -774,7 +789,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-21-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-21-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -803,7 +818,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-23-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-23-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -827,7 +842,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -845,7 +860,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-27-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-27-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -863,7 +878,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-29-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-29-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -897,7 +912,7 @@ Juan David Leongómez
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-31-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-31-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1085,6 +1100,14 @@ Juan David Leongómez
 <div class="section-title-text">
 <p>¡Gracias!</p>
 </div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div style="text-align: center; margin-top: 0em;">
+<p><img data-src="../../imagenes/qr-code.svg" width="300"> <span style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;">jdleongomez.github.io/curso-r</span></p>
+</div>
+</div><div class="column" style="width:60%;">
+<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
+</div></div>
 
 
 </section>
@@ -1254,11 +1277,11 @@ Juan David Leongómez
         transition: 'fade',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'fast',
+        transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,

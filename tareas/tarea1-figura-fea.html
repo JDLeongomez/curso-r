@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63ce127521a19a1e4e3744969e33e844.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4195eaea19c10ec6854c8ca2c8d2486b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7725182d7781e1143c5b635c54827b42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,41 +147,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="dropdown-header">— Semana 1 —</li>
         <li>
     <a class="dropdown-item" href="../sesiones/s01/slides.html">
- <span class="dropdown-text">S1 · Introducción a R y RStudio</span></a>
+ <span class="dropdown-text">S1 · Primeros pasos en R y RStudio</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sesiones/s02/slides.html">
- <span class="dropdown-text">S2 · ggplot2: la gramática de las gráficas</span></a>
+ <span class="dropdown-text">S2 · Visualizaciones con ggplot2</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sesiones/s03/slides.html">
- <span class="dropdown-text">S3 · Pipe nativo y dplyr</span></a>
+ <span class="dropdown-text">S3 · Manejo y transformación de datos</span></a>
   </li>  
         <li class="dropdown-header">— Semana 2 —</li>
         <li>
     <a class="dropdown-item" href="../sesiones/s04/slides.html">
- <span class="dropdown-text">S4 · Datos externos, proyectos y CSV</span></a>
+ <span class="dropdown-text">S4 · Importar y organizar datos</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sesiones/s05/slides.html">
- <span class="dropdown-text">S5 · Simulación de datos y funciones</span></a>
+ <span class="dropdown-text">S5 · Funciones y automatización</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sesiones/s06/slides.html">
- <span class="dropdown-text">S6 · Documentos reproducibles con Quarto</span></a>
+ <span class="dropdown-text">S6 · Reportes reproducibles con Quarto</span></a>
   </li>  
         <li class="dropdown-header">— Semana 3 —</li>
         <li>
     <a class="dropdown-item" href="../sesiones/s07/slides.html">
- <span class="dropdown-text">S7 · Quarto avanzado, RevealJS y referencias</span></a>
+ <span class="dropdown-text">S7 · Documentos y presentaciones con Quarto</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sesiones/s08/slides.html">
- <span class="dropdown-text">S8 · Git y GitHub</span></a>
+ <span class="dropdown-text">S8 · Versiones y colaboración con Git y GitHub</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sesiones/s09/slides.html">
- <span class="dropdown-text">S9 · Cierre e integración</span></a>
+ <span class="dropdown-text">S9 · Herramientas y buenas prácticas</span></a>
   </li>  
     </ul>
   </li>
@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="el-reto" class="level2">
 <h2 class="anchored" data-anchor-id="el-reto">El reto</h2>
 <p>Durante la primera semana aprendiste a crear gráficas en <code>ggplot2</code>. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: <strong>tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir</strong>.</p>
-<p>La única regla es que el gráfico debe generarse <strong>completamente en R</strong>, usando <code>ggplot2</code> (y los paquetes que quieras), y debe mostrar datos reales (puedes usar cualquier conjunto de datos disponible en R, como <code>iris</code>, <code>mtcars</code>, <code>palmerpenguins::penguins</code>, <code>gapminder::gapminder</code>, etc.).</p>
+<p>La única regla es que el gráfico debe generarse <strong>completamente en R</strong>, usando <code>ggplot2</code> (y los paquetes que quieras).</p>
 </section>
 <section id="criterios-de-evaluación-de-fealdad" class="level2">
 <h2 class="anchored" data-anchor-id="criterios-de-evaluación-de-fealdad">Criterios de evaluación (de fealdad)</h2>
@@ -263,18 +263,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="lo-que-debes-entregar" class="level2">
 <h2 class="anchored" data-anchor-id="lo-que-debes-entregar">Lo que debes entregar</h2>
-<p>Un script <code>.R</code> o documento <code>.qmd</code> con el código que produce tu figura. Guárdalo en la carpeta <code>tareas/tarea1/</code> con tu nombre en el nombre del archivo, por ejemplo: <code>tarea1_maria_garcia.R</code>.</p>
+<p>Un <em>script</em> <code>.R</code> con el código que produce tu figura. Nómbralo con tu nombre, por ejemplo: <code>tarea1_maria_garcia.R</code>, y <strong>súbelo a la <a href="https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgCeBz0ZIgE8Q7pb3asBbZiWATaUw6mmJh4-K3UuslEvgiU?e=MozWcw">carpeta compartida de OneDrive</a></strong> antes de la Sesión 4.</p>
+<p>El script debe comenzar por cargar los paquetes necesarios al inicio, por ejemplo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar paquetes necesarios</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Aquí va el código para crear tu figura fea...</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(..., <span class="fu">aes</span>(...)) <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_...</span>() <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_...</span>() <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_...</span>() <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(...) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_...</span>(...)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Lo presentas en la Sesión 4 (máximo 3 minutos): muestras el código y el resultado. El grupo vota por la más fea.</p>
 </section>
 <section id="pistas-de-lo-que-no-debes-hacer-normalmente" class="level2">
 <h2 class="anchored" data-anchor-id="pistas-de-lo-que-no-debes-hacer-normalmente">Pistas (de lo que <em>no</em> debes hacer normalmente)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Algunas funciones que pueden ayudarte en el lado oscuro:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>()         <span class="co"># puedes cambiar ABSOLUTAMENTE </span><span class="al">TODO</span><span class="co"> el aspecto</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_colour_manual</span>()   <span class="co"># paletas de colores propias</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">element_text</span>()  <span class="co"># tamaño, color, ángulo de texto</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coord_polar</span>()   <span class="co"># transforma cualquier gráfica en algo circular</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate</span>()      <span class="co"># agrega texto, líneas, formas encima</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Algunas funciones que pueden ayudarte en el lado oscuro:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>() <span class="co"># puedes cambiar ABSOLUTAMENTE </span><span class="al">TODO</span><span class="co"> el aspecto</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_colour_manual</span>() <span class="co"># paletas de colores propias</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">element_text</span>() <span class="co"># tamaño, color, ángulo de texto</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coord_polar</span>() <span class="co"># transforma cualquier gráfica en algo circular</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate</span>() <span class="co"># agrega texto, líneas, formas encima</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
