@@ -26,20 +26,23 @@ execute:
 ## El sitio del curso {background-color="#121834"}
 
 ::::: columns
-::: {.column width="55%"}
+::: {.column width="50%"}
+
 **Aquí encontrarás todo el material del curso:**
 
+:::{.nonincremental}
 - Diapositivas de cada sesión
-- Archivos de datos para las actividades
-- Enunciados de las tareas
-
-Ábrelo ahora en tu teléfono o computador.
+- Archivos de datos y materiales para las actividades
+- Descripciones detalladas de las tareas
 :::
 
-::: {.column width="45%" style="text-align: center;"}
-![](../../imagenes/qr-code.svg){width="240px" style="margin-bottom: 0.2em;"}
+Ábrelo ahora en tu computador (o teléfono).
+:::
 
-[jdleongomez.github.io/curso-r]{style="color: rgba(255,255,255,0.7); font-size: 0.6em; letter-spacing: 0.03em;"}
+::: {.column width="50%" style="text-align: center;"}
+[![](../../imagenes/qr-code.svg){width="80%" style="margin-bottom: 0.2em;"}](https://jdleongomez.github.io/curso-r/)
+
+[jdleongomez.github.io/curso-r](https://jdleongomez.github.io/curso-r/){style="color: rgba(255,255,255,0.7); font-size: 0.6em; letter-spacing: 0.03em;"}
 :::
 :::::
 
