@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s03/slides.html</loc>
-    <lastmod>2026-05-31T03:35:19.871Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s02/slides.html</loc>
-    <lastmod>2026-05-31T03:35:19.854Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/index.html</loc>
-    <lastmod>2026-05-31T03:35:19.841Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea2-paquete-raro.html</loc>
-    <lastmod>2026-05-31T03:35:19.883Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/tareas_por_hacer.html</loc>
-    <lastmod>2026-05-31T03:35:19.883Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea1-figura-fea.html</loc>
-    <lastmod>2026-05-31T03:35:19.882Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/programa.html</loc>
-    <lastmod>2026-05-31T03:35:19.841Z</lastmod>
-  </url>
-  <url>
-    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s01/slides.html</loc>
-    <lastmod>2026-05-31T03:35:19.842Z</lastmod>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s06/slides.html</loc>
+    <lastmod>2026-06-02T13:44:09.926Z</lastmod>
   </url>
   <url>
     <loc>https://JDLeongomez.github.io/curso-r/sesiones/s04/slides.html</loc>
-    <lastmod>2026-05-31T03:35:19.881Z</lastmod>
+    <lastmod>2026-06-02T13:44:09.920Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s01/slides.html</loc>
+    <lastmod>2026-06-02T13:44:09.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/index.html</loc>
+    <lastmod>2026-06-02T13:44:09.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea2-paquete-raro.html</loc>
+    <lastmod>2026-06-02T13:44:09.928Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/tareas_por_hacer.html</loc>
+    <lastmod>2026-06-02T13:44:09.928Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/tareas/tarea1-figura-fea.html</loc>
+    <lastmod>2026-06-02T13:44:09.928Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/programa.html</loc>
+    <lastmod>2026-06-02T13:44:09.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s05/slides.html</loc>
+    <lastmod>2026-06-02T13:44:09.920Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s02/slides.html</loc>
+    <lastmod>2026-06-02T13:44:09.888Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JDLeongomez.github.io/curso-r/sesiones/s03/slides.html</loc>
+    <lastmod>2026-06-02T13:44:09.910Z</lastmod>
   </url>
 </urlset>

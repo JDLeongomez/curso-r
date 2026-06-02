@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Juan David Leongómez">
-  <title>Curso de R · Junio 2026 – Sesión 4</title>
+  <title>Curso de R · Junio 2026 – Sesión 6</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -200,8 +200,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#121834" data-background-image="../../imagenes/logo.svg" data-background-position="top center" data-background-size="20%" class="quarto-title-block center">
-  <h1 class="title">Sesión 4</h1>
-  <p class="subtitle">Importar y organizar datos: Excel, CSV y proyectos de R</p>
+  <h1 class="title">Sesión 6</h1>
+  <p class="subtitle">Reportes reproducibles con Quarto</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -214,571 +214,581 @@ Juan David Leongómez
     </div>
 </div>
 
-  <p class="date">10 de junio de 2026</p>
+  <p class="date">12 de junio de 2026</p>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
 <ul>
-<li class="fragment">Tarea 1: el concurso de la figura más fea</li>
-<li class="fragment">Proyectos de R y rutas relativas</li>
-<li class="fragment">Importar CSV: <code>read_csv()</code> y el problema latinoamericano</li>
-<li class="fragment">Importar Excel: <code>read_excel()</code> con argumentos clave</li>
-<li class="fragment">Guardar datos procesados</li>
-<li class="fragment">El flujo de trabajo reproducible</li>
+<li class="fragment">El problema del copiar y pegar</li>
+<li class="fragment">¿Qué es Quarto?</li>
+<li class="fragment">Tu primer documento Quarto</li>
+<li class="fragment">Markdown: el lenguaje del texto</li>
+<li class="fragment">Bloques de código</li>
+<li class="fragment">Código en línea</li>
+<li class="fragment">Formatos de salida: HTML y PDF</li>
 </ul>
 </section>
 <section id="section" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
-<p>Tarea 1</p>
-</div>
-<div class="section-title-text">
-<p>El concurso de la figura más fea</p>
-</div>
-</section>
-<section id="las-presentaciones" class="slide level2 smaller">
-<h2>Las presentaciones</h2>
-<p>Cada persona tiene <strong>máximo 3 minutos</strong>:</p>
-<ol type="1">
-<li>Muestra tu figura en pantalla</li>
-<li>Explica brevemente qué decisiones tomaste para hacerla horrible</li>
-<li>El grupo vota por la más fea</li>
-</ol>
-<div class="tip-box">
-<p>Mientras presentas, mantén el <em>script</em> abierto: puede que alguien quiera ver el código de algún truco que usaste.</p>
-</div>
-</section>
-<section id="section-1" class="slide level2" data-background-color="#121834">
-<h2></h2>
-<div class="parte-num">
 <p>Parte 1</p>
 </div>
 <div class="section-title-text">
-<p>Proyectos de R</p>
+<p>El problema del copiar y pegar</p>
 </div>
 </section>
-<section id="el-error-más-común-al-empezar" class="slide level2">
-<h2>El error más común al empezar</h2>
-<p>Abrir un archivo sin proyecto lleva a escribir la ruta completa:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/Ana/Documents/Uni/Tercer semestre/datos/notas.csv"</span>)</span></code></pre></div>
-<p>Ese código solo funciona en el computador de Ana, en esa sesión. Al día siguiente, si mueve la carpeta, ya no funcionará. En el computador de otra persona, nunca funciona.</p>
-<div class="tip-box">
-<p>La solución no es poner la ruta completa, sino fijar un punto de referencia y usar rutas relativas.</p>
-</div>
-</section>
-<section id="rutas-relativas-vs.-absolutas" class="slide level2 smaller">
-<h2>Rutas relativas vs.&nbsp;absolutas</h2>
+<section id="un-flujo-de-trabajo-frágil" class="slide level2 smaller">
+<h2>Un flujo de trabajo frágil</h2>
 <div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Ruta absoluta</strong> · desde la raíz del sistema</p>
-<p>Windows: <code>C:/Users/Ana/Documents/Uni/Tercer semestre/datos/notas.csv</code> <br> Linux/Mac: <code>/home/ana/uni/tercer_semestre/datos/notas.csv</code></p>
-<p>Solo funciona en ese computador y esa carpeta. Si cambia alguno, se rompe.</p>
+<div class="column" style="width:50%;">
+<p>El flujo habitual sin herramientas de reproducibilidad:</p>
+<ol type="1">
+<li>Analizas los datos en R (o peor aún, en Excel)</li>
+<li>Copias el resultado (p.&nbsp;ej., media = 8.3) y lo pegas en Word</li>
+<li>Redactas el informe completo</li>
+<li>Tres días después encuentras un error en los datos originales</li>
+<li>Vuelves a correr el análisis: ahora la media es 8.1</li>
+<li>¿Cuántos valores en el Word quedaron desactualizados?</li>
+</ol>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
-<p><strong>Ruta relativa</strong> · desde una carpeta de referencia</p>
-<p><code>datos/notas.csv</code> (¡funciona igual en Windows, Linux o Mac!)</p>
-<p>Funciona en cualquier computador, siempre que haya una referencia fija desde la que partir.</p>
+<div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:1em 1.2em; line-height:2;">
+  <div>📊 <strong>analisis.R</strong></div>
+  <div style="color:#225faa; padding-left:1em;">mean(gad7) → <strong>8.3</strong></div>
+  <div style="margin-top:0.5em;">⬇ copiar y pegar</div>
+  <div style="margin-top:0.5em;">📄 <strong>informe.docx</strong></div>
+  <div style="padding-left:1em; color:#444">"La media fue de <strong>8.3</strong> puntos…"</div>
+  <div style="margin-top:0.5em;">⬇ datos corregidos</div>
+  <div style="color:#c0392b; padding-left:1em;">mean(gad7) → <strong>8.1</strong> ⚠ desactualizado</div>
 </div>
-</div><div class="column" style="width:40%;">
-<div style="font-family: monospace; font-size: 0.82em; line-height: 2; padding: 0.9em 1.1em; background: rgba(255,255,255,0.05); border-radius: 8px;">
-  <div style="color: #666;">📁 C:/Users/Ana/Documents/…</div>
-  <div style="color: #666; padding-left: 1.5em;">└─ 📁 Tercer semestre/</div>
-  <div style="color: #5b9ad5; font-weight: bold; padding-left: 3em;">└─ 📁 mi_proyecto/</div>
-  <div style="color: #7db87d; padding-left: 4.5em;">└─ 📁 datos/</div>
-  <div style="color: #7db87d; padding-left: 6em;">└─ 📄 notas.csv</div>
+<div class="tip-box">
+<p>Cada vez que los datos cambian, cada valor copiado a mano es un error potencial.</p>
 </div>
-<div style="font-family: sans-serif; font-size: 0.72em; margin-top: 0.8em; color: #aaa; display: flex; gap: 1.4em;">
-  <span><span style="color: #666;">▮</span> solo en este equipo</span>
-  <span><span style="color: #5b9ad5;">▮</span> directorio de trabajo</span>
-  <span><span style="color: #7db87d;">▮</span> ruta relativa</span>
 </div>
 </div></div>
 </section>
-<section id="el-directorio-de-trabajo" class="slide level2 smaller">
-<h2>El directorio de trabajo</h2>
-<p>Esa carpeta de referencia se llama <strong>directorio de trabajo</strong>. Puedes verla con:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">getwd</span>()</span></code></pre></div>
-</div>
-<pre><code>[1] "C:/Users/Ana/Documents"</code></pre>
-<p>El problema es que el directorio de trabajo varía según cómo abriste R, y rara vez coincide con donde guardaste los archivos del proyecto. Por eso una ruta como <code>"datos/notas.csv"</code> falla:</p>
-<pre><code>Error: cannot open file 'datos/notas.csv': No such file or directory</code></pre>
-<p>Lo que necesitas es una forma de fijar el directorio de trabajo en la carpeta de tu proyecto, de forma automática y permanente.</p>
-</section>
-<section id="qué-es-un-proyecto-de-r" class="slide level2 smaller">
-<h2>¿Qué es un proyecto de R?</h2>
-<p>Un archivo <code>.Rproj</code> convierte una carpeta en el punto de partida de tu sesión de trabajo.</p>
-<p>Al abrir el proyecto, RStudio:</p>
-<ol type="1">
-<li>Fija el directorio de trabajo en esa carpeta</li>
-<li>Restaura el <em>script</em> y el entorno de la sesión anterior</li>
-<li>Permite usar <strong>rutas relativas</strong> desde esa carpeta</li>
-</ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Con el proyecto abierto, esto funciona en cualquier computador</span></span>
-<span id="cb5-2"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/notas.csv"</span>)</span></code></pre></div>
-<div class="tip-box">
-<p>Crear proyecto: <strong>File &gt; New Project… &gt; New Directory &gt; New Project</strong>.</p>
-<p>Dale un <strong>nombre sin espacios</strong> (será el nombre de la carpeta), y <strong>selecciona dentro de la ubicación</strong> de esa nueva carpeta en tu computador</p>
-</div>
-</section>
-<section id="estructura-recomendada-de-carpetas" class="slide level2">
-<h2>Estructura recomendada de carpetas</h2>
-<pre><code>mi_proyecto/
-├── mi_proyecto.Rproj   ← el punto de partida
-├── datos/              ← archivos originales (no se tocan)
-├── figuras/            ← figuras exportadas
-└── scripts/            ← tus archivos .R
-    └── analisis.R</code></pre>
-<p>Los datos originales van en <code>datos/</code> y <strong>no se modifican nunca</strong>. El <em>script</em> en <code>scripts/</code> hace todo el trabajo. Si algo sale mal, basta con corregir el <em>script</em> y volver a ejecutarlo.</p>
-</section>
-<section id="section-2" class="slide level2 actividad" data-background-color="#6b1220">
-<h2></h2>
-<div class="actividad-num">
-<p>Actividad · 5 min</p>
-</div>
-<div class="actividad-title">
-<p>Crea tu proyecto del curso</p>
-</div>
-<div class="actividad-desc">
-<ol type="1">
-<li><strong>File &gt; New Project… &gt; New Directory &gt; New Project</strong></li>
-<li>Nómbralo <code>curso_r</code> y elige una ubicación fácil de encontrar
-<ul>
-<li>Ahí verás que en la esquina superior derecha de RStudio aparece el nombre del proyecto</li>
-</ul></li>
-<li>Dentro del proyecto, crea las carpetas <code>datos/</code>, <code>figuras/</code> y <code>scripts/</code></li>
-<li>Abre un <em>script</em> nuevo (<strong>File &gt; New File &gt; R Script</strong>) y guárdalo en <code>scripts/</code> como <code>sesion4.R</code></li>
-</ol>
-</div>
-</section>
-<section id="section-3" class="slide level2" data-background-color="#121834">
+<section id="section-1" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 2</p>
 </div>
 <div class="section-title-text">
-<p>Importar CSV</p>
+<p>¿Qué es Quarto?</p>
 </div>
 
-<img src="../../imagenes/readr.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" class="r-stretch"></section>
-<section id="qué-es-un-archivo-csv" class="slide level2">
-<h2>¿Qué es un archivo CSV?</h2>
-<p>CSV (<em>Comma-Separated Values</em>) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. Si abres un CSV en un editor de texto, verás algo así:</p>
-<pre><code>id,carrera,estadistica,metodologia
-1,Psicología,4.8,3.5
-2,Medicina,3.7,4.1</code></pre>
-<p>A diferencia de Excel, no hay fórmulas, colores ni metadatos ocultos. Lo que ves es lo que hay.</p>
-</section>
-<section id="read_csv-el-formato-internacional" class="slide level2">
-<h2><code>read_csv()</code>: el formato internacional</h2>
-<p><code>read_csv()</code> espera <strong>coma</strong> como separador y <strong>punto</strong> como decimal (estándar internacional):</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/notas.csv"</span>)</span>
-<span id="cb8-4"><a></a><span class="fu">glimpse</span>(notas)</span></code></pre></div>
+<img src="../../imagenes/quarto.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" class="r-stretch"></section>
+<section id="texto-código-documento" class="slide level2 smaller">
+<h2>Texto + código = documento</h2>
+<p>Quarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.</p>
+<div style="display:flex; align-items:center; gap:1em; font-family:monospace; font-size:0.82em; margin-top:1em;">
+  <div style="background:#eeedfe; border-radius:8px; padding:0.8em 1em; min-width:180px;">
+    <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">📝 documento.qmd</div>
+    <div style="color:#444; font-size:0.9em; line-height:1.8;">
+      texto en markdown<br>
+      ```gam<br>
+      &nbsp;&nbsp;código R<br>
+      ```<br>
+      más texto…
+    </div>
+  </div>
+  <div style="font-size:1.5em; color:#225faa;">→</div>
+  <div style="background:#eeedfe; border-radius:8px; padding:0.8em 1em; min-width:120px; text-align:center;">
+    <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">⚙ Quarto</div>
+    <div style="font-size:0.85em; color:#666;">ejecuta el código<br>inserta resultados</div>
+  </div>
+  <div style="font-size:1.5em; color:#225faa;">→</div>
+  <div style="display:flex; flex-direction:column; gap:0.5em;">
+    <div style="background:#ddeaf8; border-radius:6px; padding:0.5em 0.8em; color:#1a4070; font-weight:600;">🌐 HTML</div>
+    <div style="background:#d4f0e4; border-radius:6px; padding:0.5em 0.8em; color:#1a5c38; font-weight:600;">📄 PDF</div>
+    <div style="background:#f5f5f3; border-radius:6px; padding:0.5em 0.8em; color:#444; font-weight:600;">📝 Word</div>
+  </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 20
-Columns: 1
-$ `id;carrera;estadistica;metodologia;seminario` &lt;chr&gt; "1;Psicología;4,8;3,5;4…</code></pre>
-</div>
-</div>
-</div></div>
-<p>Las columnas numéricas se leen como texto (<code>&lt;chr&gt;</code>) porque el separador es <code>;</code> y el decimal es <code>,</code>. Nada funciona.</p>
-</section>
-<section id="el-problema-latinoamericano" class="slide level2">
-<h2>El problema latinoamericano</h2>
-<p>En Excel configurado en español, al exportar a CSV se usa <strong>punto y coma</strong> como separador y <strong>coma</strong> como decimal:</p>
-<pre><code>id;carrera;estadistica;metodologia
-1;Psicología;4,8;3,5</code></pre>
-<p>La solución es <code>read_csv2()</code>, que asume exactamente ese formato:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/notas.csv"</span>)</span>
-<span id="cb11-2"><a></a><span class="fu">glimpse</span>(notas)</span></code></pre></div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 20
-Columns: 5
-$ id          &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-$ carrera     &lt;chr&gt; "Psicología", "Medicina", "Enfermería", "Psicología", "Med…
-$ estadistica &lt;dbl&gt; 4.8, 3.7, 4.2, 3.3, 2.8, 4.5, 3.9, 4.1, 3.6, 4.7, 2.5, 4.0…
-$ metodologia &lt;dbl&gt; 3.5, 4.1, 4.0, NA, 3.2, 4.3, 3.7, 3.8, 3.4, 4.5, 2.8, 4.2,…
-$ seminario   &lt;dbl&gt; 4.2, 3.9, 4.5, 3.8, 3.5, 4.7, NA, 4.0, 3.9, 4.8, 3.1, 3.7,…</code></pre>
-</div>
-</div>
-</div></div>
-<p>Ahora <code>estadistica</code>, <code>metodologia</code> y <code>seminario</code> son numéricas (<code>&lt;dbl&gt;</code>).</p>
-</section>
-<section id="argumentos-útiles-de-read_csv-y-read_csv2" class="slide level2">
-<h2>Argumentos útiles de <code>read_csv()</code> y <code>read_csv2()</code></h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Argumento</th>
-<th>Qué hace</th>
-<th>Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>skip</code></td>
-<td>Omite las primeras <em>n</em> filas</td>
-<td><code>skip = 2</code></td>
-</tr>
-<tr class="even">
-<td><code>na</code></td>
-<td>Define qué valores se tratan como <code>NA</code></td>
-<td><code>na = c("", "N/A", "nd")</code></td>
-</tr>
-<tr class="odd">
-<td><code>col_names</code></td>
-<td>Proporciona nombres de columna</td>
-<td><code>col_names = c("id", "nota")</code></td>
-</tr>
-<tr class="even">
-<td><code>n_max</code></td>
-<td>Lee solo las primeras <em>n</em> observaciones</td>
-<td><code>n_max = 100</code></td>
-</tr>
-<tr class="odd">
-<td><code>col_types</code></td>
-<td>Fuerza el tipo de cada columna</td>
-<td><code>col_types = "ccd"</code></td>
-</tr>
-</tbody>
-</table>
-<div class="tip-box">
-<p>Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, <code>skip</code> es tu primera herramienta. Prueba con <code>skip = 1</code>, revisa el resultado, y ajusta.</p>
+<div class="fragment">
+<p>Cuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos.</p>
 </div>
 </section>
-<section id="section-4" class="slide level2 actividad" data-background-color="#6b1220">
-<h2></h2>
-<div class="actividad-num">
-<p>Actividad · 7 min</p>
-</div>
-<div class="actividad-title">
-<p>Carga y explora <code>notas.csv</code></p>
-</div>
-<div class="actividad-desc">
-<p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv">⬇ Descargar <code>notas.csv</code></a></p>
-<p>Guarda el archivo en la carpeta <code>datos/</code> de tu proyecto. Luego en tu <em>script</em>:</p>
-<ol type="1">
-<li>Carga el archivo con <code>read_csv2()</code> y asígnalo a <code>notas</code></li>
-<li>Usa <code>glimpse()</code> para verificar que las columnas numéricas son <code>&lt;dbl&gt;</code></li>
-<li>Calcula el promedio de <code>estadistica</code> por carrera con <code>group_by()</code> + <code>summarise()</code></li>
-</ol>
-</div>
-</section>
-<section id="section-5" class="slide level2" data-background-color="#121834">
+<section id="section-2" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 3</p>
 </div>
 <div class="section-title-text">
-<p>Importar Excel</p>
+<p>Tu primer documento Quarto</p>
 </div>
-
-<img src="../../imagenes/readxl.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" class="r-stretch"></section>
-<section id="read_excel-recordatorio-rápido" class="slide level2">
-<h2><code>read_excel()</code>: recordatorio rápido</h2>
-<p>Ya lo usamos en la Sesión 3 con <code>encuesta_bruta.xlsx</code>. La función viene del paquete <code>readxl</code>:</p>
-<div class="columns">
-<div class="column" style="width:41%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(readxl)</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="co"># Carga la primera hoja por defecto</span></span>
-<span id="cb13-4"><a></a>asistencia <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos/registro.xlsx"</span>)</span>
-<span id="cb13-5"><a></a><span class="fu">glimpse</span>(asistencia)</span></code></pre></div>
-</div>
-</div><div class="column" style="width:59%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 20
-Columns: 7
-$ id      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…
-$ carrera &lt;chr&gt; "Psicología", "Medicina", "Enfermería", "Psicología", "Medicin…
-$ s01     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1
-$ s02     &lt;dbl&gt; 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1
-$ s03     &lt;dbl&gt; 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1
-$ s04     &lt;dbl&gt; 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1
-$ total   &lt;dbl&gt; 4, 3, 4, 3, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 3, 4, 4</code></pre>
-</div>
-</div>
-</div></div>
-<p>Sin argumentos extra, carga la primera hoja del archivo.</p>
 </section>
-<section id="múltiples-hojas-el-argumento-sheet" class="slide level2">
-<h2>Múltiples hojas: el argumento <code>sheet</code></h2>
-<p>Un libro Excel puede tener varias hojas. Primero, mira qué hojas hay:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">excel_sheets</span>(<span class="st">"datos/registro.xlsx"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Asistencia"     "Calificaciones"</code></pre>
+<section id="crear-un-documento-quarto" class="slide level2 smaller">
+<h2>Crear un documento Quarto</h2>
+<p>En RStudio: <strong>File › New File › Quarto Document…</strong></p>
+<p>Aparece un cuadro de diálogo donde puedes escribir el título y el autor antes de crear el archivo. El formato por defecto es HTML, que es el más completo para empezar.</p>
+<div class="fragment">
+<p>El archivo que se abre tiene tres partes:</p>
+<div style="font-family:monospace; font-size:0.82em; line-height:1.9; background:#f5f5f3; border-radius:8px; padding:0.9em 1.2em; margin-top:0.5em;">
+  <span style="background:#eeedfe; color:#3d2fa0; padding:1px 6px; border-radius:3px; font-weight:700;">YAML</span>&nbsp; encabezado entre <code>---</code>: título, autor, formato de salida<br>
+  <span style="background:#ddeaf8; color:#1a4070; padding:1px 6px; border-radius:3px; font-weight:700;">Markdown</span>&nbsp; texto con formato: encabezados, negrita, listas…<br>
+  <span style="background:#d4f0e4; color:#1a5c38; padding:1px 6px; border-radius:3px; font-weight:700;">Código</span>&nbsp; bloques <code>```{r}…```</code> que se ejecutan al renderizar
 </div>
 </div>
-<p>Luego elige la que necesitas:</p>
-<div class="columns">
-<div class="column" style="width:55%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a></a>calificaciones <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb17-2"><a></a>    <span class="st">"datos/registro.xlsx"</span>,</span>
-<span id="cb17-3"><a></a>    <span class="at">sheet =</span> <span class="st">"Calificaciones"</span>,</span>
-<span id="cb17-4"><a></a>    <span class="at">skip  =</span> <span class="dv">2</span></span>
-<span id="cb17-5"><a></a>)</span>
-<span id="cb17-6"><a></a><span class="fu">glimpse</span>(calificaciones)</span></code></pre></div>
-</div>
-</div><div class="column" style="width:45%;">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 20
-Columns: 5
-$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
-$ carrera  &lt;chr&gt; "Psicología", "Medicina", "Enfermería", "Psicología", "Medici…
-$ parcial1 &lt;dbl&gt; 3.8, 4.2, 3.5, NA, 3.9, 4.1, 3.7, 4.0, 3.6, 4.5, 2.9, 4.3, 3.…
-$ parcial2 &lt;dbl&gt; 4.1, 3.9, 4.0, 3.5, 4.2, 4.4, 3.8, 4.1, 3.7, 4.6, 3.1, 4.0, 3…
-$ final    &lt;dbl&gt; NA, 4.0, 3.8, 3.7, 4.0, 4.2, 3.7, 4.0, NA, 4.5, 3.0, 4.1, 3.8…</code></pre>
-</div>
-</div>
-</div></div>
-<p><code>skip = 2</code> omite la fila de título y la fila vacía, igual que en <code>encuesta_bruta.xlsx</code>.</p>
 </section>
-<section id="argumentos-útiles-de-read_excel" class="slide level2">
-<h2>Argumentos útiles de <code>read_excel()</code></h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Argumento</th>
-<th>Qué hace</th>
-<th>Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>sheet</code></td>
-<td>Nombre o número de hoja</td>
-<td><code>sheet = "Datos"</code> o <code>sheet = 2</code></td>
-</tr>
-<tr class="even">
-<td><code>skip</code></td>
-<td>Omite las primeras <em>n</em> filas</td>
-<td><code>skip = 2</code></td>
-</tr>
-<tr class="odd">
-<td><code>range</code></td>
-<td>Rango de celdas específico</td>
-<td><code>range = "A3:F50"</code></td>
-</tr>
-<tr class="even">
-<td><code>na</code></td>
-<td>Valores que se tratarán como <code>NA</code></td>
-<td><code>na = c("", "n/d")</code></td>
-</tr>
-<tr class="odd">
-<td><code>col_types</code></td>
-<td>Tipo forzado por columna</td>
-<td><code>col_types = c("numeric", "text", "skip")</code></td>
-</tr>
-</tbody>
-</table>
+<section id="el-encabezado-yaml" class="slide level2 smaller">
+<h2>El encabezado YAML</h2>
+<p>El encabezado va al principio del archivo, entre dos líneas de <code>---</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
+<span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Análisis de ansiedad GAD-7"</span></span>
+<span id="cb1-3"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Ana García"</span></span>
+<span id="cb1-4"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2026-06-12"</span></span>
+<span id="cb1-5"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-6"><a></a><span class="pp">---</span></span></code></pre></div>
+<p>Controla el título, el autor, la fecha y el formato de salida. Todo lo que aparece debajo del segundo <code>---</code> es el cuerpo del documento.</p>
 <div class="tip-box">
-<p>Cuando hay columnas extra por anotaciones fuera de la tabla (las columnas <code>...15</code>, <code>...16</code> de la Sesión 3), usa <code>select(-starts_with("..."))</code> después de cargar para eliminarlas.</p>
+<p>Si abres el documento en el <strong>editor visual</strong> de RStudio (botón <em>Visual</em> arriba a la izquierda), puedes editar el encabezado con un formulario en lugar de escribir el YAML a mano.</p>
 </div>
 </section>
-<section id="section-6" class="slide level2 actividad" data-background-color="#6b1220">
+<section id="el-editor-visual" class="slide level2 smaller">
+<h2>El editor visual</h2>
+<p>RStudio ofrece dos modos de edición del mismo archivo:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Editor visual</strong></p>
+<p>Interfaz similar a un procesador de texto: los botones aplican formato, los encabezados se ven como encabezados, las listas se crean con Enter. Es el modo más cómodo para empezar.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Editor de código fuente</strong></p>
+<p>Muestra el archivo tal como está escrito: texto con marcas de Markdown (<code>**negrita**</code>, <code># Título</code>). Útil para ver exactamente qué está pasando.</p>
+</div></div>
+<div class="fragment">
+<p>Puedes cambiar entre los dos modos en cualquier momento con el botón <strong>Visual / Source</strong> en la esquina superior izquierda del editor. El archivo es el mismo en ambos casos.</p>
+<div class="tip-box">
+<p>Para este curso el editor visual es suficiente. El código fuente lo verás aparecer de forma natural a medida que uses Quarto más.</p>
+</div>
+</div>
+</section>
+<section id="renderizar" class="slide level2 smaller">
+<h2>Renderizar</h2>
+<p>El botón <strong>Render</strong> (arriba en el editor) ejecuta el documento completo y abre el resultado en el navegador o en el panel Viewer de RStudio.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Desde RStudio: botón <strong>Render</strong> o atajo <code>Ctrl+Shift+K</code></p>
+<p>Desde la terminal:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>quarto render mi_documento.qmd</span></code></pre></div>
+</div><div class="column" style="width:50%;">
+<div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:0.9em 1.2em; line-height:2;">
+  <div style="color:#225faa; font-weight:700;">Al renderizar, Quarto:</div>
+  <div>① ejecuta todos los bloques de código R</div>
+  <div>② convierte el Markdown a HTML (o PDF)</div>
+  <div>③ inserta los resultados en el documento</div>
+  <div>④ abre el archivo final</div>
+</div>
+</div></div>
+<div class="tip-box">
+<p>Si hay un error en algún bloque de código, el renderizado se detiene y muestra el error. El mensaje indica en qué bloque ocurrió.</p>
+</div>
+</section>
+<section id="section-3" class="slide level2 actividad" data-background-color="#6b1220">
 <h2></h2>
 <div class="actividad-num">
-<p>Actividad · 7 min</p>
+<p>Actividad · 5 min</p>
 </div>
 <div class="actividad-title">
-<p>Carga ambas hojas de <code>registro.xlsx</code></p>
+<p>Tu primer documento Quarto</p>
 </div>
 <div class="actividad-desc">
-<p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx">⬇ Descargar <code>registro.xlsx</code></a></p>
-<p>Guarda el archivo en <code>datos/</code>. Luego:</p>
 <ol type="1">
-<li>Usa <code>excel_sheets()</code> para ver los nombres de las hojas</li>
-<li>Carga <code>"Asistencia"</code> sin argumentos extra. Asígnalo a un objeto</li>
-<li>Carga <code>"Calificaciones"</code> con <code>skip = 2</code>. Asígnalo a otro objeto</li>
-<li>Compara los dos objetos con <code>glimpse()</code></li>
+<li><strong>File › New File › Quarto Document…</strong> — título: “Mi primer análisis”, formato: HTML</li>
+<li>Guárdalo dentro de tu proyecto <code>curso_r</code>, en la carpeta <code>scripts/</code></li>
+<li>Haz clic en <strong>Render</strong> y observa el resultado en el navegador</li>
+<li>Cambia el título en el YAML y vuelve a renderizar</li>
 </ol>
 </div>
 </section>
-<section id="section-7" class="slide level2" data-background-color="#121834">
+<section id="section-4" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 4</p>
 </div>
 <div class="section-title-text">
-<p>Guardar y organizar</p>
+<p>Markdown: el lenguaje del texto</p>
 </div>
 </section>
-<section id="guardar-datos-procesados" class="slide level2">
-<h2>Guardar datos procesados</h2>
-<p>Una vez limpios y transformados, puedes guardar los datos para no tener que repetir el proceso cada vez.</p>
+<section id="markdown-formato-con-texto-plano" class="slide level2 smaller">
+<h2>Markdown: formato con texto plano</h2>
+<p>Markdown es la forma en que Quarto entiende el formato del texto. El editor visual lo aplica automáticamente con botones, pero conviene reconocer las marcas para entender qué está pasando.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>CSV: portátil y universal</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Para compartir con otros programas</span></span>
-<span id="cb19-2"><a></a><span class="fu">write_csv</span>(notas, <span class="st">"datos/notas_limpias.csv"</span>)</span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a><span class="co"># Para CSV latinoamericano</span></span>
-<span id="cb19-5"><a></a><span class="fu">write_csv2</span>(notas, <span class="st">"datos/notas_limpias.csv"</span>)</span></code></pre></div>
-</div>
-<p>Cualquier programa puede abrirlo.</p>
+<p><strong>Lo que escribes (fuente)</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu"># Título principal</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="fu">## Sección</span></span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a>Texto normal, **negrita**</span>
+<span id="cb3-6"><a></a>e *cursiva*.</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a><span class="ss">- </span>Elemento de lista</span>
+<span id="cb3-9"><a></a><span class="ss">- </span>Otro elemento</span>
+<span id="cb3-10"><a></a></span>
+<span id="cb3-11"><a></a><span class="ss">1. </span>Primero</span>
+<span id="cb3-12"><a></a><span class="ss">2. </span>Segundo</span>
+<span id="cb3-13"><a></a></span>
+<span id="cb3-14"><a></a><span class="co">[</span><span class="ot">Enlace</span><span class="co">](https://r-project.org)</span></span></code></pre></div>
 </div><div class="column" style="width:50%;">
-<p><strong>RDS: rápido y fiel</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Guarda el objeto exactamente como está en R</span></span>
-<span id="cb20-2"><a></a><span class="fu">saveRDS</span>(notas, <span class="st">"datos/notas_limpias.rds"</span>)</span>
-<span id="cb20-3"><a></a></span>
-<span id="cb20-4"><a></a><span class="co"># Para cargarlo después</span></span>
-<span id="cb20-5"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"datos/notas_limpias.rds"</span>)</span></code></pre></div>
-</div>
-<p>Conserva tipos, factores y atributos. Solo funciona en R.</p>
+<p><strong>Lo que se ve (renderizado)</strong></p>
+<section id="título-principal" class="title-slide slide level1 unnumbered center" style="font-size:1em; margin:0; border:none; padding:0;">
+<h1>Título principal</h1>
+
+</section>
+<section id="sección" class="slide level2 unnumbered" style="font-size:0.85em; margin:0.2em 0; border:none; padding:0;">
+<h2>Sección</h2>
+<p>Texto normal, <strong>negrita</strong> e <em>cursiva</em>.</p>
+<ul>
+<li class="fragment">Elemento de lista</li>
+<li class="fragment">Otro elemento</li>
+</ul>
+<ol type="1">
+<li class="fragment">Primero</li>
+<li class="fragment">Segundo</li>
+</ol>
+<p><a href="https://r-project.org">Enlace</a></p>
+</section>
+
 </div></div>
-<div class="tip-box">
-<p>Guarda los datos procesados en <code>datos/</code> con un nombre diferente al original (por ejemplo, <code>notas_limpias.csv</code>). <strong>El archivo original nunca se toca</strong>.</p>
+</section>
+<section id="section-5" class="slide level2" data-background-color="#121834">
+<h2></h2>
+<div class="parte-num">
+<p>Parte 5</p>
+</div>
+<div class="section-title-text">
+<p>Bloques de código</p>
 </div>
 </section>
-<section id="el-script-autocontenido" class="slide level2">
-<h2>El <em>script</em> autocontenido</h2>
-<p>Un buen <em>script</em> de análisis sigue siempre el mismo esquema:</p>
+<section id="los-bloques-de-código" class="slide level2 smaller">
+<h2>Los bloques de código</h2>
+<p>Un bloque de código (<em>chunk</em>) es una sección del documento donde va código R. Se delimita con tres acentos graves y <code>{r}</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb4-3"><a></a><span class="in">```</span></span></code></pre></div>
+<div class="fragment">
+<p>Al renderizar, el bloque se ejecuta y el resultado aparece justo debajo en el documento:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># 1. Paquetes</span></span>
-<span id="cb21-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb21-3"><a></a><span class="fu">library</span>(readxl)</span>
-<span id="cb21-4"><a></a></span>
-<span id="cb21-5"><a></a><span class="co"># 2. Importar datos originales</span></span>
-<span id="cb21-6"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/notas.csv"</span>)</span>
-<span id="cb21-7"><a></a></span>
-<span id="cb21-8"><a></a><span class="co"># 3. Limpiar y transformar</span></span>
-<span id="cb21-9"><a></a>notas <span class="ot">&lt;-</span> notas <span class="sc">|&gt;</span></span>
-<span id="cb21-10"><a></a>    <span class="fu">mutate</span>(<span class="at">promedio =</span> (estadistica <span class="sc">+</span> metodologia <span class="sc">+</span> seminario) <span class="sc">/</span> <span class="dv">3</span>)</span>
-<span id="cb21-11"><a></a></span>
-<span id="cb21-12"><a></a><span class="co"># 4. Analizar</span></span>
-<span id="cb21-13"><a></a>notas <span class="sc">|&gt;</span></span>
-<span id="cb21-14"><a></a>    <span class="fu">group_by</span>(carrera) <span class="sc">|&gt;</span></span>
-<span id="cb21-15"><a></a>    <span class="fu">summarise</span>(<span class="at">promedio_carrera =</span> <span class="fu">mean</span>(promedio, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb21-16"><a></a></span>
-<span id="cb21-17"><a></a><span class="co"># 5. Exportar resultados (figuras, datos procesados)</span></span>
-<span id="cb21-18"><a></a><span class="fu">write_csv</span>(notas, <span class="st">"datos/notas_procesadas.csv"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.6</code></pre>
 </div>
-<p>Cualquier persona que tenga el proyecto y ejecute este <em>script</em> obtiene exactamente el mismo resultado.</p>
+</div>
+</div>
+</section>
+<section id="opciones-de-bloque" class="slide level2 smaller">
+<h2>Opciones de bloque</h2>
+<p>Las opciones se escriben al inicio del bloque con <code>#|</code>:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Opción</th>
+<th style="text-align: center;">Por defecto</th>
+<th>Qué controla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>echo</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se muestra el código en el documento?</td>
+</tr>
+<tr class="even">
+<td><code>eval</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se ejecuta el código?</td>
+</tr>
+<tr class="odd">
+<td><code>warning</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se muestran las advertencias?</td>
+</tr>
+<tr class="even">
+<td><code>message</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se muestran los mensajes de carga de paquetes?</td>
+</tr>
+<tr class="odd">
+<td><code>include</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td><code>false</code> ejecuta el código pero no muestra nada</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Ejemplo: mostrar solo el resultado, sin el código:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb7-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a></a><span class="co">#| echo: false</span></span>
+<span id="cb7-3"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb7-4"><a></a><span class="in">```</span></span></code></pre></div>
+</div>
+</section>
+<section id="una-figura-en-un-documento" class="slide level2 smaller">
+<h2>Una figura en un documento</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb8-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb8-2"><a></a><span class="co">#| echo: false</span></span>
+<span id="cb8-3"><a></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a>gad7_demo <span class="sc">|&gt;</span></span>
+<span id="cb8-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gad7)) <span class="sc">+</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb8-10"><a></a>    <span class="at">fill =</span> <span class="st">"#225faa"</span>, <span class="at">bins =</span> <span class="dv">22</span></span>
+<span id="cb8-11"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb8-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-13"><a></a>    <span class="at">x =</span> <span class="st">"Puntaje GAD-7"</span>,</span>
+<span id="cb8-14"><a></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb8-15"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb8-16"><a></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-17"><a></a><span class="in">```</span></span></code></pre></div>
+</div><div class="column" style="width:52%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="tip-box">
+<p><code>fig-height</code> y <code>fig-width</code> controlan el tamaño de la figura en el documento (en pulgadas). <code>fig-cap: "Mi figura"</code> añade un pie de figura numerado automáticamente.</p>
+</div>
+</section>
+<section id="section-6" class="slide level2" data-background-color="#121834">
+<h2></h2>
+<div class="parte-num">
+<p>Parte 6</p>
+</div>
+<div class="section-title-text">
+<p>Código en línea</p>
+</div>
+</section>
+<section id="insertar-resultados-dentro-del-texto" class="slide level2 smaller">
+<h2>Insertar resultados dentro del texto</h2>
+<p>Con <code>`r `</code> puedes insertar el resultado de una expresión R directamente en una oración:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb9-1"><a></a>La muestra incluyó 200 participantes.</span>
+<span id="cb9-2"><a></a>La media del puntaje GAD-7 fue 8 puntos</span>
+<span id="cb9-3"><a></a>(DE = 4.6).</span></code></pre></div>
+<div class="fragment">
+<p>Al renderizar, eso produce:</p>
+<blockquote>
+<p>La muestra incluyó 200 participantes. La media del puntaje GAD-7 fue 8 puntos (DE = 4.6).</p>
+</blockquote>
+<p>Cuando cambien los datos, esos valores se actualizan solos al volver a renderizar.</p>
+</div>
+</section>
+<section id="section-7" class="slide level2 actividad" data-background-color="#6b1220">
+<h2></h2>
+<div class="actividad-num">
+<p>Actividad · 10 min</p>
+</div>
+<div class="actividad-title">
+<p>Un mini informe</p>
+</div>
+<div class="actividad-desc">
+<ol type="1">
+<li>En tu documento Quarto, añade una sección <code>## Resultados</code></li>
+<li>Inserta un bloque de código con un histograma o gráfica de barras usando los datos de <code>encuesta_bruta.xlsx</code> de la Sesión 3 (cárgalos con una ruta relativa desde tu proyecto)</li>
+<li>Escribe una oración con al menos un valor calculado con código en línea: número de observaciones, una media o una proporción</li>
+</ol>
+</div>
 </section>
 <section id="section-8" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
-<p>Antes de terminar…</p>
+<p>Parte 7</p>
 </div>
 <div class="section-title-text">
-<p>Quiz rápido</p>
+<p>Formatos de salida</p>
 </div>
+</section>
+<section id="html-el-formato-principal" class="slide level2 smaller">
+<h2>HTML: el formato principal</h2>
+<p>El formato HTML es el más completo y el más fácil de usar:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb10-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Ventajas</strong></p>
+<ul>
+<li>No requiere instalar nada extra</li>
+<li>Admite interactividad (tablas filtrables, gráficas dinámicas)</li>
+<li>Se abre en cualquier navegador</li>
+<li>Es el mejor formato para compartir resultados en la web</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Opciones útiles</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb11-1"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb11-2"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb11-3"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">           # tabla de contenidos</span></span>
+<span id="cb11-4"><a></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">        # niveles de encabezado</span></span>
+<span id="cb11-5"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span><span class="co">        # tema visual</span></span>
+<span id="cb11-6"><a></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # un solo archivo</span></span></code></pre></div>
+</div></div>
+</section>
+<section id="pdf-de-markdown-a-papel" class="slide level2 smaller">
+<h2>PDF: de Markdown a papel</h2>
+<p>Generar un PDF requiere un sistema de composición tipográfica llamado <strong>LaTeX</strong>. Es el estándar en publicación académica.</p>
+<p>El camino que recorre tu documento:</p>
+<div style="display:flex; align-items:center; gap:0.8em; font-family:monospace; font-size:0.82em; margin:1em 0; flex-wrap:wrap;">
+  <div style="background:#eeedfe; border-radius:6px; padding:0.5em 0.9em; font-weight:700; color:#3d2fa0;">📝 .qmd</div>
+  <div style="color:#225faa; font-weight:700;">→ Pandoc →</div>
+  <div style="background:#ddeaf8; border-radius:6px; padding:0.5em 0.9em; font-weight:700; color:#1a4070;">📄 .tex</div>
+  <div style="color:#225faa; font-weight:700;">→ LaTeX →</div>
+  <div style="background:#d4f0e4; border-radius:6px; padding:0.5em 0.9em; font-weight:700; color:#1a5c38;">📄 .pdf</div>
+</div>
+<div class="fragment">
+<p>Instalar LaTeX completo ocupa unos 4 GB. Para uso con Quarto basta con <strong>TinyTeX</strong>, una versión mínima:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
+<span id="cb12-2"><a></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+</div>
+<p>Una vez instalado, solo hay que cambiar el formato en el YAML:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb13-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span></code></pre></div>
+</div>
+</section>
+<section id="pandoc-el-traductor-universal" class="slide level2 smaller">
+<h2>Pandoc: el traductor universal</h2>
+<p><strong>Pandoc</strong> es la herramienta que Quarto usa internamente para convertir Markdown a cualquier formato. Viene instalado con Quarto, no tienes que hacer nada.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Entrada</th>
+<th>Salida posible</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Markdown (<code>.qmd</code>)</td>
+<td>HTML, PDF, Word, EPUB, LaTeX, y más</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Word (<code>format: docx</code>) es útil para compartir con colaboradores que no usan R. Para este curso nos centraremos en HTML y, cuando sea necesario, en PDF.</p>
+<div class="tip-box">
+<p>Puedes cambiar el formato de salida en cualquier momento modificando una sola línea del YAML. El resto del documento no cambia.</p>
+</div>
+</div>
+</section>
+<section id="quiz-rápido" class="slide level2">
+<h2>Quiz rápido</h2>
+<p>Tres preguntas antes del cierre.</p>
 </section>
 <section id="quiz-1-de-3" class="slide level2">
 <h2>Quiz · 1 de 3</h2>
-<p><strong>Tienes un CSV exportado desde Excel en español con esta primera línea: <code>id;carrera;nota</code>. ¿Cuál función usas para cargarlo correctamente?</strong></p>
+<p><strong>Un archivo <code>.qmd</code> tiene tres tipos de contenido. ¿Cuál de las siguientes combinaciones es correcta?</strong></p>
 <ul>
 <li><ol type="a">
-<li><code>read_csv("datos/archivo.csv")</code></li>
+<li>YAML · HTML · JavaScript</li>
 </ol></li>
 <li><ol start="2" type="a">
-<li><code>read_csv2("datos/archivo.csv")</code></li>
+<li>YAML · Markdown · bloques de código R</li>
 </ol></li>
 <li><ol start="3" type="a">
-<li><code>read_excel("datos/archivo.csv")</code></li>
+<li>Markdown · LaTeX · bloques de código Python</li>
 </ol></li>
 <li><ol start="4" type="a">
-<li><code>read_table("datos/archivo.csv")</code></li>
+<li>YAML · Word · bloques de código R</li>
 </ol></li>
 </ul>
 <div class="fragment">
 <div class="respuesta">
-<p>✓ <strong>b)</strong> <code>read_csv2()</code> espera punto y coma como separador y coma como decimal, el estándar de Excel configurado en español. <code>read_csv()</code> esperaría coma como separador y devolvería todo en una sola columna.</p>
+<p>✓ <strong>b)</strong> El encabezado YAML configura el documento (título, formato), el cuerpo usa Markdown para el texto con formato, y los bloques <code>```{r} ```</code> contienen código R que se ejecuta al renderizar.</p>
 </div>
 </div>
 </section>
 <section id="quiz-2-de-3" class="slide level2">
 <h2>Quiz · 2 de 3</h2>
-<p><strong>Un archivo Excel tiene tres hojas: <code>"Datos"</code>, <code>"Resumen"</code> y <code>"Notas"</code>. La hoja <code>"Resumen"</code> empieza con dos filas de encabezado antes de los datos. ¿Cuál código la carga correctamente?</strong></p>
+<p><strong>Tienes un bloque de código con <code>#| echo: false</code> y <code>#| eval: true</code>. ¿Qué aparece en el documento renderizado?</strong></p>
 <ul>
 <li><ol type="a">
-<li><code>read_excel("archivo.xlsx")</code></li>
+<li>El código y su resultado</li>
 </ol></li>
 <li><ol start="2" type="a">
-<li><code>read_excel("archivo.xlsx", sheet = "Resumen")</code></li>
+<li>Solo el código, sin el resultado</li>
 </ol></li>
 <li><ol start="3" type="a">
-<li><code>read_excel("archivo.xlsx", sheet = "Resumen", skip = 2)</code></li>
+<li>Solo el resultado, sin el código</li>
 </ol></li>
 <li><ol start="4" type="a">
-<li><code>read_excel("archivo.xlsx", skip = 2)</code></li>
+<li>Nada: <code>echo: false</code> desactiva el bloque completo</li>
 </ol></li>
 </ul>
 <div class="fragment">
 <div class="respuesta">
-<p>✓ <strong>c)</strong> Necesitas <code>sheet = "Resumen"</code> para seleccionar la hoja correcta (sin esto carga la primera) y <code>skip = 2</code> para omitir las dos filas de encabezado antes de los datos.</p>
+<p>✓ <strong>c)</strong> <code>eval: true</code> ejecuta el código, <code>echo: false</code> oculta el código en el documento. El resultado (figura, tabla, valor) aparece, pero el lector no ve el código que lo produjo.</p>
 </div>
 </div>
 </section>
 <section id="quiz-3-de-3" class="slide level2">
 <h2>Quiz · 3 de 3</h2>
-<p><strong>¿Cuál es la ventaja principal de trabajar dentro de un proyecto <code>.Rproj</code>?</strong></p>
+<p><strong>Para generar un PDF con Quarto, cambias <code>format: html</code> por <code>format: pdf</code> en el YAML. ¿Qué más necesitas?</strong></p>
 <ul>
 <li><ol type="a">
-<li>El código se ejecuta más rápido porque R optimiza automáticamente</li>
+<li>Nada: Quarto incluye todo lo necesario para generar PDF</li>
 </ol></li>
 <li><ol start="2" type="a">
-<li>Las rutas relativas funcionan desde cualquier computador sin modificar el código</li>
+<li>Instalar Microsoft Word, que actúa como motor de conversión</li>
 </ol></li>
 <li><ol start="3" type="a">
-<li>Se instalan automáticamente todos los paquetes necesarios</li>
+<li>Instalar un sistema LaTeX, como TinyTeX (<code>tinytex::install_tinytex()</code>)</li>
 </ol></li>
 <li><ol start="4" type="a">
-<li>No es necesario guardar los <em>scripts</em> manualmente</li>
+<li>Activar un ajuste especial en RStudio desde las preferencias</li>
 </ol></li>
 </ul>
 <div class="fragment">
 <div class="respuesta">
-<p>✓ <strong>b)</strong> El proyecto fija el directorio de trabajo en su propia carpeta. Así, <code>read_csv("datos/notas.csv")</code> funciona igual en tu computador, en el de un colega o en el tuyo dentro de seis meses, siempre que la estructura de carpetas se mantenga.</p>
+<p>✓ <strong>c)</strong> Quarto convierte el documento a LaTeX mediante Pandoc y después LaTeX genera el PDF. Si no hay un sistema LaTeX instalado, el proceso falla. TinyTeX es una versión mínima que ocupa poco espacio y funciona perfectamente con Quarto.</p>
 </div>
 </div>
 </section>
-<section id="a-practicar" class="slide level2 smaller">
+<section id="section-9" class="slide level2 actividad" data-background-color="#6b1220">
+<h2></h2>
+<div class="actividad-num">
+<p>Tarea 2</p>
+</div>
+<div class="actividad-title">
+<p>Presenta un paquete de R</p>
+</div>
+<div class="actividad-desc">
+<p>Para la Sesión 9 · Máximo 5 min · Demostración en vivo</p>
+</div>
+</section>
+<section id="tarea-2-presenta-un-paquete-de-r" class="slide level2 smaller">
+<h2>Tarea 2: presenta un paquete de R</h2>
+<p><strong>Tu misión</strong>: encontrar un paquete de R que te llame la atención y presentárselo al grupo.</p>
+<ol type="1">
+<li>¿Cómo se llama y para qué sirve?</li>
+<li>¿Dónde lo encontraste?</li>
+<li>Carga el paquete y ejecuta en vivo al menos una función, explicando sus argumentos y lo que produce</li>
+<li>¿Por qué te pareció interesante, útil o simplemente raro?</li>
+</ol>
+<div class="tip-box">
+<p>El paquete ojalá sea sorprendente. R tiene más de 23 000 paquetes: algunos hacen cosas absurdas, otros hacen cosas increíbles.</p>
+<p><a href="../../tareas/tarea2-paquete-raro.html">→ Instrucciones completas y ejemplos de inspiración</a></p>
+</div>
+</section>
+<section id="a-practicar" class="slide level2">
 <h2>A practicar</h2>
-<p>Antes de la próxima sesión, crea un proyecto <code>.Rproj</code> nuevo e importa al menos un archivo externo con una ruta relativa.</p>
-<p>Experimenta con:</p>
+<p>Antes de la próxima sesión, completa tu mini informe con los datos de la Sesión 3 o con datos propios.</p>
+<p>El documento debe tener al menos:</p>
 <ul>
-<li class="fragment">Un archivo CSV propio o descargado: <code>read_csv("datos/mi_archivo.csv")</code></li>
-<li class="fragment">Un archivo Excel: <code>read_excel("datos/mi_archivo.xlsx", sheet = 1)</code></li>
-<li class="fragment">Explorar la estructura con <code>glimpse()</code>, <code>names()</code> y <code>head()</code></li>
-<li class="fragment">Limpiar al menos un problema típico: nombres con espacios, filas sobrantes, tipos mal asignados</li>
-<li class="fragment">Exportar el resultado con <code>write_csv()</code>, <code>write_csv2()</code> o <code>saveRDS()</code></li>
+<li class="fragment">Un encabezado YAML con título, autor y <code>format: html</code></li>
+<li class="fragment">Una sección de introducción escrita en Markdown</li>
+<li class="fragment">Un bloque de código con una figura de <code>ggplot2</code> y <code>#| echo: false</code></li>
+<li class="fragment">Una oración con al menos un valor calculado con código en línea</li>
+<li class="fragment">El documento renderiza sin errores</li>
 </ul>
 <div class="tip-box">
-<p>Si no tienes un archivo propio, usa <code>encuesta_bruta.xlsx</code> de la Sesión 3 desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código.</p>
+<p>Si quieres ir más lejos, cambia <code>format: html</code> por <code>format: pdf</code> en el YAML después de instalar TinyTeX, y verifica que el mismo documento se renderiza correctamente como PDF.</p>
 </div>
 </section>
-<section id="section-9" class="slide level2" data-background-color="#121834">
+<section id="section-10" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Hasta la próxima sesión</p>
@@ -792,7 +802,7 @@ $ final    &lt;dbl&gt; NA, 4.0, 3.8, 3.7, 4.0, 4.2, 3.7, 4.0, NA, 4.5, 3.0, 4.1,
 <p><img data-src="../../imagenes/qr-code.svg" width="300"> <span style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;">jdleongomez.github.io/curso-r</span></p>
 </div>
 </div><div class="column" style="width:60%;">
-<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
+<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
 </div></div>
 
 

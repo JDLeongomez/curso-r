@@ -460,8 +460,8 @@ Juan David Leongómez
 <span id="cb4-6"><a></a><span class="co"># 1. Cargar paquetes necesarios</span></span>
 <span id="cb4-7"><a></a><span class="co"># ---------------------------------------------------------</span></span>
 <span id="cb4-8"><a></a></span>
-<span id="cb4-9"><a></a><span class="co"># Cargar tidyverse para manipulación y visualización de datos</span></span>
-<span id="cb4-10"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-9"><a></a><span class="fu">library</span>(ggplot2)  <span class="co"># visualización</span></span>
+<span id="cb4-10"><a></a><span class="fu">library</span>(dplyr)    <span class="co"># manipulación de datos</span></span>
 <span id="cb4-11"><a></a></span>
 <span id="cb4-12"><a></a><span class="co"># ---------------------------------------------------------</span></span>
 <span id="cb4-13"><a></a><span class="co"># 2. Crear un conjunto de datos de ejemplo</span></span>
@@ -624,7 +624,7 @@ Juan David Leongómez
 <pre><code>[1] "Ana"   "Luis"  "Sara"  "Pedro"</code></pre>
 </div>
 </div>
-<p>Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.</p>
+<p>Todo en R es, en el fondo, un vector.</p>
 </section>
 <section id="data-frames-la-base-de-datos-en-r" class="slide level2">
 <h2>Data frames: la base de datos en R</h2>
@@ -654,17 +654,18 @@ Juan David Leongómez
 <div class="section-title-text">
 <p>Primera figura con <code>ggplot2</code></p>
 </div>
-</section>
-<section id="instalar-y-cargar-tidyverse" class="slide level2">
-<h2>Instalar y cargar tidyverse</h2>
-<p><code>tidyverse</code> es una <strong>colección de paquetes</strong> diseñados para trabajar juntos. Incluye <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>readr</code>, y más.</p>
+
+<img src="../../imagenes/ggplot2.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" class="r-stretch"></section>
+<section id="instalar-y-cargar-ggplot2" class="slide level2">
+<h2>Instalar y cargar ggplot2</h2>
+<p><code>ggplot2</code> es el paquete que usaremos para crear gráficas. Antes de usarlo hay que instalarlo una sola vez, y cargarlo cada sesión.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Solo la primera vez (instala en el disco)</span></span>
-<span id="cb20-2"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div>
+<span id="cb20-2"><a></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Cada sesión (carga en memoria)</span></span>
-<span id="cb21-2"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<span id="cb21-2"><a></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
 <div class="tip-box">
 <p><code>install.packages()</code> es como comprar un libro y ponerlo en el estante. <code>library()</code> es como abrirlo y tenerlo en la mesa.</p>
@@ -1115,7 +1116,7 @@ Juan David Leongómez
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../imagenes/favicon.svg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Curso de R · Universidad El Bosque · Junio 2026</p>
+<p>Curso de R · Universidad El Bosque · Junio 2026 &nbsp;·&nbsp; <a href="../../index.html" style="color:inherit; opacity:0.6;">↩︎ Sitio del curso</a></p>
 </div>
 </div></div>
 
