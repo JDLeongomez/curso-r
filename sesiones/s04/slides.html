@@ -320,20 +320,26 @@ Juan David Leongómez
 <p>Dale un <strong>nombre sin espacios</strong> (será el nombre de la carpeta), y <strong>selecciona dentro de la ubicación</strong> de esa nueva carpeta en tu computador</p>
 </div>
 </section>
-<section id="estructura-recomendada-de-carpetas" class="slide level2">
-<h2>Estructura recomendada de carpetas</h2>
-<pre><code>mi_proyecto/
-├── mi_proyecto.Rproj   ← el punto de partida
-├── datos/              ← archivos originales (no se tocan)
-├── figuras/            ← figuras exportadas
-└── scripts/            ← tus archivos .R
-    └── analisis.R</code></pre>
-<p>Los datos originales van en <code>datos/</code> y <strong>no se modifican nunca</strong>. El <em>script</em> en <code>scripts/</code> hace todo el trabajo. Si algo sale mal, basta con corregir el <em>script</em> y volver a ejecutarlo.</p>
+<section id="estructura-del-proyecto-del-curso" class="slide level2 smaller">
+<h2>Estructura del proyecto del curso</h2>
+<p>Esta es la estructura que usaremos hasta el final. Los documentos Quarto y la bibliografía van en la raíz, junto al <code>.Rproj</code>:</p>
+<div style="font-family: monospace; font-size: 0.82em; line-height: 2; padding: 0.9em 1.1em; background: rgba(255,255,255,0.05); border-radius: 8px;">
+  <div style="color: #5b9ad5; font-weight: bold;">📁 curso_r/</div>
+  <div style="padding-left: 1.5em; color: #5b9ad5; font-weight: bold;">├── 📄 curso_r.Rproj <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← punto de partida</span></div>
+  <div style="padding-left: 1.5em; color: #e5c07b;">├── 📝 mi_reporte.qmd <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← documentos Quarto en la raíz (s06+)</span></div>
+  <div style="padding-left: 1.5em; color: #e5c07b;">├── 📄 referencias.bib <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← bibliografía en la raíz (s07+)</span></div>
+  <div style="padding-left: 1.5em; color: #7db87d;">├── 📁 datos/ <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← archivos originales (nunca se tocan)</span></div>
+  <div style="padding-left: 1.5em; color: #c678dd;">├── 📁 figuras/ <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← figuras exportadas con ggsave()</span></div>
+  <div style="padding-left: 1.5em; color: #abb2bf;">└── 📁 scripts/ <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← archivos .R</span></div>
+</div>
+<div class="tip-box">
+<p>¿Quieres la estructura ya lista? Descárgala en <a href="https://github.com/JDLeongomez/curso-r/tree/main/plantilla_proyecto">github.com/JDLeongomez/curso-r/tree/main/plantilla_proyecto</a>, extrae el ZIP y renombra la carpeta <code>curso_r</code>.</p>
+</div>
 </section>
 <section id="section-2" class="slide level2 actividad" data-background-color="#6b1220">
 <h2></h2>
 <div class="actividad-num">
-<p>Actividad · 5 min</p>
+<p>Actividad · 7 min</p>
 </div>
 <div class="actividad-title">
 <p>Crea tu proyecto del curso</p>
@@ -341,12 +347,10 @@ Juan David Leongómez
 <div class="actividad-desc">
 <ol type="1">
 <li><strong>File &gt; New Project… &gt; New Directory &gt; New Project</strong></li>
-<li>Nómbralo <code>curso_r</code> y elige una ubicación fácil de encontrar
-<ul>
-<li>Ahí verás que en la esquina superior derecha de RStudio aparece el nombre del proyecto</li>
-</ul></li>
+<li>Nómbralo <code>curso_r</code> y elige una ubicación fácil de encontrar</li>
 <li>Dentro del proyecto, crea las carpetas <code>datos/</code>, <code>figuras/</code> y <code>scripts/</code></li>
 <li>Abre un <em>script</em> nuevo (<strong>File &gt; New File &gt; R Script</strong>) y guárdalo en <code>scripts/</code> como <code>sesion4.R</code></li>
+<li>Copia <code>encuesta_bruta.xlsx</code> de la Sesión 3 a la carpeta <code>datos/</code> del proyecto</li>
 </ol>
 </div>
 </section>
@@ -374,10 +378,10 @@ Juan David Leongómez
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/notas.csv"</span>)</span>
-<span id="cb8-4"><a></a><span class="fu">glimpse</span>(notas)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/notas.csv"</span>)</span>
+<span id="cb7-4"><a></a><span class="fu">glimpse</span>(notas)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -399,8 +403,8 @@ $ `id;carrera;estadistica;metodologia;seminario` &lt;chr&gt; "1;Psicología;4,8;
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/notas.csv"</span>)</span>
-<span id="cb11-2"><a></a><span class="fu">glimpse</span>(notas)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/notas.csv"</span>)</span>
+<span id="cb10-2"><a></a><span class="fu">glimpse</span>(notas)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -498,11 +502,11 @@ $ seminario   &lt;dbl&gt; 4.2, 3.9, 4.5, 3.8, 3.5, 4.7, NA, 4.0, 3.9, 4.8, 3.1, 
 <div class="columns">
 <div class="column" style="width:41%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(readxl)</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="co"># Carga la primera hoja por defecto</span></span>
-<span id="cb13-4"><a></a>asistencia <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos/registro.xlsx"</span>)</span>
-<span id="cb13-5"><a></a><span class="fu">glimpse</span>(asistencia)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(readxl)</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a><span class="co"># Carga la primera hoja por defecto</span></span>
+<span id="cb12-4"><a></a>asistencia <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos/registro.xlsx"</span>)</span>
+<span id="cb12-5"><a></a><span class="fu">glimpse</span>(asistencia)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:59%;">
 <div class="cell">
@@ -525,7 +529,7 @@ $ total   &lt;dbl&gt; 4, 3, 4, 3, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 3, 4, 4
 <h2>Múltiples hojas: el argumento <code>sheet</code></h2>
 <p>Un libro Excel puede tener varias hojas. Primero, mira qué hojas hay:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">excel_sheets</span>(<span class="st">"datos/registro.xlsx"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">excel_sheets</span>(<span class="st">"datos/registro.xlsx"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Asistencia"     "Calificaciones"</code></pre>
 </div>
@@ -534,12 +538,12 @@ $ total   &lt;dbl&gt; 4, 3, 4, 3, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 3, 4, 4
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a></a>calificaciones <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb17-2"><a></a>    <span class="st">"datos/registro.xlsx"</span>,</span>
-<span id="cb17-3"><a></a>    <span class="at">sheet =</span> <span class="st">"Calificaciones"</span>,</span>
-<span id="cb17-4"><a></a>    <span class="at">skip  =</span> <span class="dv">2</span></span>
-<span id="cb17-5"><a></a>)</span>
-<span id="cb17-6"><a></a><span class="fu">glimpse</span>(calificaciones)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a>calificaciones <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb16-2"><a></a>    <span class="st">"datos/registro.xlsx"</span>,</span>
+<span id="cb16-3"><a></a>    <span class="at">sheet =</span> <span class="st">"Calificaciones"</span>,</span>
+<span id="cb16-4"><a></a>    <span class="at">skip  =</span> <span class="dv">2</span></span>
+<span id="cb16-5"><a></a>)</span>
+<span id="cb16-6"><a></a><span class="fu">glimpse</span>(calificaciones)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:45%;">
 <div class="cell">
@@ -638,21 +642,21 @@ $ final    &lt;dbl&gt; NA, 4.0, 3.8, 3.7, 4.0, 4.2, 3.7, 4.0, NA, 4.5, 3.0, 4.1,
 <div class="column" style="width:50%;">
 <p><strong>CSV: portátil y universal</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Para compartir con otros programas</span></span>
-<span id="cb19-2"><a></a><span class="fu">write_csv</span>(notas, <span class="st">"datos/notas_limpias.csv"</span>)</span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a><span class="co"># Para CSV latinoamericano</span></span>
-<span id="cb19-5"><a></a><span class="fu">write_csv2</span>(notas, <span class="st">"datos/notas_limpias.csv"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Para compartir con otros programas</span></span>
+<span id="cb18-2"><a></a><span class="fu">write_csv</span>(notas, <span class="st">"datos/notas_limpias.csv"</span>)</span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a><span class="co"># Para CSV latinoamericano</span></span>
+<span id="cb18-5"><a></a><span class="fu">write_csv2</span>(notas, <span class="st">"datos/notas_limpias.csv"</span>)</span></code></pre></div>
 </div>
 <p>Cualquier programa puede abrirlo.</p>
 </div><div class="column" style="width:50%;">
 <p><strong>RDS: rápido y fiel</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Guarda el objeto exactamente como está en R</span></span>
-<span id="cb20-2"><a></a><span class="fu">saveRDS</span>(notas, <span class="st">"datos/notas_limpias.rds"</span>)</span>
-<span id="cb20-3"><a></a></span>
-<span id="cb20-4"><a></a><span class="co"># Para cargarlo después</span></span>
-<span id="cb20-5"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"datos/notas_limpias.rds"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Guarda el objeto exactamente como está en R</span></span>
+<span id="cb19-2"><a></a><span class="fu">saveRDS</span>(notas, <span class="st">"datos/notas_limpias.rds"</span>)</span>
+<span id="cb19-3"><a></a></span>
+<span id="cb19-4"><a></a><span class="co"># Para cargarlo después</span></span>
+<span id="cb19-5"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"datos/notas_limpias.rds"</span>)</span></code></pre></div>
 </div>
 <p>Conserva tipos, factores y atributos. Solo funciona en R.</p>
 </div></div>
@@ -664,24 +668,24 @@ $ final    &lt;dbl&gt; NA, 4.0, 3.8, 3.7, 4.0, 4.2, 3.7, 4.0, NA, 4.5, 3.0, 4.1,
 <h2>El <em>script</em> autocontenido</h2>
 <p>Un buen <em>script</em> de análisis sigue siempre el mismo esquema:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># 1. Paquetes</span></span>
-<span id="cb21-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb21-3"><a></a><span class="fu">library</span>(readxl)</span>
-<span id="cb21-4"><a></a></span>
-<span id="cb21-5"><a></a><span class="co"># 2. Importar datos originales</span></span>
-<span id="cb21-6"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/notas.csv"</span>)</span>
-<span id="cb21-7"><a></a></span>
-<span id="cb21-8"><a></a><span class="co"># 3. Limpiar y transformar</span></span>
-<span id="cb21-9"><a></a>notas <span class="ot">&lt;-</span> notas <span class="sc">|&gt;</span></span>
-<span id="cb21-10"><a></a>    <span class="fu">mutate</span>(<span class="at">promedio =</span> (estadistica <span class="sc">+</span> metodologia <span class="sc">+</span> seminario) <span class="sc">/</span> <span class="dv">3</span>)</span>
-<span id="cb21-11"><a></a></span>
-<span id="cb21-12"><a></a><span class="co"># 4. Analizar</span></span>
-<span id="cb21-13"><a></a>notas <span class="sc">|&gt;</span></span>
-<span id="cb21-14"><a></a>    <span class="fu">group_by</span>(carrera) <span class="sc">|&gt;</span></span>
-<span id="cb21-15"><a></a>    <span class="fu">summarise</span>(<span class="at">promedio_carrera =</span> <span class="fu">mean</span>(promedio, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb21-16"><a></a></span>
-<span id="cb21-17"><a></a><span class="co"># 5. Exportar resultados (figuras, datos procesados)</span></span>
-<span id="cb21-18"><a></a><span class="fu">write_csv</span>(notas, <span class="st">"datos/notas_procesadas.csv"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># 1. Paquetes</span></span>
+<span id="cb20-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-3"><a></a><span class="fu">library</span>(readxl)</span>
+<span id="cb20-4"><a></a></span>
+<span id="cb20-5"><a></a><span class="co"># 2. Importar datos originales</span></span>
+<span id="cb20-6"><a></a>notas <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/notas.csv"</span>)</span>
+<span id="cb20-7"><a></a></span>
+<span id="cb20-8"><a></a><span class="co"># 3. Limpiar y transformar</span></span>
+<span id="cb20-9"><a></a>notas <span class="ot">&lt;-</span> notas <span class="sc">|&gt;</span></span>
+<span id="cb20-10"><a></a>    <span class="fu">mutate</span>(<span class="at">promedio =</span> (estadistica <span class="sc">+</span> metodologia <span class="sc">+</span> seminario) <span class="sc">/</span> <span class="dv">3</span>)</span>
+<span id="cb20-11"><a></a></span>
+<span id="cb20-12"><a></a><span class="co"># 4. Analizar</span></span>
+<span id="cb20-13"><a></a>notas <span class="sc">|&gt;</span></span>
+<span id="cb20-14"><a></a>    <span class="fu">group_by</span>(carrera) <span class="sc">|&gt;</span></span>
+<span id="cb20-15"><a></a>    <span class="fu">summarise</span>(<span class="at">promedio_carrera =</span> <span class="fu">mean</span>(promedio, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb20-16"><a></a></span>
+<span id="cb20-17"><a></a><span class="co"># 5. Exportar resultados (figuras, datos procesados)</span></span>
+<span id="cb20-18"><a></a><span class="fu">write_csv</span>(notas, <span class="st">"datos/notas_procesadas.csv"</span>)</span></code></pre></div>
 </div>
 <p>Cualquier persona que tenga el proyecto y ejecute este <em>script</em> obtiene exactamente el mismo resultado.</p>
 </section>

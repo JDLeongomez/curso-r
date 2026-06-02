@@ -249,7 +249,7 @@ Juan David Leongómez
 <section id="descargar-y-cargar-los-datos" class="slide level2 smaller">
 <h2>Descargar y cargar los datos</h2>
 <p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx">⬇ Descargar <code>encuesta_bruta.xlsx</code></a></p>
-<p>Guarda el archivo en tu computador. Para cargarlo sin necesitar conocer rutas, usa el menú de RStudio:</p>
+<p>Guarda el archivo en tu computador (por ejemplo en el escritorio o en Documentos). Para cargarlo sin necesitar conocer rutas, usa el menú de RStudio:</p>
 <p><strong>Environment → Import Dataset → From Excel…</strong></p>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -273,7 +273,9 @@ Juan David Leongómez
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a></a>encuesta_bruta <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"~/Desktop/encuesta_bruta.xlsx"</span>, <span class="at">skip =</span> <span class="dv">2</span>)</span></code></pre></div>
 </div>
-<p>Pégalo en tu script. Ahora verifiquemos qué llegó:</p>
+<p>Pégalo en tu <em>script</em>. La ruta será absoluta (depende de tu computador), lo cual está bien por ahora. En la Sesión 4 crearás un proyecto organizado y moverás este archivo a una carpeta <code>datos/</code>, donde podrás cargarlo con <code>read_excel("datos/encuesta_bruta.xlsx", skip = 2)</code>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glimpse</span>(encuesta_bruta)</span></code></pre></div>
 </div>
@@ -300,7 +302,9 @@ $ ...16         &lt;chr&gt; NA, NA, "Nata, mira esto", "Edad mediana", NA, NA, N
 $ ...17         &lt;dbl&gt; NA, NA, NA, 23, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
 </div>
 </div>
+</div><div class="column" style="width:50%;">
 <p>180 filas, columnas con nombre. Pero quedan columnas extra al final (<code>...15</code>, <code>...16</code>, <code>...17</code>) por el texto y el cálculo que alguien dejó fuera de la tabla.</p>
+</div></div>
 </section>
 <section id="qué-necesitamos" class="slide level2">
 <h2>¿Qué necesitamos?</h2>
@@ -981,7 +985,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb48-2"><a></a>    <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb48-3"><a></a>    <span class="fu">summarise</span>(<span class="at">masa_media =</span> <span class="fu">mean</span>(body_mass_g))</span></code></pre></div>
 </div>
-<p>Si ves <code>%&gt;%</code> en tutoriales, libros o código de colegas, hace lo mismo que <code>|&gt;</code> en la gran mayoría de los casos.</p>
+<p>Si ves <code>%&gt;%</code> en tutoriales, libros o código de otras personas, hace lo mismo que <code>|&gt;</code> en la gran mayoría de los casos.</p>
 <div class="tip-box">
 <p>Hoy se recomienda <code>|&gt;</code> por ser nativo (no requiere paquetes adicionales). <code>%&gt;%</code> tiene algunas funciones avanzadas para casos muy específicos, pero para el trabajo cotidiano son equivalentes.</p>
 </div>
@@ -1002,8 +1006,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb49-8"><a></a>        <span class="at">fill =</span> sex</span>
 <span id="cb49-9"><a></a>    )) <span class="sc">+</span></span>
 <span id="cb49-10"><a></a>    <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb49-11"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb49-12"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb49-11"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -1032,7 +1035,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>Excel no lo garantiza porque:</p>
 <ul>
 <li class="fragment">Permite mezclar datos, cálculos, gráficos, notas y texto decorativo en la misma hoja</li>
-<li class="fragment">Una celda puede contener “3,5 kg de masa corporal (valor estimado)” y eso no es un número</li>
+<li class="fragment">Una celda puede contener algo como “3,5 kg de masa corporal (valor estimado)”</li>
 <li class="fragment">Las celdas combinadas y las filas de títulos extra dañan cualquier estructura tabular</li>
 <li class="fragment">El formato <code>.xlsx</code> almacena colores, fuentes y bordes junto a los datos, haciéndolo pesado y dependiente de un programa propietario</li>
 </ul>
@@ -1383,12 +1386,13 @@ $ gad_7    &lt;dbl&gt; 2, 2, 1, 2, 1, 2, 0, 0, 0, 3, 0, 0, 2, 1, 3, 0, 3, 2, 3, 
 <span id="cb69-7"><a></a>        <span class="at">fill =</span> <span class="st">"#225faa"</span>,</span>
 <span id="cb69-8"><a></a>        <span class="at">colour =</span> <span class="st">"white"</span></span>
 <span id="cb69-9"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb69-10"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb69-11"><a></a>        <span class="at">title =</span> <span class="st">"Distribución del puntaje GAD-7"</span>,</span>
-<span id="cb69-12"><a></a>        <span class="at">x     =</span> <span class="st">"Puntaje total (0–21)"</span>,</span>
-<span id="cb69-13"><a></a>        <span class="at">y     =</span> <span class="st">"Frecuencia"</span></span>
-<span id="cb69-14"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb69-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb69-10"><a></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">21</span>) <span class="sc">+</span> <span class="co"># limitar el eje x al rango posible del GAD-7</span></span>
+<span id="cb69-11"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb69-12"><a></a>        <span class="at">title =</span> <span class="st">"Distribución del puntaje GAD-7"</span>,</span>
+<span id="cb69-13"><a></a>        <span class="at">x     =</span> <span class="st">"Puntaje total (0–21)"</span>,</span>
+<span id="cb69-14"><a></a>        <span class="at">y     =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb69-15"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb69-16"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -1407,30 +1411,27 @@ $ gad_7    &lt;dbl&gt; 2, 2, 1, 2, 1, 2, 0, 0, 0, 3, 0, 0, 2, 1, 3, 0, 3, 2, 3, 
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb70-2"><a></a>    encuesta,</span>
-<span id="cb70-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb70-4"><a></a>        <span class="at">x =</span> carrera,</span>
-<span id="cb70-5"><a></a>        <span class="at">y =</span> ansiedad_total,</span>
-<span id="cb70-6"><a></a>        <span class="at">fill =</span> carrera,</span>
-<span id="cb70-7"><a></a>        <span class="at">colour =</span> carrera</span>
-<span id="cb70-8"><a></a>    )</span>
-<span id="cb70-9"><a></a>) <span class="sc">+</span></span>
-<span id="cb70-10"><a></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb70-11"><a></a>    <span class="fu">geom_jitter</span>(</span>
-<span id="cb70-12"><a></a>        <span class="at">width =</span> <span class="fl">0.15</span>,</span>
-<span id="cb70-13"><a></a>        <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
-<span id="cb70-14"><a></a>        <span class="at">size  =</span> <span class="fl">1.5</span></span>
-<span id="cb70-15"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb70-16"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb70-17"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb70-18"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb70-19"><a></a>        <span class="at">title =</span> <span class="st">"Ansiedad según carrera"</span>,</span>
-<span id="cb70-20"><a></a>        <span class="at">x     =</span> <span class="cn">NULL</span>,</span>
-<span id="cb70-21"><a></a>        <span class="at">y     =</span> <span class="st">"Puntaje GAD-7"</span></span>
-<span id="cb70-22"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb70-23"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb70-24"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">ggplot</span>(encuesta,</span>
+<span id="cb70-2"><a></a>        <span class="fu">aes</span>(<span class="at">x =</span> carrera,</span>
+<span id="cb70-3"><a></a>            <span class="at">y =</span> ansiedad_total,</span>
+<span id="cb70-4"><a></a>            <span class="at">fill =</span> carrera,</span>
+<span id="cb70-5"><a></a>            <span class="at">colour =</span> carrera)</span>
+<span id="cb70-6"><a></a>) <span class="sc">+</span></span>
+<span id="cb70-7"><a></a>    <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb70-8"><a></a>    <span class="fu">geom_jitter</span>(</span>
+<span id="cb70-9"><a></a>        <span class="at">width =</span> <span class="fl">0.15</span>,</span>
+<span id="cb70-10"><a></a>        <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
+<span id="cb70-11"><a></a>        <span class="at">size  =</span> <span class="fl">1.5</span></span>
+<span id="cb70-12"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb70-13"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb70-14"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb70-15"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb70-16"><a></a>        <span class="at">title =</span> <span class="st">"Ansiedad según carrera"</span>,</span>
+<span id="cb70-17"><a></a>        <span class="at">x     =</span> <span class="cn">NULL</span>,</span>
+<span id="cb70-18"><a></a>        <span class="at">y     =</span> <span class="st">"Puntaje GAD-7"</span></span>
+<span id="cb70-19"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb70-20"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb70-21"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">

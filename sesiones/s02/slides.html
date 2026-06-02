@@ -1197,36 +1197,35 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h2><code>ggsave()</code></h2>
 <p>Guarda la última figura generada (o la que especifiques) en el formato que elijas.</p>
 <div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:55%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a>mi_figura <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb22-2"><a></a>    pinguinos,</span>
-<span id="cb22-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb22-4"><a></a>        <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g,</span>
-<span id="cb22-5"><a></a>        <span class="at">colour =</span> species, <span class="at">shape =</span> species</span>
-<span id="cb22-6"><a></a>    )</span>
-<span id="cb22-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb22-8"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb22-9"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb22-10"><a></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb22-11"><a></a></span>
-<span id="cb22-12"><a></a><span class="co"># PNG para presentaciones y web</span></span>
-<span id="cb22-13"><a></a><span class="fu">ggsave</span>(<span class="st">"figuras/pinguinos.png"</span>,</span>
-<span id="cb22-14"><a></a>    <span class="at">plot  =</span> mi_figura,</span>
-<span id="cb22-15"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
-<span id="cb22-16"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="cb22-17"><a></a>)</span>
-<span id="cb22-18"><a></a></span>
-<span id="cb22-19"><a></a><span class="co"># PDF para publicaciones (vectorial, escala sin pérdida)</span></span>
-<span id="cb22-20"><a></a><span class="fu">ggsave</span>(<span class="st">"figuras/pinguinos.pdf"</span>,</span>
-<span id="cb22-21"><a></a>    <span class="at">plot =</span> mi_figura,</span>
-<span id="cb22-22"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
-<span id="cb22-23"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span></span>
-<span id="cb22-24"><a></a>)</span></code></pre></div>
+<span id="cb22-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g,</span>
+<span id="cb22-4"><a></a>        <span class="at">colour =</span> species, <span class="at">shape =</span> species)</span>
+<span id="cb22-5"><a></a>) <span class="sc">+</span></span>
+<span id="cb22-6"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb22-8"><a></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb22-9"><a></a></span>
+<span id="cb22-10"><a></a><span class="co"># PNG para presentaciones y web</span></span>
+<span id="cb22-11"><a></a><span class="fu">ggsave</span>(<span class="st">"pinguinos.png"</span>,</span>
+<span id="cb22-12"><a></a>    <span class="at">plot  =</span> mi_figura,</span>
+<span id="cb22-13"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
+<span id="cb22-14"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb22-15"><a></a>)</span>
+<span id="cb22-16"><a></a></span>
+<span id="cb22-17"><a></a><span class="co"># PDF para publicaciones (vectorial, escala sin pérdida)</span></span>
+<span id="cb22-18"><a></a><span class="fu">ggsave</span>(<span class="st">"pinguinos.pdf"</span>,</span>
+<span id="cb22-19"><a></a>    <span class="at">plot =</span> mi_figura,</span>
+<span id="cb22-20"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
+<span id="cb22-21"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span></span>
+<span id="cb22-22"><a></a>)</span></code></pre></div>
 </div>
-</div><div class="column" style="width:40%;">
+</div><div class="column" style="width:45%;">
 <div class="tip-box">
 <p><code>dpi = 300</code> es el estándar para publicación impresa. Para pantalla, <code>dpi = 150</code> es suficiente. <code>units = "cm"</code> permite especificar el tamaño exacto que pedirá la revista.</p>
+<p>Por ahora la figura se guarda en la misma carpeta donde está tu <em>script</em> (o en Documentos si no has guardado el <em>script</em> aún). En la Sesión 4 crearás un proyecto organizado con una estructura más clara.</p>
 </div>
 </div></div>
 </section>
@@ -1234,39 +1233,29 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h2>La figura completa</h2>
 <p>Todo lo visto en una sola figura.</p>
 <div class="columns">
-<div class="column" style="width:43%;">
+<div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb23-2"><a></a>    pinguinos,</span>
-<span id="cb23-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb23-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb23-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb23-6"><a></a>        <span class="at">colour =</span> species,</span>
-<span id="cb23-7"><a></a>        <span class="at">shape =</span> species</span>
-<span id="cb23-8"><a></a>    )</span>
-<span id="cb23-9"><a></a>) <span class="sc">+</span></span>
-<span id="cb23-10"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb23-11"><a></a>    <span class="fu">geom_smooth</span>(</span>
-<span id="cb23-12"><a></a>        <span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb23-13"><a></a>        <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb23-14"><a></a>        <span class="at">linewidth =</span> <span class="fl">0.8</span></span>
-<span id="cb23-15"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb23-16"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span></span>
-<span id="cb23-17"><a></a>    <span class="fu">scale_colour_brewer</span>(</span>
-<span id="cb23-18"><a></a>        <span class="at">name =</span> <span class="st">"Especie"</span>,</span>
-<span id="cb23-19"><a></a>        <span class="at">palette =</span> <span class="st">"Dark2"</span></span>
-<span id="cb23-20"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb23-21"><a></a>    <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Especie"</span>) <span class="sc">+</span></span>
-<span id="cb23-22"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb23-23"><a></a>        <span class="at">title =</span> <span class="st">"Masa y pico por isla"</span>,</span>
-<span id="cb23-24"><a></a>        <span class="at">x =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
-<span id="cb23-25"><a></a>        <span class="at">y =</span> <span class="st">"Masa corporal (g)"</span>,</span>
-<span id="cb23-26"><a></a>        <span class="at">caption =</span> <span class="st">"Datos: Horst et al. (2020)"</span></span>
-<span id="cb23-27"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb23-28"><a></a>    <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb23-29"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(pinguinos,</span>
+<span id="cb23-2"><a></a>        <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm,</span>
+<span id="cb23-3"><a></a>            <span class="at">y =</span> body_mass_g,</span>
+<span id="cb23-4"><a></a>            <span class="at">colour =</span> species,</span>
+<span id="cb23-5"><a></a>            <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb23-6"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb23-8"><a></a>                <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-9"><a></a>                <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb23-10"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span></span>
+<span id="cb23-11"><a></a>    <span class="fu">scale_colour_brewer</span>(<span class="at">name =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb23-12"><a></a>                        <span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb23-13"><a></a>    <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Especie"</span>) <span class="sc">+</span></span>
+<span id="cb23-14"><a></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Masa y pico por isla"</span>,</span>
+<span id="cb23-15"><a></a>         <span class="at">x =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
+<span id="cb23-16"><a></a>         <span class="at">y =</span> <span class="st">"Masa corporal (g)"</span>,</span>
+<span id="cb23-17"><a></a>         <span class="at">caption =</span> <span class="st">"Datos: Horst et al. (2020)"</span>) <span class="sc">+</span> </span>
+<span id="cb23-18"><a></a>    <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb23-19"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
 </div>
-</div><div class="column" style="width:57%;">
+</div><div class="column" style="width:55%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
