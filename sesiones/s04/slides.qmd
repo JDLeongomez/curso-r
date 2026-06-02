@@ -11,7 +11,6 @@ format:
     theme: [default, ../../estilos/slides.scss]
     slide-number: true
     show-slide-number: all
-    footer: "Curso de R · Universidad El Bosque · Junio 2026"
     code-line-numbers: true
     highlight-style: github
     transition: fade
@@ -238,6 +237,8 @@ Parte 2
 Importar CSV
 :::
 
+<img src="../../imagenes/readr.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
+
 ---
 
 ## ¿Qué es un archivo CSV?
@@ -360,6 +361,8 @@ Parte 3
 ::: section-title-text
 Importar Excel
 :::
+
+<img src="../../imagenes/readxl.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
 
 ---
 
@@ -616,5 +619,21 @@ Quiz rápido
 :::
 
 ---
+
+## A practicar {.smaller}
+
+Antes de la próxima sesión, crea un proyecto `.Rproj` nuevo e importa al menos un archivo externo con una ruta relativa.
+
+Experimenta con:
+
+- Un archivo CSV propio o descargado: `read_csv("datos/mi_archivo.csv")`
+- Un archivo Excel: `read_excel("datos/mi_archivo.xlsx", sheet = 1)`
+- Explorar la estructura con `glimpse()`, `names()` y `head()`
+- Limpiar al menos un problema típico: nombres con espacios, filas sobrantes, tipos mal asignados
+- Exportar el resultado con `write_csv()`, `write_csv2()` o `saveRDS()`
+
+::: tip-box
+Si no tienes un archivo propio, usa `encuesta_bruta.xlsx` de la Sesión 3 desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código.
+:::
 
 {{< include ../_fin.qmd >}}

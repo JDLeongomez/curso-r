@@ -1,0 +1,1042 @@
+---
+title: "Sesión 5"
+subtitle: "Automatización: funciones, condicionales y simulación"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-11"
+date-format: long
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(faux)
+
+clasificar_ansiedad <- function(puntaje) {
+    case_when(
+        puntaje <= 4 ~ "Mínima",
+        puntaje <= 9 ~ "Leve",
+        puntaje <= 14 ~ "Moderada",
+        TRUE ~ "Severa"
+    )
+}
+
+prop_severa <- function(puntaje) {
+    mean(puntaje >= 15)
+}
+
+set.seed(42)
+gad7_sim <- rnorm_multi(
+    n = 5000,
+    mu = c(8, 65, 6.5),
+    sd = c(5, 15, 1.5),
+    r = c(-0.45, -0.30, 0.20),
+    varnames = c("gad7", "bienestar", "horas_sueno")
+) |>
+    mutate(
+        gad7 = round(pmax(0, pmin(21, gad7))),
+        bienestar = round(pmax(0, pmin(100, bienestar))),
+        horas_sueno = round(pmax(3, pmin(12, horas_sueno)), 1),
+        carrera = sample(
+            c("Psicología", "Medicina", "Enfermería", "Nutrición"),
+            n(),
+            replace = TRUE
+        ),
+        semestre = sample(1:10, n(), replace = TRUE),
+        sexo = sample(
+            c("Mujer", "Hombre", "No binario"),
+            n(),
+            replace = TRUE, prob = c(0.60, 0.35, 0.05)
+        ),
+        nivel_ansiedad = clasificar_ansiedad(gad7)
+    )
+```
+
+## Agenda
+
+- Funciones en R
+- Condicionales: `ifelse()` y `case_when()`
+- Combinar ambas: una función que clasifica
+- ¿Por qué simular datos?
+- Simulación básica con R
+- Simulación de variables correlacionadas con `faux`
+- Un análisis completo: GAD-7 simulado
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1
+:::
+
+::: section-title-text
+Funciones en R
+:::
+
+---
+
+## El problema del código repetido
+
+Imagina que quieres crear el mismo histograma con una línea de media para varias variables:
+
+```r
+ggplot(datos, aes(x = gad7)) +
+  geom_histogram(fill = "#225faa", bins = 22) +
+  geom_vline(aes(xintercept = mean(gad7)), colour = "red", linewidth = 1) +
+  labs(title = "GAD-7", x = "Puntaje", y = "Frecuencia") + theme_minimal()
+
+ggplot(datos, aes(x = bienestar)) +
+  geom_histogram(fill = "#225faa", bins = 30) +
+  geom_vline(aes(xintercept = mean(bienestar)), colour = "red", linewidth = 1) +
+  labs(title = "Bienestar", x = "Puntaje", y = "Frecuencia") + theme_minimal()
+
+# ... y lo mismo para horas_sueno, edad, rendimiento...
+```
+
+::: {.fragment}
+Si decides cambiar el color, el número de *bins* o el tema, tienes que editar cada bloque por separado, y cada copia es una oportunidad para cometer un error.
+
+::: tip-box
+Cuando escribes el mismo código más de dos veces, es momento de escribir una función.
+:::
+:::
+
+---
+
+## Anatomía de una función
+
+```r
+nombre <- function(argumento1, argumento2) {
+  # cuerpo: lo que hace la función
+  resultado
+}
+```
+
+Cuatro partes:
+
+:::: nonincremental
+1. **Nombre**: como cualquier objeto en R, debe ser descriptivo
+2. **Argumentos**: los valores que recibe (pueden ser cero o varios)
+3. **Cuerpo**: el código que se ejecuta
+4. **Valor de retorno**: R devuelve automáticamente el último objeto evaluado
+::::
+
+---
+
+## Una función simple
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+redondear_media <- function(x) {
+    round(mean(x, na.rm = TRUE), 2)
+}
+
+redondear_media(c(3.5, 4.1, 2.8, 3.9))
+redondear_media(c(15, 7, 12, 9, 14))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+redondear_media <- function(x) {
+    round(mean(x, na.rm = TRUE), 2)
+}
+
+redondear_media(c(3.5, 4.1, 2.8, 3.9))
+redondear_media(c(15, 7, 12, 9, 14))
+```
+:::
+:::::
+
+::: {.fragment}
+También se pueden añadir argumentos con valor por defecto:
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+redondear_media <- function(x, decimales = 2) {
+    round(mean(x, na.rm = TRUE), decimales)
+}
+
+redondear_media(c(3.5, 4.1, 2.8, 3.9))
+redondear_media(c(3.5, 4.1, 2.8, 3.9), decimales = 0)
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+redondear_media <- function(x, decimales = 2) {
+    round(mean(x, na.rm = TRUE), decimales)
+}
+
+redondear_media(c(3.5, 4.1, 2.8, 3.9))
+redondear_media(c(3.5, 4.1, 2.8, 3.9), decimales = 0)
+```
+:::
+:::::
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 5 min
+:::
+
+::: actividad-title
+Tu primera función
+:::
+
+::: actividad-desc
+Escribe una función llamada `resumen_variable` que reciba un vector numérico y devuelva una cadena de texto con la media y la desviación estándar redondeadas a 1 decimal, en el formato `"10.0 ± 3.2"`. Pruébala con `c(12, 7, 15, 9, 11, 14, 6)`.
+
+::: tip-box
+`paste0()` concatena cadenas de texto sin separador: `paste0("Media: ", 3.5)` produce `"Media: 3.5"`. Puedes combinar texto y números en varios puntos:
+
+```r
+paste0(
+  "De los ", 
+  156, 
+  " participantes, un tercio (", 
+  round(156 / 3), 
+  ") no terminaron."
+)
+```
+
+Recuerda que la función de la media es `mean()` y la de la desviación estándar es `sd()`. Es mejor que ambas incluyan `na.rm = TRUE` para manejar valores NA (de otro modo, si hay valores NA en el vector, el resultado también será `NA`). No olvides usar `round()` para redondear los resultados a un decimal.
+:::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 2
+:::
+
+::: section-title-text
+Condicionales
+:::
+
+---
+
+## `if` / `else`: lógica de una sola decisión
+
+```{r}
+puntaje <- 17
+
+if (puntaje >= 15) {
+    "Ansiedad severa"
+} else {
+    "Ansiedad no severa"
+}
+```
+
+::: {.fragment}
+`if` / `else` evalúa **un solo valor**. Si le pasas un vector de varios puntajes, solo evalúa el primero y lanza una advertencia.
+:::
+
+---
+
+## `ifelse()`: la versión vectorizada
+
+`ifelse()` recibe tres argumentos en orden fijo:
+
+```r
+ifelse(condición,       # ① evaluada para cada elemento del vector → TRUE o FALSE
+       si_verdadero,    # ② valor devuelto cuando la condición es TRUE
+       si_falso)        # ③ valor devuelto cuando la condición es FALSE
+```
+
+Por ejemplo:
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+puntajes <- c(3, 9, 14, 17, 5, 20)
+
+ifelse(puntajes >= 15, "Severa", "No severa")
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+puntajes <- c(3, 9, 14, 17, 5, 20)
+
+ifelse(puntajes >= 15, "Severa", "No severa")
+```
+:::
+:::::
+
+::: {.fragment}
+Se pueden anidar para más de dos categorías, aunque el código se vuelve difícil de leer:
+
+```{r}
+#| eval: false
+ifelse(puntajes >= 15, "Severa",
+    ifelse(puntajes >= 10, "Moderada", "Leve o mínima")
+)
+```
+
+Con tres categorías ya cuesta seguir la lógica;`case_when()` es la solución.
+:::
+
+---
+
+## `case_when()`: múltiples condiciones
+
+Cuando hay más de dos categorías, `ifelse()` anidado se vuelve ilegible. `case_when()` es la alternativa:
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+library(tidyverse) # o library(dplyr) para case_when
+
+puntajes <- c(3, 9, 14, 17, 5, 20)
+
+case_when(
+    puntajes <= 4 ~ "Mínima",
+    puntajes <= 9 ~ "Leve",
+    puntajes <= 14 ~ "Moderada",
+    .default = "Severa"
+)
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+puntajes <- c(3, 9, 14, 17, 5, 20)
+
+case_when(
+    puntajes <= 4 ~ "Mínima",
+    puntajes <= 9 ~ "Leve",
+    puntajes <= 14 ~ "Moderada",
+    .default = "Severa"
+)
+```
+:::
+:::::
+
+::: tip-box
+Las condiciones se evalúan en orden: cuando una es verdadera, las siguientes se ignoran. `TRUE ~` al final actúa como "todo lo demás": siempre se evalúa como verdadero y captura cualquier valor que no coincidió con las condiciones anteriores.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1 + 2
+:::
+
+::: section-title-text
+Funciones con condicionales
+:::
+
+---
+
+## Una función que clasifica puntajes GAD-7
+
+El GAD-7 es una escala de ansiedad generalizada con puntaje 0–21. Los puntos de corte clínicos son:
+
+| Puntaje | Nivel |
+|---------|-------|
+| 0–4 | Mínima |
+| 5–9 | Leve |
+| 10–14 | Moderada |
+| 15–21 | Severa |
+
+---
+
+## Escribir `clasificar_ansiedad()`
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+clasificar_ansiedad <- function(puntaje) {
+    case_when(
+        puntaje <= 4 ~ "Mínima",
+        puntaje <= 9 ~ "Leve",
+        puntaje <= 14 ~ "Moderada",
+        .default = "Severa"
+    )
+}
+
+clasificar_ansiedad(c(3, 9, 14, 17, 5, 20))
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+clasificar_ansiedad(c(3, 9, 14, 17, 5, 20))
+```
+:::
+:::::
+
+::: {.fragment}
+Y una segunda función para calcular la proporción con ansiedad severa:
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+prop_severa <- function(puntaje) {
+    mean(puntaje >= 15)
+}
+
+prop_severa(c(3, 9, 14, 17, 5, 20))
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+prop_severa(c(3, 9, 14, 17, 5, 20))
+```
+:::
+:::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 3
+:::
+
+::: section-title-text
+¿Por qué simular datos?
+:::
+
+---
+
+## Simulación de datos {.smaller}
+
+Simular datos se trata de generar observaciones artificiales a partir de un modelo con propiedades conocidas o esperadas. No se trata de que lo usemos para fabricar resultados ni presentar datos falsos como reales.
+
+::::: columns
+::: {.column width="50%"}
+**Usos legítimos**
+
+- **Practicar R**: no necesitas esperar a tener datos propios
+- **Explorar distribuciones**: entender visualmente qué implica un supuesto estadístico
+- **Ver posibles resultados**: imaginar escenarios antes de recolectar datos reales
+- **Verificar *scripts***: confirmar que el código funciona antes de tener los datos definitivos
+- **Análisis de poder**: calcular cuántas observaciones se necesitan para detectar un efecto
+- **Preregistro y reportes registrados**: escribir y probar el análisis completo antes de recolectar datos
+
+:::
+::: {.column width="50%"}
+::: tip-box
+Es lo mismo que un simulador de vuelo para pilotos: permite practicar, probar escenarios y detectar problemas antes de enfrentarse a la situación real.
+
+![](https://www.oneair.es/wp-content/uploads/2021/04/simulador-replica-diamond-da20-c1-glass-cockpit-g600-gtn650.jpeg){width="90%" fig-align="center"}
+:::
+:::
+:::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 4
+:::
+
+::: section-title-text
+Simulación básica con R
+:::
+
+---
+
+## `set.seed()`: reproducibilidad
+
+R genera números aleatorios a partir de un estado interno. `set.seed()` fija ese estado para que la simulación sea reproducible:
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+# Cada vez genera diferentes números aleatorios
+rnorm(5)
+
+rnorm(5)
+
+rnorm(5)
+```
+:::
+::: {.column width="50%"}
+```{r}
+# Siempre genera los mismos números
+set.seed(42)
+rnorm(5)
+
+set.seed(42)
+rnorm(5)
+
+set.seed(42)
+rnorm(5)
+```
+:::
+:::::
+
+Sin `set.seed()`, cada ejecución produce valores distintos. Con el mismo número de semilla, el resultado es idéntico. El número en sí no importa, solo que sea consistente.
+
+
+---
+
+## Las funciones básicas de simulación
+
+| Función | Qué simula |
+|---------|-----------|
+| `rnorm(n, mean, sd)` | Distribución normal |
+| `runif(n, min, max)` | Distribución uniforme |
+| `sample(x, n, replace)` | Muestra de un vector |
+| `rbinom(n, size, prob)` | Distribución binomial |
+
+Por ejemplo:
+
+```{r}
+set.seed(17)
+rnorm(6, mean = 10, sd = 3) # seis valores normales
+runif(6, min = 0, max = 100) # seis valores uniformes
+sample(c("A", "B", "C"), 6, replace = TRUE) # seis letras al azar
+```
+
+---
+
+## Cómo se ven las distribuciones {.smaller}
+
+**`rnorm()` · `runif()` · `rbinom()`** — distribuciones paramétricas
+
+::::: columns
+::: {.column width="40%"}
+```{r}
+#| eval: false
+set.seed(17)
+data.frame(
+    Normal   = rnorm(1000, mean = 10, sd = 3),
+    Uniforme = runif(1000, min = 0, max = 20),
+    Binomial = rbinom(1000, size = 20, prob = 0.3)
+) |>
+    pivot_longer(everything(),
+        names_to = "dist", values_to = "valor"
+    ) |>
+    mutate(dist = factor(dist,
+        levels = c("Normal", "Uniforme", "Binomial")
+    )) |>
+    ggplot(aes(x = valor, fill = dist)) +
+    geom_histogram(bins = 20, show.legend = FALSE) +
+    facet_wrap(~dist, scales = "free", nrow = 1) +
+    scale_fill_manual(values = c(
+        "Normal" = "#225faa", "Uniforme" = "#5b9ad5",
+        "Binomial" = "#7db87d"
+    )) +
+    labs(x = NULL, y = "Frecuencia") +
+    theme_minimal()
+```
+:::
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-height: 3.2
+set.seed(7)
+data.frame(
+    Normal   = rnorm(1000, mean = 10, sd = 3),
+    Uniforme = runif(1000, min = 0, max = 20),
+    Binomial = rbinom(1000, size = 20, prob = 0.3)
+) |>
+    pivot_longer(everything(),
+        names_to = "dist", values_to = "valor"
+    ) |>
+    mutate(dist = factor(dist,
+        levels = c("Normal", "Uniforme", "Binomial")
+    )) |>
+    ggplot(aes(x = valor, fill = dist)) +
+    geom_histogram(bins = 20, show.legend = FALSE) +
+    facet_wrap(~dist, scales = "free", nrow = 1) +
+    scale_fill_manual(values = c(
+        "Normal" = "#225faa", "Uniforme" = "#5b9ad5",
+        "Binomial" = "#7db87d"
+    )) +
+    labs(x = NULL, y = "Frecuencia") +
+    theme_minimal()
+```
+:::
+:::::
+
+---
+
+## Cómo se ven las distribuciones {.smaller}
+
+**`sample()`** — muestrear desde un conjunto existente
+
+::::: columns
+::: {.column width="40%"}
+```{r}
+#| eval: false
+data.frame(carrera = sample(
+    c(
+        "Psicología", "Medicina",
+        "Enfermería", "Nutrición"
+    ),
+    1000,
+    replace = TRUE
+)) |>
+    ggplot(aes(x = carrera, fill = carrera)) +
+    geom_bar(show.legend = FALSE) +
+    labs(x = NULL, y = "Frecuencia") +
+    theme_minimal()
+```
+:::
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-height: 3.2
+data.frame(carrera = sample(
+    c(
+        "Psicología", "Medicina",
+        "Enfermería", "Nutrición"
+    ),
+    1000,
+    replace = TRUE
+)) |>
+    ggplot(aes(x = carrera, fill = carrera)) +
+    geom_bar(show.legend = FALSE) +
+    scale_fill_manual(values = c(
+        "Psicología" = "#225faa", "Medicina"   = "#5b9ad5",
+        "Enfermería" = "#7db87d", "Nutrición"  = "#f5c842"
+    )) +
+    labs(x = NULL, y = "Frecuencia") +
+    theme_minimal()
+```
+:::
+:::::
+
+---
+
+## Construir un `data.frame` simulado
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+set.seed(123)
+
+datos_simple <- data.frame(
+    id = paste0("ID_", str_pad(1:200, width = 3, pad = "0")),
+    edad = round(rnorm(200, mean = 22, sd = 3)),
+    puntaje = round(runif(200, min = 0, max = 21)),
+    carrera = sample(
+        c("Psicología", "Medicina", "Enfermería"),
+        200,
+        replace = TRUE
+    )
+)
+
+glimpse(datos_simple)
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+set.seed(123)
+
+datos_simple <- data.frame(
+    id = paste0("ID_", str_pad(1:200, width = 3, pad = "0")),
+    edad = round(rnorm(200, mean = 22, sd = 3)),
+    puntaje = round(runif(200, min = 0, max = 21)),
+    carrera = sample(
+        c("Psicología", "Medicina", "Enfermería"),
+        200,
+        replace = TRUE
+    )
+)
+
+glimpse(datos_simple)
+```
+:::
+:::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 5
+:::
+
+::: section-title-text
+Variables correlacionadas con `faux`
+:::
+
+<img src="../../imagenes/faux.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
+
+---
+
+## La limitación de `rnorm()` independiente {.smaller}
+
+Las variables simuladas con `rnorm()` por separado no tienen ninguna relación entre sí. Pero en datos reales las variables suelen estar correlacionadas: más ansiedad tiende a asociarse con menos bienestar, menos horas de sueño, etc.
+
+::::: columns
+::: {.column width="50%"}
+**Simulación independiente**
+
+```{r}
+#| fig-height: 3
+set.seed(1)
+ind <- data.frame(
+    gad7      = rnorm(500, mean = 8, sd = 5),
+    bienestar = rnorm(500, mean = 65, sd = 15)
+)
+
+ggplot(ind, aes(x = gad7, y = bienestar)) +
+    geom_point(alpha = 0.3, colour = "#225faa") +
+    geom_smooth(method = "lm", colour = "red", se = FALSE) +
+    labs(title = paste0("r = ",
+                        round(cor(ind$gad7, ind$bienestar), 2)),
+        x = "GAD-7", y = "Bienestar") +
+    theme_minimal()
+```
+:::
+::: {.column width="50%"}
+**Simulación con `faux`**
+
+```{r}
+#| fig-height: 3
+set.seed(1)
+cor_dat <- rnorm_multi(n = 500,
+                       mu = c(8, 65), sd = c(5, 15),
+                       r = -0.45, empirical = TRUE,
+                       varnames = c("gad7", "bienestar")
+                      )
+
+ggplot(cor_dat, aes(x = gad7, y = bienestar)) +
+    geom_point(alpha = 0.3, colour = "#225faa") +
+    geom_smooth(method = "lm", colour = "red", se = FALSE) +
+    labs(title = paste0("r = ",
+                        round(cor(cor_dat$gad7, cor_dat$bienestar), 2)),
+        x = "GAD-7", y = "Bienestar") +
+    theme_minimal()
+```
+:::
+:::::
+
+---
+
+## `faux::rnorm_multi()`
+
+El paquete `faux` permite especificar directamente las correlaciones entre variables:
+
+```{r}
+#| eval: false
+library(faux)
+
+datos_cor <- rnorm_multi(
+    n         = 500,
+    mu        = c(8, 65, 6.5),          # medias
+    sd        = c(5, 15, 1.5),          # desviaciones estándar
+    r         = c(-0.45, -0.30, 0.20),  # correlaciones: gad7-bien, gad7-sueño, bien-sueño
+    varnames  = c("gad7", "bienestar", "horas_sueno"),
+    empirical = FALSE                    # FALSE: parámetros poblacionales (por defecto)
+)
+```
+
+::: tip-box
+`empirical = FALSE` (por defecto) trata `mu`, `sd` y `r` como parámetros poblacionales: cada muestra tendrá valores ligeramente distintos por azar, igual que en datos reales. Con `empirical = TRUE` la muestra coincide exactamente con los valores especificados, lo que puede ser útil para ejemplos demostrativos pero no refleja la variabilidad real de un muestreo.
+:::
+
+---
+
+## Simular la base de datos GAD-7
+
+```{r}
+#| eval: false
+set.seed(42)
+
+gad7_sim <- rnorm_multi(
+    n        = 5000,
+    mu       = c(8, 65, 6.5),
+    sd       = c(5, 15, 1.5),
+    r        = c(-0.45, -0.30, 0.20),
+    varnames = c("gad7", "bienestar", "horas_sueno")) |>
+    mutate(
+        gad7 = round(pmax(0, pmin(21, gad7))),
+        bienestar = round(pmax(0, pmin(100, bienestar))),
+        horas_sueno = round(pmax(3, pmin(12, horas_sueno)), 1),
+        carrera = sample(
+            c("Psicología", "Medicina", "Enfermería", "Nutrición"),
+            n(),
+            replace = TRUE),
+        semestre = sample(1:10, n(), replace = TRUE),
+        sexo = sample(
+            c("Mujer", "Hombre", "No binario"),
+            n(),
+            replace = TRUE, prob = c(0.60, 0.35, 0.05)
+        )
+    )
+```
+
+---
+
+## Verificar la estructura y las correlaciones
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+glimpse(gad7_sim)
+```
+:::
+::: {.column width="50%"}
+```{r}
+gad7_sim |>
+    select(gad7, bienestar, horas_sueno) |>
+    cor() |>
+    round(2)
+```
+:::
+:::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 5 + 1 + 2
+:::
+
+::: section-title-text
+Aplicar las funciones a los datos simulados
+:::
+
+---
+
+## Clasificar y calcular sobre 5 000 observaciones
+
+Aplicamos `clasificar_ansiedad()` con `mutate()` y `prop_severa()` directamente:
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+gad7_sim |>
+    summarise(prop_severa = prop_severa(gad7))
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+gad7_sim |>
+    summarise(prop_severa = prop_severa(gad7))
+```
+:::
+:::::
+
+::: {.fragment}
+También podemos calcular la proporción por subgrupo con el *pipe* y `dplyr`:
+
+::::: columns
+::: {.column width="55%"}
+```{r}
+#| eval: false
+gad7_sim |>
+    group_by(carrera) |>
+    summarise(prop_severa = prop_severa(gad7))
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| echo: false
+gad7_sim |>
+    group_by(carrera) |>
+    summarise(prop_severa = prop_severa(gad7))
+```
+:::
+:::::
+:::
+
+---
+
+## Visualizar la distribución de niveles {.smaller}
+
+:::: {.colummns}
+::: {.column width="42%"}
+```{r}
+#| eval: false
+gad7_sim |>
+    mutate(nivel_ansiedad = factor(
+        nivel_ansiedad,
+        levels = c("Mínima", "Leve", "Moderada", "Severa")
+    )) |>
+    ggplot(aes(x = nivel_ansiedad, fill = nivel_ansiedad)) +
+    geom_bar() +
+    scale_fill_manual(
+        values = c(
+            "Mínima" = "#7db87d", "Leve" = "#f5c842",
+            "Moderada" = "#f0943a", "Severa" = "#c0392b"
+        )
+    ) +
+    labs(x = "Nivel de ansiedad", y = "Frecuencia", fill = NULL) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+:::
+::: {.column width="58%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+gad7_sim |>
+    mutate(nivel_ansiedad = factor(
+        nivel_ansiedad,
+        levels = c("Mínima", "Leve", "Moderada", "Severa")
+    )) |>
+    ggplot(aes(x = nivel_ansiedad, fill = nivel_ansiedad)) +
+    geom_bar() +
+    scale_fill_manual(
+        values = c(
+            "Mínima" = "#7db87d", "Leve" = "#f5c842",
+            "Moderada" = "#f0943a", "Severa" = "#c0392b"
+        )
+    ) +
+    labs(x = "Nivel de ansiedad", y = "Frecuencia", fill = NULL) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+:::
+::::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 10 min
+:::
+
+::: actividad-title
+Explorar los datos simulados
+:::
+
+::: actividad-desc
+:::: nonincremental
+1. Calcula la proporción con ansiedad severa por `sexo`
+2. Crea una figura que compare la distribución de `gad7` entre carreras
+3. Añade una variable calculada `sueno_bajo` que valga `TRUE` cuando `horas_sueno < 6`
+::::
+:::
+
+---
+
+## Quiz rápido
+
+Tres preguntas antes de cerrar.
+
+---
+
+## Quiz · 1 de 3
+
+**Tienes la siguiente función. ¿Qué produce `resumir(c(1.5, 2.7, 3.3))`?**
+
+```{r}
+resumir <- function(x, dec = 1){
+      round(mean(x), dec)
+}
+```
+
+::: nonincremental
+- a) Un error: falta el argumento `dec`
+- b) `2.5` (media redondeada a 1 decimal, valor por defecto)
+- c) `2.50` (media redondeada a 2 decimales)
+- d) `3` (media redondeada a 0 decimales)
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** Como `dec` tiene valor por defecto `1`, llamar `resumir(c(1.5, 2.7, 3.3))` es equivalente a `resumir(c(1.5, 2.7, 3.3), dec = 1)`. La media es 2.5, que redondeada a 1 decimal da `2.5`.
+:::
+:::
+
+---
+
+## Quiz · 2 de 3
+
+**¿Cuál es la diferencia principal entre `ifelse()` y `case_when()`?**
+
+::: nonincremental
+- a) `ifelse()` solo funciona con números; `case_when()` con texto
+- b) `ifelse()` maneja dos opciones: verdadero y falso; `case_when()` permite múltiples condiciones en cadena
+- c) `case_when()` es más lento y solo se usa dentro de `mutate()`
+- d) No hay diferencia práctica, son intercambiables
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** `ifelse()` evalúa una condición con dos salidas posibles. `case_when()` encadena múltiples condiciones con sus respectivos resultados, lo que lo hace mucho más legible cuando hay más de dos categorías.
+:::
+:::
+
+---
+
+## Quiz · 3 de 3
+
+**¿Para qué sirve `set.seed()` en una simulación?**
+
+::: nonincremental
+- a) Para acelerar la generación de números aleatorios
+- b) Para fijar el número de observaciones que se van a generar
+- c) Para que la simulación produzca los mismos valores cada vez que se ejecuta
+- d) Para que los números generados sigan siempre una distribución normal
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `set.seed()` fija el estado interno del generador de números aleatorios. Con la misma semilla, el código produce exactamente los mismos valores en cualquier computador, lo que hace que la simulación sea reproducible.
+:::
+:::
+
+---
+
+## A practicar
+
+Antes de la próxima sesión, escribe al menos una función propia y aplícala a datos simulados o a los datos de `encuesta_bruta.xlsx` de la Sesión 3.
+
+:::: {.columns
+::: {.column width="65%"}
+Ideas:
+
+- Una función que calcule varias estadísticas descriptivas de una columna
+- Una función que tome un vector de puntajes, los clasifique con `case_when()` y grafique la distribución de categorías
+- Simula una base de datos que sea relevante o te interese, y luego aplica tu función a esa base de datos o haz gráficos exploratorios
+:::
+::: {.column width="35%"}
+::: tip-box
+Si tienes datos propios de tu trabajo o investigación, este es el momento de empezar a probar tu análisis con datos simulados antes de tocar los datos reales.
+:::
+:::
+::::
+
+{{< include ../_fin.qmd >}}

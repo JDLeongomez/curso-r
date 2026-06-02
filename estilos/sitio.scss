@@ -129,12 +129,44 @@ table.sesiones {
   }
 
   .tarea-label {
-    background-color: $c-lavender;
-    color: $c-blue;
+    background-color: #fcba05;
+    color: #000000;
     font-size: 0.78em;
     font-weight: 600;
     padding: 2px 8px;
     border-radius: 3px;
+  }
+
+  a.data-label {
+    background-color: #e0e0e0;
+    color: #444444;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #cacaca;
+      color: #222222;
+    }
+  }
+
+  a.slides-label {
+    background-color: $c-blue;
+    color: #ffffff;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: darken($c-blue, 10%);
+      color: #ffffff;
+    }
   }
 }
 

@@ -26,22 +26,27 @@
 - [x] Crear diapositivas sesión 1 (borrador completo)
 - [x] Mejorar diapositivas sesión 1
 - [x] Crear diapositivas sesión 2 — ggplot2 en profundidad
+  - [x] Añadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)
+  - [x] Añadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)
 - [x] Crear diapositivas sesión 3 — pipe + dplyr
   - [x] Crear `sesiones/s03/datos/encuesta_bruta.xlsx` (base de datos GAD-7 simulada con problemas típicos de Excel)
   - [x] Añadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)
 - [x] Crear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R
-- [ ] Crear diapositivas sesión 5 — Automatización de análisis con funciones y simulación
-- [ ] Crear diapositivas sesión 6 — Reportes reproducibles con Quarto
+- [x] Crear diapositivas sesión 5 — Automatización de análisis con funciones y simulación
+- [x] Crear diapositivas sesión 6 — Reportes reproducibles con Quarto
+  - [x] Añadir anuncio Tarea 2 al final de s06
 - [ ] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
 - [ ] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
-- [ ] Crear diapositivas sesión 9 — Herramientas y buenas prácticas de trabajo en R
+- [ ] Crear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas
 
 ## Sitio web
 
 - [x] Actualizar sección `#sesiones` en `index.qmd` (temas, salones con colores)
 - [x] Actualizar sección `#contenidos-por-semana` en `programa.qmd` (temas, salones con colores)
 - [ ] Añadir enlace a diapositivas en `index.qmd` a medida que se completen (s04–s09)
-  - [ ] s04 — enlace pendiente de publicar
+  - [x] s04 — enlace añadido
+  - [x] s05 — enlace añadido
+  - [x] s06 — enlace añadido
 
 ## Tareas para estudiantes
 
@@ -60,11 +65,11 @@
 | 2 | Jue 4   | ggplot2 en profundidad                            |                  |
 | 3 | Vie 5   | Pipe nativo + dplyr                               | **← Tarea 1**    |
 | 4 | Mié 10  | *Tarea 1* + datos externos, proyectos, CSV        |                  |
-| 5 | Jue 11  | Simulación de datos, funciones, condicionales     |                  |
+| 5 | Jue 11  | Funciones, condicionales y simulación             |                  |
 | 6 | Vie 12  | Documentos reproducibles (Quarto)                 | **← Tarea 2**    |
-| 7 | Mié 17  | *Tarea 2* + Quarto: tablas, citas y formatos      |                  |
+| 7 | Mié 17  | Quarto: tablas, citas y formatos                  |                  |
 | 8 | Jue 18  | Quarto: figuras, integración y publicación        |                  |
-| 9 | Vie 19  | Cierre, integración, buenas prácticas             |                  |
+| 9 | Vie 19  | *Tarea 2* + Cierre, integración, buenas prácticas |                  |
 
 ## Tabla de comandos
 

@@ -10,7 +10,6 @@ format:
     theme: [default, ../../estilos/slides.scss]
     slide-number: true
     show-slide-number: all
-    footer: "Curso de R · Universidad El Bosque · Junio 2026"
     code-line-numbers: true
     highlight-style: github
     transition: fade
@@ -330,8 +329,8 @@ Un buen comentario explica qué hace un código, y/o por qué se hizo algo.
 # 1. Cargar paquetes necesarios
 # ---------------------------------------------------------
 
-# Cargar tidyverse para manipulación y visualización de datos
-library(tidyverse)
+library(ggplot2)  # visualización
+library(dplyr)    # manipulación de datos
 
 # ---------------------------------------------------------
 # 2. Crear un conjunto de datos de ejemplo
@@ -504,9 +503,7 @@ nombres <- c("Ana", "Luis", "Sara", "Pedro")
 nombres
 ```
 
-Los vectores son los ladrillos de R. Todo en R es, en el fondo, un vector.
-
-
+Todo en R es, en el fondo, un vector.
 
 ## Data frames: la base de datos en R
 
@@ -523,8 +520,6 @@ personas
 
 Es la estructura más común para datos: filas son observaciones, columnas son variables.
 
-
-
 ##  {background-color="#121834"}
 
 ::: parte-num
@@ -535,21 +530,23 @@ Parte 4
 Primera figura con `ggplot2`
 :::
 
+<img src="../../imagenes/ggplot2.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
 
+---
 
-## Instalar y cargar tidyverse
+## Instalar y cargar ggplot2
 
-`tidyverse` es una **colección de paquetes** diseñados para trabajar juntos. Incluye `ggplot2`, `dplyr`, `tidyr`, `readr`, y más.
+`ggplot2` es el paquete que usaremos para crear gráficas. Antes de usarlo hay que instalarlo una sola vez, y cargarlo cada sesión.
 
 ```{r}
 #| eval: false
 # Solo la primera vez (instala en el disco)
-install.packages("tidyverse")
+install.packages("ggplot2")
 ```
 
 ```{r}
 # Cada sesión (carga en memoria)
-library(tidyverse)
+library(ggplot2)
 ```
 
 ::: tip-box

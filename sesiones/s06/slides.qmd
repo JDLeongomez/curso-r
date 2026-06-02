@@ -1,0 +1,711 @@
+---
+title: "Sesión 6"
+subtitle: "Reportes reproducibles con Quarto"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-12"
+date-format: long
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(readxl)
+
+set.seed(42)
+gad7_demo <- data.frame(
+  gad7      = round(pmax(0, pmin(21, rnorm(200, mean = 8, sd = 5)))),
+  bienestar = round(pmax(0, pmin(100, rnorm(200, mean = 65, sd = 15)))),
+  carrera   = sample(
+    c("Psicología", "Medicina", "Enfermería", "Nutrición"),
+    200, replace = TRUE
+  )
+)
+```
+
+## Agenda
+
+- El problema del copiar y pegar
+- ¿Qué es Quarto?
+- Tu primer documento Quarto
+- Markdown: el lenguaje del texto
+- Bloques de código
+- Código en línea
+- Formatos de salida: HTML y PDF
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1
+:::
+
+::: section-title-text
+El problema del copiar y pegar
+:::
+
+---
+
+## Un flujo de trabajo frágil {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+El flujo habitual sin herramientas de reproducibilidad:
+
+:::: nonincremental
+1. Analizas los datos en R (o peor aún, en Excel)
+2. Copias el resultado (p. ej., media = 8.3) y lo pegas en Word
+3. Redactas el informe completo
+4. Tres días después encuentras un error en los datos originales
+5. Vuelves a correr el análisis: ahora la media es 8.1
+6. ¿Cuántos valores en el Word quedaron desactualizados?
+::::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+
+```{=html}
+<div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:1em 1.2em; line-height:2;">
+  <div>📊 <strong>analisis.R</strong></div>
+  <div style="color:#225faa; padding-left:1em;">mean(gad7) → <strong>8.3</strong></div>
+  <div style="margin-top:0.5em;">⬇ copiar y pegar</div>
+  <div style="margin-top:0.5em;">📄 <strong>informe.docx</strong></div>
+  <div style="padding-left:1em; color:#444">"La media fue de <strong>8.3</strong> puntos…"</div>
+  <div style="margin-top:0.5em;">⬇ datos corregidos</div>
+  <div style="color:#c0392b; padding-left:1em;">mean(gad7) → <strong>8.1</strong> ⚠ desactualizado</div>
+</div>
+```
+
+::: tip-box
+Cada vez que los datos cambian, cada valor copiado a mano es un error potencial.
+:::
+:::
+:::
+:::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 2
+:::
+
+::: section-title-text
+¿Qué es Quarto?
+:::
+
+<img src="../../imagenes/quarto.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
+
+---
+
+## Texto + código = documento {.smaller}
+
+Quarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.
+
+```{=html}
+<div style="display:flex; align-items:center; gap:1em; font-family:monospace; font-size:0.82em; margin-top:1em;">
+  <div style="background:#eeedfe; border-radius:8px; padding:0.8em 1em; min-width:180px;">
+    <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">📝 documento.qmd</div>
+    <div style="color:#444; font-size:0.9em; line-height:1.8;">
+      texto en markdown<br>
+      ```{r}<br>
+      &nbsp;&nbsp;código R<br>
+      ```<br>
+      más texto…
+    </div>
+  </div>
+  <div style="font-size:1.5em; color:#225faa;">→</div>
+  <div style="background:#eeedfe; border-radius:8px; padding:0.8em 1em; min-width:120px; text-align:center;">
+    <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">⚙ Quarto</div>
+    <div style="font-size:0.85em; color:#666;">ejecuta el código<br>inserta resultados</div>
+  </div>
+  <div style="font-size:1.5em; color:#225faa;">→</div>
+  <div style="display:flex; flex-direction:column; gap:0.5em;">
+    <div style="background:#ddeaf8; border-radius:6px; padding:0.5em 0.8em; color:#1a4070; font-weight:600;">🌐 HTML</div>
+    <div style="background:#d4f0e4; border-radius:6px; padding:0.5em 0.8em; color:#1a5c38; font-weight:600;">📄 PDF</div>
+    <div style="background:#f5f5f3; border-radius:6px; padding:0.5em 0.8em; color:#444; font-weight:600;">📝 Word</div>
+  </div>
+</div>
+```
+
+::: {.fragment}
+Cuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 3
+:::
+
+::: section-title-text
+Tu primer documento Quarto
+:::
+
+---
+
+## Crear un documento Quarto {.smaller}
+
+En RStudio: **File › New File › Quarto Document...**
+
+Aparece un cuadro de diálogo donde puedes escribir el título y el autor antes de crear el archivo. El formato por defecto es HTML, que es el más completo para empezar.
+
+::: {.fragment}
+El archivo que se abre tiene tres partes:
+
+```{=html}
+<div style="font-family:monospace; font-size:0.82em; line-height:1.9; background:#f5f5f3; border-radius:8px; padding:0.9em 1.2em; margin-top:0.5em;">
+  <span style="background:#eeedfe; color:#3d2fa0; padding:1px 6px; border-radius:3px; font-weight:700;">YAML</span>&nbsp; encabezado entre <code>---</code>: título, autor, formato de salida<br>
+  <span style="background:#ddeaf8; color:#1a4070; padding:1px 6px; border-radius:3px; font-weight:700;">Markdown</span>&nbsp; texto con formato: encabezados, negrita, listas…<br>
+  <span style="background:#d4f0e4; color:#1a5c38; padding:1px 6px; border-radius:3px; font-weight:700;">Código</span>&nbsp; bloques <code>```{r}…```</code> que se ejecutan al renderizar
+</div>
+```
+:::
+
+---
+
+## El encabezado YAML {.smaller}
+
+El encabezado va al principio del archivo, entre dos líneas de `---`:
+
+```yaml
+---
+title: "Análisis de ansiedad GAD-7"
+author: "Ana García"
+date: "2026-06-12"
+format: html
+---
+```
+
+Controla el título, el autor, la fecha y el formato de salida. Todo lo que aparece debajo del segundo `---` es el cuerpo del documento.
+
+::: tip-box
+Si abres el documento en el **editor visual** de RStudio (botón *Visual* arriba a la izquierda), puedes editar el encabezado con un formulario en lugar de escribir el YAML a mano.
+:::
+
+---
+
+## El editor visual {.smaller}
+
+RStudio ofrece dos modos de edición del mismo archivo:
+
+::::: columns
+::: {.column width="50%"}
+**Editor visual**
+
+Interfaz similar a un procesador de texto: los botones aplican formato, los encabezados se ven como encabezados, las listas se crean con Enter. Es el modo más cómodo para empezar.
+:::
+::: {.column width="50%"}
+**Editor de código fuente**
+
+Muestra el archivo tal como está escrito: texto con marcas de Markdown (`**negrita**`, `# Título`). Útil para ver exactamente qué está pasando.
+:::
+:::::
+
+::: {.fragment}
+Puedes cambiar entre los dos modos en cualquier momento con el botón **Visual / Source** en la esquina superior izquierda del editor. El archivo es el mismo en ambos casos.
+
+::: tip-box
+Para este curso el editor visual es suficiente. El código fuente lo verás aparecer de forma natural a medida que uses Quarto más.
+:::
+:::
+
+---
+
+## Renderizar {.smaller}
+
+El botón **Render** (arriba en el editor) ejecuta el documento completo y abre el resultado en el navegador o en el panel Viewer de RStudio.
+
+::::: columns
+::: {.column width="50%"}
+Desde RStudio: botón **Render** o atajo `Ctrl+Shift+K`
+
+Desde la terminal:
+```r
+quarto render mi_documento.qmd
+```
+:::
+::: {.column width="50%"}
+```{=html}
+<div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:0.9em 1.2em; line-height:2;">
+  <div style="color:#225faa; font-weight:700;">Al renderizar, Quarto:</div>
+  <div>① ejecuta todos los bloques de código R</div>
+  <div>② convierte el Markdown a HTML (o PDF)</div>
+  <div>③ inserta los resultados en el documento</div>
+  <div>④ abre el archivo final</div>
+</div>
+```
+:::
+:::::
+
+::: tip-box
+Si hay un error en algún bloque de código, el renderizado se detiene y muestra el error. El mensaje indica en qué bloque ocurrió.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 5 min
+:::
+
+::: actividad-title
+Tu primer documento Quarto
+:::
+
+::: actividad-desc
+:::: nonincremental
+1. **File › New File › Quarto Document...** — título: "Mi primer análisis", formato: HTML
+2. Guárdalo dentro de tu proyecto `curso_r`, en la carpeta `scripts/`
+3. Haz clic en **Render** y observa el resultado en el navegador
+4. Cambia el título en el YAML y vuelve a renderizar
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 4
+:::
+
+::: section-title-text
+Markdown: el lenguaje del texto
+:::
+
+---
+
+## Markdown: formato con texto plano {.smaller}
+
+Markdown es la forma en que Quarto entiende el formato del texto. El editor visual lo aplica automáticamente con botones, pero conviene reconocer las marcas para entender qué está pasando.
+
+::::: columns
+::: {.column width="50%"}
+**Lo que escribes (fuente)**
+
+```markdown
+# Título principal
+
+## Sección
+
+Texto normal, **negrita**
+e *cursiva*.
+
+- Elemento de lista
+- Otro elemento
+
+1. Primero
+2. Segundo
+
+[Enlace](https://r-project.org)
+```
+:::
+::: {.column width="50%"}
+**Lo que se ve (renderizado)**
+
+# Título principal {.unnumbered style="font-size:1em; margin:0; border:none; padding:0;"}
+
+## Sección {.unnumbered style="font-size:0.85em; margin:0.2em 0; border:none; padding:0;"}
+
+Texto normal, **negrita** e *cursiva*.
+
+- Elemento de lista
+- Otro elemento
+
+1. Primero
+2. Segundo
+
+[Enlace](https://r-project.org)
+:::
+:::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 5
+:::
+
+::: section-title-text
+Bloques de código
+:::
+
+---
+
+## Los bloques de código {.smaller}
+
+Un bloque de código (*chunk*) es una sección del documento donde va código R. Se delimita con tres acentos graves y `{r}`:
+
+````markdown
+```{{r}}
+mean(c(3, 7, 5, 9, 4))
+```
+````
+
+::: {.fragment}
+Al renderizar, el bloque se ejecuta y el resultado aparece justo debajo en el documento:
+
+```{r}
+mean(c(3, 7, 5, 9, 4))
+```
+:::
+
+---
+
+## Opciones de bloque {.smaller}
+
+Las opciones se escriben al inicio del bloque con `#|`:
+
+| Opción | Por defecto | Qué controla |
+|--------|:-----------:|--------------|
+| `echo` | `true` | ¿Se muestra el código en el documento? |
+| `eval` | `true` | ¿Se ejecuta el código? |
+| `warning` | `true` | ¿Se muestran las advertencias? |
+| `message` | `true` | ¿Se muestran los mensajes de carga de paquetes? |
+| `include` | `true` | `false` ejecuta el código pero no muestra nada |
+
+::: {.fragment}
+Ejemplo: mostrar solo el resultado, sin el código:
+
+````markdown
+```{{r}}
+#| echo: false
+mean(c(3, 7, 5, 9, 4))
+```
+````
+:::
+
+---
+
+## Una figura en un documento {.smaller}
+
+::::: columns
+::: {.column width="48%"}
+````markdown
+```{{r}}
+#| echo: false
+#| fig-height: 4
+
+library(tidyverse)
+
+gad7_demo |>
+  ggplot(aes(x = gad7)) +
+  geom_histogram(
+    fill = "#225faa", bins = 22
+  ) +
+  labs(
+    x = "Puntaje GAD-7",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+```
+````
+:::
+::: {.column width="52%"}
+```{r}
+#| echo: false
+#| fig-height: 3.5
+gad7_demo |>
+  ggplot(aes(x = gad7)) +
+  geom_histogram(fill = "#225faa", bins = 22) +
+  labs(x = "Puntaje GAD-7", y = "Frecuencia") +
+  theme_minimal()
+```
+:::
+:::::
+
+::: tip-box
+`fig-height` y `fig-width` controlan el tamaño de la figura en el documento (en pulgadas). `fig-cap: "Mi figura"` añade un pie de figura numerado automáticamente.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 6
+:::
+
+::: section-title-text
+Código en línea
+:::
+
+---
+
+## Insertar resultados dentro del texto {.smaller}
+
+Con `` `r ` `` puedes insertar el resultado de una expresión R directamente en una oración:
+
+```markdown
+La muestra incluyó `r nrow(gad7_demo)` participantes.
+La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
+(DE = `r round(sd(gad7_demo$gad7), 1)`).
+```
+
+::: {.fragment}
+Al renderizar, eso produce:
+
+> La muestra incluyó `r nrow(gad7_demo)` participantes. La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos (DE = `r round(sd(gad7_demo$gad7), 1)`).
+
+Cuando cambien los datos, esos valores se actualizan solos al volver a renderizar.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad · 10 min
+:::
+
+::: actividad-title
+Un mini informe
+:::
+
+::: actividad-desc
+:::: nonincremental
+1. En tu documento Quarto, añade una sección `## Resultados`
+2. Inserta un bloque de código con un histograma o gráfica de barras usando los datos de `encuesta_bruta.xlsx` de la Sesión 3 (cárgalos con una ruta relativa desde tu proyecto)
+3. Escribe una oración con al menos un valor calculado con código en línea: número de observaciones, una media o una proporción
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 7
+:::
+
+::: section-title-text
+Formatos de salida
+:::
+
+---
+
+## HTML: el formato principal {.smaller}
+
+El formato HTML es el más completo y el más fácil de usar:
+
+```yaml
+format: html
+```
+
+::::: columns
+::: {.column width="50%"}
+**Ventajas**
+
+:::: nonincremental
+- No requiere instalar nada extra
+- Admite interactividad (tablas filtrables, gráficas dinámicas)
+- Se abre en cualquier navegador
+- Es el mejor formato para compartir resultados en la web
+::::
+:::
+::: {.column width="50%"}
+**Opciones útiles**
+
+```yaml
+format:
+  html:
+    toc: true           # tabla de contenidos
+    toc-depth: 2        # niveles de encabezado
+    theme: cosmo        # tema visual
+    self-contained: true # un solo archivo
+```
+:::
+:::::
+
+---
+
+## PDF: de Markdown a papel {.smaller}
+
+Generar un PDF requiere un sistema de composición tipográfica llamado **LaTeX**. Es el estándar en publicación académica.
+
+El camino que recorre tu documento:
+
+```{=html}
+<div style="display:flex; align-items:center; gap:0.8em; font-family:monospace; font-size:0.82em; margin:1em 0; flex-wrap:wrap;">
+  <div style="background:#eeedfe; border-radius:6px; padding:0.5em 0.9em; font-weight:700; color:#3d2fa0;">📝 .qmd</div>
+  <div style="color:#225faa; font-weight:700;">→ Pandoc →</div>
+  <div style="background:#ddeaf8; border-radius:6px; padding:0.5em 0.9em; font-weight:700; color:#1a4070;">📄 .tex</div>
+  <div style="color:#225faa; font-weight:700;">→ LaTeX →</div>
+  <div style="background:#d4f0e4; border-radius:6px; padding:0.5em 0.9em; font-weight:700; color:#1a5c38;">📄 .pdf</div>
+</div>
+```
+
+::: {.fragment}
+Instalar LaTeX completo ocupa unos 4 GB. Para uso con Quarto basta con **TinyTeX**, una versión mínima:
+
+```{r}
+#| eval: false
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+Una vez instalado, solo hay que cambiar el formato en el YAML:
+
+```yaml
+format: pdf
+```
+:::
+
+---
+
+## Pandoc: el traductor universal {.smaller}
+
+**Pandoc** es la herramienta que Quarto usa internamente para convertir Markdown a cualquier formato. Viene instalado con Quarto, no tienes que hacer nada.
+
+| Entrada | Salida posible |
+|---------|----------------|
+| Markdown (`.qmd`) | HTML, PDF, Word, EPUB, LaTeX, y más |
+
+::: {.fragment}
+Word (`format: docx`) es útil para compartir con colaboradores que no usan R. Para este curso nos centraremos en HTML y, cuando sea necesario, en PDF.
+
+::: tip-box
+Puedes cambiar el formato de salida en cualquier momento modificando una sola línea del YAML. El resto del documento no cambia.
+:::
+:::
+
+---
+
+## Quiz rápido
+
+Tres preguntas antes del cierre.
+
+---
+
+## Quiz · 1 de 3
+
+**Un archivo `.qmd` tiene tres tipos de contenido. ¿Cuál de las siguientes combinaciones es correcta?**
+
+::: nonincremental
+- a) YAML · HTML · JavaScript
+- b) YAML · Markdown · bloques de código R
+- c) Markdown · LaTeX · bloques de código Python
+- d) YAML · Word · bloques de código R
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** El encabezado YAML configura el documento (título, formato), el cuerpo usa Markdown para el texto con formato, y los bloques ` ```{r} ``` ` contienen código R que se ejecuta al renderizar.
+:::
+:::
+
+---
+
+## Quiz · 2 de 3
+
+**Tienes un bloque de código con `#| echo: false` y `#| eval: true`. ¿Qué aparece en el documento renderizado?**
+
+::: nonincremental
+- a) El código y su resultado
+- b) Solo el código, sin el resultado
+- c) Solo el resultado, sin el código
+- d) Nada: `echo: false` desactiva el bloque completo
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `eval: true` ejecuta el código, `echo: false` oculta el código en el documento. El resultado (figura, tabla, valor) aparece, pero el lector no ve el código que lo produjo.
+:::
+:::
+
+---
+
+## Quiz · 3 de 3
+
+**Para generar un PDF con Quarto, cambias `format: html` por `format: pdf` en el YAML. ¿Qué más necesitas?**
+
+::: nonincremental
+- a) Nada: Quarto incluye todo lo necesario para generar PDF
+- b) Instalar Microsoft Word, que actúa como motor de conversión
+- c) Instalar un sistema LaTeX, como TinyTeX (`tinytex::install_tinytex()`)
+- d) Activar un ajuste especial en RStudio desde las preferencias
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** Quarto convierte el documento a LaTeX mediante Pandoc y después LaTeX genera el PDF. Si no hay un sistema LaTeX instalado, el proceso falla. TinyTeX es una versión mínima que ocupa poco espacio y funciona perfectamente con Quarto.
+:::
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Tarea 2
+:::
+
+::: actividad-title
+Presenta un paquete de R
+:::
+
+::: actividad-desc
+Para la Sesión 9 · Máximo 5 min · Demostración en vivo
+:::
+
+---
+
+## Tarea 2: presenta un paquete de R {.smaller}
+
+**Tu misión**: encontrar un paquete de R que te llame la atención y presentárselo al grupo.
+
+:::: nonincremental
+1. ¿Cómo se llama y para qué sirve?
+2. ¿Dónde lo encontraste?
+3. Carga el paquete y ejecuta en vivo al menos una función, explicando sus argumentos y lo que produce
+4. ¿Por qué te pareció interesante, útil o simplemente raro?
+::::
+
+::: tip-box
+El paquete ojalá sea sorprendente. R tiene más de 23 000 paquetes: algunos hacen cosas absurdas, otros hacen cosas increíbles.
+
+[→ Instrucciones completas y ejemplos de inspiración](../../tareas/tarea2-paquete-raro.html)
+:::
+
+---
+
+## A practicar
+
+Antes de la próxima sesión, completa tu mini informe con los datos de la Sesión 3 o con datos propios.
+
+El documento debe tener al menos:
+
+- Un encabezado YAML con título, autor y `format: html`
+- Una sección de introducción escrita en Markdown
+- Un bloque de código con una figura de `ggplot2` y `#| echo: false`
+- Una oración con al menos un valor calculado con código en línea
+- El documento renderiza sin errores
+
+::: tip-box
+Si quieres ir más lejos, cambia `format: html` por `format: pdf` en el YAML después de instalar TinyTeX, y verifica que el mismo documento se renderiza correctamente como PDF.
+:::
+
+{{< include ../_fin.qmd >}}

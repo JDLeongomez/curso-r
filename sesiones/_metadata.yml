@@ -1,3 +1,7 @@
+format:
+  revealjs:
+    footer: 'Curso de R · Universidad El Bosque · Junio 2026 &nbsp;·&nbsp; <a href="../../index.html" style="color:inherit; opacity:0.6;">↩ Sitio del curso</a>'
+
 logo: ../imagenes/favicon.svg
 title-slide-attributes:
   data-background-color: "#121834"

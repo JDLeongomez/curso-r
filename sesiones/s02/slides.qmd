@@ -10,7 +10,6 @@ format:
     theme: [default, ../../estilos/slides.scss]
     slide-number: true
     show-slide-number: all
-    footer: "Curso de R · Universidad El Bosque · Junio 2026"
     code-line-numbers: true
     highlight-style: github
     transition: fade
@@ -44,6 +43,81 @@ pinguinos <- penguins |> drop_na()
 
 ---
 
+## El universo tidyverse {.smaller}
+
+::::: columns
+::: {.column width="34%"}
+
+<img src="../../imagenes/tidyverse.png" style="width:120px; display:block; margin:0 auto 0.6em;" />
+
+Una sola línea carga 9 paquetes esenciales para el análisis de datos:
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+En lugar de cargar cada paquete por separado — como `library(ggplot2)` y `library(dplyr)` — `tidyverse` los agrupa todos. Durante el curso irás conociendo varios.
+
+:::
+::: {.column width="66%"}
+
+```{=html}
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.55em; font-size:0.82em;">
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/ggplot2.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">ggplot2</div><div style="color:#555; font-size:0.88em;">Visualización de datos</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/dplyr.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">dplyr</div><div style="color:#555; font-size:0.88em;">Manipulación de datos</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/readr.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">readr</div><div style="color:#555; font-size:0.88em;">Importar archivos CSV</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/tidyr.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">tidyr</div><div style="color:#555; font-size:0.88em;">Reorganizar y pivotar tablas</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/purrr.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">purrr</div><div style="color:#555; font-size:0.88em;">Programación funcional</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/tibble.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">tibble</div><div style="color:#555; font-size:0.88em;">Marcos de datos modernos</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/stringr.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">stringr</div><div style="color:#555; font-size:0.88em;">Manipulación de texto</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/forcats.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">forcats</div><div style="color:#555; font-size:0.88em;">Manejo de factores</div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0.5em;">
+    <img src="../../imagenes/lubridate.png" style="width:48px; flex-shrink:0;" />
+    <div><div style="font-weight:700;">lubridate</div><div style="color:#555; font-size:0.88em;">Fechas y horas</div></div>
+  </div>
+
+</div>
+```
+
+:::
+:::::
+
+---
+
 ## {background-color="#121834"}
 
 ::: {.parte-num}
@@ -53,6 +127,8 @@ Parte 1
 ::: {.section-title-text}
 La gramática de las gráficas
 :::
+
+<img src="../../imagenes/ggplot2.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
 
 ---
 

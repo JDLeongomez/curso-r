@@ -42,11 +42,11 @@ Al finalizar el curso, los participantes serán capaces de:
 
 | # | Día | Salón | Tema |
 |---|-----|-------|------|
-| 7 | Miércoles 17 jun | <span class="salon-a404">A-404</span> | Documentos y presentaciones con Quarto · Referencias bibliográficas |
-| 8 | Jueves 18 jun | <span class="salon-a404">A-404</span> | Versiones y colaboración con Git y GitHub |
-| 9 | Viernes 19 jun | <span class="salon-a402">A-402</span> | Herramientas y buenas prácticas de trabajo en R |
+| 7 | Miércoles 17 jun | <span class="salon-a404">A-404</span> | Quarto: tablas, citas y formatos |
+| 8 | Jueves 18 jun | <span class="salon-a404">A-404</span> | Quarto: figuras, integración y publicación |
+| 9 | Viernes 19 jun | <span class="salon-a402">A-402</span> | Tarea 2 · Cierre e integración · Buenas prácticas de trabajo en R |
 
-**Entrega Tarea 2** al inicio de la sesión 7.
+**Entrega Tarea 2** al inicio de la sesión 9.
 
 ## Evaluación
 
