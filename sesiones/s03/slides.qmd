@@ -99,7 +99,7 @@ Esta es una hoja de Excel típica: filas de título, celdas combinadas, columnas
 
 [⬇ Descargar `encuesta_bruta.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx)
 
-Guarda el archivo en tu computador. Para cargarlo sin necesitar conocer rutas, usa el menú de RStudio:
+Guarda el archivo en tu computador (por ejemplo en el escritorio o en Documentos). Para cargarlo sin necesitar conocer rutas, usa el menú de RStudio:
 
 **Environment → Import Dataset → From Excel...**
 
@@ -130,7 +130,10 @@ library(readxl)
 encuesta_bruta <- read_excel("~/Desktop/encuesta_bruta.xlsx", skip = 2)
 ```
 
-Pégalo en tu script. Ahora verifiquemos qué llegó:
+Pégalo en tu *script*. La ruta será absoluta (depende de tu computador), lo cual está bien por ahora. En la Sesión 4 crearás un proyecto organizado y moverás este archivo a una carpeta `datos/`, donde podrás cargarlo con `read_excel("datos/encuesta_bruta.xlsx", skip = 2)`.
+
+:::: {.columns}
+::: {.column width="50%"}
 
 ```{r}
 #| eval: false
@@ -142,8 +145,11 @@ glimpse(encuesta_bruta)
 encuesta_bruta <- read_excel("datos/encuesta_bruta.xlsx", skip = 2)
 glimpse(encuesta_bruta)
 ```
-
+:::
+::: {.column width="50%"}
 180 filas, columnas con nombre. Pero quedan columnas extra al final (`...15`, `...16`, `...17`) por el texto y el cálculo que alguien dejó fuera de la tabla.
+:::
+::::
 
 ---
 
@@ -634,7 +640,7 @@ pinguinos %>%
     summarise(masa_media = mean(body_mass_g))
 ```
 
-Si ves `%>%` en tutoriales, libros o código de colegas, hace lo mismo que `|>` en la gran mayoría de los casos.
+Si ves `%>%` en tutoriales, libros o código de otras personas, hace lo mismo que `|>` en la gran mayoría de los casos.
 
 ::: tip-box
 Hoy se recomienda `|>` por ser nativo (no requiere paquetes adicionales). `%>%` tiene algunas funciones avanzadas para casos muy específicos, pero para el trabajo cotidiano son equivalentes.
@@ -660,7 +666,6 @@ pinguinos |>
         fill = sex
     )) +
     geom_col(position = "dodge") +
-    scale_fill_viridis_d() +
     theme_minimal()
 ```
 :::
@@ -673,7 +678,6 @@ pinguinos |>
     summarise(masa = mean(body_mass_g)) |>
     ggplot(aes(x = species, y = masa, fill = sex)) +
     geom_col(position = "dodge") +
-    scale_fill_viridis_d() +
     labs(x = NULL, y = "Masa corporal media (g)", fill = "Sexo") +
     theme_minimal()
 ```
@@ -701,7 +705,7 @@ Un archivo *machine-readable* (legible por máquina) tiene un formato que un pro
 Excel no lo garantiza porque:
 
 - Permite mezclar datos, cálculos, gráficos, notas y texto decorativo en la misma hoja
-- Una celda puede contener "3,5 kg de masa corporal (valor estimado)" y eso no es un número
+- Una celda puede contener algo como "3,5 kg de masa corporal (valor estimado)"
 - Las celdas combinadas y las filas de títulos extra dañan cualquier estructura tabular
 - El formato `.xlsx` almacena colores, fuentes y bordes junto a los datos, haciéndolo pesado y dependiente de un programa propietario
 
@@ -996,6 +1000,7 @@ ggplot(
         fill = "#225faa",
         colour = "white"
     ) +
+    xlim(0, 21) + # limitar el eje x al rango posible del GAD-7
     labs(
         title = "Distribución del puntaje GAD-7",
         x     = "Puntaje total (0–21)",
@@ -1008,12 +1013,13 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(encuesta, aes(x = ansiedad_total)) +
-    geom_histogram(bins = 22, fill = "#225faa", colour = "white") +
+    geom_histogram(binwidth = 1, fill = "#225faa", colour = "white") +
     labs(
         title = "Distribución del puntaje GAD-7",
         x     = "Puntaje total (0–21)",
         y     = "Frecuencia"
     ) +
+    xlim(0, 21) +
     theme_minimal()
 ```
 :::
@@ -1027,14 +1033,11 @@ ggplot(encuesta, aes(x = ansiedad_total)) +
 ::: {.column width="45%"}
 ```{r}
 #| eval: false
-ggplot(
-    encuesta,
-    aes(
-        x = carrera,
-        y = ansiedad_total,
-        fill = carrera,
-        colour = carrera
-    )
+ggplot(encuesta,
+        aes(x = carrera,
+            y = ansiedad_total,
+            fill = carrera,
+            colour = carrera)
 ) +
     geom_violin(alpha = 0.2) +
     geom_jitter(

@@ -1,0 +1,629 @@
+---
+title: "Sesión 7"
+subtitle: "Quarto: tablas, citas y formatos"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-17"
+date-format: long
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(knitr)
+library(gt)
+library(palmerpenguins)
+
+pinguinos <- penguins |> drop_na()
+
+resumen <- pinguinos |>
+    group_by(species) |>
+    summarise(
+        n          = n(),
+        masa_media = mean(body_mass_g),
+        masa_sd    = sd(body_mass_g),
+        pico_medio = mean(bill_length_mm)
+    )
+```
+
+## Agenda
+
+- Tablas básicas con `kable()`
+- Tablas atractivas con `gt`
+- Referencias cruzadas en documentos
+- Citas y referencias bibliográficas
+- Citar R y sus paquetes con `citation()`
+- Opciones de formato en el YAML
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1
+:::
+
+::: section-title-text
+Tablas
+:::
+
+---
+
+## `kable()`: tablas al instante {.smaller}
+
+`kable()` del paquete `knitr` convierte cualquier data frame en una tabla con una sola línea:
+
+::::: columns
+::: {.column width="48%"}
+```{r}
+#| eval: false
+library(knitr)
+
+resumen |> kable()
+```
+:::
+::: {.column width="52%"}
+```{r}
+#| echo: false
+resumen |> kable()
+```
+:::
+:::::
+
+Suficiente para explorar datos o incluir una tabla rápida. Para presentaciones y publicaciones, `gt` ofrece mucho más control.
+
+---
+
+## Tablas con `gt` {.smaller auto-animate=true}
+
+`gt` crea tablas en HTML con una sintaxis de *pipeline*, igual que ggplot2 pero para tablas:
+
+::::: columns
+::: {.column width="48%"}
+```{r}
+#| eval: false
+library(gt)
+
+resumen |>
+    gt()
+```
+:::
+::: {.column width="52%"}
+```{r}
+#| echo: false
+resumen |> gt()
+```
+:::
+:::::
+
+---
+
+## Tablas con `gt` {.smaller auto-animate=true}
+
+::::: columns
+::: {.column width="48%"}
+```{r}
+#| eval: false
+resumen |>
+    gt() |>
+    tab_header(
+        title    = "Pingüinos de Palmer",
+        subtitle = "Resumen por especie"
+    ) |>
+    cols_label(
+        species    = "Especie",
+        n          = "N",
+        masa_media = "Media (g)",
+        masa_sd    = "DE (g)",
+        pico_medio = "Pico (mm)"
+    )
+```
+:::
+::: {.column width="52%"}
+```{r}
+#| echo: false
+resumen |>
+    gt() |>
+    tab_header(
+        title    = "Pingüinos de Palmer",
+        subtitle = "Resumen por especie"
+    ) |>
+    cols_label(
+        species    = "Especie",
+        n          = "N",
+        masa_media = "Media (g)",
+        masa_sd    = "DE (g)",
+        pico_medio = "Pico (mm)"
+    )
+```
+:::
+:::::
+
+---
+
+## Tablas con `gt` {.smaller auto-animate=true}
+
+::::: columns
+::: {.column width="48%"}
+```{r}
+#| eval: false
+resumen |>
+    gt() |>
+    tab_header(
+        title    = "Pingüinos de Palmer",
+        subtitle = "Resumen por especie"
+    ) |>
+    cols_label(
+        species    = "Especie",
+        n          = "N",
+        masa_media = "Media (g)",
+        masa_sd    = "DE (g)",
+        pico_medio = "Pico (mm)"
+    ) |>
+    fmt_number(
+        columns  = c(masa_media, masa_sd, pico_medio),
+        decimals = 1
+    ) |>
+    tab_spanner(
+        label   = "Masa corporal",
+        columns = c(masa_media, masa_sd)
+    )
+```
+:::
+::: {.column width="52%"}
+```{r}
+#| echo: false
+resumen |>
+    gt() |>
+    tab_header(
+        title    = "Pingüinos de Palmer",
+        subtitle = "Resumen por especie"
+    ) |>
+    cols_label(
+        species    = "Especie",
+        n          = "N",
+        masa_media = "Media (g)",
+        masa_sd    = "DE (g)",
+        pico_medio = "Pico (mm)"
+    ) |>
+    fmt_number(
+        columns  = c(masa_media, masa_sd, pico_medio),
+        decimals = 1
+    ) |>
+    tab_spanner(
+        label   = "Masa corporal",
+        columns = c(masa_media, masa_sd)
+    )
+```
+:::
+:::::
+
+---
+
+## Referencias cruzadas: tablas en documentos {.smaller}
+
+En un documento Quarto (no en estas diapositivas), puedes etiquetar una tabla y citarla en el texto:
+
+::::: columns
+::: {.column width="52%"}
+**En el bloque de código:**
+
+````markdown
+```{{r}}
+#| label: tbl-resumen
+#| tbl-cap: "Pingüinos de Palmer: resumen por especie"
+
+resumen |> gt() |> ...
+```
+````
+
+**En el texto:**
+
+```markdown
+Como se observa en la @tbl-resumen, la
+especie Gentoo tiene la mayor masa corporal.
+```
+:::
+::: {.column width="48%"}
+::: tip-box
+Quarto numera las tablas automáticamente y genera el enlace. El prefijo `tbl-` en el `label` es obligatorio para que funcione la referencia. Lo mismo aplica para figuras con el prefijo `fig-` (en la siguiente sesión).
+:::
+:::
+:::::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad 1 · 8 min
+:::
+
+::: actividad-title
+Una tabla `gt` en tu documento
+:::
+
+::: actividad-desc
+En el documento `.qmd` que abriste en s06, añade una sección nueva e inserta un bloque de código que:
+
+:::: nonincremental
+1. Calcule un resumen de `pinguinos` con `group_by()` + `summarise()`
+2. Convierta el resultado en tabla con `gt()`
+3. Añada título con `tab_header()` y etiquete las columnas con `cols_label()`
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 2
+:::
+
+::: section-title-text
+Citas y referencias bibliográficas
+:::
+
+---
+
+## El archivo `.bib` {.smaller}
+
+Las referencias se guardan en un archivo de texto con extensión `.bib`. Cada entrada tiene un tipo (`@Article`, `@Book`, `@Manual`…), una **clave única** y los campos de la referencia:
+
+```bibtex
+@Article{Spitzer2006,
+  title   = {A Brief Measure for Assessing Generalized Anxiety Disorder},
+  author  = {Robert L. Spitzer and Kurt Kroenke and Janet B. W. Williams
+             and Bernd Löwe},
+  journal = {Archives of Internal Medicine},
+  year    = {2006},
+  volume  = {166},
+  number  = {10},
+  pages   = {1092--1097},
+  doi     = {10.1001/archinte.166.10.1092},
+}
+```
+
+La clave `Spitzer2006` es la que usarás para citar. Puedes elegir cualquier clave, pero un formato como `AutorAño` es claro y fácil de recordar.
+
+---
+
+## Fuentes de BibTeX {.smaller}
+
+No necesitas escribir las entradas a mano. Hay varias fuentes, de mejor a peor:
+
+:::: nonincremental
+1. **Páginas de editoriales** (ScienceDirect, Springer, Wiley, APA PsycNet…) → busca "Export citation" o "Cite" → selecciona BibTeX. Entradas completas, con DOI.
+
+2. **Editor visual de RStudio** → inserta una cita → busca por DOI, PubMed ID o título. No necesitas ningún gestor instalado.
+
+3. **Gestores de referencias** (Zotero, Mendeley, EndNote…) → exporta tu biblioteca o selección como `.bib`. La integración de Zotero con RStudio es especialmente fluida y vale la pena adoptar.
+
+4. **Google Scholar** → "Citar" → BibTeX. Práctico para buscar rápido, pero casi nunca incluye el DOI, lo que limita la calidad de la referencia.
+::::
+
+::: tip-box
+El archivo `.bib` es texto plano: puedes crearlo en RStudio con **File > New File > Text File**, guardarlo como `referencias.bib` en la **raíz del proyecto** (junto a `mi_reporte.qmd` y `curso_r.Rproj`), y pegar las entradas que vayas recopilando.
+:::
+
+---
+
+## El editor visual de RStudio {.smaller}
+
+El editor visual de RStudio permite insertar citas directamente, sin salir del documento:
+
+:::: nonincremental
+1. Activa el editor visual: **botón Visual** en la barra superior del editor (o `Ctrl+Shift+F4`)
+2. Ve a **Insert > Citation…**
+3. Busca por DOI, PubMed ID, CrossRef o en tu biblioteca de Zotero
+4. RStudio inserta la cita en el texto *y* añade la entrada al `.bib` automáticamente
+::::
+
+::: tip-box
+Si usas Zotero, aparece directamente en el panel de búsqueda de citas del editor visual. Solo tienes que mantener Zotero abierto mientras trabajas en RStudio.
+:::
+
+---
+
+## Configurar el YAML del documento {.smaller}
+
+Añade dos líneas al YAML de tu documento Quarto:
+
+```yaml
+---
+title: "Mi reporte"
+format: html
+bibliography: referencias.bib
+csl: https://www.zotero.org/styles/apa
+---
+```
+
+`bibliography` apunta al archivo `.bib`. `csl` define el estilo de citas: el enlace descarga el estilo APA directamente desde el repositorio de Zotero, sin necesidad de guardar ningún archivo.
+
+::: tip-box
+Puedes usar cualquier estilo del repositorio [zotero.org/styles](https://www.zotero.org/styles). Busca por nombre de revista o estilo, copia el enlace y pégalo en `csl:`. La lista de referencias aparece automáticamente al final del documento.
+:::
+
+---
+
+## Citar en el texto {.smaller}
+
+Con el archivo `.bib` configurado, citar es tan simple como escribir la clave:
+
+| Sintaxis | Resultado |
+|---|---|
+| `@Spitzer2006` | Spitzer et al. (2006) |
+| `[@Spitzer2006]` | (Spitzer et al., 2006) |
+| `[@R-base; @tidyverse]` | (R Core Team, 2026; Wickham et al., 2019) |
+| `[-@Spitzer2006]` | (2006) — suprime el autor |
+
+La lista de referencias completa se genera sola al final del documento.
+
+::: tip-box
+En el editor visual, al escribir `@` aparece un menú de autocompletado con todas las claves de tu `.bib`. No necesitas recordarlas de memoria.
+:::
+
+---
+
+## Citar R y sus paquetes {.smaller}
+
+`citation()` devuelve la referencia de R o de cualquier paquete. `toBibtex()` la convierte al formato BibTeX listo para copiar al `.bib`:
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+# Citar R
+citation()
+
+# Citar un paquete
+citation("ggplot2")
+```
+
+```{r}
+#| eval: false
+# Obtener el BibTeX
+toBibtex(citation())
+toBibtex(citation("ggplot2"))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+toBibtex(citation())
+```
+:::
+:::::
+
+::: tip-box
+Si usas datos o herramientas de R en un trabajo académico, citar R y los paquetes relevantes es una buena práctica. Muchos revisores ya lo esperan.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad 2 · 8 min
+:::
+
+::: actividad-title
+Añade citas a tu documento
+:::
+
+::: actividad-desc
+[⬇ Descargar `referencias.bib`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s07/referencias.bib)
+
+Guarda el archivo en la **raíz de tu proyecto** `curso_r` (junto a `mi_reporte.qmd`). Luego:
+
+:::: nonincremental
+1. Añade `bibliography: referencias.bib` y `csl: https://www.zotero.org/styles/apa` al YAML
+2. Cita `@tidyverse` en algún párrafo del documento
+3. Obtén el BibTeX de `citation("gt")` con `toBibtex()`, añádelo al `.bib` y cítalo
+4. Renderiza y verifica que la lista de referencias aparece al final
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 3
+:::
+
+::: section-title-text
+Opciones de formato
+:::
+
+---
+
+## Tabla de contenido y numeración {.smaller}
+
+Opciones del YAML que mejoran la navegación del documento:
+
+::::: columns
+::: {.column width="48%"}
+```yaml
+---
+title: "Mi reporte"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+```
+:::
+::: {.column width="52%"}
+| Opción | Qué hace |
+|---|---|
+| `toc: true` | Tabla de contenido al inicio |
+| `toc-depth: 3` | Hasta el tercer nivel de título |
+| `number-sections: true` | Numera las secciones (1, 1.1, 1.1.1…) |
+
+La tabla de contenido genera automáticamente enlaces a cada sección.
+:::
+:::::
+
+---
+
+## `code-fold` y temas HTML {.smaller}
+
+::::: columns
+::: {.column width="48%"}
+```yaml
+---
+format:
+  html:
+    code-fold: true
+    theme: cosmo
+---
+```
+
+`code-fold: true` oculta el código por defecto pero deja un botón "Show code" para quien quiera verlo. Útil para reportes donde el texto es lo principal.
+
+Otros temas disponibles: `flatly`, `minty`, `journal`, `lumen`, `pulse`, `sandstone`, `united`, `yeti`.
+:::
+::: {.column width="52%"}
+::: tip-box
+Puedes previsualizar todos los temas en [quarto.org/docs/output-formats/html-themes.html](https://quarto.org/docs/output-formats/html-themes.html)
+
+El tema `cosmo` y `flatly` son opciones limpias y legibles. `journal` imita el estilo de una publicación académica.
+:::
+:::
+:::::
+
+---
+
+## Otros formatos de salida {.smaller}
+
+Con Quarto puedes cambiar el formato de salida con solo editar el YAML:
+
+```yaml
+format: docx   # Word
+format: pdf    # PDF (requiere LaTeX)
+format: html   # HTML (el más completo y flexible)
+```
+
+Para Word (`docx`), la mayoría de opciones de HTML funcionan igual. Es útil cuando el destinatario necesita un archivo editable o cuando la institución exige ese formato.
+
+::: tip-box
+Para PDF se necesita una instalación de LaTeX. Si no tienes LaTeX, puedes instalar `tinytex` desde R con `tinytex::install_tinytex()`. Pero para este curso, HTML es suficiente para todo lo que haremos.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad final · 15 min
+:::
+
+::: actividad-title
+Mini-reporte completo
+:::
+
+::: actividad-desc
+Edita el YAML y el contenido de tu documento `.qmd` para que incluya:
+
+:::: nonincremental
+1. Tabla de contenido (`toc: true`) y secciones numeradas
+2. Un tema HTML distinto al defecto (prueba `cosmo` o `flatly`)
+3. `code-fold: true` para que el código esté oculto por defecto
+4. La tabla `gt` de la Actividad 1, con su referencia cruzada (`@tbl-xxx`) en el texto
+5. Al menos dos citas de la bibliografía
+::::
+
+Renderiza y revisa el resultado en el navegador.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Antes de terminar...
+:::
+
+::: section-title-text
+Quiz rápido
+:::
+
+---
+
+## Quiz · 1 de 3
+
+**¿Qué función de `gt` agrupa varias columnas bajo un encabezado común?**
+
+::: nonincremental
+- a) `cols_group()`
+- b) `tab_header()`
+- c) `tab_spanner()`
+- d) `group_cols()`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `tab_spanner()` crea un encabezado que abarca varias columnas. `tab_header()` añade un título general a la tabla, no agrupa columnas.
+:::
+:::
+
+---
+
+## Quiz · 2 de 3
+
+**¿Cuál de estas sintaxis produce una cita entre paréntesis en Quarto?**
+
+::: nonincremental
+- a) `{@Spitzer2006}`
+- b) `@Spitzer2006`
+- c) `[@Spitzer2006]`
+- d) `(Spitzer2006)`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `[@clave]` produce una cita entre paréntesis: (Spitzer et al., 2006). Sin corchetes, `@clave` produce una cita narrativa: Spitzer et al. (2006), adecuada para usar el nombre del autor como sujeto de la oración.
+:::
+:::
+
+---
+
+## Quiz · 3 de 3
+
+**Quieres que el código de tu documento esté oculto por defecto pero que el lector pueda verlo si quiere. ¿Qué opción usas en el YAML?**
+
+::: nonincremental
+- a) `echo: false`
+- b) `hide-code: true`
+- c) `code-fold: true`
+- d) `collapse: true`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `code-fold: true` oculta el código pero añade un botón "Show code". `echo: false` lo oculta sin posibilidad de verlo. Las otras dos opciones no existen en Quarto.
+:::
+:::
+
+---
+
+{{< include ../_fin.qmd >}}

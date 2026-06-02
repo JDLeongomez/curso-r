@@ -35,7 +35,7 @@
 - [x] Crear diapositivas sesión 5 — Automatización de análisis con funciones y simulación
 - [x] Crear diapositivas sesión 6 — Reportes reproducibles con Quarto
   - [x] Añadir anuncio Tarea 2 al final de s06
-- [ ] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
+- [x] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
 - [ ] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
 - [ ] Crear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas
 

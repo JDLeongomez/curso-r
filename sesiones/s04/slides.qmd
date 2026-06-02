@@ -190,25 +190,32 @@ Dale un **nombre sin espacios** (será el nombre de la carpeta), y **selecciona 
 
 ---
 
-## Estructura recomendada de carpetas
+## Estructura del proyecto del curso {.smaller}
 
-```
-mi_proyecto/
-├── mi_proyecto.Rproj   ← el punto de partida
-├── datos/              ← archivos originales (no se tocan)
-├── figuras/            ← figuras exportadas
-└── scripts/            ← tus archivos .R
-    └── analisis.R
+Esta es la estructura que usaremos hasta el final. Los documentos Quarto y la bibliografía van en la raíz, junto al `.Rproj`:
+
+```{=html}
+<div style="font-family: monospace; font-size: 0.82em; line-height: 2; padding: 0.9em 1.1em; background: rgba(255,255,255,0.05); border-radius: 8px;">
+  <div style="color: #5b9ad5; font-weight: bold;">📁 curso_r/</div>
+  <div style="padding-left: 1.5em; color: #5b9ad5; font-weight: bold;">├── 📄 curso_r.Rproj <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← punto de partida</span></div>
+  <div style="padding-left: 1.5em; color: #e5c07b;">├── 📝 mi_reporte.qmd <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← documentos Quarto en la raíz (s06+)</span></div>
+  <div style="padding-left: 1.5em; color: #e5c07b;">├── 📄 referencias.bib <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← bibliografía en la raíz (s07+)</span></div>
+  <div style="padding-left: 1.5em; color: #7db87d;">├── 📁 datos/ <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← archivos originales (nunca se tocan)</span></div>
+  <div style="padding-left: 1.5em; color: #c678dd;">├── 📁 figuras/ <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← figuras exportadas con ggsave()</span></div>
+  <div style="padding-left: 1.5em; color: #abb2bf;">└── 📁 scripts/ <span style="color:#888; font-weight:normal; font-family:sans-serif; font-size:0.85em;">← archivos .R</span></div>
+</div>
 ```
 
-Los datos originales van en `datos/` y **no se modifican nunca**. El *script* en `scripts/` hace todo el trabajo. Si algo sale mal, basta con corregir el *script* y volver a ejecutarlo.
+::: tip-box
+¿Quieres la estructura ya lista? Descárgala en [github.com/JDLeongomez/curso-r/tree/main/plantilla_proyecto](https://github.com/JDLeongomez/curso-r/tree/main/plantilla_proyecto), extrae el ZIP y renombra la carpeta `curso_r`.
+:::
 
 ---
 
 ## {background-color="#6b1220" .actividad}
 
 ::: actividad-num
-Actividad · 5 min
+Actividad · 7 min
 :::
 
 ::: actividad-title
@@ -219,9 +226,9 @@ Crea tu proyecto del curso
 :::: nonincremental
 1. **File > New Project... > New Directory > New Project**
 2. Nómbralo `curso_r` y elige una ubicación fácil de encontrar
-   - Ahí verás que en la esquina superior derecha de RStudio aparece el nombre del proyecto
 3. Dentro del proyecto, crea las carpetas `datos/`, `figuras/` y `scripts/`
 4. Abre un *script* nuevo (**File > New File > R Script**) y guárdalo en `scripts/` como `sesion4.R`
+5. Copia `encuesta_bruta.xlsx` de la Sesión 3 a la carpeta `datos/` del proyecto
 ::::
 :::
 

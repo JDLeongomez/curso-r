@@ -79,7 +79,6 @@ El flujo habitual sin herramientas de reproducibilidad:
 ::::
 :::
 ::: {.column width="50%"}
-::: {.fragment}
 
 ```{=html}
 <div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:1em 1.2em; line-height:2;">
@@ -95,7 +94,6 @@ El flujo habitual sin herramientas de reproducibilidad:
 
 ::: tip-box
 Cada vez que los datos cambian, cada valor copiado a mano es un error potencial.
-:::
 :::
 :::
 :::::
@@ -148,6 +146,18 @@ Quarto es un sistema de publicación que combina texto, código y resultados en 
 
 ::: {.fragment}
 Cuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos.
+:::
+
+---
+
+## ¿Y R Markdown?
+
+Es posible que encuentres archivos `.Rmd` en tutoriales, repositorios o código de otras personas. R Markdown hace lo mismo que Quarto: combina texto y código en un documento reproducible.
+
+Ambos son creados por **Posit** (la empresa detrás de RStudio). Pero Quarto es la evolución de R Markdown.
+
+::: tip-box
+Si ves un archivo `.Rmd` (que significa "R Markdown"), puedes leerlo sin problema: la estructura es casi idéntica. Para trabajo nuevo, usa siempre Quarto (`.qmd` que significa "Quarto Markdown").
 :::
 
 ---
@@ -277,7 +287,7 @@ Tu primer documento Quarto
 ::: actividad-desc
 :::: nonincremental
 1. **File › New File › Quarto Document...** — título: "Mi primer análisis", formato: HTML
-2. Guárdalo dentro de tu proyecto `curso_r`, en la carpeta `scripts/`
+2. Guárdalo en la **raíz** de tu proyecto `curso_r` (no en `scripts/`), como `mi_reporte.qmd`
 3. Haz clic en **Render** y observa el resultado en el navegador
 4. Cambia el título en el YAML y vuelve a renderizar
 ::::
@@ -310,11 +320,14 @@ Markdown es la forma en que Quarto entiende el formato del texto. El editor visu
 
 ## Sección
 
-Texto normal, **negrita**
-e *cursiva*.
+Texto normal, **negrita** y *cursiva*.
+
+### Lista no ordenada
 
 - Elemento de lista
 - Otro elemento
+
+### Lista ordenada
 
 1. Primero
 2. Segundo
@@ -325,19 +338,24 @@ e *cursiva*.
 ::: {.column width="50%"}
 **Lo que se ve (renderizado)**
 
-# Título principal {.unnumbered style="font-size:1em; margin:0; border:none; padding:0;"}
-
-## Sección {.unnumbered style="font-size:0.85em; margin:0.2em 0; border:none; padding:0;"}
-
-Texto normal, **negrita** e *cursiva*.
-
-- Elemento de lista
-- Otro elemento
-
-1. Primero
-2. Segundo
-
-[Enlace](https://r-project.org)
+```{=html}
+<div style="font-size:0.9em; line-height:1.9;">
+  <h1 style="font-size:1.1em; margin:0.2em 0 0.1em; padding:0; border:none;">Título principal</h1>
+  <h2 style="font-size:0.95em; margin:0.2em 0 0.1em; padding:0; border:none;">Sección</h2>
+  <p style="margin:0.2em 0;">Texto normal, <strong>negrita</strong> y <em>cursiva</em>.</p>
+  <h3 style="font-size:0.85em; margin:0.3em 0 0.1em; padding:0; border:none;">Lista no ordenada</h3>
+  <ul style="margin:0.1em 0; padding-left:1.4em;">
+    <li>Elemento de lista</li>
+    <li>Otro elemento</li>
+  </ul>
+  <h3 style="font-size:0.85em; margin:0.3em 0 0.1em; padding:0; border:none;">Lista ordenada</h3>
+  <ol style="margin:0.1em 0; padding-left:1.4em;">
+    <li>Primero</li>
+    <li>Segundo</li>
+  </ol><br>
+  <a href="https://r-project.org">Enlace</a>
+</div>
+```
 :::
 :::::
 
@@ -357,7 +375,15 @@ Bloques de código
 
 ## Los bloques de código {.smaller}
 
-Un bloque de código (*chunk*) es una sección del documento donde va código R. Se delimita con tres acentos graves y `{r}`:
+Un bloque de código (*chunk*) es una sección del documento donde va código ejecutable. Quarto admite R, Python, Julia, Bash y otros lenguajes, e incluso permite mezclar varios en el mismo documento. El lenguaje se indica entre llaves:
+
+```markdown
+```{{r}}        <- R
+```{{python}}   <- Python
+```{{bash}}     <- Bash (terminal)
+```
+
+En este curso usamos R, así que nuestros bloques llevan siempre `{r}`:
 
 ````markdown
 ```{{r}}
@@ -459,10 +485,10 @@ Código en línea
 
 Con `` `r ` `` puedes insertar el resultado de una expresión R directamente en una oración:
 
-```markdown
-La muestra incluyó `r nrow(gad7_demo)` participantes.
-La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
-(DE = `r round(sd(gad7_demo$gad7), 1)`).
+```{=html}
+<pre style="background:#f6f8fa; border-radius:4px; padding:0.75em 1em; font-size:0.85em; line-height:1.8; font-family: monospace;"><code>La muestra incluyó &#96;r nrow(gad7_demo)&#96; participantes.
+La media del puntaje GAD-7 fue &#96;r round(mean(gad7_demo$gad7), 1)&#96; puntos
+(DE = &#96;r round(sd(gad7_demo$gad7), 1)&#96;).</code></pre>
 ```
 
 ::: {.fragment}
@@ -487,9 +513,10 @@ Un mini informe
 
 ::: actividad-desc
 :::: nonincremental
-1. En tu documento Quarto, añade una sección `## Resultados`
-2. Inserta un bloque de código con un histograma o gráfica de barras usando los datos de `encuesta_bruta.xlsx` de la Sesión 3 (cárgalos con una ruta relativa desde tu proyecto)
-3. Escribe una oración con al menos un valor calculado con código en línea: número de observaciones, una media o una proporción
+1. Verifica que `encuesta_bruta.xlsx` está en `curso_r/datos/` (si no, cópialo ahora desde donde lo guardaste en la Sesión 3)
+2. En tu documento `mi_reporte.qmd`, añade una sección `## Resultados`
+3. Inserta un bloque de código que cargue los datos con `read_excel("datos/encuesta_bruta.xlsx", skip = 2)` y produzca un histograma o gráfica de barras
+4. Escribe una oración con al menos un valor calculado con código en línea: número de observaciones, una media o una proporción
 ::::
 :::
 

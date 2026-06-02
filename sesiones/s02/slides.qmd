@@ -1142,29 +1142,27 @@ Guarda la última figura generada (o la que especifiques) en el formato que elij
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="55%"}
 ```{r}
 #| eval: false
 mi_figura <- ggplot(
     pinguinos,
-    aes(
-        x = bill_length_mm, y = body_mass_g,
-        colour = species, shape = species
-    )
+    aes(x = bill_length_mm, y = body_mass_g,
+        colour = species, shape = species)
 ) +
     geom_point(alpha = 0.7, size = 2) +
     scale_colour_viridis_d() +
     theme_minimal()
 
 # PNG para presentaciones y web
-ggsave("figuras/pinguinos.png",
+ggsave("pinguinos.png",
     plot  = mi_figura,
     width = 16, height = 10,
     units = "cm", dpi = 300
 )
 
 # PDF para publicaciones (vectorial, escala sin pérdida)
-ggsave("figuras/pinguinos.pdf",
+ggsave("pinguinos.pdf",
     plot = mi_figura,
     width = 16, height = 10,
     units = "cm"
@@ -1172,9 +1170,11 @@ ggsave("figuras/pinguinos.pdf",
 ```
 :::
 
-::: {.column width="40%"}
+::: {.column width="45%"}
 ::: {.tip-box}
 `dpi = 300` es el estándar para publicación impresa. Para pantalla, `dpi = 150` es suficiente. `units = "cm"` permite especificar el tamaño exacto que pedirá la revista.
+
+Por ahora la figura se guarda en la misma carpeta donde está tu *script* (o en Documentos si no has guardado el *script* aún). En la Sesión 4 crearás un proyecto organizado con una estructura más clara.
 :::
 :::
 
@@ -1187,41 +1187,31 @@ ggsave("figuras/pinguinos.pdf",
 Todo lo visto en una sola figura.
 
 :::: {.columns}
-::: {.column width="43%"}
+::: {.column width="45%"}
 ```{r}
 #| eval: false
-ggplot(
-    pinguinos,
-    aes(
-        x = bill_length_mm,
-        y = body_mass_g,
-        colour = species,
-        shape = species
-    )
-) +
+ggplot(pinguinos,
+        aes(x = bill_length_mm,
+            y = body_mass_g,
+            colour = species,
+            shape = species)) +
     geom_point(alpha = 0.6, size = 2) +
-    geom_smooth(
-        method = "lm",
-        se = FALSE,
-        linewidth = 0.8
-    ) +
+    geom_smooth(method = "lm",
+                se = FALSE,
+                linewidth = 0.8) +
     facet_wrap(~island) +
-    scale_colour_brewer(
-        name = "Especie",
-        palette = "Dark2"
-    ) +
+    scale_colour_brewer(name = "Especie",
+                        palette = "Dark2") +
     scale_shape_discrete(name = "Especie") +
-    labs(
-        title = "Masa y pico por isla",
-        x = "Longitud del pico (mm)",
-        y = "Masa corporal (g)",
-        caption = "Datos: Horst et al. (2020)"
-    ) +
+    labs(title = "Masa y pico por isla",
+         x = "Longitud del pico (mm)",
+         y = "Masa corporal (g)",
+         caption = "Datos: Horst et al. (2020)") + 
     theme_linedraw() +
     theme(legend.position = "bottom")
 ```
 :::
-::: {.column width="57%"}
+::: {.column width="55%"}
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(

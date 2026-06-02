@@ -7,10 +7,10 @@
 Materiales del curso introductorio **Maneja, explora y visualiza datos con R**,
 ofrecido de forma gratuita en la Universidad El Bosque (Bogotá, Colombia).
 
-- **Sitio web del curso:** `https://<usuario>.github.io/<nombre-repo>/`
+- **Sitio web del curso:** `https://jdleongomez.github.io/curso-r/`
 - **Fechas:** 3 – 19 de junio de 2026 (miércoles, jueves y viernes)
 - **Horario:** 10:00 – 12:00 m.
-- **Instructor:** Juan David Leongómez ([jdleongomez.info](https://jdleongomez.info/es/))
+- **Profesor:** Juan David Leongómez ([jdleongomez.info](https://jdleongomez.info/es/))
 
 ## Estructura del repositorio
 

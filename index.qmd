@@ -74,7 +74,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>Vie 5 jun</td>
       <td><span class="salon-a402">A-402</span></td>
       <td>Manejo y transformación de datos con dplyr y pipes</td>
-      <td><a href="sesiones/s03/slides.html" class="slides-label">Diapositivas</a> · <a href="sesiones/s03/datos/encuesta_bruta.xlsx" class="data-label">encuesta_bruta.xlsx</a> <span class="tarea-label" style="margin-left:8px;">→ Presentación Tarea 1</span></td>
+      <td><a href="sesiones/s03/slides.html" class="slides-label">Diapositivas</a> · <a href="sesiones/s03/datos/encuesta_bruta.xlsx" class="data-label">encuesta_bruta.xlsx</a> <span class="tarea-label" style="margin-left:8px;">→ Tarea 1</span></td>
     </tr>
 
     <!-- Semana 2 -->
@@ -102,7 +102,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>Vie 12 jun</td>
       <td><span class="salon-b211">B-211</span></td>
       <td>Reportes reproducibles con Quarto</td>
-      <td><a href="sesiones/s06/slides.html" class="slides-label">Diapositivas</a> <span class="tarea-label" style="margin-left:8px;">→ Presentación Tarea 2</span></td>
+      <td><a href="sesiones/s06/slides.html" class="slides-label">Diapositivas</a> <span class="tarea-label" style="margin-left:8px;">→ Tarea 2</span></td>
     </tr>
 
     <!-- Semana 3 -->
@@ -142,7 +142,7 @@ No se requieren conocimientos previos de programación ni estadística.
 - [**Tarea 1** · El concurso de la figura más fea](tareas/tarea1-figura-fea.html)
 - [**Tarea 2** · Presenta un paquete de R](tareas/tarea2-paquete-raro.html)
 
-## Instructor
+## Profesor
 
 ```{=html}
 <div style="display:flex; align-items:flex-start; gap:16px; background-color:#f5f5f3; border-radius:6px; padding:16px 18px; margin-bottom:24px;">
@@ -172,3 +172,16 @@ No se requieren conocimientos previos de programación ni estadística.
 Para asuntos de R y contenidos del curso, escribe a [jleongomez@unbosque.edu.co](mailto:jleongomez@unbosque.edu.co)
 
 Para asuntos administrativos, escribe a [cinvestigapsico@unbosque.edu.co](mailto:cinvestigapsico@unbosque.edu.co)
+
+---
+
+```{=html}
+<p style="font-size:0.9em; color:#666;">
+  <a href="https://github.com/JDLeongomez/curso-r" style="color:#444; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+    <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+    Código fuente en GitHub
+  </a>
+</p>
+```
