@@ -36,8 +36,14 @@
 - [x] Crear diapositivas sesión 6 — Reportes reproducibles con Quarto
   - [x] Añadir anuncio Tarea 2 al final de s06
 - [x] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
+  - [x] Crear `sesiones/s07/referencias.bib` (R, tidyverse, Spitzer 2006)
 - [ ] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
 - [ ] Crear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas
+
+## Recursos y estructura del proyecto
+
+- [x] Crear `plantilla_proyecto/` con estructura lista para descargar (`curso_r.Rproj`, `datos/`, `figuras/`, `scripts/`)
+- [x] Revisar y corregir consistencia de rutas y carpetas en s02–s07
 
 ## Sitio web
 
@@ -47,6 +53,7 @@
   - [x] s04 — enlace añadido
   - [x] s05 — enlace añadido
   - [x] s06 — enlace añadido
+  - [x] s07 — enlace añadido
 
 ## Tareas para estudiantes
 

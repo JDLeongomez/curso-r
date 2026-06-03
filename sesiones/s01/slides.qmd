@@ -202,23 +202,23 @@ R funciona solo, pero cada pieza vive en su propia ventana flotante: consola, ed
 
 
 
+
 ## RStudio: el entorno de trabajo
 
-R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
+R es el perro. RStudio es la pinta: un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
+
+![](../../imagenes/perro-r-rstudio.png){fig-align="center" height="420px"}
+
+
+## RStudio: el entorno de trabajo
+
+R es el perro. RStudio es la pinta: un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
 
 -   Editor de scripts con resaltado de sintaxis
 -   Consola integrada
 -   Visualizador de objetos, gráficas, archivos y ayuda
 -   Integración con Quarto/RMarkdown, Git, y más
 
-
-
-
-## RStudio: el entorno de trabajo
-
-R es el motor. RStudio es la carrocería — un **IDE** (*Integrated Development Environment*) que facilita el trabajo: todo lo que ejecutas en RStudio lo procesa R internamente.
-
-![](../../imagenes/perro-r-rstudio.png){fig-align="center" height="420px"}
 
 
 
@@ -259,7 +259,7 @@ Abre RStudio y ve a **Tools > Global Options**
 :::
 
 ::: {.column width="50%"}
-**Code > Editing** {.incremental}
+**Code > Editing**
 
 - Marca *Use native pipe operator `|>`*
 
