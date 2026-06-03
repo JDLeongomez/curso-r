@@ -60,7 +60,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>Mié 3 jun</td>
       <td><span class="salon-a402">A-402</span></td>
       <td>Primeros pasos en R y RStudio</td>
-      <td><a href="sesiones/s01/slides.html" class="slides-label">Diapositivas</a></td>
+      <td><a href="sesiones/s01/slides.html" class="slides-label">Diapositivas</a> · <a href="sesiones/s01/script_ejemplo.R" class="data-label">script_ejemplo.R</a></td>
     </tr>
     <tr>
       <td>2</td>
@@ -151,7 +151,11 @@ No se requieren conocimientos previos de programación ni estadística.
        style="border-radius:50%; object-fit:cover; flex-shrink:0; margin-top:2px;"
        alt="Juan David Leongómez" />
   <div>
-    <div style="font-weight:700; color:#121834; margin-bottom:4px;">Juan David Leongómez</div>
+    <div style="font-weight:800; margin-bottom:2px;"><a href="https://jdleongomez.info/es/" style="text-decoration:none;">Juan David Leongómez</a></div>
+    <div style="font-size:0.8em; color:#666; margin-bottom:6px;">
+      PhD Psychology · University of Stirling, Escocia<br/>
+      MSc in Evolutionary Psychology · University of Liverpool, Inglaterra
+    </div>
     <p style="margin:0; font-size:0.9em; color:#444; line-height:1.65;">
       Profesor Asociado e investigador de la Universidad El Bosque, investigador de
       <a href="https://jdleongomez.info/es/lab/"><em>EvoCo</em></a>
@@ -161,7 +165,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <a href="https://asesores-psic.netlify.app/#recursos">tutoriales y recursos</a>,
       así como videos en su canal de YouTube
       <a href="https://www.youtube.com/@InvestigacionAbierta"><em>Investigación Abierta</em></a>.<br/>
-      Más información: <a href="https://jdleongomez.info/es/">jdleongomez.info</a>
+      <a href="https://jdleongomez.info/es/" style="display:inline-block; border:1.5px solid #225faa; color:#225faa; padding:3px 12px; border-radius:4px; font-size:0.82em; font-weight:600; text-decoration:none; margin-top:6px;">Visitar sitio web</a>
     </p>
   </div>
 </div>

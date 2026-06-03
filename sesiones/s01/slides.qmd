@@ -83,7 +83,8 @@ R y los lenguajes de programación
 
 *Ejemplos: Excel, SPSS, GraphPad*
 :::
-
+::: {.column width="5%"}
+:::
 ::: {.column width="50%"}
 **Lenguaje de programación**
 
@@ -112,6 +113,50 @@ R es un lenguaje completo con acceso a todos los recursos del computador: análi
 :::
 
 
+
+## ¿Qué se puede hacer con R? Algunos ejemplos
+
+```{=html}
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:0.7em; margin-top:0.4em;">
+
+  <div style="background:#ddeaf8; border:1.5px solid #225faa; border-radius:6px; padding:0.7em 1em;">
+    <div style="font-weight:700; color:#121834; margin-bottom:3px;">📊 Análisis estadístico</div>
+    <div style="font-size:0.85em; color:#444;">Desde estadística básica hasta modelos bayesianos, machine learning y simulaciones complejas.</div>
+  </div>
+
+  <div style="background:#ddeaf8; border:1.5px solid #225faa; border-radius:6px; padding:0.7em 1em;">
+    <div style="font-weight:700; color:#121834; margin-bottom:3px;">📈 Visualizaciones publicables</div>
+    <div style="font-size:0.85em; color:#444;">Gráficas listas para revistas científicas, totalmente personalizables y reproducibles.</div>
+  </div>
+
+  <div style="background:#ddeaf8; border:1.5px solid #225faa; border-radius:6px; padding:0.7em 1em;">
+    <div style="font-weight:700; color:#121834; margin-bottom:3px;">📄 Documentos y reportes</div>
+    <div style="font-size:0.85em; color:#444;">Artículos, informes y presentaciones donde el texto y los resultados se generan juntos.<br/>
+    <span style="color:#225faa; font-size:0.9em;">→ <a href="https://jdleongomez.github.io/curso-r/" style="color:#225faa;">este sitio del curso</a> y estas diapositivas son ejemplos</span></div>
+  </div>
+
+  <div style="background:#ddeaf8; border:1.5px solid #225faa; border-radius:6px; padding:0.7em 1em;">
+    <div style="font-weight:700; color:#121834; margin-bottom:3px;">📋 CVs y portfolios</div>
+    <div style="font-size:0.85em; color:#444;">Documentos con formato profesional generados directamente desde R.<br/>
+    <span style="color:#225faa; font-size:0.9em;">→ <a href="https://jdleongomez.github.io/JDL_CV/CV_esp/JDL_CV_es.pdf" style="color:#225faa;">ejemplo: mi CV</a></span></div>
+  </div>
+
+  <div style="background:#ddeaf8; border:1.5px solid #225faa; border-radius:6px; padding:0.7em 1em;">
+    <div style="font-weight:700; color:#121834; margin-bottom:3px;">🌐 Aplicaciones web interactivas</div>
+    <div style="font-size:0.85em; color:#444;">Apps que cualquier persona puede usar desde el navegador, sin instalar nada.<br/>
+    <span style="color:#225faa; font-size:0.9em;">→ <a href="https://shiny.jdl-svr.lat/Puntaje_Proyecto_Investigacion/" style="color:#225faa;">ejemplo: app Shiny</a></span></div>
+  </div>
+
+  <div style="background:#ddeaf8; border:1.5px solid #225faa; border-radius:6px; padding:0.7em 1em;">
+    <div style="font-weight:700; color:#121834; margin-bottom:3px;">💻 Sitios web completos</div>
+    <div style="font-size:0.85em; color:#444;">Sitios personales, blogs y portafolios académicos publicados directamente desde R.<br/>
+    <span style="color:#225faa; font-size:0.9em;">→ <a href="https://jdleongomez.info/es/" style="color:#225faa;">ejemplo: mi sitio web</a></span></div>
+  </div>
+
+</div>
+```
+
+---
 
 ## FOSS y ciencia abierta
 
