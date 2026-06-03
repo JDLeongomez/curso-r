@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```kjt\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```pjy\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -1488,7 +1488,7 @@
     "href": "index.html#sesiones",
     "title": "Maneja, explora y visualiza datos con R",
     "section": "Sesiones",
-    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-402\nPrimeros pasos en R y RStudio\nDiapositivas\n\n\n2\nJue 4 jun\nA-402\nVisualizaciones con ggplot2\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\nDiapositivas · encuesta_bruta.xlsx → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R Entrega Tarea 1\nDiapositivas · notas.csv · registro.xlsx\n\n\n5\nJue 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\nDiapositivas\n\n\n6\nVie 12 jun\nB-211\nReportes reproducibles con Quarto\nDiapositivas → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto: tablas, citas y formatos\nDiapositivas\n\n\n8\nJue 18 jun\nA-404\nQuarto: figuras, integración y publicación\n—\n\n\n9\nVie 19 jun\nA-402\nTarea 2 · Cierre e integración · Buenas prácticas de trabajo en R Entrega Tarea 2\n—"
+    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-402\nPrimeros pasos en R y RStudio\nDiapositivas · script_ejemplo.R\n\n\n2\nJue 4 jun\nA-402\nVisualizaciones con ggplot2\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\nDiapositivas · encuesta_bruta.xlsx → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R Entrega Tarea 1\nDiapositivas · notas.csv · registro.xlsx\n\n\n5\nJue 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\nDiapositivas\n\n\n6\nVie 12 jun\nB-211\nReportes reproducibles con Quarto\nDiapositivas → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto: tablas, citas y formatos\nDiapositivas\n\n\n8\nJue 18 jun\nA-404\nQuarto: figuras, integración y publicación\n—\n\n\n9\nVie 19 jun\nA-402\nTarea 2 · Cierre e integración · Buenas prácticas de trabajo en R Entrega Tarea 2\n—"
   },
   {
     "objectID": "index.html#tareas",
@@ -1502,7 +1502,7 @@
     "href": "index.html#profesor",
     "title": "Maneja, explora y visualiza datos con R",
     "section": "Profesor",
-    "text": "Profesor\n\n  \n  \n    Juan David Leongómez\n    \n      Profesor Asociado e investigador de la Universidad El Bosque, investigador de\n      EvoCo\n      y líder del grupo de investigación\n      CODEC.\n      Usuario de R y promotor de la ciencia abierta y la reproducibilidad, temas sobre los que crea\n      tutoriales y recursos,\n      así como videos en su canal de YouTube\n      Investigación Abierta.\n      Más información: jdleongomez.info"
+    "text": "Profesor\n\n  \n  \n    Juan David Leongómez\n    \n      PhD Psychology · University of Stirling, Escocia\n      MSc in Evolutionary Psychology · University of Liverpool, Inglaterra\n    \n    \n      Profesor Asociado e investigador de la Universidad El Bosque, investigador de\n      EvoCo\n      y líder del grupo de investigación\n      CODEC.\n      Usuario de R y promotor de la ciencia abierta y la reproducibilidad, temas sobre los que crea\n      tutoriales y recursos,\n      así como videos en su canal de YouTube\n      Investigación Abierta.\n      Visitar sitio web"
   },
   {
     "objectID": "index.html#preguntas",
@@ -1537,7 +1537,7 @@
     "href": "sesiones/s01/slides.html#programas-con-interfaz-vs.-código",
     "title": "Sesión 1",
     "section": "Programas con interfaz vs. código",
-    "text": "Programas con interfaz vs. código\n\n\nPrograma con interfaz gráfica (GUI)\n\nHaces clic en botones y menús\nSolo puedes hacer lo que el programa ya tiene implementado\nCambias un parámetro → repites el proceso completo a mano\nDifícil de compartir exactamente lo que hiciste\n\nEjemplos: Excel, SPSS, GraphPad\n\nLenguaje de programación\n\nLe das instrucciones escritas al computador\nPuedes hacer (casi) cualquier cosa que el computador pueda hacer\nCambias una línea → todo se recalcula solo\nPuedes compartir exactamente qué hiciste, paso a paso\n\nEjemplos: R, Python, Julia"
+    "text": "Programas con interfaz vs. código\n\n\nPrograma con interfaz gráfica (GUI)\n\nHaces clic en botones y menús\nSolo puedes hacer lo que el programa ya tiene implementado\nCambias un parámetro → repites el proceso completo a mano\nDifícil de compartir exactamente lo que hiciste\n\nEjemplos: Excel, SPSS, GraphPad\n\n\n\nLenguaje de programación\n\nLe das instrucciones escritas al computador\nPuedes hacer (casi) cualquier cosa que el computador pueda hacer\nCambias una línea → todo se recalcula solo\nPuedes compartir exactamente qué hiciste, paso a paso\n\nEjemplos: R, Python, Julia"
   },
   {
     "objectID": "sesiones/s01/slides.html#qué-es-r",
@@ -1545,6 +1545,13 @@
     "title": "Sesión 1",
     "section": "¿Qué es R?",
     "text": "¿Qué es R?\nR es un lenguaje de programación diseñado para el análisis estadístico y la visualización de datos.\n\nGratuito y de código abierto (FOSS)\nCreado en 1993 por Ross Ihaka y Robert Gentleman (Universidad de Auckland)\nMantenido por el R Core Team y una comunidad global enorme\nEstándar de facto en muchas disciplinas científicas\n\n\nR es un lenguaje completo con acceso a todos los recursos del computador: análisis estadístico, manejo de archivos, conexión a internet, generación de documentos, aplicaciones web, y mucho más."
+  },
+  {
+    "objectID": "sesiones/s01/slides.html#qué-se-puede-hacer-con-r-algunos-ejemplos",
+    "href": "sesiones/s01/slides.html#qué-se-puede-hacer-con-r-algunos-ejemplos",
+    "title": "Sesión 1",
+    "section": "¿Qué se puede hacer con R? Algunos ejemplos",
+    "text": "¿Qué se puede hacer con R? Algunos ejemplos\n\n\n  \n    📊 Análisis estadístico\n    Desde estadística básica hasta modelos bayesianos, machine learning y simulaciones complejas.\n  \n\n  \n    📈 Visualizaciones publicables\n    Gráficas listas para revistas científicas, totalmente personalizables y reproducibles.\n  \n\n  \n    📄 Documentos y reportes\n    Artículos, informes y presentaciones donde el texto y los resultados se generan juntos.\n    → este sitio del curso y estas diapositivas son ejemplos\n  \n\n  \n    📋 CVs y portfolios\n    Documentos con formato profesional generados directamente desde R.\n    → ejemplo: mi CV\n  \n\n  \n    🌐 Aplicaciones web interactivas\n    Apps que cualquier persona puede usar desde el navegador, sin instalar nada.\n    → ejemplo: app Shiny\n  \n\n  \n    💻 Sitios web completos\n    Sitios personales, blogs y portafolios académicos publicados directamente desde R.\n    → ejemplo: mi sitio web"
   },
   {
     "objectID": "sesiones/s01/slides.html#foss-y-ciencia-abierta",
