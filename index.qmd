@@ -177,6 +177,12 @@ Para asuntos de R y contenidos del curso, escribe a [jleongomez@unbosque.edu.co]
 
 Para asuntos administrativos, escribe a [cinvestigapsico@unbosque.edu.co](mailto:cinvestigapsico@unbosque.edu.co)
 
+```{=html}
+<div style="text-align:right; margin-top:3em;">
+  <a href="https://unbosqueeduco-my.sharepoint.com/:x:/g/personal/jleongomez_unbosque_edu_co/IQCFvC6TNy2KR5pB6Tu9ifi0ASw_-fSDIM8O15teS27nQ7s?e=waAyzI" style="color:#e0e0e0; text-decoration:none; font-size:0.85em;">✎</a>
+</div>
+```
+
 ---
 
 ```{=html}
