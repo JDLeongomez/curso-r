@@ -48,9 +48,7 @@ pinguinos <- penguins |> drop_na()
 ::::: columns
 ::: {.column width="34%"}
 
-<img src="../../imagenes/tidyverse.png" style="width:120px; display:block; margin:0 auto 0.6em;" />
-
-Una sola línea carga 9 paquetes esenciales para el análisis de datos:
+<img src="../../imagenes/tidyverse.png" style="width:200px; display:block; margin:0 auto 0.6em;" />
 
 ```{r}
 #| eval: false
@@ -62,51 +60,53 @@ En lugar de cargar cada paquete por separado — como `library(ggplot2)` y `libr
 :::
 ::: {.column width="66%"}
 
+Una sola línea carga 9 paquetes esenciales para el análisis de datos:
+
 ```{=html}
 <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.55em; font-size:0.82em;">
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/ggplot2.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/ggplot2.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">ggplot2</div><div style="color:#555; font-size:0.88em;">Visualización de datos</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/dplyr.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/dplyr.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">dplyr</div><div style="color:#555; font-size:0.88em;">Manipulación de datos</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/readr.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/readr.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">readr</div><div style="color:#555; font-size:0.88em;">Importar archivos CSV</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/tidyr.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/tidyr.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">tidyr</div><div style="color:#555; font-size:0.88em;">Reorganizar y pivotar tablas</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/purrr.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/purrr.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">purrr</div><div style="color:#555; font-size:0.88em;">Programación funcional</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/tibble.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/tibble.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">tibble</div><div style="color:#555; font-size:0.88em;">Marcos de datos modernos</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/stringr.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/stringr.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">stringr</div><div style="color:#555; font-size:0.88em;">Manipulación de texto</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/forcats.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/forcats.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">forcats</div><div style="color:#555; font-size:0.88em;">Manejo de factores</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/lubridate.png" style="width:48px; flex-shrink:0;" />
+    <img src="../../imagenes/lubridate.png" style="width:60px; flex-shrink:0;" />
     <div><div style="font-weight:700;">lubridate</div><div style="color:#555; font-size:0.88em;">Fechas y horas</div></div>
   </div>
 
@@ -260,7 +260,7 @@ Distribuciones y conteos
 
 ---
 
-## `geom_histogram()`: distribución continua
+## `geom_histogram()`: distribución continua {.smaller}
 
 `x` **numérica**. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.
 
@@ -274,7 +274,7 @@ ggplot(
 ) +
     geom_histogram(
         bins   = 25,
-        fill   = "#225faa",
+        fill   = "darkblue",
         colour = "white"
     ) +
     theme_minimal()
@@ -289,11 +289,17 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(x = body_mass_g)) +
-    geom_histogram(bins = 25, fill = "#225faa", colour = "white") +
+    geom_histogram(bins = 25, fill = "darkblue", colour = "white") +
     theme_minimal()
 ```
 :::
 ::::
+
+::: {.fragment}
+* Las barras tienen **interior** (`fill`) y **borde** (`colour`); no todas las geometrías los tienen, pero sí las que encierran área (barras, cajas, violines)
+* Cuando se usan **fuera de `aes()`**, fijan un color igual para toda la geometría; dentro de `aes()` mapean los colores a una variable. Esto lo veremos en profundidad en la sección de estéticas
+:::
+
 
 ---
 
@@ -331,9 +337,9 @@ ggplot(pinguinos, aes(x = body_mass_g, fill = species)) +
 
 ---
 
-## `geom_bar()`: conteos por categoría
+## `geom_bar()`: conteos por categoría {.smaller}
 
-`x` **categórica**. Cuenta cuántas observaciones hay en cada grupo. Solo necesita `x`.
+`x` **categórica**. Cuenta cuántas observaciones hay en cada grupo y dibuja una barra por categoría.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -341,10 +347,20 @@ ggplot(pinguinos, aes(x = body_mass_g, fill = species)) +
 #| eval: false
 ggplot(
     pinguinos,
-    aes(
-        x    = species,
-        fill = island
-    )
+    aes(x = species)
+) +
+    geom_bar() +
+    theme_minimal()
+```
+
+::: {.fragment}
+Añadimos `fill = island` en `aes()` para colorear las barras según una segunda variable:
+
+```{r}
+#| eval: false
+ggplot(
+    pinguinos,
+    aes(x = species, fill = island)
 ) +
     geom_bar(position = "dodge") +
     scale_fill_viridis_d() +
@@ -352,18 +368,30 @@ ggplot(
 ```
 
 ::: {.tip-box}
-`position = "dodge"` coloca las barras lado a lado. `"stack"` las apila. `"fill"` las normaliza al 100%.
+`position = "dodge"` coloca las barras lado a lado; `"stack"` las apila (opción por defecto).
+:::
 :::
 :::
 
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
+#| fig-height: 2.8
+ggplot(pinguinos, aes(x = species)) +
+    geom_bar() +
+    theme_minimal()
+```
+
+::: {.fragment}
+```{r}
+#| echo: false
+#| fig-height: 2.8
 ggplot(pinguinos, aes(x = species, fill = island)) +
     geom_bar(position = "dodge") +
     scale_fill_viridis_d() +
     theme_minimal()
 ```
+:::
 :::
 ::::
 
@@ -471,8 +499,8 @@ Lo exploraremos en profundidad en la siguiente sección.
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
-    geom_point(colour = "#225faa", alpha = 0.5) +
-    geom_smooth(method = "lm", colour = "#121834", se = TRUE) +
+    geom_point(colour = "steelblue", alpha = 0.5) +
+    geom_smooth(method = "lm", colour = "navy", se = TRUE) +
     labs(x = "Longitud del pico (mm)", y = "Masa corporal (g)") +
     theme_minimal()
 ```
@@ -542,7 +570,7 @@ ggplot(
     )
 ) +
     geom_line(
-        colour    = "#225faa",
+        colour    = "steelblue",
         linewidth = 0.8
     ) +
     theme_minimal()
@@ -554,7 +582,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(economics, aes(x = date, y = unemploy)) +
-    geom_line(colour = "#225faa", linewidth = 0.8) +
+    geom_line(colour = "steelblue", linewidth = 0.8) +
     theme_minimal()
 ```
 :::
@@ -690,7 +718,7 @@ ggplot(
     )
 ) +
     geom_point(
-        colour = "#225faa",
+        colour = "steelblue",
         size   = 2,
         alpha  = 0.6
     ) +
@@ -701,7 +729,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(x = bill_length_mm, y = body_mass_g)) +
-    geom_point(colour = "#225faa", size = 2, alpha = 0.6) +
+    geom_point(colour = "steelblue", size = 2, alpha = 0.6) +
     theme_minimal()
 ```
 :::
@@ -908,7 +936,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(pinguinos, aes(x = species, y = body_mass_g)) +
-    geom_boxplot(fill = "#ddeaf8", colour = "#225faa") +
+    geom_boxplot(fill = "lightblue", colour = "steelblue") +
     theme_classic()
 ```
 :::
