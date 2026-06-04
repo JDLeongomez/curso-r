@@ -1470,6 +1470,23 @@ horas_sueno -0.29      0.21        1.00</code></pre>
         a.setAttribute('rel', 'noopener noreferrer');
       });
     });
+
+    Reveal.addEventListener('ready', function() {
+      document.querySelectorAll('.reveal .slides img').forEach(function(img) {
+        if (img.closest('a')) return;
+        if (window.getComputedStyle(img).position === 'absolute') return;
+        var src = img.getAttribute('src');
+        if (!src || src.startsWith('data:')) return;
+        var a = document.createElement('a');
+        a.href = src;
+        a.className = 'lightbox';
+        img.parentNode.insertBefore(a, img);
+        a.appendChild(img);
+      });
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox({ selector: '.lightbox' });
+      }
+    });
     </script>
     <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
     (function() {

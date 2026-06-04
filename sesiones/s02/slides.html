@@ -234,57 +234,57 @@ Juan David Leongómez
 <h2>El universo tidyverse</h2>
 <div class="columns">
 <div class="column" style="width:34%;">
-<p><img src="../../imagenes/tidyverse.png" style="width:120px; display:block; margin:0 auto 0.6em;"></p>
-<p>Una sola línea carga 9 paquetes esenciales para el análisis de datos:</p>
+<p><img src="../../imagenes/tidyverse.png" style="width:200px; display:block; margin:0 auto 0.6em;"></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
 <p>En lugar de cargar cada paquete por separado — como <code>library(ggplot2)</code> y <code>library(dplyr)</code> — <code>tidyverse</code> los agrupa todos. Durante el curso irás conociendo varios.</p>
 </div><div class="column" style="width:66%;">
+<p>Una sola línea carga 9 paquetes esenciales para el análisis de datos:</p>
 <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.55em; font-size:0.82em;">
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/ggplot2.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/ggplot2.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">ggplot2</div><div style="color:#555; font-size:0.88em;">Visualización de datos</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/dplyr.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/dplyr.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">dplyr</div><div style="color:#555; font-size:0.88em;">Manipulación de datos</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/readr.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/readr.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">readr</div><div style="color:#555; font-size:0.88em;">Importar archivos CSV</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/tidyr.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/tidyr.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">tidyr</div><div style="color:#555; font-size:0.88em;">Reorganizar y pivotar tablas</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/purrr.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/purrr.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">purrr</div><div style="color:#555; font-size:0.88em;">Programación funcional</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/tibble.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/tibble.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">tibble</div><div style="color:#555; font-size:0.88em;">Marcos de datos modernos</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/stringr.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/stringr.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">stringr</div><div style="color:#555; font-size:0.88em;">Manipulación de texto</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/forcats.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/forcats.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">forcats</div><div style="color:#555; font-size:0.88em;">Manejo de factores</div></div>
   </div>
 
   <div style="display:flex; align-items:center; gap:0.5em;">
-    <img src="../../imagenes/lubridate.png" style="width:48px; flex-shrink:0;">
+    <img src="../../imagenes/lubridate.png" style="width:60px; flex-shrink:0;">
     <div><div style="font-weight:700;">lubridate</div><div style="color:#555; font-size:0.88em;">Fechas y horas</div></div>
   </div>
 
@@ -409,7 +409,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>Distribuciones y conteos</p>
 </div>
 </section>
-<section id="geom_histogram-distribución-continua" class="slide level2">
+<section id="geom_histogram-distribución-continua" class="slide level2 smaller">
 <h2><code>geom_histogram()</code>: distribución continua</h2>
 <p><code>x</code> <strong>numérica</strong>. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.</p>
 <div class="columns">
@@ -421,7 +421,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb5-4"><a></a>) <span class="sc">+</span></span>
 <span id="cb5-5"><a></a>    <span class="fu">geom_histogram</span>(</span>
 <span id="cb5-6"><a></a>        <span class="at">bins   =</span> <span class="dv">25</span>,</span>
-<span id="cb5-7"><a></a>        <span class="at">fill   =</span> <span class="st">"#225faa"</span>,</span>
+<span id="cb5-7"><a></a>        <span class="at">fill   =</span> <span class="st">"darkblue"</span>,</span>
 <span id="cb5-8"><a></a>        <span class="at">colour =</span> <span class="st">"white"</span></span>
 <span id="cb5-9"><a></a>    ) <span class="sc">+</span></span>
 <span id="cb5-10"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
@@ -440,6 +440,12 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div></div>
+<div class="fragment">
+<ul>
+<li class="fragment">Las barras tienen <strong>interior</strong> (<code>fill</code>) y <strong>borde</strong> (<code>colour</code>); no todas las geometrías los tienen, pero sí las que encierran área (barras, cajas, violines)</li>
+<li class="fragment">Cuando se usan <strong>fuera de <code>aes()</code></strong>, fijan un color igual para toda la geometría; dentro de <code>aes()</code> mapean los colores a una variable. Esto lo veremos en profundidad en la sección de estéticas</li>
+</ul>
+</div>
 </section>
 <section id="geom_density-curva-de-densidad" class="slide level2">
 <h2><code>geom_density()</code>: curva de densidad</h2>
@@ -470,33 +476,52 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div></div>
 </section>
-<section id="geom_bar-conteos-por-categoría" class="slide level2">
+<section id="geom_bar-conteos-por-categoría" class="slide level2 smaller">
 <h2><code>geom_bar()</code>: conteos por categoría</h2>
-<p><code>x</code> <strong>categórica</strong>. Cuenta cuántas observaciones hay en cada grupo. Solo necesita <code>x</code>.</p>
+<p><code>x</code> <strong>categórica</strong>. Cuenta cuántas observaciones hay en cada grupo y dibuja una barra por categoría.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(</span>
 <span id="cb7-2"><a></a>    pinguinos,</span>
-<span id="cb7-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb7-4"><a></a>        <span class="at">x    =</span> species,</span>
-<span id="cb7-5"><a></a>        <span class="at">fill =</span> island</span>
-<span id="cb7-6"><a></a>    )</span>
-<span id="cb7-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb7-8"><a></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb7-10"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb7-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> species)</span>
+<span id="cb7-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb7-5"><a></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+</div>
+<div class="fragment">
+<p>Añadimos <code>fill = island</code> en <code>aes()</code> para colorear las barras según una segunda variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb8-2"><a></a>    pinguinos,</span>
+<span id="cb8-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> island)</span>
+<span id="cb8-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb8-5"><a></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb8-7"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 <div class="tip-box">
-<p><code>position = "dodge"</code> coloca las barras lado a lado. <code>"stack"</code> las apila. <code>"fill"</code> las normaliza al 100%.</p>
+<p><code>position = "dodge"</code> coloca las barras lado a lado; <code>"stack"</code> las apila (opción por defecto).</p>
+</div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></a></p>
 </figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -524,7 +549,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -537,28 +562,28 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb8-2"><a></a>    pinguinos,</span>
-<span id="cb8-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb8-4"><a></a>        <span class="at">x      =</span> species,</span>
-<span id="cb8-5"><a></a>        <span class="at">y      =</span> body_mass_g,</span>
-<span id="cb8-6"><a></a>        <span class="at">colour =</span> species</span>
-<span id="cb8-7"><a></a>    )</span>
-<span id="cb8-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb8-9"><a></a>    <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb8-10"><a></a>    <span class="fu">geom_jitter</span>(</span>
-<span id="cb8-11"><a></a>        <span class="at">width =</span> <span class="fl">0.2</span>,</span>
-<span id="cb8-12"><a></a>        <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
-<span id="cb8-13"><a></a>        <span class="at">size  =</span> <span class="fl">1.5</span></span>
-<span id="cb8-14"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb8-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb9-2"><a></a>    pinguinos,</span>
+<span id="cb9-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb9-4"><a></a>        <span class="at">x      =</span> species,</span>
+<span id="cb9-5"><a></a>        <span class="at">y      =</span> body_mass_g,</span>
+<span id="cb9-6"><a></a>        <span class="at">colour =</span> species</span>
+<span id="cb9-7"><a></a>    )</span>
+<span id="cb9-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb9-9"><a></a>    <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a></a>    <span class="fu">geom_jitter</span>(</span>
+<span id="cb9-11"><a></a>        <span class="at">width =</span> <span class="fl">0.2</span>,</span>
+<span id="cb9-12"><a></a>        <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
+<span id="cb9-13"><a></a>        <span class="at">size  =</span> <span class="fl">1.5</span></span>
+<span id="cb9-14"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb9-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -581,7 +606,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -594,28 +619,28 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb9-2"><a></a>    pinguinos,</span>
-<span id="cb9-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb9-4"><a></a>        <span class="at">x      =</span> bill_length_mm,</span>
-<span id="cb9-5"><a></a>        <span class="at">y      =</span> body_mass_g,</span>
-<span id="cb9-6"><a></a>        <span class="at">colour =</span> species</span>
-<span id="cb9-7"><a></a>    )</span>
-<span id="cb9-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb9-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb9-10"><a></a>    <span class="fu">geom_smooth</span>(</span>
-<span id="cb9-11"><a></a>        <span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb9-12"><a></a>        <span class="at">se     =</span> <span class="cn">FALSE</span></span>
-<span id="cb9-13"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb9-14"><a></a>    <span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">"inferno"</span>) <span class="sc">+</span></span>
-<span id="cb9-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb10-2"><a></a>    pinguinos,</span>
+<span id="cb10-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb10-4"><a></a>        <span class="at">x      =</span> bill_length_mm,</span>
+<span id="cb10-5"><a></a>        <span class="at">y      =</span> body_mass_g,</span>
+<span id="cb10-6"><a></a>        <span class="at">colour =</span> species</span>
+<span id="cb10-7"><a></a>    )</span>
+<span id="cb10-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb10-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a></a>    <span class="fu">geom_smooth</span>(</span>
+<span id="cb10-11"><a></a>        <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb10-12"><a></a>        <span class="at">se     =</span> <span class="cn">FALSE</span></span>
+<span id="cb10-13"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb10-14"><a></a>    <span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">"inferno"</span>) <span class="sc">+</span></span>
+<span id="cb10-15"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -631,25 +656,25 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb10-2"><a></a>    economics,</span>
-<span id="cb10-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb10-4"><a></a>        <span class="at">x =</span> date,</span>
-<span id="cb10-5"><a></a>        <span class="at">y =</span> unemploy</span>
-<span id="cb10-6"><a></a>    )</span>
-<span id="cb10-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb10-8"><a></a>    <span class="fu">geom_line</span>(</span>
-<span id="cb10-9"><a></a>        <span class="at">colour    =</span> <span class="st">"#225faa"</span>,</span>
-<span id="cb10-10"><a></a>        <span class="at">linewidth =</span> <span class="fl">0.8</span></span>
-<span id="cb10-11"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb10-12"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb11-2"><a></a>    economics,</span>
+<span id="cb11-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb11-4"><a></a>        <span class="at">x =</span> date,</span>
+<span id="cb11-5"><a></a>        <span class="at">y =</span> unemploy</span>
+<span id="cb11-6"><a></a>    )</span>
+<span id="cb11-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb11-8"><a></a>    <span class="fu">geom_line</span>(</span>
+<span id="cb11-9"><a></a>        <span class="at">colour    =</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb11-10"><a></a>        <span class="at">linewidth =</span> <span class="fl">0.8</span></span>
+<span id="cb11-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb11-12"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-20-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -744,13 +769,13 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
+<p><a href="https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://bookdown.org/nicohahn/making_maps_with_r5/docs/_main_files/figure-html/unnamed-chunk-58-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></a></p>
+<p><a href="https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="https://thenode.biologists.com/wp-content/uploads/2018/06/Final_Fig-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></a></p>
 </figure>
 </div>
 </div></div>
@@ -788,24 +813,24 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb11-2"><a></a>    pinguinos,</span>
-<span id="cb11-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb11-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb11-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb11-6"><a></a>        <span class="at">colour =</span> species</span>
-<span id="cb11-7"><a></a>    )</span>
-<span id="cb11-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb11-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb11-10"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb11-11"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb12-2"><a></a>    pinguinos,</span>
+<span id="cb12-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb12-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb12-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
+<span id="cb12-6"><a></a>        <span class="at">colour =</span> species</span>
+<span id="cb12-7"><a></a>    )</span>
+<span id="cb12-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb12-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb12-11"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-20-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-22-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -819,26 +844,26 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb12-2"><a></a>    pinguinos,</span>
-<span id="cb12-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb12-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb12-5"><a></a>        <span class="at">y =</span> body_mass_g</span>
-<span id="cb12-6"><a></a>    )</span>
-<span id="cb12-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb12-8"><a></a>    <span class="fu">geom_point</span>(</span>
-<span id="cb12-9"><a></a>        <span class="at">colour =</span> <span class="st">"#225faa"</span>,</span>
-<span id="cb12-10"><a></a>        <span class="at">size   =</span> <span class="dv">2</span>,</span>
-<span id="cb12-11"><a></a>        <span class="at">alpha  =</span> <span class="fl">0.6</span></span>
-<span id="cb12-12"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb12-13"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb13-2"><a></a>    pinguinos,</span>
+<span id="cb13-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb13-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb13-5"><a></a>        <span class="at">y =</span> body_mass_g</span>
+<span id="cb13-6"><a></a>    )</span>
+<span id="cb13-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb13-8"><a></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb13-9"><a></a>        <span class="at">colour =</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb13-10"><a></a>        <span class="at">size   =</span> <span class="dv">2</span>,</span>
+<span id="cb13-11"><a></a>        <span class="at">alpha  =</span> <span class="fl">0.6</span></span>
+<span id="cb13-12"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb13-13"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-22-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-24-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -849,8 +874,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <section id="el-error-más-común-con-aes" class="slide level2">
 <h2>El error más común con <code>aes()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># ❌ Esto NO pinta los puntos de azul</span></span>
-<span id="cb13-2"><a></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># ❌ Esto NO pinta los puntos de azul</span></span>
+<span id="cb14-2"><a></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span></code></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -858,7 +883,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-24-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-26-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -875,27 +900,27 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb14-2"><a></a>    pinguinos,</span>
-<span id="cb14-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb14-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb14-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb14-6"><a></a>        <span class="at">colour =</span> species,</span>
-<span id="cb14-7"><a></a>        <span class="at">shape =</span> species</span>
-<span id="cb14-8"><a></a>    )</span>
-<span id="cb14-9"><a></a>) <span class="sc">+</span></span>
-<span id="cb14-10"><a></a>    <span class="fu">geom_point</span>(</span>
-<span id="cb14-11"><a></a>        <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb14-12"><a></a>        <span class="at">size  =</span> <span class="fl">2.5</span></span>
-<span id="cb14-13"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb14-14"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb15-2"><a></a>    pinguinos,</span>
+<span id="cb15-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb15-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb15-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
+<span id="cb15-6"><a></a>        <span class="at">colour =</span> species,</span>
+<span id="cb15-7"><a></a>        <span class="at">shape =</span> species</span>
+<span id="cb15-8"><a></a>    )</span>
+<span id="cb15-9"><a></a>) <span class="sc">+</span></span>
+<span id="cb15-10"><a></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb15-11"><a></a>        <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb15-12"><a></a>        <span class="at">size  =</span> <span class="fl">2.5</span></span>
+<span id="cb15-13"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb15-14"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-26-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-28-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -933,32 +958,32 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb15-2"><a></a>    pinguinos,</span>
-<span id="cb15-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb15-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb15-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb15-6"><a></a>        <span class="at">colour =</span> species</span>
-<span id="cb15-7"><a></a>    )</span>
-<span id="cb15-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb15-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb15-10"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb15-11"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb15-12"><a></a>        <span class="at">title    =</span> <span class="st">"Masa corporal y longitud del pico"</span>,</span>
-<span id="cb15-13"><a></a>        <span class="at">subtitle =</span> <span class="st">"Pingüinos de Palmer, Antártida"</span>,</span>
-<span id="cb15-14"><a></a>        <span class="at">x        =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
-<span id="cb15-15"><a></a>        <span class="at">y        =</span> <span class="st">"Masa corporal (g)"</span>,</span>
-<span id="cb15-16"><a></a>        <span class="at">colour   =</span> <span class="st">"Especie"</span>,</span>
-<span id="cb15-17"><a></a>        <span class="at">caption  =</span> <span class="st">"Datos: Horst, Hill &amp; Gorman (2020)"</span></span>
-<span id="cb15-18"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb15-19"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb16-2"><a></a>    pinguinos,</span>
+<span id="cb16-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb16-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb16-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
+<span id="cb16-6"><a></a>        <span class="at">colour =</span> species</span>
+<span id="cb16-7"><a></a>    )</span>
+<span id="cb16-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb16-9"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb16-11"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb16-12"><a></a>        <span class="at">title    =</span> <span class="st">"Masa corporal y longitud del pico"</span>,</span>
+<span id="cb16-13"><a></a>        <span class="at">subtitle =</span> <span class="st">"Pingüinos de Palmer, Antártida"</span>,</span>
+<span id="cb16-14"><a></a>        <span class="at">x        =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
+<span id="cb16-15"><a></a>        <span class="at">y        =</span> <span class="st">"Masa corporal (g)"</span>,</span>
+<span id="cb16-16"><a></a>        <span class="at">colour   =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb16-17"><a></a>        <span class="at">caption  =</span> <span class="st">"Datos: Horst, Hill &amp; Gorman (2020)"</span></span>
+<span id="cb16-18"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb16-19"><a></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-28-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-30-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -980,31 +1005,31 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Los más usados</span></span>
-<span id="cb16-2"><a></a><span class="fu">theme_minimal</span>() <span class="co"># limpio, sin fondo gris</span></span>
-<span id="cb16-3"><a></a><span class="fu">theme_classic</span>() <span class="co"># ejes sin cuadrícula</span></span>
-<span id="cb16-4"><a></a><span class="fu">theme_bw</span>() <span class="co"># fondo blanco con cuadrícula</span></span>
-<span id="cb16-5"><a></a><span class="fu">theme_void</span>() <span class="co"># sin ejes ni cuadrícula</span></span>
-<span id="cb16-6"><a></a><span class="fu">theme_dark</span>() <span class="co"># fondo oscuro</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Los más usados</span></span>
+<span id="cb17-2"><a></a><span class="fu">theme_minimal</span>() <span class="co"># limpio, sin fondo gris</span></span>
+<span id="cb17-3"><a></a><span class="fu">theme_classic</span>() <span class="co"># ejes sin cuadrícula</span></span>
+<span id="cb17-4"><a></a><span class="fu">theme_bw</span>() <span class="co"># fondo blanco con cuadrícula</span></span>
+<span id="cb17-5"><a></a><span class="fu">theme_void</span>() <span class="co"># sin ejes ni cuadrícula</span></span>
+<span id="cb17-6"><a></a><span class="fu">theme_dark</span>() <span class="co"># fondo oscuro</span></span></code></pre></div>
 </div>
 <p>Aplícalos sumándolos a la figura:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb17-2"><a></a>    pinguinos,</span>
-<span id="cb17-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb17-4"><a></a>        <span class="at">x =</span> species,</span>
-<span id="cb17-5"><a></a>        <span class="at">y =</span> body_mass_g</span>
-<span id="cb17-6"><a></a>    )</span>
-<span id="cb17-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb17-8"><a></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb17-9"><a></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb18-2"><a></a>    pinguinos,</span>
+<span id="cb18-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb18-4"><a></a>        <span class="at">x =</span> species,</span>
+<span id="cb18-5"><a></a>        <span class="at">y =</span> body_mass_g</span>
+<span id="cb18-6"><a></a>    )</span>
+<span id="cb18-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb18-8"><a></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb18-9"><a></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-31-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-33-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1017,30 +1042,30 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb18-2"><a></a>    pinguinos,</span>
-<span id="cb18-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb18-4"><a></a>        <span class="at">x =</span> species,</span>
-<span id="cb18-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb18-6"><a></a>        <span class="at">fill =</span> species</span>
-<span id="cb18-7"><a></a>    )</span>
-<span id="cb18-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb18-9"><a></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb18-10"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb18-11"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-12"><a></a>    <span class="fu">theme</span>(</span>
-<span id="cb18-13"><a></a>        <span class="at">legend.position  =</span> <span class="st">"none"</span>,</span>
-<span id="cb18-14"><a></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb18-15"><a></a>        <span class="at">axis.title       =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb18-16"><a></a>        <span class="at">plot.title       =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb18-17"><a></a>    )</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb19-2"><a></a>    pinguinos,</span>
+<span id="cb19-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb19-4"><a></a>        <span class="at">x =</span> species,</span>
+<span id="cb19-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
+<span id="cb19-6"><a></a>        <span class="at">fill =</span> species</span>
+<span id="cb19-7"><a></a>    )</span>
+<span id="cb19-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb19-9"><a></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb19-10"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb19-11"><a></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-12"><a></a>    <span class="fu">theme</span>(</span>
+<span id="cb19-13"><a></a>        <span class="at">legend.position  =</span> <span class="st">"none"</span>,</span>
+<span id="cb19-14"><a></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb19-15"><a></a>        <span class="at">axis.title       =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb19-16"><a></a>        <span class="at">plot.title       =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb19-17"><a></a>    )</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-33-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-35-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1063,17 +1088,17 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h2><code>scale_colour_*()</code> y <code>scale_fill_*()</code></h2>
 <p>Las funciones <code>scale_*()</code> controlan cómo se mapean los datos a las estéticas visuales.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Viridis: perceptualmente uniforme, apto para daltonismo</span></span>
-<span id="cb19-2"><a></a><span class="fu">scale_colour_viridis_d</span>() <span class="co"># variable discreta</span></span>
-<span id="cb19-3"><a></a><span class="fu">scale_colour_viridis_c</span>() <span class="co"># variable continua</span></span>
-<span id="cb19-4"><a></a><span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>) <span class="co"># variante: magma, plasma, inferno, cividis</span></span>
-<span id="cb19-5"><a></a></span>
-<span id="cb19-6"><a></a><span class="co"># ColorBrewer: paletas curadas para cartografía y visualización</span></span>
-<span id="cb19-7"><a></a><span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="co"># discreta</span></span>
-<span id="cb19-8"><a></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>) <span class="co"># continua</span></span>
-<span id="cb19-9"><a></a></span>
-<span id="cb19-10"><a></a><span class="co"># Manual: colores definidos a mano</span></span>
-<span id="cb19-11"><a></a><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#121834"</span>, <span class="st">"#225faa"</span>, <span class="st">"#ddeaf8"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Viridis: perceptualmente uniforme, apto para daltonismo</span></span>
+<span id="cb20-2"><a></a><span class="fu">scale_colour_viridis_d</span>() <span class="co"># variable discreta</span></span>
+<span id="cb20-3"><a></a><span class="fu">scale_colour_viridis_c</span>() <span class="co"># variable continua</span></span>
+<span id="cb20-4"><a></a><span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>) <span class="co"># variante: magma, plasma, inferno, cividis</span></span>
+<span id="cb20-5"><a></a></span>
+<span id="cb20-6"><a></a><span class="co"># ColorBrewer: paletas curadas para cartografía y visualización</span></span>
+<span id="cb20-7"><a></a><span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="co"># discreta</span></span>
+<span id="cb20-8"><a></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>) <span class="co"># continua</span></span>
+<span id="cb20-9"><a></a></span>
+<span id="cb20-10"><a></a><span class="co"># Manual: colores definidos a mano</span></span>
+<span id="cb20-11"><a></a><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#121834"</span>, <span class="st">"#225faa"</span>, <span class="st">"#ddeaf8"</span>))</span></code></pre></div>
 </div>
 <div class="tip-box">
 <p>Usa <code>scale_colour_*()</code> para estéticas <code>colour=</code> y <code>scale_fill_*()</code> para <code>fill=</code>. Algunas geoms tienen borde (<code>colour</code>) y relleno (<code>fill</code>); otras solo usan <code>colour</code>.</p>
@@ -1091,7 +1116,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-35-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-37-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1102,7 +1127,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-36-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-38-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1124,26 +1149,26 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb20-2"><a></a>    pinguinos,</span>
-<span id="cb20-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb20-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb20-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
-<span id="cb20-6"><a></a>        <span class="at">colour =</span> sex</span>
-<span id="cb20-7"><a></a>    )</span>
-<span id="cb20-8"><a></a>) <span class="sc">+</span></span>
-<span id="cb20-9"><a></a>    <span class="fu">geom_point</span>(</span>
-<span id="cb20-10"><a></a>        <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb20-11"><a></a>        <span class="at">size  =</span> <span class="dv">2</span></span>
-<span id="cb20-12"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb20-13"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb21-2"><a></a>    pinguinos,</span>
+<span id="cb21-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb21-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb21-5"><a></a>        <span class="at">y =</span> body_mass_g,</span>
+<span id="cb21-6"><a></a>        <span class="at">colour =</span> sex</span>
+<span id="cb21-7"><a></a>    )</span>
+<span id="cb21-8"><a></a>) <span class="sc">+</span></span>
+<span id="cb21-9"><a></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb21-10"><a></a>        <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb21-11"><a></a>        <span class="at">size  =</span> <span class="dv">2</span></span>
+<span id="cb21-12"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb21-13"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-38-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-40-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1156,27 +1181,27 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb21-2"><a></a>    pinguinos,</span>
-<span id="cb21-3"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb21-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
-<span id="cb21-5"><a></a>        <span class="at">y =</span> body_mass_g</span>
-<span id="cb21-6"><a></a>    )</span>
-<span id="cb21-7"><a></a>) <span class="sc">+</span></span>
-<span id="cb21-8"><a></a>    <span class="fu">geom_point</span>(</span>
-<span id="cb21-9"><a></a>        <span class="at">colour =</span> <span class="st">"#225faa"</span>,</span>
-<span id="cb21-10"><a></a>        <span class="at">alpha  =</span> <span class="fl">0.6</span>,</span>
-<span id="cb21-11"><a></a>        <span class="at">size   =</span> <span class="fl">1.5</span></span>
-<span id="cb21-12"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb21-13"><a></a>    <span class="fu">facet_grid</span>(sex <span class="sc">~</span> species) <span class="sc">+</span></span>
-<span id="cb21-14"><a></a>    <span class="fu">theme_linedraw</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb22-2"><a></a>    pinguinos,</span>
+<span id="cb22-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb22-4"><a></a>        <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb22-5"><a></a>        <span class="at">y =</span> body_mass_g</span>
+<span id="cb22-6"><a></a>    )</span>
+<span id="cb22-7"><a></a>) <span class="sc">+</span></span>
+<span id="cb22-8"><a></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb22-9"><a></a>        <span class="at">colour =</span> <span class="st">"#225faa"</span>,</span>
+<span id="cb22-10"><a></a>        <span class="at">alpha  =</span> <span class="fl">0.6</span>,</span>
+<span id="cb22-11"><a></a>        <span class="at">size   =</span> <span class="fl">1.5</span></span>
+<span id="cb22-12"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb22-13"><a></a>    <span class="fu">facet_grid</span>(sex <span class="sc">~</span> species) <span class="sc">+</span></span>
+<span id="cb22-14"><a></a>    <span class="fu">theme_linedraw</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-40-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-42-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="slides_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1199,28 +1224,28 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb22-1"><a></a>mi_figura <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb22-2"><a></a>    pinguinos,</span>
-<span id="cb22-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g,</span>
-<span id="cb22-4"><a></a>        <span class="at">colour =</span> species, <span class="at">shape =</span> species)</span>
-<span id="cb22-5"><a></a>) <span class="sc">+</span></span>
-<span id="cb22-6"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb22-7"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb22-8"><a></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb22-9"><a></a></span>
-<span id="cb22-10"><a></a><span class="co"># PNG para presentaciones y web</span></span>
-<span id="cb22-11"><a></a><span class="fu">ggsave</span>(<span class="st">"pinguinos.png"</span>,</span>
-<span id="cb22-12"><a></a>    <span class="at">plot  =</span> mi_figura,</span>
-<span id="cb22-13"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
-<span id="cb22-14"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="cb22-15"><a></a>)</span>
-<span id="cb22-16"><a></a></span>
-<span id="cb22-17"><a></a><span class="co"># PDF para publicaciones (vectorial, escala sin pérdida)</span></span>
-<span id="cb22-18"><a></a><span class="fu">ggsave</span>(<span class="st">"pinguinos.pdf"</span>,</span>
-<span id="cb22-19"><a></a>    <span class="at">plot =</span> mi_figura,</span>
-<span id="cb22-20"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
-<span id="cb22-21"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span></span>
-<span id="cb22-22"><a></a>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a>mi_figura <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb23-2"><a></a>    pinguinos,</span>
+<span id="cb23-3"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g,</span>
+<span id="cb23-4"><a></a>        <span class="at">colour =</span> species, <span class="at">shape =</span> species)</span>
+<span id="cb23-5"><a></a>) <span class="sc">+</span></span>
+<span id="cb23-6"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a></a>    <span class="fu">scale_colour_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb23-8"><a></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb23-9"><a></a></span>
+<span id="cb23-10"><a></a><span class="co"># PNG para presentaciones y web</span></span>
+<span id="cb23-11"><a></a><span class="fu">ggsave</span>(<span class="st">"pinguinos.png"</span>,</span>
+<span id="cb23-12"><a></a>    <span class="at">plot  =</span> mi_figura,</span>
+<span id="cb23-13"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
+<span id="cb23-14"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb23-15"><a></a>)</span>
+<span id="cb23-16"><a></a></span>
+<span id="cb23-17"><a></a><span class="co"># PDF para publicaciones (vectorial, escala sin pérdida)</span></span>
+<span id="cb23-18"><a></a><span class="fu">ggsave</span>(<span class="st">"pinguinos.pdf"</span>,</span>
+<span id="cb23-19"><a></a>    <span class="at">plot =</span> mi_figura,</span>
+<span id="cb23-20"><a></a>    <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">10</span>,</span>
+<span id="cb23-21"><a></a>    <span class="at">units =</span> <span class="st">"cm"</span></span>
+<span id="cb23-22"><a></a>)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:45%;">
 <div class="tip-box">
@@ -1235,32 +1260,32 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(pinguinos,</span>
-<span id="cb23-2"><a></a>        <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm,</span>
-<span id="cb23-3"><a></a>            <span class="at">y =</span> body_mass_g,</span>
-<span id="cb23-4"><a></a>            <span class="at">colour =</span> species,</span>
-<span id="cb23-5"><a></a>            <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb23-6"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb23-7"><a></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb23-8"><a></a>                <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb23-9"><a></a>                <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb23-10"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span></span>
-<span id="cb23-11"><a></a>    <span class="fu">scale_colour_brewer</span>(<span class="at">name =</span> <span class="st">"Especie"</span>,</span>
-<span id="cb23-12"><a></a>                        <span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
-<span id="cb23-13"><a></a>    <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Especie"</span>) <span class="sc">+</span></span>
-<span id="cb23-14"><a></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Masa y pico por isla"</span>,</span>
-<span id="cb23-15"><a></a>         <span class="at">x =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
-<span id="cb23-16"><a></a>         <span class="at">y =</span> <span class="st">"Masa corporal (g)"</span>,</span>
-<span id="cb23-17"><a></a>         <span class="at">caption =</span> <span class="st">"Datos: Horst et al. (2020)"</span>) <span class="sc">+</span> </span>
-<span id="cb23-18"><a></a>    <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb23-19"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(pinguinos,</span>
+<span id="cb24-2"><a></a>        <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm,</span>
+<span id="cb24-3"><a></a>            <span class="at">y =</span> body_mass_g,</span>
+<span id="cb24-4"><a></a>            <span class="at">colour =</span> species,</span>
+<span id="cb24-5"><a></a>            <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb24-6"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb24-7"><a></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb24-8"><a></a>                <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb24-9"><a></a>                <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb24-10"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span></span>
+<span id="cb24-11"><a></a>    <span class="fu">scale_colour_brewer</span>(<span class="at">name =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb24-12"><a></a>                        <span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span></span>
+<span id="cb24-13"><a></a>    <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Especie"</span>) <span class="sc">+</span></span>
+<span id="cb24-14"><a></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Masa y pico por isla"</span>,</span>
+<span id="cb24-15"><a></a>         <span class="at">x =</span> <span class="st">"Longitud del pico (mm)"</span>,</span>
+<span id="cb24-16"><a></a>         <span class="at">y =</span> <span class="st">"Masa corporal (g)"</span>,</span>
+<span id="cb24-17"><a></a>         <span class="at">caption =</span> <span class="st">"Datos: Horst et al. (2020)"</span>) <span class="sc">+</span> </span>
+<span id="cb24-18"><a></a>    <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb24-19"><a></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-43-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="slides_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-45-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="slides_files/figure-revealjs/unnamed-chunk-45-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1279,8 +1304,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <section id="quiz-1-de-5" class="slide level2">
 <h2>Quiz · 1 de 5</h2>
 <p><strong>¿De qué color quedan los puntos con este código?</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(pinguinos, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb24-2"><a></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(pinguinos, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb25-2"><a></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span></code></pre></div>
 <ul>
 <li><ol type="a">
 <li>Azul: le pasamos el texto <code>"blue"</code> como color</li>
@@ -1305,9 +1330,9 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h2>Quiz · 2 de 5</h2>
 <p><strong>¿Qué función de escala Viridis completaría correctamente esta figura?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(pinguinos, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">colour =</span> island)) <span class="sc">+</span></span>
-<span id="cb25-2"><a></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
-<span id="cb25-3"><a></a>    ???</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(pinguinos, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">colour =</span> island)) <span class="sc">+</span></span>
+<span id="cb26-2"><a></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb26-3"><a></a>    ???</span></code></pre></div>
 </div>
 <ul>
 <li><ol type="a">
@@ -1402,8 +1427,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h2>A practicar</h2>
 <p>Antes de la próxima sesión, usa el dataset <code>gapminder</code> para crear una figura que explore la relación entre esperanza de vida y PIB per cápita.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb26-2"><a></a><span class="fu">glimpse</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb27-2"><a></a><span class="fu">glimpse</span>(gapminder)</span></code></pre></div>
 </div>
 <p>Experimenta con:</p>
 <ul>
@@ -1428,7 +1453,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><img data-src="../../imagenes/qr-code.svg" width="300"> <span style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;">jdleongomez.github.io/curso-r</span></p>
 </div>
 </div><div class="column" style="width:60%;">
-<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
+<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
 </div></div>
 
 
@@ -1800,6 +1825,23 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
       });
+    });
+
+    Reveal.addEventListener('ready', function() {
+      document.querySelectorAll('.reveal .slides img').forEach(function(img) {
+        if (img.closest('a')) return;
+        if (window.getComputedStyle(img).position === 'absolute') return;
+        var src = img.getAttribute('src');
+        if (!src || src.startsWith('data:')) return;
+        var a = document.createElement('a');
+        a.href = src;
+        a.className = 'lightbox';
+        img.parentNode.insertBefore(a, img);
+        a.appendChild(img);
+      });
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox({ selector: '.lightbox' });
+      }
     });
     </script>
     <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});

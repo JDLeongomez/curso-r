@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```gqa\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```rfu\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -718,7 +718,7 @@
     "href": "sesiones/s02/slides.html#el-universo-tidyverse",
     "title": "Sesión 2",
     "section": "El universo tidyverse",
-    "text": "El universo tidyverse\n\n\n\nUna sola línea carga 9 paquetes esenciales para el análisis de datos:\n\nlibrary(tidyverse)\n\nEn lugar de cargar cada paquete por separado — como library(ggplot2) y library(dplyr) — tidyverse los agrupa todos. Durante el curso irás conociendo varios.\n\n\n\n  \n    \n    ggplot2Visualización de datos\n  \n\n  \n    \n    dplyrManipulación de datos\n  \n\n  \n    \n    readrImportar archivos CSV\n  \n\n  \n    \n    tidyrReorganizar y pivotar tablas\n  \n\n  \n    \n    purrrProgramación funcional\n  \n\n  \n    \n    tibbleMarcos de datos modernos\n  \n\n  \n    \n    stringrManipulación de texto\n  \n\n  \n    \n    forcatsManejo de factores\n  \n\n  \n    \n    lubridateFechas y horas"
+    "text": "El universo tidyverse\n\n\n\n\nlibrary(tidyverse)\n\nEn lugar de cargar cada paquete por separado — como library(ggplot2) y library(dplyr) — tidyverse los agrupa todos. Durante el curso irás conociendo varios.\n\nUna sola línea carga 9 paquetes esenciales para el análisis de datos:\n\n\n  \n    \n    ggplot2Visualización de datos\n  \n\n  \n    \n    dplyrManipulación de datos\n  \n\n  \n    \n    readrImportar archivos CSV\n  \n\n  \n    \n    tidyrReorganizar y pivotar tablas\n  \n\n  \n    \n    purrrProgramación funcional\n  \n\n  \n    \n    tibbleMarcos de datos modernos\n  \n\n  \n    \n    stringrManipulación de texto\n  \n\n  \n    \n    forcatsManejo de factores\n  \n\n  \n    \n    lubridateFechas y horas"
   },
   {
     "objectID": "sesiones/s02/slides.html#section",
@@ -774,7 +774,7 @@
     "href": "sesiones/s02/slides.html#geom_histogram-distribución-continua",
     "title": "Sesión 2",
     "section": "geom_histogram(): distribución continua",
-    "text": "geom_histogram(): distribución continua\nx numérica. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.\n\n\n\nggplot(\n    pinguinos,\n    aes(x = body_mass_g)\n) +\n    geom_histogram(\n        bins   = 25,\n        fill   = \"#225faa\",\n        colour = \"white\"\n    ) +\n    theme_minimal()\n\n\nbins fija el número de barras; binwidth fija el ancho de cada una. No uses ambos a la vez."
+    "text": "geom_histogram(): distribución continua\nx numérica. Divide los valores en intervalos y cuenta cuántas observaciones caen en cada uno.\n\n\n\nggplot(\n    pinguinos,\n    aes(x = body_mass_g)\n) +\n    geom_histogram(\n        bins   = 25,\n        fill   = \"darkblue\",\n        colour = \"white\"\n    ) +\n    theme_minimal()\n\n\nbins fija el número de barras; binwidth fija el ancho de cada una. No uses ambos a la vez.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLas barras tienen interior (fill) y borde (colour); no todas las geometrías los tienen, pero sí las que encierran área (barras, cajas, violines)\nCuando se usan fuera de aes(), fijan un color igual para toda la geometría; dentro de aes() mapean los colores a una variable. Esto lo veremos en profundidad en la sección de estéticas"
   },
   {
     "objectID": "sesiones/s02/slides.html#geom_density-curva-de-densidad",
@@ -788,7 +788,7 @@
     "href": "sesiones/s02/slides.html#geom_bar-conteos-por-categoría",
     "title": "Sesión 2",
     "section": "geom_bar(): conteos por categoría",
-    "text": "geom_bar(): conteos por categoría\nx categórica. Cuenta cuántas observaciones hay en cada grupo. Solo necesita x.\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x    = species,\n        fill = island\n    )\n) +\n    geom_bar(position = \"dodge\") +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\nposition = \"dodge\" coloca las barras lado a lado. \"stack\" las apila. \"fill\" las normaliza al 100%."
+    "text": "geom_bar(): conteos por categoría\nx categórica. Cuenta cuántas observaciones hay en cada grupo y dibuja una barra por categoría.\n\n\n\nggplot(\n    pinguinos,\n    aes(x = species)\n) +\n    geom_bar() +\n    theme_minimal()\n\n\nAñadimos fill = island en aes() para colorear las barras según una segunda variable:\n\nggplot(\n    pinguinos,\n    aes(x = species, fill = island)\n) +\n    geom_bar(position = \"dodge\") +\n    scale_fill_viridis_d() +\n    theme_minimal()\n\n\nposition = \"dodge\" coloca las barras lado a lado; \"stack\" las apila (opción por defecto)."
   },
   {
     "objectID": "sesiones/s02/slides.html#section-3",
@@ -830,7 +830,7 @@
     "href": "sesiones/s02/slides.html#geom_line-series-de-tiempo",
     "title": "Sesión 2",
     "section": "geom_line(): series de tiempo",
-    "text": "geom_line(): series de tiempo\nConecta observaciones en orden de x. Apropiado cuando el orden importa.\n\n\n\nggplot(\n    economics,\n    aes(\n        x = date,\n        y = unemploy\n    )\n) +\n    geom_line(\n        colour    = \"#225faa\",\n        linewidth = 0.8\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\neconomics es un conjunto de datos de ggplot2 con indicadores económicos de EE.UU."
+    "text": "geom_line(): series de tiempo\nConecta observaciones en orden de x. Apropiado cuando el orden importa.\n\n\n\nggplot(\n    economics,\n    aes(\n        x = date,\n        y = unemploy\n    )\n) +\n    geom_line(\n        colour    = \"steelblue\",\n        linewidth = 0.8\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\neconomics es un conjunto de datos de ggplot2 con indicadores económicos de EE.UU."
   },
   {
     "objectID": "sesiones/s02/slides.html#qué-geometría-usar",
@@ -872,7 +872,7 @@
     "href": "sesiones/s02/slides.html#fuera-de-aes-valor-fijo-para-todos",
     "title": "Sesión 2",
     "section": "Fuera de aes(): valor fijo para todos",
-    "text": "Fuera de aes(): valor fijo para todos\nCuando la estética es un valor constante, va fuera de aes(), directamente en el geom_*().\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g\n    )\n) +\n    geom_point(\n        colour = \"#225faa\",\n        size   = 2,\n        alpha  = 0.6\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nTodos los puntos tienen el mismo color, tamaño y transparencia."
+    "text": "Fuera de aes(): valor fijo para todos\nCuando la estética es un valor constante, va fuera de aes(), directamente en el geom_*().\n\n\n\nggplot(\n    pinguinos,\n    aes(\n        x = bill_length_mm,\n        y = body_mass_g\n    )\n) +\n    geom_point(\n        colour = \"steelblue\",\n        size   = 2,\n        alpha  = 0.6\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\nTodos los puntos tienen el mismo color, tamaño y transparencia."
   },
   {
     "objectID": "sesiones/s02/slides.html#el-error-más-común-con-aes",

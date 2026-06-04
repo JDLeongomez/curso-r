@@ -283,7 +283,7 @@ Juan David Leongómez
     <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">📝 documento.qmd</div>
     <div style="color:#444; font-size:0.9em; line-height:1.8;">
       texto en markdown<br>
-      ```gqa<br>
+      ```rfu<br>
       &nbsp;&nbsp;código R<br>
       ```<br>
       más texto…
@@ -1186,6 +1186,23 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
       });
+    });
+
+    Reveal.addEventListener('ready', function() {
+      document.querySelectorAll('.reveal .slides img').forEach(function(img) {
+        if (img.closest('a')) return;
+        if (window.getComputedStyle(img).position === 'absolute') return;
+        var src = img.getAttribute('src');
+        if (!src || src.startsWith('data:')) return;
+        var a = document.createElement('a');
+        a.href = src;
+        a.className = 'lightbox';
+        img.parentNode.insertBefore(a, img);
+        a.appendChild(img);
+      });
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox({ selector: '.lightbox' });
+      }
     });
     </script>
     <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
