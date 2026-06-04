@@ -44,6 +44,8 @@ website:
             text: "Tarea 1 · Figura fea"
           - href: tareas/tarea2-paquete-raro.html
             text: "Tarea 2 · Paquete raro"
+      - href: glosario.html
+        text: Referencia
 
 format:
   html:

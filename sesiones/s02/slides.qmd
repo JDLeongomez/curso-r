@@ -1313,9 +1313,9 @@ ggplot(pinguinos, aes(x = species, y = body_mass_g, colour = island)) +
 ```
 
 ::: nonincremental
-- a) `scale_colour_viridis_d()`: `island`  es categórica, pero el mapping es `colour`
+- a) `scale_colour_viridis_c()`: `island`  es categórica, pero el mapping es `colour`
 - b) `scale_fill_viridis_c()`:  el mapping es `colour`, pero `island` no es continua
-- c) `scale_fill_viridis_d()`: el mapping es `colour` e `island` es categórica
+- c) `scale_colour_viridis_d()`: el mapping es `colour` e `island` es categórica
 - d) `scale_fill_viridis_b()`: `_b` es para variables continuas en intervalos
 :::
 

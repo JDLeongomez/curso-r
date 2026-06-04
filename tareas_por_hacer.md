@@ -4,7 +4,7 @@
 
 - [x] Definir estructura del repositorio y GitHub Pages
 - [x] Planear orden y contenidos de las sesiones (estructura preliminar acordada)
-- [ ] Confirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)
+- [x] Confirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)
 - [ ] Pedir a estudiantes que creen cuenta en GitHub antes de S7
 
 ## Configuración y setup
@@ -54,6 +54,9 @@
   - [x] s05 — enlace añadido
   - [x] s06 — enlace añadido
   - [x] s07 — enlace añadido
+- [x] Crear página de referencia rápida (`glosario.qmd`) con funciones y paquetes de S1–S7
+- [ ] Actualizar `glosario.qmd` con funciones de S8 al completar esa sesión
+- [ ] Actualizar `glosario.qmd` con funciones de S9 al completar esa sesión
 
 ## Tareas para estudiantes
 
