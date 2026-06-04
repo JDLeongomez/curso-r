@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Referencia rápida – Curso de R · Junio 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./imagenes/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63ce127521a19a1e4e3744969e33e844.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b697c1a6359f1c3afb1f85e7018d5242.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./imagenes/favicon.svg" alt="Curso de R" class="navbar-logo light-content">
+    <img src="./imagenes/favicon.svg" alt="Curso de R" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Curso de R · Junio 2026</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./programa.html"> 
+<span class="menu-text">Programa</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sesiones" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Sesiones</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-sesiones">    
+        <li class="dropdown-header">— Semana 1 —</li>
+        <li>
+    <a class="dropdown-item" href="./sesiones/s01/slides.html">
+ <span class="dropdown-text">S1 · Primeros pasos en R y RStudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sesiones/s02/slides.html">
+ <span class="dropdown-text">S2 · Visualizaciones con ggplot2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sesiones/s03/slides.html">
+ <span class="dropdown-text">S3 · Manejo y transformación de datos</span></a>
+  </li>  
+        <li class="dropdown-header">— Semana 2 —</li>
+        <li>
+    <a class="dropdown-item" href="./sesiones/s04/slides.html">
+ <span class="dropdown-text">S4 · Importar y organizar datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sesiones/s05/slides.html">
+ <span class="dropdown-text">S5 · Funciones y automatización</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sesiones/s06/slides.html">
+ <span class="dropdown-text">S6 · Reportes reproducibles con Quarto</span></a>
+  </li>  
+        <li class="dropdown-header">— Semana 3 —</li>
+        <li>
+    <a class="dropdown-item" href="./sesiones/s07/slides.html">
+ <span class="dropdown-text">S7 · Documentos y presentaciones con Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sesiones/s08/slides.html">
+ <span class="dropdown-text">S8 · Versiones y colaboración con Git y GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sesiones/s09/slides.html">
+ <span class="dropdown-text">S9 · Herramientas y buenas prácticas</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tareas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tareas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tareas">    
+        <li>
+    <a class="dropdown-item" href="./tareas/tarea1-figura-fea.html">
+ <span class="dropdown-text">Tarea 1 · Figura fea</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./tareas/tarea2-paquete-raro.html">
+ <span class="dropdown-text">Tarea 2 · Paquete raro</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="./glosario.html" aria-current="page"> 
+<span class="menu-text">Referencia</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#operadores-y-sintaxis" id="toc-operadores-y-sintaxis" class="nav-link active" data-scroll-target="#operadores-y-sintaxis">Operadores y sintaxis</a></li>
+  <li><a href="#r-base" id="toc-r-base" class="nav-link" data-scroll-target="#r-base">R base</a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2">ggplot2</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr">dplyr</a></li>
+  <li><a href="#readr" id="toc-readr" class="nav-link" data-scroll-target="#readr">readr</a></li>
+  <li><a href="#readxl" id="toc-readxl" class="nav-link" data-scroll-target="#readxl">readxl</a></li>
+  <li><a href="#tidyr" id="toc-tidyr" class="nav-link" data-scroll-target="#tidyr">tidyr</a></li>
+  <li><a href="#stringr" id="toc-stringr" class="nav-link" data-scroll-target="#stringr">stringr</a></li>
+  <li><a href="#knitr" id="toc-knitr" class="nav-link" data-scroll-target="#knitr">knitr</a></li>
+  <li><a href="#gt" id="toc-gt" class="nav-link" data-scroll-target="#gt">gt</a></li>
+  <li><a href="#faux" id="toc-faux" class="nav-link" data-scroll-target="#faux">faux</a></li>
+  <li><a href="#tinytex" id="toc-tinytex" class="nav-link" data-scroll-target="#tinytex">tinytex</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Referencia rápida</h1>
+<p class="subtitle lead">Funciones y paquetes del curso</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Esta página reúne todas las funciones y paquetes cubiertos en las sesiones. Las insignias de sesión indican en cuál(es) sesiones apareció cada función. El índice de la derecha permite ir directamente a la sección de cada paquete.</p>
+<div style="margin: 0 0 2em;">
+  <input type="text" id="fn-search" class="search-input" placeholder="Busca por nombre de función, paquete o descripción…" autocomplete="off" spellcheck="false">
+  <div id="no-results" style="display:none; color:#888; font-size:0.88em; margin-top:0.5em; font-style:italic;">
+    Ninguna función coincide con esa búsqueda.
+  </div>
+</div>
+<section id="operadores-y-sintaxis" class="level2">
+<h2 class="anchored" data-anchor-id="operadores-y-sintaxis">Operadores y sintaxis</h2>
+<p>Elementos del lenguaje R que no requieren cargar ningún paquete.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Elemento</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>&lt;-</code></td>
+<td>Operador de asignación: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>|&gt;</code></td>
+<td><strong>Pipe nativo</strong> (R ≥ 4.1): pasa el resultado de la izquierda como primer argumento de la función de la derecha. Permite encadenar operaciones de arriba a abajo. Atajo en RStudio: <kbd>Ctrl+Shift+M</kbd>.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>%&gt;%</code></td>
+<td><strong>Pipe de magrittr</strong>: funciona igual que <code>|&gt;</code> en la gran mayoría de los casos. Común en tutoriales y código anterior a 2021; proviene del paquete <strong>magrittr</strong>, incluido en tidyverse.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>%in%</code></td>
+<td>Comprueba si cada elemento del vector de la izquierda aparece en el vector de la derecha. Devuelve un vector lógico (<code>TRUE</code>/<code>FALSE</code>).</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>if (cond) { } else { }</code></td>
+<td>Condicional básico: ejecuta el primer bloque cuando la condición es <code>TRUE</code> y el segundo cuando es <code>FALSE</code>. Solo evalúa un valor escalar, no un vector completo.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>nombre &lt;- function(arg) { }</code></td>
+<td>Define una función propia. El cuerpo entre llaves contiene el código que se ejecuta al llamarla. R devuelve automáticamente el último valor evaluado dentro del cuerpo.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="r-base" class="level2">
+<h2 class="anchored" data-anchor-id="r-base">R base</h2>
+<p>Funciones disponibles en R sin necesidad de cargar ningún paquete.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-subhead odd">
+<td colspan="3">Estructuras de datos</td>
+</tr>
+<tr class="fn-row even">
+<td><code>c(...)</code></td>
+<td>Crea un vector combinando los valores proporcionados. Todos deben ser del mismo tipo; si no, R los convierte al tipo más general.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>data.frame(...)</code></td>
+<td>Crea una tabla de datos: cada argumento con nombre se convierte en una columna. Todas las columnas deben tener la misma longitud.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>factor(x, levels)</code></td>
+<td>Convierte un vector en factor con un orden de niveles definido. Los factores son variables categóricas con categorías fijas y ordenables; el orden de <code>levels</code> afecta a gráficas y modelos.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Paquetes</td>
+</tr>
+<tr class="fn-row even">
+<td><code>install.packages("pkg")</code></td>
+<td>Instala un paquete desde CRAN en el disco. Solo se ejecuta una vez por computador; no va dentro de los <em>scripts</em> de análisis.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>library(pkg)</code></td>
+<td>Carga un paquete instalado en la sesión de trabajo. Va al inicio del <em>script</em> y se ejecuta cada vez que se inicia una sesión nueva.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Matemáticas y estadísticas</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>sqrt(x)</code></td>
+<td>Calcula la raíz cuadrada de <code>x</code>.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>round(x, digits = 0)</code></td>
+<td>Redondea <code>x</code> al número de decimales indicado en <code>digits</code>.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>mean(x, na.rm = FALSE)</code></td>
+<td>Calcula la media aritmética. Con <code>na.rm = TRUE</code> ignora los valores <code>NA</code> antes de calcular.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S6</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>sd(x, na.rm = FALSE)</code></td>
+<td>Calcula la desviación estándar. Con <code>na.rm = TRUE</code> ignora los <code>NA</code>.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>sum(x, na.rm = FALSE)</code></td>
+<td>Suma los elementos del vector. Con <code>na.rm = TRUE</code> ignora los <code>NA</code>.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>cor(x)</code></td>
+<td>Calcula la correlación entre dos vectores o la matriz de correlaciones de un data frame numérico. Combina bien con <code>round()</code> para obtener resultados legibles.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>nrow(x)</code></td>
+<td>Devuelve el número de filas de un data frame o matriz.</td>
+<td><span class="s-badge">S6</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>ifelse(cond, si_verdad, si_falso)</code></td>
+<td>Condicional vectorizado: evalúa la condición para cada elemento del vector y devuelve el valor correspondiente. Para más de dos categorías, usa <code>case_when()</code>.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Simulación</td>
+</tr>
+<tr class="fn-row even">
+<td><code>set.seed(n)</code></td>
+<td>Fija la semilla del generador de números aleatorios. Con la misma semilla, la simulación produce los mismos valores en cualquier computador, lo que la hace reproducible.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>rnorm(n, mean = 0, sd = 1)</code></td>
+<td>Genera <code>n</code> valores aleatorios de una distribución normal con la media y desviación estándar indicadas.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>runif(n, min = 0, max = 1)</code></td>
+<td>Genera <code>n</code> valores de una distribución uniforme entre <code>min</code> y <code>max</code>.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>rbinom(n, size, prob)</code></td>
+<td>Genera <code>n</code> valores de una distribución binomial con <code>size</code> ensayos y probabilidad de éxito <code>prob</code>.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>sample(x, n, replace = FALSE)</code></td>
+<td>Extrae <code>n</code> elementos al azar del vector <code>x</code>. Con <code>replace = TRUE</code> permite repeticiones.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>pmax(...)</code></td>
+<td>Devuelve el máximo elemento a elemento entre los vectores. Útil para imponer un techo: <code>pmax(0, x)</code> lleva todos los negativos a cero.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>pmin(...)</code></td>
+<td>Devuelve el mínimo elemento a elemento entre los vectores. Útil para imponer un piso: <code>pmin(21, x)</code> lleva a 21 todos los valores que lo superen.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Texto</td>
+</tr>
+<tr class="fn-row even">
+<td><code>paste(..., sep = " ")</code></td>
+<td>Une fragmentos de texto separándolos con el carácter indicado en <code>sep</code>.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>paste0(...)</code></td>
+<td>Une fragmentos de texto sin separador (equivale a <code>paste(..., sep = "")</code>). Útil para construir identificadores o etiquetas.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>gsub(patrón, reemplazo, x)</code></td>
+<td>Reemplaza todas las ocurrencias del patrón en <code>x</code>. El patrón puede ser texto literal o una expresión regular.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>tolower(x)</code></td>
+<td>Convierte todas las letras de la cadena de texto a minúsculas. Útil para estandarizar categorías con variaciones de mayúsculas.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Entorno y datos</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>data()</code></td>
+<td>Sin argumentos, lista las bases de datos disponibles en los paquetes cargados. Con nombre (<code>data("diamonds")</code>), carga esa base de datos en el entorno.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>View(x)</code></td>
+<td>Abre una vista tabular del objeto en una pestaña de RStudio.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>getwd()</code></td>
+<td>Devuelve la ruta del directorio de trabajo actual. Útil para verificar que el proyecto está correctamente configurado.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>head(x, n = 6)</code></td>
+<td>Muestra las primeras <code>n</code> filas del data frame (por defecto, 6).</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>names(x)</code></td>
+<td>Devuelve los nombres de las columnas de un data frame (o los nombres de un vector).</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>print(x)</code></td>
+<td>Imprime el objeto en la consola. En general es implícito: escribir el nombre de un objeto ya lo imprime sin necesidad de llamar <code>print()</code>.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>saveRDS(x, file)</code></td>
+<td>Guarda un objeto R en disco en formato <code>.rds</code>, conservando su tipo exacto (factores, listas, atributos). Solo funciona en R.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>readRDS(file)</code></td>
+<td>Carga un objeto guardado previamente con <code>saveRDS()</code>.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Citas bibliográficas</td>
+</tr>
+<tr class="fn-row even">
+<td><code>citation(pkg = NULL)</code></td>
+<td>Devuelve la referencia bibliográfica de R (sin argumentos) o del paquete indicado. Citar R y los paquetes usados es una buena práctica en trabajos académicos.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>toBibtex(x)</code></td>
+<td>Convierte una referencia obtenida con <code>citation()</code> al formato BibTeX, listo para copiar al archivo <code>.bib</code>.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot2">ggplot2</h2>
+<p>Paquete de visualización basado en la <em>Grammar of Graphics</em>. Se carga con <code>library(ggplot2)</code> en S1 y con <code>library(tidyverse)</code> a partir de S2.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-subhead odd">
+<td colspan="3">Lienzo y estéticas</td>
+</tr>
+<tr class="fn-row even">
+<td><code>ggplot(data, mapping = aes())</code></td>
+<td>Crea el lienzo base de la figura: define los datos y el mapeo inicial de variables a estéticas. No dibuja nada hasta añadir una capa geométrica con <code>+</code>.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>aes(x, y, colour, fill, shape, ...)</code></td>
+<td>Mapea variables del data frame a estéticas visuales. Dentro de <code>aes()</code>: el valor varía según los datos y genera leyenda. Fuera de <code>aes()</code>: el valor es fijo e igual para todos los elementos.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Geometrías · una variable</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_histogram(bins, fill, colour)</code></td>
+<td>Histograma: divide los valores de <code>x</code> en intervalos y cuenta cuántas observaciones caen en cada uno. Usa <code>bins</code> para el número de barras o <code>binwidth</code> para el ancho de cada una (no ambos a la vez).</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span><span class="s-badge">S6</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>geom_density(alpha)</code></td>
+<td>Curva de densidad suavizada. Versión continua del histograma; útil para comparar distribuciones entre grupos mapeando <code>fill</code> o <code>colour</code> a una variable categórica.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_bar(position)</code></td>
+<td>Barras de conteo por categoría: calcula automáticamente cuántas observaciones hay en cada nivel de <code>x</code>. <code>position = "dodge"</code> coloca las barras lado a lado; <code>"stack"</code> las apila.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Geometrías · dos variables</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_point(alpha, size, colour)</code></td>
+<td>Diagrama de dispersión: un punto por fila del data frame. <code>alpha</code> controla la transparencia (0 invisible, 1 sólido) para manejar la sobreposición de puntos.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>geom_jitter(width, alpha, size)</code></td>
+<td>Puntos con desplazamiento aleatorio pequeño en el eje <code>x</code> para evitar solapamiento. Combina bien con <code>geom_violin()</code> o <code>geom_boxplot()</code> para mostrar los datos individuales.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_boxplot(alpha)</code></td>
+<td>Diagrama de caja: muestra la mediana, los cuartiles y los valores extremos de <code>y</code> para cada nivel de <code>x</code>.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>geom_violin(alpha, fill)</code></td>
+<td>Diagrama de violín: como el boxplot, pero muestra la forma completa de la distribución (útil para detectar bimodalidad o asimetría). Se combina bien con <code>geom_jitter()</code>.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_col(position)</code></td>
+<td>Barras a partir de valores ya calculados en el data frame. A diferencia de <code>geom_bar()</code>, no cuenta; la altura de cada barra es el valor de <code>y</code>.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>geom_smooth(method, se)</code></td>
+<td>Línea de tendencia sobre los puntos. <code>method = "lm"</code> ajusta una recta; <code>method = "loess"</code> ajusta una curva suave. <code>se = FALSE</code> oculta el intervalo de confianza.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_line(colour, linewidth)</code></td>
+<td>Conecta los puntos en orden de <code>x</code>. Apropiado para series de tiempo o datos con un orden natural.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>geom_tile()</code></td>
+<td>Mosaico de celdas coloreadas: dibuja un rectángulo por fila del data frame. Útil para visualizar densidades o matrices en dos dimensiones.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>geom_vline(xintercept, colour)</code></td>
+<td>Dibuja una línea vertical en la posición indicada por <code>xintercept</code>. Útil para marcar la media, un umbral u otro valor de referencia.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Facetas</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>facet_wrap(~var, scales, nrow)</code></td>
+<td>Divide la figura en un panel por cada valor único de <code>var</code>. <code>scales = "free"</code> permite que cada panel tenga su propia escala.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>facet_grid(filas ~ cols)</code></td>
+<td>Organiza los paneles en una cuadrícula con una variable en las filas y otra en las columnas. La sintaxis es <code>var_filas ~ var_columnas</code>.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Etiquetas</td>
+</tr>
+<tr class="fn-row even">
+<td><code>labs(title, subtitle, x, y, colour, fill, caption)</code></td>
+<td>Define los textos de la figura: título, subtítulo, ejes, leyendas y nota al pie. Usa <code>NULL</code> para eliminar un elemento (por ejemplo, <code>x = NULL</code> quita el título del eje x).</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Escalas de color y forma</td>
+</tr>
+<tr class="fn-row even">
+<td><code>scale_colour_viridis_d(option)</code></td>
+<td>Paleta Viridis para la estética <code>colour</code> con variable <strong>categórica</strong> (sufijo <code>_d</code> de <em>discrete</em>). Opciones: <code>"viridis"</code>, <code>"magma"</code>, <code>"plasma"</code>, <code>"inferno"</code>, <code>"cividis"</code>.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>scale_colour_viridis_c(option)</code></td>
+<td>Paleta Viridis para la estética <code>colour</code> con variable <strong>continua</strong> (sufijo <code>_c</code>).</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>scale_fill_viridis_d(option)</code></td>
+<td>Paleta Viridis para la estética <code>fill</code> con variable <strong>categórica</strong>.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>scale_fill_viridis_c(option)</code></td>
+<td>Paleta Viridis para la estética <code>fill</code> con variable <strong>continua</strong>.</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>scale_fill_viridis_b(option)</code></td>
+<td>Paleta Viridis para la estética <code>fill</code> con variable <strong>continua agrupada en intervalos</strong> (sufijo <code>_b</code> de <em>binned</em>).</td>
+<td><span class="s-badge">S1</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>scale_colour_brewer(palette)</code></td>
+<td>Paleta ColorBrewer para la estética <code>colour</code>. Ejemplos: <code>"Set2"</code>, <code>"Dark2"</code>, <code>"Paired"</code>.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>scale_fill_brewer(palette)</code></td>
+<td>Paleta ColorBrewer para la estética <code>fill</code>.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>scale_colour_manual(values)</code></td>
+<td>Paleta de colores definida a mano para la estética <code>colour</code>. <code>values</code> es un vector de colores (nombres o códigos HEX), uno por categoría.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>scale_fill_manual(values)</code></td>
+<td>Paleta de colores definida a mano para la estética <code>fill</code>.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>scale_shape_discrete(name)</code></td>
+<td>Escala de formas para la estética <code>shape</code> con variable categórica. Permite personalizar el título de la leyenda con <code>name</code>.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>scale_x_log10()</code></td>
+<td>Aplica escala logarítmica en base 10 al eje <code>x</code>. Útil cuando los datos tienen una distribución muy sesgada o un rango muy amplio.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>xlim(min, max)</code></td>
+<td>Fija los límites del eje <code>x</code>. Las observaciones fuera del rango se eliminan del cálculo de las geometrías.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Temas</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>theme(...)</code></td>
+<td>Personaliza elementos visuales individuales: posición de la leyenda, tamaño de fuentes, líneas de cuadrícula, fondo, etc. Se suma a un tema base como <code>theme_minimal()</code>.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>theme_minimal()</code></td>
+<td>Tema limpio sin fondo gris. Es el tema más usado en el curso.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>theme_classic()</code></td>
+<td>Tema con ejes pero sin cuadrícula. Estilo clásico de artículo científico.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>theme_bw()</code></td>
+<td>Tema con fondo blanco y cuadrícula.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>theme_linedraw()</code></td>
+<td>Tema con bordes de línea negra, similar a <code>theme_bw()</code> pero con líneas más marcadas.</td>
+<td><span class="s-badge">S1</span><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>theme_dark()</code></td>
+<td>Tema con fondo oscuro.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>theme_void()</code></td>
+<td>Tema sin ejes, cuadrícula ni fondo. Útil para mapas o diagramas sin marco.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>element_blank()</code></td>
+<td>Dentro de <code>theme()</code>, elimina por completo un elemento visual. Por ejemplo, <code>panel.grid.minor = element_blank()</code> quita las líneas de cuadrícula menores.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>element_text(size, face, colour, hjust)</code></td>
+<td>Dentro de <code>theme()</code>, controla el estilo de un elemento de texto: tamaño, negrita/cursiva, color y alineación horizontal.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>element_line(colour, linewidth)</code></td>
+<td>Dentro de <code>theme()</code>, controla el estilo de líneas (cuadrícula, ejes).</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>element_rect(fill, colour)</code></td>
+<td>Dentro de <code>theme()</code>, controla el estilo de rectángulos (fondo del panel, de la leyenda).</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Guardar figuras</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>ggsave(file, plot, width, height, units, dpi)</code></td>
+<td>Guarda la última figura generada (o la especificada en <code>plot</code>). El formato se determina por la extensión del archivo: <code>.png</code>, <code>.pdf</code>, <code>.svg</code>, etc. Para publicación impresa usa <code>dpi = 300</code>.</td>
+<td><span class="s-badge">S2</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr">dplyr</h2>
+<p>Paquete de manipulación de datos. Parte de tidyverse; se carga con <code>library(tidyverse)</code>.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-subhead odd">
+<td colspan="3">Explorar</td>
+</tr>
+<tr class="fn-row even">
+<td><code>glimpse(x)</code></td>
+<td>Vista compacta del data frame: muestra el número de filas y columnas, el tipo de cada columna y los primeros valores. Equivale a <code>str()</code> de base R pero con formato más legible.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>count(datos, var, sort = FALSE)</code></td>
+<td>Cuenta el número de observaciones por cada valor único de <code>var</code>. Con <code>sort = TRUE</code> ordena de mayor a menor. Es un atajo de <code>group_by() |&gt; summarise(n = n())</code>.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Seleccionar y renombrar columnas</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>select(datos, col1, col2, ...)</code></td>
+<td>Elige columnas por nombre. Con <code>-col</code> excluye esa columna. Admite los ayudantes <code>starts_with()</code>, <code>ends_with()</code> y <code>contains()</code>.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>rename(datos, nuevo = actual)</code></td>
+<td>Cambia el nombre de columnas. La sintaxis es siempre <code>nombre_nuevo = nombre_actual</code>.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>rename_with(datos, .fn, .cols)</code></td>
+<td>Aplica una función (<code>.fn</code>) a los nombres de las columnas indicadas en <code>.cols</code>. Útil para estandarizar nombres en bloque: por ejemplo, convertirlos todos a minúsculas o reemplazar espacios.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>starts_with("prefijo")</code></td>
+<td>Ayudante de selección: dentro de <code>select()</code>, elige todas las columnas cuyos nombres empiezan con el prefijo indicado.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>ends_with("sufijo")</code></td>
+<td>Ayudante de selección: dentro de <code>select()</code>, elige todas las columnas cuyos nombres terminan con el sufijo indicado.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>contains("cadena")</code></td>
+<td>Ayudante de selección: dentro de <code>select()</code>, elige todas las columnas cuyos nombres contienen la cadena indicada en cualquier posición.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Filtrar filas</td>
+</tr>
+<tr class="fn-row even">
+<td><code>filter(datos, condición)</code></td>
+<td>Retiene las filas que cumplen la condición. Varias condiciones separadas por <code>,</code> equivalen a AND (todas se deben cumplir); <code>|</code> equivale a OR (basta una).</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S6</span></td>
+</tr>
+<tr class="fn-subhead odd">
+<td colspan="3">Crear y modificar columnas</td>
+</tr>
+<tr class="fn-row even">
+<td><code>mutate(datos, col = expresión)</code></td>
+<td>Crea una columna nueva o modifica una existente. Pueden crearse varias en una sola llamada. El data frame original no cambia a menos que se reasigne con <code>&lt;-</code>.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>case_when(cond ~ val, ..., TRUE ~ val)</code></td>
+<td>Dentro de <code>mutate()</code>, recodifica valores evaluando condiciones en orden: asigna el valor de la primera condición verdadera. <code>TRUE ~</code> al final actúa como caso por defecto y captura todo lo que no coincidió con las condiciones anteriores.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S5</span></td>
+</tr>
+<tr class="fn-subhead even">
+<td colspan="3">Resumir y agrupar</td>
+</tr>
+<tr class="fn-row odd">
+<td><code>summarise(datos, col = fn(var))</code></td>
+<td>Colapsa el data frame en un resumen: una fila por grupo (o una sola fila si no hay agrupamiento). Funciones habituales: <code>mean()</code>, <code>sd()</code>, <code>n()</code>, <code>sum()</code>.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>group_by(datos, var1, var2)</code></td>
+<td>Agrupa el data frame para que las operaciones siguientes (<code>mutate()</code>, <code>summarise()</code>) operen dentro de cada grupo por separado. No cambia los datos visibles, solo añade información de agrupamiento.</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>ungroup(datos)</code></td>
+<td>Elimina el agrupamiento activo. Conviene añadirlo al final de cualquier pipeline que use <code>group_by()</code> cuando se quiere seguir usando el objeto sin agrupamiento.</td>
+<td><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>n()</code></td>
+<td>Dentro de <code>summarise()</code> o <code>mutate()</code>, devuelve el número de filas del grupo actual (o del data frame completo si no hay agrupamiento).</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S5</span><span class="s-badge">S7</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="readr" class="level2">
+<h2 class="anchored" data-anchor-id="readr">readr</h2>
+<p>Paquete para importar y exportar archivos de texto plano (CSV, TSV…). Parte de tidyverse.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>read_csv(file, skip, na)</code></td>
+<td>Importa un CSV con <strong>coma</strong> como separador y <strong>punto</strong> como decimal (formato internacional). <code>skip</code> omite las primeras <em>n</em> filas; <code>na</code> define los valores que se tratarán como <code>NA</code>.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>read_csv2(file, skip, na)</code></td>
+<td>Importa un CSV con <strong>punto y coma</strong> como separador y <strong>coma</strong> como decimal: el formato que genera Excel configurado en español. Mismos argumentos que <code>read_csv()</code>.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>write_csv(x, file)</code></td>
+<td>Exporta un data frame a CSV con coma como separador. Útil para compartir con otros programas o personas.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>write_csv2(x, file)</code></td>
+<td>Exporta un data frame a CSV con punto y coma como separador y coma como decimal (formato latinoamericano).</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="readxl" class="level2">
+<h2 class="anchored" data-anchor-id="readxl">readxl</h2>
+<p>Paquete para importar archivos Excel (<code>.xlsx</code>, <code>.xls</code>). No forma parte del tidyverse básico; se instala y carga por separado con <code>library(readxl)</code>.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>read_excel(path, sheet, skip, na, range)</code></td>
+<td>Importa una hoja de un archivo Excel. Por defecto carga la primera hoja. Argumentos clave: <code>sheet</code> (nombre o número de hoja), <code>skip</code> (filas a omitir al inicio), <code>na</code> (valores vacíos), <code>range</code> (rango de celdas).</td>
+<td><span class="s-badge">S3</span><span class="s-badge">S4</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>excel_sheets(path)</code></td>
+<td>Lista los nombres de todas las hojas del archivo Excel. Úsala antes de <code>read_excel()</code> para saber qué hojas existen y cómo se llaman.</td>
+<td><span class="s-badge">S4</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tidyr" class="level2">
+<h2 class="anchored" data-anchor-id="tidyr">tidyr</h2>
+<p>Paquete para reorganizar y transformar datos. Parte de tidyverse.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>drop_na(datos, ...)</code></td>
+<td>Elimina las filas que contienen al menos un valor <code>NA</code>. Sin argumentos adicionales, revisa todas las columnas; con nombres de columnas, solo las indicadas.</td>
+<td><span class="s-badge">S2</span><span class="s-badge">S3</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>pivot_longer(datos, cols, names_to, values_to)</code></td>
+<td>Transforma de formato ancho a formato largo: convierte varias columnas en filas. <code>cols</code> indica qué columnas pivotar; <code>names_to</code> y <code>values_to</code> son los nombres de las dos nuevas columnas resultantes.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stringr" class="level2">
+<h2 class="anchored" data-anchor-id="stringr">stringr</h2>
+<p>Paquete para manipulación de cadenas de texto. Parte de tidyverse.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>str_pad(string, width, side, pad)</code></td>
+<td>Rellena una cadena de texto hasta alcanzar la anchura indicada en <code>width</code>. Por defecto rellena por la izquierda con espacios; con <code>pad = "0"</code> rellena con ceros. Útil para construir identificadores con formato fijo como <code>"ID_001"</code>.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="knitr" class="level2">
+<h2 class="anchored" data-anchor-id="knitr">knitr</h2>
+<p>Paquete de generación de documentos. Se carga con <code>library(knitr)</code> y es el motor que Quarto usa internamente para ejecutar los bloques de código.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>kable(x, digits, col.names)</code></td>
+<td>Convierte un data frame en una tabla con formato para documentos HTML, PDF o Word. Solución rápida para tablas sencillas; para tablas más elaboradas usa el paquete <strong>gt</strong>.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gt" class="level2">
+<h2 class="anchored" data-anchor-id="gt">gt</h2>
+<p>Paquete para crear tablas de publicación con control detallado del formato.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>gt(data)</code></td>
+<td>Crea una tabla gt a partir de un data frame. Las funciones de formato se añaden con el pipe <code>|&gt;</code>, igual que en ggplot2 con <code>+</code>.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>tab_header(title, subtitle)</code></td>
+<td>Añade un título y un subtítulo encima de la tabla.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>cols_label(...)</code></td>
+<td>Define las etiquetas visibles de las columnas. Sintaxis: <code>nombre_columna = "Etiqueta visible"</code>.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row even">
+<td><code>fmt_number(columns, decimals)</code></td>
+<td>Formatea columnas numéricas: controla el número de decimales y los separadores de miles.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>tab_spanner(label, columns)</code></td>
+<td>Agrupa varias columnas bajo un encabezado común. <code>label</code> es el texto del encabezado; <code>columns</code> es el vector de columnas agrupadas.</td>
+<td><span class="s-badge">S7</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="faux" class="level2">
+<h2 class="anchored" data-anchor-id="faux">faux</h2>
+<p>Paquete para simular datos con estructura de correlaciones definida entre variables.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>rnorm_multi(n, mu, sd, r, varnames)</code></td>
+<td>Simula <code>n</code> observaciones de varias variables numéricas con las medias (<code>mu</code>), desviaciones estándar (<code>sd</code>) y correlaciones (<code>r</code>) indicadas. <code>varnames</code> es el vector de nombres para las columnas resultantes.</td>
+<td><span class="s-badge">S5</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tinytex" class="level2">
+<h2 class="anchored" data-anchor-id="tinytex">tinytex</h2>
+<p>Paquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>tinytex::install_tinytex()</code></td>
+<td>Instala TinyTeX en el sistema. Se ejecuta una sola vez. Después, cambiar <code>format: pdf</code> en el YAML de un documento Quarto genera un PDF sin configuración adicional.</td>
+<td><span class="s-badge">S6</span></td>
+</tr>
+</tbody>
+</table>
+
+
+<script>
+(function () {
+  var input = document.getElementById('fn-search');
+  var noResults = document.getElementById('no-results');
+  if (!input) return;
+
+  input.addEventListener('input', function () {
+    var q = this.value.toLowerCase().trim();
+    var filas = document.querySelectorAll('.fn-row');
+    var visibles = 0;
+
+    filas.forEach(function (fila) {
+      if (!q || fila.textContent.toLowerCase().includes(q)) {
+        fila.style.display = '';
+        visibles++;
+      } else {
+        fila.style.display = 'none';
+      }
+    });
+
+    noResults.style.display = (q && visibles === 0) ? 'block' : 'none';
+  });
+}());
+</script>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/JDLeongomez\.github\.io\/curso-r\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="http"]').forEach(function(a) {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener noreferrer');
+  });
+});
+</script>
+
+
+
+
+</body></html>

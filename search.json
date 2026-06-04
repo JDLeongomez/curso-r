@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```rfu\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```atl\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -1012,7 +1012,7 @@
     "href": "sesiones/s02/slides.html#quiz-2-de-5",
     "title": "Sesión 2",
     "section": "Quiz · 2 de 5",
-    "text": "Quiz · 2 de 5\n¿Qué función de escala Viridis completaría correctamente esta figura?\n\nggplot(pinguinos, aes(x = species, y = body_mass_g, colour = island)) +\n    geom_jitter() + \n    ???\n\n\n\nscale_colour_viridis_d(): island es categórica, pero el mapping es colour\n\n\nscale_fill_viridis_c(): el mapping es colour, pero island no es continua\n\n\nscale_fill_viridis_d(): el mapping es colour e island es categórica\n\n\nscale_fill_viridis_b(): _b es para variables continuas en intervalos\n\n\n\n\n✓ c) Dos reglas: la función debe coincidir con la estética (colour → scale_colour_*), y el sufijo con el tipo de variable (island es categórica → _d)."
+    "text": "Quiz · 2 de 5\n¿Qué función de escala Viridis completaría correctamente esta figura?\n\nggplot(pinguinos, aes(x = species, y = body_mass_g, colour = island)) +\n    geom_jitter() + \n    ???\n\n\n\nscale_colour_viridis_c(): island es categórica, pero el mapping es colour\n\n\nscale_fill_viridis_c(): el mapping es colour, pero island no es continua\n\n\nscale_colour_viridis_d(): el mapping es colour e island es categórica\n\n\nscale_fill_viridis_b(): _b es para variables continuas en intervalos\n\n\n\n\n✓ c) Dos reglas: la función debe coincidir con la estética (colour → scale_colour_*), y el sufijo con el tipo de variable (island es categórica → _d)."
   },
   {
     "objectID": "sesiones/s02/slides.html#quiz-3-de-5",
@@ -1337,6 +1337,104 @@
     "text": "Recursos\n\nThe tidyverse style guide\nR for Data Science (2e) — Wickham, Çetinkaya-Rundel & Grolemund\nggplot2: Elegant Graphics for Data Analysis — Wickham\nQuarto documentation"
   },
   {
+    "objectID": "tareas/tarea2-paquete-raro.html",
+    "href": "tareas/tarea2-paquete-raro.html",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "",
+    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#el-reto",
+    "href": "tareas/tarea2-paquete-raro.html#el-reto",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "",
+    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
+    "href": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "Lo que debes presentar",
+    "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "href": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "Algunas pistas de por dónde buscar",
+    "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
+  },
+  {
+    "objectID": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "href": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "title": "Tarea 2 · Presenta un paquete de R",
+    "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
+    "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores y lo puedas explicar con tus propias palabras."
+  },
+  {
+    "objectID": "tareas_por_hacer.html",
+    "href": "tareas_por_hacer.html",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Tarea 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\nCrear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07\n\n\n\n\n\nActualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión\n\n\n\n\n\nCrear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Tarea 1 — enlace en tarea1-figura-fea.qmd y en s03\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nTarea 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+  },
+  {
+    "objectID": "tareas_por_hacer.html#curso",
+    "href": "tareas_por_hacer.html#curso",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#configuración-y-setup",
+    "href": "tareas_por_hacer.html#configuración-y-setup",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#diapositivas",
+    "href": "tareas_por_hacer.html#diapositivas",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Tarea 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#recursos-y-estructura-del-proyecto",
+    "href": "tareas_por_hacer.html#recursos-y-estructura-del-proyecto",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#sitio-web",
+    "href": "tareas_por_hacer.html#sitio-web",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Actualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#tareas-para-estudiantes",
+    "href": "tareas_por_hacer.html#tareas-para-estudiantes",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Crear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Tarea 1 — enlace en tarea1-figura-fea.qmd y en s03\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
+    "href": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nTarea 2 + Cierre, integración, buenas prácticas"
+  },
+  {
+    "objectID": "tareas_por_hacer.html#tabla-de-comandos",
+    "href": "tareas_por_hacer.html#tabla-de-comandos",
+    "title": "Tareas por hacer",
+    "section": "",
+    "text": "Situación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+  },
+  {
     "objectID": "tareas/tarea1-figura-fea.html",
     "href": "tareas/tarea1-figura-fea.html",
     "title": "Tarea 1 · El concurso de la figura más fea",
@@ -1372,102 +1470,95 @@
     "text": "Pistas (de lo que no debes hacer normalmente)\n\n# Algunas funciones que pueden ayudarte en el lado oscuro:\ntheme() # puedes cambiar ABSOLUTAMENTE TODO el aspecto\nscale_colour_manual() # paletas de colores propias\nelement_text() # tamaño, color, ángulo de texto\ncoord_polar() # transforma cualquier gráfica en algo circular\nannotate() # agrega texto, líneas, formas encima\n\n\n\n\n\n\n\nTipInspiración\n\n\n\nBusca “chartjunk”, “bad data visualization” o “how not to visualize data” para encontrar ejemplos de lo que el mundo académico considera un pecado. Tu trabajo es superar eso."
   },
   {
-    "objectID": "tareas_por_hacer.html",
-    "href": "tareas_por_hacer.html",
-    "title": "Tareas por hacer",
+    "objectID": "glosario.html",
+    "href": "glosario.html",
+    "title": "Referencia rápida",
     "section": "",
-    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Tarea 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\nCrear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07\n\n\n\n\n\nActualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\n\n\n\n\n\nCrear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Tarea 1 — enlace en tarea1-figura-fea.qmd y en s03\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nTarea 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+    "text": "Esta página reúne todas las funciones y paquetes cubiertos en las sesiones. Las insignias de sesión indican en cuál(es) sesiones apareció cada función. El índice de la derecha permite ir directamente a la sección de cada paquete."
   },
   {
-    "objectID": "tareas_por_hacer.html#curso",
-    "href": "tareas_por_hacer.html#curso",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7"
+    "objectID": "glosario.html#operadores-y-sintaxis",
+    "href": "glosario.html#operadores-y-sintaxis",
+    "title": "Referencia rápida",
+    "section": "Operadores y sintaxis",
+    "text": "Operadores y sintaxis\nElementos del lenguaje R que no requieren cargar ningún paquete.\n\n\n\nElemento\nDescripción\nSesiones\n\n\n\n\n&lt;-\nOperador de asignación: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.\nS1S2S3S4S5S6S7\n\n\n|&gt;\nPipe nativo (R ≥ 4.1): pasa el resultado de la izquierda como primer argumento de la función de la derecha. Permite encadenar operaciones de arriba a abajo. Atajo en RStudio: Ctrl+Shift+M.\nS3S4S5S6S7\n\n\n%&gt;%\nPipe de magrittr: funciona igual que |&gt; en la gran mayoría de los casos. Común en tutoriales y código anterior a 2021; proviene del paquete magrittr, incluido en tidyverse.\nS3\n\n\n%in%\nComprueba si cada elemento del vector de la izquierda aparece en el vector de la derecha. Devuelve un vector lógico (TRUE/FALSE).\nS3\n\n\nif (cond) { } else { }\nCondicional básico: ejecuta el primer bloque cuando la condición es TRUE y el segundo cuando es FALSE. Solo evalúa un valor escalar, no un vector completo.\nS5\n\n\nnombre &lt;- function(arg) { }\nDefine una función propia. El cuerpo entre llaves contiene el código que se ejecuta al llamarla. R devuelve automáticamente el último valor evaluado dentro del cuerpo.\nS5"
   },
   {
-    "objectID": "tareas_por_hacer.html#configuración-y-setup",
-    "href": "tareas_por_hacer.html#configuración-y-setup",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Crear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana"
+    "objectID": "glosario.html#r-base",
+    "href": "glosario.html#r-base",
+    "title": "Referencia rápida",
+    "section": "R base",
+    "text": "R base\nFunciones disponibles en R sin necesidad de cargar ningún paquete.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nEstructuras de datos\n\n\nc(...)\nCrea un vector combinando los valores proporcionados. Todos deben ser del mismo tipo; si no, R los convierte al tipo más general.\nS1\n\n\ndata.frame(...)\nCrea una tabla de datos: cada argumento con nombre se convierte en una columna. Todas las columnas deben tener la misma longitud.\nS1S5\n\n\nfactor(x, levels)\nConvierte un vector en factor con un orden de niveles definido. Los factores son variables categóricas con categorías fijas y ordenables; el orden de levels afecta a gráficas y modelos.\nS3S5\n\n\nPaquetes\n\n\ninstall.packages(\"pkg\")\nInstala un paquete desde CRAN en el disco. Solo se ejecuta una vez por computador; no va dentro de los scripts de análisis.\nS1\n\n\nlibrary(pkg)\nCarga un paquete instalado en la sesión de trabajo. Va al inicio del script y se ejecuta cada vez que se inicia una sesión nueva.\nS1\n\n\nMatemáticas y estadísticas\n\n\nsqrt(x)\nCalcula la raíz cuadrada de x.\nS1\n\n\nround(x, digits = 0)\nRedondea x al número de decimales indicado en digits.\nS1S5\n\n\nmean(x, na.rm = FALSE)\nCalcula la media aritmética. Con na.rm = TRUE ignora los valores NA antes de calcular.\nS3S4S5S6\n\n\nsd(x, na.rm = FALSE)\nCalcula la desviación estándar. Con na.rm = TRUE ignora los NA.\nS3S5\n\n\nsum(x, na.rm = FALSE)\nSuma los elementos del vector. Con na.rm = TRUE ignora los NA.\nS3\n\n\ncor(x)\nCalcula la correlación entre dos vectores o la matriz de correlaciones de un data frame numérico. Combina bien con round() para obtener resultados legibles.\nS5\n\n\nnrow(x)\nDevuelve el número de filas de un data frame o matriz.\nS6\n\n\nifelse(cond, si_verdad, si_falso)\nCondicional vectorizado: evalúa la condición para cada elemento del vector y devuelve el valor correspondiente. Para más de dos categorías, usa case_when().\nS5\n\n\nSimulación\n\n\nset.seed(n)\nFija la semilla del generador de números aleatorios. Con la misma semilla, la simulación produce los mismos valores en cualquier computador, lo que la hace reproducible.\nS5\n\n\nrnorm(n, mean = 0, sd = 1)\nGenera n valores aleatorios de una distribución normal con la media y desviación estándar indicadas.\nS5\n\n\nrunif(n, min = 0, max = 1)\nGenera n valores de una distribución uniforme entre min y max.\nS5\n\n\nrbinom(n, size, prob)\nGenera n valores de una distribución binomial con size ensayos y probabilidad de éxito prob.\nS5\n\n\nsample(x, n, replace = FALSE)\nExtrae n elementos al azar del vector x. Con replace = TRUE permite repeticiones.\nS5\n\n\npmax(...)\nDevuelve el máximo elemento a elemento entre los vectores. Útil para imponer un techo: pmax(0, x) lleva todos los negativos a cero.\nS5\n\n\npmin(...)\nDevuelve el mínimo elemento a elemento entre los vectores. Útil para imponer un piso: pmin(21, x) lleva a 21 todos los valores que lo superen.\nS5\n\n\nTexto\n\n\npaste(..., sep = \" \")\nUne fragmentos de texto separándolos con el carácter indicado en sep.\nS1\n\n\npaste0(...)\nUne fragmentos de texto sin separador (equivale a paste(..., sep = \"\")). Útil para construir identificadores o etiquetas.\nS5\n\n\ngsub(patrón, reemplazo, x)\nReemplaza todas las ocurrencias del patrón en x. El patrón puede ser texto literal o una expresión regular.\nS3\n\n\ntolower(x)\nConvierte todas las letras de la cadena de texto a minúsculas. Útil para estandarizar categorías con variaciones de mayúsculas.\nS3\n\n\nEntorno y datos\n\n\ndata()\nSin argumentos, lista las bases de datos disponibles en los paquetes cargados. Con nombre (data(\"diamonds\")), carga esa base de datos en el entorno.\nS1\n\n\nView(x)\nAbre una vista tabular del objeto en una pestaña de RStudio.\nS1\n\n\ngetwd()\nDevuelve la ruta del directorio de trabajo actual. Útil para verificar que el proyecto está correctamente configurado.\nS4\n\n\nhead(x, n = 6)\nMuestra las primeras n filas del data frame (por defecto, 6).\nS4\n\n\nnames(x)\nDevuelve los nombres de las columnas de un data frame (o los nombres de un vector).\nS4\n\n\nprint(x)\nImprime el objeto en la consola. En general es implícito: escribir el nombre de un objeto ya lo imprime sin necesidad de llamar print().\nS1\n\n\nsaveRDS(x, file)\nGuarda un objeto R en disco en formato .rds, conservando su tipo exacto (factores, listas, atributos). Solo funciona en R.\nS4\n\n\nreadRDS(file)\nCarga un objeto guardado previamente con saveRDS().\nS4\n\n\nCitas bibliográficas\n\n\ncitation(pkg = NULL)\nDevuelve la referencia bibliográfica de R (sin argumentos) o del paquete indicado. Citar R y los paquetes usados es una buena práctica en trabajos académicos.\nS7\n\n\ntoBibtex(x)\nConvierte una referencia obtenida con citation() al formato BibTeX, listo para copiar al archivo .bib.\nS7"
   },
   {
-    "objectID": "tareas_por_hacer.html#diapositivas",
-    "href": "tareas_por_hacer.html#diapositivas",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Crear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Tarea 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas"
+    "objectID": "glosario.html#ggplot2",
+    "href": "glosario.html#ggplot2",
+    "title": "Referencia rápida",
+    "section": "ggplot2",
+    "text": "ggplot2\nPaquete de visualización basado en la Grammar of Graphics. Se carga con library(ggplot2) en S1 y con library(tidyverse) a partir de S2.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nLienzo y estéticas\n\n\nggplot(data, mapping = aes())\nCrea el lienzo base de la figura: define los datos y el mapeo inicial de variables a estéticas. No dibuja nada hasta añadir una capa geométrica con +.\nS1S2S3S5S6S7\n\n\naes(x, y, colour, fill, shape, ...)\nMapea variables del data frame a estéticas visuales. Dentro de aes(): el valor varía según los datos y genera leyenda. Fuera de aes(): el valor es fijo e igual para todos los elementos.\nS1S2S3S5S6S7\n\n\nGeometrías · una variable\n\n\ngeom_histogram(bins, fill, colour)\nHistograma: divide los valores de x en intervalos y cuenta cuántas observaciones caen en cada uno. Usa bins para el número de barras o binwidth para el ancho de cada una (no ambos a la vez).\nS2S3S5S6\n\n\ngeom_density(alpha)\nCurva de densidad suavizada. Versión continua del histograma; útil para comparar distribuciones entre grupos mapeando fill o colour a una variable categórica.\nS2\n\n\ngeom_bar(position)\nBarras de conteo por categoría: calcula automáticamente cuántas observaciones hay en cada nivel de x. position = \"dodge\" coloca las barras lado a lado; \"stack\" las apila.\nS2S3\n\n\nGeometrías · dos variables\n\n\ngeom_point(alpha, size, colour)\nDiagrama de dispersión: un punto por fila del data frame. alpha controla la transparencia (0 invisible, 1 sólido) para manejar la sobreposición de puntos.\nS1S2S3S5\n\n\ngeom_jitter(width, alpha, size)\nPuntos con desplazamiento aleatorio pequeño en el eje x para evitar solapamiento. Combina bien con geom_violin() o geom_boxplot() para mostrar los datos individuales.\nS2S3\n\n\ngeom_boxplot(alpha)\nDiagrama de caja: muestra la mediana, los cuartiles y los valores extremos de y para cada nivel de x.\nS2\n\n\ngeom_violin(alpha, fill)\nDiagrama de violín: como el boxplot, pero muestra la forma completa de la distribución (útil para detectar bimodalidad o asimetría). Se combina bien con geom_jitter().\nS2S3\n\n\ngeom_col(position)\nBarras a partir de valores ya calculados en el data frame. A diferencia de geom_bar(), no cuenta; la altura de cada barra es el valor de y.\nS3\n\n\ngeom_smooth(method, se)\nLínea de tendencia sobre los puntos. method = \"lm\" ajusta una recta; method = \"loess\" ajusta una curva suave. se = FALSE oculta el intervalo de confianza.\nS2S3\n\n\ngeom_line(colour, linewidth)\nConecta los puntos en orden de x. Apropiado para series de tiempo o datos con un orden natural.\nS2\n\n\ngeom_tile()\nMosaico de celdas coloreadas: dibuja un rectángulo por fila del data frame. Útil para visualizar densidades o matrices en dos dimensiones.\nS1\n\n\ngeom_vline(xintercept, colour)\nDibuja una línea vertical en la posición indicada por xintercept. Útil para marcar la media, un umbral u otro valor de referencia.\nS5\n\n\nFacetas\n\n\nfacet_wrap(~var, scales, nrow)\nDivide la figura en un panel por cada valor único de var. scales = \"free\" permite que cada panel tenga su propia escala.\nS2S5\n\n\nfacet_grid(filas ~ cols)\nOrganiza los paneles en una cuadrícula con una variable en las filas y otra en las columnas. La sintaxis es var_filas ~ var_columnas.\nS2\n\n\nEtiquetas\n\n\nlabs(title, subtitle, x, y, colour, fill, caption)\nDefine los textos de la figura: título, subtítulo, ejes, leyendas y nota al pie. Usa NULL para eliminar un elemento (por ejemplo, x = NULL quita el título del eje x).\nS1S2S3S5S6S7\n\n\nEscalas de color y forma\n\n\nscale_colour_viridis_d(option)\nPaleta Viridis para la estética colour con variable categórica (sufijo _d de discrete). Opciones: \"viridis\", \"magma\", \"plasma\", \"inferno\", \"cividis\".\nS1S2\n\n\nscale_colour_viridis_c(option)\nPaleta Viridis para la estética colour con variable continua (sufijo _c).\nS1\n\n\nscale_fill_viridis_d(option)\nPaleta Viridis para la estética fill con variable categórica.\nS2S3\n\n\nscale_fill_viridis_c(option)\nPaleta Viridis para la estética fill con variable continua.\nS1\n\n\nscale_fill_viridis_b(option)\nPaleta Viridis para la estética fill con variable continua agrupada en intervalos (sufijo _b de binned).\nS1\n\n\nscale_colour_brewer(palette)\nPaleta ColorBrewer para la estética colour. Ejemplos: \"Set2\", \"Dark2\", \"Paired\".\nS2\n\n\nscale_fill_brewer(palette)\nPaleta ColorBrewer para la estética fill.\nS2\n\n\nscale_colour_manual(values)\nPaleta de colores definida a mano para la estética colour. values es un vector de colores (nombres o códigos HEX), uno por categoría.\nS1S2S3\n\n\nscale_fill_manual(values)\nPaleta de colores definida a mano para la estética fill.\nS3\n\n\nscale_shape_discrete(name)\nEscala de formas para la estética shape con variable categórica. Permite personalizar el título de la leyenda con name.\nS2\n\n\nscale_x_log10()\nAplica escala logarítmica en base 10 al eje x. Útil cuando los datos tienen una distribución muy sesgada o un rango muy amplio.\nS2\n\n\nxlim(min, max)\nFija los límites del eje x. Las observaciones fuera del rango se eliminan del cálculo de las geometrías.\nS3\n\n\nTemas\n\n\ntheme(...)\nPersonaliza elementos visuales individuales: posición de la leyenda, tamaño de fuentes, líneas de cuadrícula, fondo, etc. Se suma a un tema base como theme_minimal().\nS1S2S3S5\n\n\ntheme_minimal()\nTema limpio sin fondo gris. Es el tema más usado en el curso.\nS1S2S3S5S6S7\n\n\ntheme_classic()\nTema con ejes pero sin cuadrícula. Estilo clásico de artículo científico.\nS2\n\n\ntheme_bw()\nTema con fondo blanco y cuadrícula.\nS2\n\n\ntheme_linedraw()\nTema con bordes de línea negra, similar a theme_bw() pero con líneas más marcadas.\nS1S2\n\n\ntheme_dark()\nTema con fondo oscuro.\nS2\n\n\ntheme_void()\nTema sin ejes, cuadrícula ni fondo. Útil para mapas o diagramas sin marco.\nS2\n\n\nelement_blank()\nDentro de theme(), elimina por completo un elemento visual. Por ejemplo, panel.grid.minor = element_blank() quita las líneas de cuadrícula menores.\nS2S3\n\n\nelement_text(size, face, colour, hjust)\nDentro de theme(), controla el estilo de un elemento de texto: tamaño, negrita/cursiva, color y alineación horizontal.\nS2S3\n\n\nelement_line(colour, linewidth)\nDentro de theme(), controla el estilo de líneas (cuadrícula, ejes).\nS2\n\n\nelement_rect(fill, colour)\nDentro de theme(), controla el estilo de rectángulos (fondo del panel, de la leyenda).\nS2\n\n\nGuardar figuras\n\n\nggsave(file, plot, width, height, units, dpi)\nGuarda la última figura generada (o la especificada en plot). El formato se determina por la extensión del archivo: .png, .pdf, .svg, etc. Para publicación impresa usa dpi = 300.\nS2"
   },
   {
-    "objectID": "tareas_por_hacer.html#recursos-y-estructura-del-proyecto",
-    "href": "tareas_por_hacer.html#recursos-y-estructura-del-proyecto",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Crear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07"
+    "objectID": "glosario.html#dplyr",
+    "href": "glosario.html#dplyr",
+    "title": "Referencia rápida",
+    "section": "dplyr",
+    "text": "dplyr\nPaquete de manipulación de datos. Parte de tidyverse; se carga con library(tidyverse).\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nExplorar\n\n\nglimpse(x)\nVista compacta del data frame: muestra el número de filas y columnas, el tipo de cada columna y los primeros valores. Equivale a str() de base R pero con formato más legible.\nS2S3S4S5\n\n\ncount(datos, var, sort = FALSE)\nCuenta el número de observaciones por cada valor único de var. Con sort = TRUE ordena de mayor a menor. Es un atajo de group_by() |&gt; summarise(n = n()).\nS3\n\n\nSeleccionar y renombrar columnas\n\n\nselect(datos, col1, col2, ...)\nElige columnas por nombre. Con -col excluye esa columna. Admite los ayudantes starts_with(), ends_with() y contains().\nS3S4\n\n\nrename(datos, nuevo = actual)\nCambia el nombre de columnas. La sintaxis es siempre nombre_nuevo = nombre_actual.\nS3\n\n\nrename_with(datos, .fn, .cols)\nAplica una función (.fn) a los nombres de las columnas indicadas en .cols. Útil para estandarizar nombres en bloque: por ejemplo, convertirlos todos a minúsculas o reemplazar espacios.\nS3\n\n\nstarts_with(\"prefijo\")\nAyudante de selección: dentro de select(), elige todas las columnas cuyos nombres empiezan con el prefijo indicado.\nS3S4\n\n\nends_with(\"sufijo\")\nAyudante de selección: dentro de select(), elige todas las columnas cuyos nombres terminan con el sufijo indicado.\nS3\n\n\ncontains(\"cadena\")\nAyudante de selección: dentro de select(), elige todas las columnas cuyos nombres contienen la cadena indicada en cualquier posición.\nS3\n\n\nFiltrar filas\n\n\nfilter(datos, condición)\nRetiene las filas que cumplen la condición. Varias condiciones separadas por , equivalen a AND (todas se deben cumplir); | equivale a OR (basta una).\nS3S4S5S6\n\n\nCrear y modificar columnas\n\n\nmutate(datos, col = expresión)\nCrea una columna nueva o modifica una existente. Pueden crearse varias en una sola llamada. El data frame original no cambia a menos que se reasigne con &lt;-.\nS3S4S5\n\n\ncase_when(cond ~ val, ..., TRUE ~ val)\nDentro de mutate(), recodifica valores evaluando condiciones en orden: asigna el valor de la primera condición verdadera. TRUE ~ al final actúa como caso por defecto y captura todo lo que no coincidió con las condiciones anteriores.\nS3S5\n\n\nResumir y agrupar\n\n\nsummarise(datos, col = fn(var))\nColapsa el data frame en un resumen: una fila por grupo (o una sola fila si no hay agrupamiento). Funciones habituales: mean(), sd(), n(), sum().\nS3S4S5S7\n\n\ngroup_by(datos, var1, var2)\nAgrupa el data frame para que las operaciones siguientes (mutate(), summarise()) operen dentro de cada grupo por separado. No cambia los datos visibles, solo añade información de agrupamiento.\nS3S4S5S7\n\n\nungroup(datos)\nElimina el agrupamiento activo. Conviene añadirlo al final de cualquier pipeline que use group_by() cuando se quiere seguir usando el objeto sin agrupamiento.\nS3\n\n\nn()\nDentro de summarise() o mutate(), devuelve el número de filas del grupo actual (o del data frame completo si no hay agrupamiento).\nS3S5S7"
   },
   {
-    "objectID": "tareas_por_hacer.html#sitio-web",
-    "href": "tareas_por_hacer.html#sitio-web",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Actualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido"
+    "objectID": "glosario.html#readr",
+    "href": "glosario.html#readr",
+    "title": "Referencia rápida",
+    "section": "readr",
+    "text": "readr\nPaquete para importar y exportar archivos de texto plano (CSV, TSV…). Parte de tidyverse.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nread_csv(file, skip, na)\nImporta un CSV con coma como separador y punto como decimal (formato internacional). skip omite las primeras n filas; na define los valores que se tratarán como NA.\nS4\n\n\nread_csv2(file, skip, na)\nImporta un CSV con punto y coma como separador y coma como decimal: el formato que genera Excel configurado en español. Mismos argumentos que read_csv().\nS4\n\n\nwrite_csv(x, file)\nExporta un data frame a CSV con coma como separador. Útil para compartir con otros programas o personas.\nS4\n\n\nwrite_csv2(x, file)\nExporta un data frame a CSV con punto y coma como separador y coma como decimal (formato latinoamericano).\nS4"
   },
   {
-    "objectID": "tareas_por_hacer.html#tareas-para-estudiantes",
-    "href": "tareas_por_hacer.html#tareas-para-estudiantes",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Crear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Tarea 1 — enlace en tarea1-figura-fea.qmd y en s03\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)"
+    "objectID": "glosario.html#readxl",
+    "href": "glosario.html#readxl",
+    "title": "Referencia rápida",
+    "section": "readxl",
+    "text": "readxl\nPaquete para importar archivos Excel (.xlsx, .xls). No forma parte del tidyverse básico; se instala y carga por separado con library(readxl).\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nread_excel(path, sheet, skip, na, range)\nImporta una hoja de un archivo Excel. Por defecto carga la primera hoja. Argumentos clave: sheet (nombre o número de hoja), skip (filas a omitir al inicio), na (valores vacíos), range (rango de celdas).\nS3S4\n\n\nexcel_sheets(path)\nLista los nombres de todas las hojas del archivo Excel. Úsala antes de read_excel() para saber qué hojas existen y cómo se llaman.\nS4"
   },
   {
-    "objectID": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
-    "href": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nTarea 2 + Cierre, integración, buenas prácticas"
+    "objectID": "glosario.html#tidyr",
+    "href": "glosario.html#tidyr",
+    "title": "Referencia rápida",
+    "section": "tidyr",
+    "text": "tidyr\nPaquete para reorganizar y transformar datos. Parte de tidyverse.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ndrop_na(datos, ...)\nElimina las filas que contienen al menos un valor NA. Sin argumentos adicionales, revisa todas las columnas; con nombres de columnas, solo las indicadas.\nS2S3\n\n\npivot_longer(datos, cols, names_to, values_to)\nTransforma de formato ancho a formato largo: convierte varias columnas en filas. cols indica qué columnas pivotar; names_to y values_to son los nombres de las dos nuevas columnas resultantes.\nS5"
   },
   {
-    "objectID": "tareas_por_hacer.html#tabla-de-comandos",
-    "href": "tareas_por_hacer.html#tabla-de-comandos",
-    "title": "Tareas por hacer",
-    "section": "",
-    "text": "Situación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+    "objectID": "glosario.html#stringr",
+    "href": "glosario.html#stringr",
+    "title": "Referencia rápida",
+    "section": "stringr",
+    "text": "stringr\nPaquete para manipulación de cadenas de texto. Parte de tidyverse.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nstr_pad(string, width, side, pad)\nRellena una cadena de texto hasta alcanzar la anchura indicada en width. Por defecto rellena por la izquierda con espacios; con pad = \"0\" rellena con ceros. Útil para construir identificadores con formato fijo como \"ID_001\".\nS5"
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html",
-    "href": "tareas/tarea2-paquete-raro.html",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "",
-    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+    "objectID": "glosario.html#knitr",
+    "href": "glosario.html#knitr",
+    "title": "Referencia rápida",
+    "section": "knitr",
+    "text": "knitr\nPaquete de generación de documentos. Se carga con library(knitr) y es el motor que Quarto usa internamente para ejecutar los bloques de código.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nkable(x, digits, col.names)\nConvierte un data frame en una tabla con formato para documentos HTML, PDF o Word. Solución rápida para tablas sencillas; para tablas más elaboradas usa el paquete gt.\nS7"
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#el-reto",
-    "href": "tareas/tarea2-paquete-raro.html#el-reto",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "",
-    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+    "objectID": "glosario.html#gt",
+    "href": "glosario.html#gt",
+    "title": "Referencia rápida",
+    "section": "gt",
+    "text": "gt\nPaquete para crear tablas de publicación con control detallado del formato.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ngt(data)\nCrea una tabla gt a partir de un data frame. Las funciones de formato se añaden con el pipe |&gt;, igual que en ggplot2 con +.\nS7\n\n\ntab_header(title, subtitle)\nAñade un título y un subtítulo encima de la tabla.\nS7\n\n\ncols_label(...)\nDefine las etiquetas visibles de las columnas. Sintaxis: nombre_columna = \"Etiqueta visible\".\nS7\n\n\nfmt_number(columns, decimals)\nFormatea columnas numéricas: controla el número de decimales y los separadores de miles.\nS7\n\n\ntab_spanner(label, columns)\nAgrupa varias columnas bajo un encabezado común. label es el texto del encabezado; columns es el vector de columnas agrupadas.\nS7"
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
-    "href": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "Lo que debes presentar",
-    "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
+    "objectID": "glosario.html#faux",
+    "href": "glosario.html#faux",
+    "title": "Referencia rápida",
+    "section": "faux",
+    "text": "faux\nPaquete para simular datos con estructura de correlaciones definida entre variables.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nrnorm_multi(n, mu, sd, r, varnames)\nSimula n observaciones de varias variables numéricas con las medias (mu), desviaciones estándar (sd) y correlaciones (r) indicadas. varnames es el vector de nombres para las columnas resultantes.\nS5"
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "href": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "Algunas pistas de por dónde buscar",
-    "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
-  },
-  {
-    "objectID": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "href": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "title": "Tarea 2 · Presenta un paquete de R",
-    "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
-    "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores y lo puedas explicar con tus propias palabras."
+    "objectID": "glosario.html#tinytex",
+    "href": "glosario.html#tinytex",
+    "title": "Referencia rápida",
+    "section": "tinytex",
+    "text": "tinytex\nPaquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ntinytex::install_tinytex()\nInstala TinyTeX en el sistema. Se ejecuta una sola vez. Después, cambiar format: pdf en el YAML de un documento Quarto genera un PDF sin configuración adicional.\nS6"
   },
   {
     "objectID": "index.html",
