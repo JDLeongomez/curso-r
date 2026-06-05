@@ -45,7 +45,7 @@ website:
           - href: retos/reto2-paquete-raro.html
             text: "Reto 2 · Paquete raro"
       - href: glosario.html
-        text: Referencia
+        text: Glosario de R
 
 format:
   html:
@@ -56,8 +56,10 @@ format:
         <script>
         document.addEventListener('DOMContentLoaded', function() {
           document.querySelectorAll('a[href^="http"]').forEach(function(a) {
-            a.setAttribute('target', '_blank');
-            a.setAttribute('rel', 'noopener noreferrer');
+            if (a.hostname !== location.hostname) {
+              a.setAttribute('target', '_blank');
+              a.setAttribute('rel', 'noopener noreferrer');
+            }
           });
         });
         </script>
