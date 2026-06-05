@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```atl\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```lna\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -207,14 +207,14 @@
     "href": "sesiones/s06/slides.html#section-9",
     "title": "Sesión 6",
     "section": "",
-    "text": "Tarea 2\n\n\nPresenta un paquete de R\n\n\nPara la Sesión 9 · Máximo 5 min · Demostración en vivo"
+    "text": "Reto 2\n\n\nPresenta un paquete de R\n\n\nPara la Sesión 9 · Máximo 5 min · Demostración en vivo"
   },
   {
-    "objectID": "sesiones/s06/slides.html#tarea-2-presenta-un-paquete-de-r",
-    "href": "sesiones/s06/slides.html#tarea-2-presenta-un-paquete-de-r",
+    "objectID": "sesiones/s06/slides.html#reto-2-presenta-un-paquete-de-r",
+    "href": "sesiones/s06/slides.html#reto-2-presenta-un-paquete-de-r",
     "title": "Sesión 6",
-    "section": "Tarea 2: presenta un paquete de R",
-    "text": "Tarea 2: presenta un paquete de R\nTu misión: encontrar un paquete de R que te llame la atención y presentárselo al grupo.\n\n¿Cómo se llama y para qué sirve?\n¿Dónde lo encontraste?\nCarga el paquete y ejecuta en vivo al menos una función, explicando sus argumentos y lo que produce\n¿Por qué te pareció interesante, útil o simplemente raro?\n\n\nEl paquete ojalá sea sorprendente. R tiene más de 23 000 paquetes: algunos hacen cosas absurdas, otros hacen cosas increíbles.\n→ Instrucciones completas y ejemplos de inspiración"
+    "section": "Reto 2: presenta un paquete de R",
+    "text": "Reto 2: presenta un paquete de R\nTu misión: encontrar un paquete de R que te llame la atención y presentárselo al grupo.\n\n¿Cómo se llama y para qué sirve?\n¿Dónde lo encontraste?\nCarga el paquete y ejecuta en vivo al menos una función, explicando sus argumentos y lo que produce\n¿Por qué te pareció interesante, útil o simplemente raro?\n\n\nEl paquete ojalá sea sorprendente. R tiene más de 23 000 paquetes: algunos hacen cosas absurdas, otros hacen cosas increíbles.\n→ Instrucciones completas y ejemplos de inspiración"
   },
   {
     "objectID": "sesiones/s06/slides.html#a-practicar",
@@ -284,7 +284,7 @@
     "href": "sesiones/s03/slides.html#dplyr-en-el-ecosistema-tidyverse",
     "title": "Sesión 3",
     "section": "dplyr en el ecosistema tidyverse",
-    "text": "dplyr en el ecosistema tidyverse\ndplyr es parte de tidyverse y trabaja en perfecta sintonía con ggplot2: ambos esperan datos en formato tabular (filas = observaciones, columnas = variables).\n\nlibrary(tidyverse)\n\nSus funciones principales se llaman verbos:\n\n\n\nVerbo\nQué hace\n\n\n\n\nselect()\nElige columnas\n\n\nrename()\nCambia el nombre de columnas\n\n\nfilter()\nElige filas según una condición\n\n\nmutate()\nCrea o sobreescribe columnas\n\n\nsummarise()\nResume datos en una o pocas filas\n\n\ngroup_by()\nAgrupa filas para operar por grupo"
+    "text": "dplyr en el ecosistema tidyverse\ndplyr es parte de tidyverse y trabaja en perfecta sintonía con ggplot2: ambos esperan datos en formato tabular (filas = observaciones, columnas = variables).\n\nlibrary(tidyverse)\n\nSus funciones principales se llaman verbos:\n\n\n\nVerbo\nQué hace\n\n\n\n\nselect()\nSelecciona columnas\n\n\nrename()\nRenombra columnas\n\n\nfilter()\nFiltra filas según una condición\n\n\nmutate()\nCrea o sobreescribe columnas\n\n\nsummarise()\nResume datos en una o pocas filas\n\n\ngroup_by()\nAgrupa filas para operar por grupo"
   },
   {
     "objectID": "sesiones/s03/slides.html#nuestros-datos-de-práctica",
@@ -347,7 +347,7 @@
     "href": "sesiones/s03/slides.html#filter-varias-condiciones-con-and",
     "title": "Sesión 3",
     "section": "filter(): varias condiciones con AND",
-    "text": "filter(): varias condiciones con AND\nSeparar condiciones con , equivale a AND (se deben cumplir todas):\n\nfilter(pinguinos, species == \"Adelie\", body_mass_g &gt; 4000)\n\n# A tibble: 34 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.2          19.6               195        4675\n 2 Adelie  Torgersen           34.6          21.1               198        4400\n 3 Adelie  Torgersen           42.5          20.7               197        4500\n 4 Adelie  Torgersen           46            21.5               194        4200\n 5 Adelie  Dream               39.2          21.1               196        4150\n 6 Adelie  Dream               39.8          19.1               184        4650\n 7 Adelie  Dream               44.1          19.7               196        4400\n 8 Adelie  Dream               39.6          18.8               190        4600\n 9 Adelie  Dream               42.3          21.2               191        4150\n10 Adelie  Biscoe              40.1          18.9               188        4300\n# ℹ 24 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "filter(): varias condiciones con AND\nSeparar condiciones con , o con & equivalen a AND (se deben cumplir todas):\n\nfilter(pinguinos, species == \"Adelie\" & body_mass_g &gt; 4000)\n\n# A tibble: 34 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.2          19.6               195        4675\n 2 Adelie  Torgersen           34.6          21.1               198        4400\n 3 Adelie  Torgersen           42.5          20.7               197        4500\n 4 Adelie  Torgersen           46            21.5               194        4200\n 5 Adelie  Dream               39.2          21.1               196        4150\n 6 Adelie  Dream               39.8          19.1               184        4650\n 7 Adelie  Dream               44.1          19.7               196        4400\n 8 Adelie  Dream               39.6          18.8               190        4600\n 9 Adelie  Dream               42.3          21.2               191        4150\n10 Adelie  Biscoe              40.1          18.9               188        4300\n# ℹ 24 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\nfilter(pinguinos, species == \"Adelie\", body_mass_g &gt; 4000)"
   },
   {
     "objectID": "sesiones/s03/slides.html#filter-condiciones-con-or",
@@ -417,7 +417,7 @@
     "href": "sesiones/s03/slides.html#group_by-summarise-resumen-por-grupos",
     "title": "Sesión 3",
     "section": "group_by() + summarise(): resumen por grupos",
-    "text": "group_by() + summarise(): resumen por grupos\ngroup_by() divide el data frame en grupos; summarise() opera dentro de cada uno. Por ahora, lo hacemos en dos pasos:\n\n\n\npor_especie &lt;- group_by(pinguinos, species)\nsummarise(por_especie,\n    masa_media = mean(body_mass_g),\n    n          = n()\n)\n\n# A tibble: 3 × 3\n  species   masa_media     n\n  &lt;fct&gt;          &lt;dbl&gt; &lt;int&gt;\n1 Adelie         3706.   146\n2 Chinstrap      3733.    68\n3 Gentoo         5092.   119\n\n\n\n\npor_esp_sexo &lt;- group_by(pinguinos, species, sex)\nsummarise(por_esp_sexo,\n    masa_media = mean(body_mass_g),\n    n          = n()\n)\n\n# A tibble: 6 × 4\n# Groups:   species [3]\n  species   sex    masa_media     n\n  &lt;fct&gt;     &lt;fct&gt;       &lt;dbl&gt; &lt;int&gt;\n1 Adelie    female      3369.    73\n2 Adelie    male        4043.    73\n3 Chinstrap female      3527.    34\n4 Chinstrap male        3939.    34\n5 Gentoo    female      4680.    58\n6 Gentoo    male        5485.    61"
+    "text": "group_by() + summarise(): resumen por grupos\ngroup_by() divide el data frame en grupos; summarise() opera dentro de cada uno. Podemos agrupar por una o más variables:\n\n\n\npor_especie &lt;- group_by(pinguinos, species)\nsummarise(por_especie,\n    masa_media = mean(body_mass_g),\n    n          = n()\n)\n\n# A tibble: 3 × 3\n  species   masa_media     n\n  &lt;fct&gt;          &lt;dbl&gt; &lt;int&gt;\n1 Adelie         3706.   146\n2 Chinstrap      3733.    68\n3 Gentoo         5092.   119\n\n\n\n\npor_esp_sexo &lt;- group_by(pinguinos, species, sex)\nsummarise(por_esp_sexo,\n    masa_media = mean(body_mass_g),\n    n          = n()\n)\n\n# A tibble: 6 × 4\n# Groups:   species [3]\n  species   sex    masa_media     n\n  &lt;fct&gt;     &lt;fct&gt;       &lt;dbl&gt; &lt;int&gt;\n1 Adelie    female      3369.    73\n2 Adelie    male        4043.    73\n3 Chinstrap female      3527.    34\n4 Chinstrap male        3939.    34\n5 Gentoo    female      4680.    58\n6 Gentoo    male        5485.    61"
   },
   {
     "objectID": "sesiones/s03/slides.html#group_by-mutate-calcular-dentro-de-grupos",
@@ -473,7 +473,7 @@
     "href": "sesiones/s03/slides.html#el-mismo-ejemplo-con-pipe",
     "title": "Sesión 3",
     "section": "El mismo ejemplo, con pipe",
-    "text": "El mismo ejemplo, con pipe\n\npinguinos |&gt;\n    select(species, sex, body_mass_g) |&gt;\n    filter(sex == \"female\") |&gt;\n    mutate(body_mass_kg = body_mass_g / 1000) |&gt;\n    group_by(species) |&gt;\n    summarise(masa_media_kg = mean(body_mass_kg))\n\n# A tibble: 3 × 2\n  species   masa_media_kg\n  &lt;fct&gt;             &lt;dbl&gt;\n1 Adelie             3.37\n2 Chinstrap          3.53\n3 Gentoo             4.68\n\n\nUn solo resultado. Sin objetos intermedios. Se lee como una receta."
+    "text": "El mismo ejemplo, con pipe\n\npinguinos |&gt;\n    select(species, sex, body_mass_g) |&gt;\n    filter(sex == \"female\") |&gt;\n    mutate(body_mass_kg = body_mass_g / 1000) |&gt;\n    group_by(species) |&gt;\n    summarise(masa_media_kg = mean(body_mass_kg))\n\n# A tibble: 3 × 2\n  species   masa_media_kg\n  &lt;fct&gt;             &lt;dbl&gt;\n1 Adelie             3.37\n2 Chinstrap          3.53\n3 Gentoo             4.68\n\n\nUn solo resultado sin objetos intermedios. Se lee como una receta."
   },
   {
     "objectID": "sesiones/s03/slides.html#atajo-de-teclado",
@@ -515,7 +515,7 @@
     "href": "sesiones/s03/slides.html#más-problemas-de-excel",
     "title": "Sesión 3",
     "section": "Más problemas de Excel",
-    "text": "Más problemas de Excel\n\n\nReproducibilidad\n\nCuando calculas algo en Excel, queda el resultado pero no el proceso\nCualquier edición a los datos originales es permanente e invisible\nDos personas haciendo “lo mismo” en Excel pueden obtener resultados distintos\n\nEscala\n\nManeja mal tablas muy grandes (más de unos cientos de miles de filas)\nUn archivo con muchas fórmulas se vuelve lento e inestable\n\n\nFormato propietario\n\nDepende de Microsoft para abrirlo correctamente\nDistintas versiones de Excel abren el mismo archivo de forma diferente\nEn la próxima sesión veremos formatos abiertos como CSV, que evitan este problema\n\nTipos de datos\n\nExcel adivina el tipo de cada celda, y a veces se equivoca de forma silenciosa"
+    "text": "Más problemas de Excel\n\n\nReproducibilidad\n\nCuando calculas algo en Excel, queda el resultado pero no el proceso\nCualquier edición a los datos originales es permanente e invisible\nDos personas haciendo “lo mismo” en Excel pueden obtener resultados distintos\n\nEscala\n\nSerios problemas con tablas muy grandes (más de unos cientos de miles de filas)\nUn archivo con muchas fórmulas se vuelve lento e inestable\n\n\n\n\nFormato propietario\n\nDepende de Microsoft para abrirlo correctamente\nDistintas versiones de Excel abren el mismo archivo de forma diferente\nEn la próxima sesión veremos formatos abiertos como CSV, que evitan este problema\n\nTipos de datos\n\nExcel adivina el tipo de cada celda, y a veces se equivoca de forma silenciosa"
   },
   {
     "objectID": "sesiones/s03/slides.html#el-enemigo-silencioso-excel-modifica-datos",
@@ -676,14 +676,14 @@
     "href": "sesiones/s03/slides.html#section-13",
     "title": "Sesión 3",
     "section": "",
-    "text": "Tarea 1\n\n\nEl concurso de la figura más fea\n\n\nPara la Sesión 4 · Entrega el script · El grupo vota"
+    "text": "Reto 1\n\n\nEl concurso de la figura más fea\n\n\nPara la Sesión 4 · Entrega el script · El grupo vota"
   },
   {
-    "objectID": "sesiones/s03/slides.html#tarea-1-el-concurso-de-la-figura-más-fea",
-    "href": "sesiones/s03/slides.html#tarea-1-el-concurso-de-la-figura-más-fea",
+    "objectID": "sesiones/s03/slides.html#reto-1-el-concurso-de-la-figura-más-fea",
+    "href": "sesiones/s03/slides.html#reto-1-el-concurso-de-la-figura-más-fea",
     "title": "Sesión 3",
-    "section": "Tarea 1: el concurso de la figura más fea",
-    "text": "Tarea 1: el concurso de la figura más fea\nTu misión: crear la figura estadística más horrible, ilegible y estéticamente ofensiva que seas capaz de producir en R.\n\nDebe generarse completamente con ggplot2 (y los paquetes que quieras)\nGuarda el script .R con tu nombre y súbelo aquí\nEl script debe comenzar por cargar los paquetes necesarios\nLa presentas en la Sesión 4: máximo 3 minutos, muestras código y figura\nEl grupo vota por la más fea\n\n\n→ Instrucciones completas y criterios de evaluación\n→ Otro ejemplo de inspiración (código)"
+    "section": "Reto 1: el concurso de la figura más fea",
+    "text": "Reto 1: el concurso de la figura más fea\nTu misión: crear la figura estadística más horrible, ilegible y estéticamente ofensiva que seas capaz de producir en R.\n\nDebe generarse completamente con ggplot2 (y los paquetes que quieras)\nGuarda el script .R con tu nombre y súbelo aquí\nEl script debe comenzar por cargar los paquetes necesarios\nLa presentas en la Sesión 4: máximo 3 minutos, muestras código y figura\nEl grupo vota por la más fea\n\n\n→ Instrucciones completas y criterios de evaluación\n→ Otro ejemplo de inspiración (código)"
   },
   {
     "objectID": "sesiones/s03/slides.html#inspiración-1-de-2",
@@ -1320,14 +1320,14 @@
     "href": "programa.html#contenidos-por-semana",
     "title": "Programa del curso",
     "section": "Contenidos por semana",
-    "text": "Contenidos por semana\n\nSemana 1 — 3, 4 y 5 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n1\nMiércoles 3 jun\nA-402\nPrimeros pasos en R y RStudio · Sintaxis básica · Primera figura con ggplot2\n\n\n2\nJueves 4 jun\nA-402\nVisualizaciones con ggplot2 · Geometrías · aes() · Temas y paletas\n\n\n3\nViernes 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\n\n\n\nTarea 1 asignada al final de la sesión 3.\n\n\nSemana 2 — 10, 11 y 12 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n4\nMiércoles 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R\n\n\n5\nJueves 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\n\n\n6\nViernes 12 jun\nB-211\nReportes reproducibles con Quarto\n\n\n\nEntrega Tarea 1 al inicio de la sesión 4. Tarea 2 asignada al final de la sesión 6.\n\n\nSemana 3 — 17, 18 y 19 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n7\nMiércoles 17 jun\nA-404\nQuarto: tablas, citas y formatos\n\n\n8\nJueves 18 jun\nA-404\nQuarto: figuras, integración y publicación\n\n\n9\nViernes 19 jun\nA-402\nTarea 2 · Cierre e integración · Buenas prácticas de trabajo en R\n\n\n\nEntrega Tarea 2 al inicio de la sesión 9."
+    "text": "Contenidos por semana\n\nSemana 1 — 3, 4 y 5 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n1\nMiércoles 3 jun\nA-402\nPrimeros pasos en R y RStudio · Sintaxis básica · Primera figura con ggplot2\n\n\n2\nJueves 4 jun\nA-402\nVisualizaciones con ggplot2 · Geometrías · aes() · Temas y paletas\n\n\n3\nViernes 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\n\n\n\nReto 1 asignado al final de la sesión 3.\n\n\nSemana 2 — 10, 11 y 12 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n4\nMiércoles 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R\n\n\n5\nJueves 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\n\n\n6\nViernes 12 jun\nB-211\nReportes reproducibles con Quarto\n\n\n\nEntrega Reto 1 al inicio de la sesión 4. Reto 2 asignado al final de la sesión 6.\n\n\nSemana 3 — 17, 18 y 19 de junio\n\n\n\n\n\n\n\n\n\n#\nDía\nSalón\nTema\n\n\n\n\n7\nMiércoles 17 jun\nA-404\nQuarto: tablas, citas y formatos\n\n\n8\nJueves 18 jun\nA-404\nQuarto: figuras, integración y publicación\n\n\n9\nViernes 19 jun\nA-402\nReto 2 · Cierre e integración · Buenas prácticas de trabajo en R\n\n\n\nEntrega Reto 2 al inicio de la sesión 9."
   },
   {
     "objectID": "programa.html#evaluación",
     "href": "programa.html#evaluación",
     "title": "Programa del curso",
     "section": "Evaluación",
-    "text": "Evaluación\nEl curso no tiene calificación. Para obtener el certificado de participación se requiere asistencia al 90 % de las sesiones (mínimo 8 de 9 sesiones).\nLas dos tareas son solamente ejercicios de exploración y no se califican, pero se presentan ante el grupo."
+    "text": "Evaluación\nEl curso no tiene calificación. Para obtener el certificado de participación se requiere asistencia al 90 % de las sesiones (mínimo 8 de 9 sesiones).\nLos dos retos son solamente ejercicios de exploración y no se califican, pero se presentan ante el grupo."
   },
   {
     "objectID": "programa.html#recursos",
@@ -1337,37 +1337,37 @@
     "text": "Recursos\n\nThe tidyverse style guide\nR for Data Science (2e) — Wickham, Çetinkaya-Rundel & Grolemund\nggplot2: Elegant Graphics for Data Analysis — Wickham\nQuarto documentation"
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html",
-    "href": "tareas/tarea2-paquete-raro.html",
-    "title": "Tarea 2 · Presenta un paquete de R",
+    "objectID": "retos/reto2-paquete-raro.html",
+    "href": "retos/reto2-paquete-raro.html",
+    "title": "Reto 2 · Presenta un paquete de R",
     "section": "",
     "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#el-reto",
-    "href": "tareas/tarea2-paquete-raro.html#el-reto",
-    "title": "Tarea 2 · Presenta un paquete de R",
+    "objectID": "retos/reto2-paquete-raro.html#el-reto",
+    "href": "retos/reto2-paquete-raro.html#el-reto",
+    "title": "Reto 2 · Presenta un paquete de R",
     "section": "",
     "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
-    "href": "tareas/tarea2-paquete-raro.html#lo-que-debes-presentar",
-    "title": "Tarea 2 · Presenta un paquete de R",
+    "objectID": "retos/reto2-paquete-raro.html#lo-que-debes-presentar",
+    "href": "retos/reto2-paquete-raro.html#lo-que-debes-presentar",
+    "title": "Reto 2 · Presenta un paquete de R",
     "section": "Lo que debes presentar",
     "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "href": "tareas/tarea2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "title": "Tarea 2 · Presenta un paquete de R",
+    "objectID": "retos/reto2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "href": "retos/reto2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "title": "Reto 2 · Presenta un paquete de R",
     "section": "Algunas pistas de por dónde buscar",
     "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
   },
   {
-    "objectID": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "href": "tareas/tarea2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "title": "Tarea 2 · Presenta un paquete de R",
+    "objectID": "retos/reto2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "href": "retos/reto2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "title": "Reto 2 · Presenta un paquete de R",
     "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
     "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores y lo puedas explicar con tus propias palabras."
   },
@@ -1376,7 +1376,7 @@
     "href": "tareas_por_hacer.html",
     "title": "Tareas por hacer",
     "section": "",
-    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Tarea 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\nCrear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07\n\n\n\n\n\nActualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión\n\n\n\n\n\nCrear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Tarea 1 — enlace en tarea1-figura-fea.qmd y en s03\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nTarea 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Reto 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Reto 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\nCrear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07\n\n\n\n\n\nActualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión\n\n\n\n\n\nCrear retos/reto1-figura-fea.qmd (concurso ggplot2 feo)\nCrear retos/reto1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Reto 1 — enlace en reto1-figura-fea.qmd y en s03\nCrear retos/reto2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nReto\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Reto 1\n\n\n4\nMié 10\nReto 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Reto 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nReto 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
   },
   {
     "objectID": "tareas_por_hacer.html#curso",
@@ -1397,7 +1397,7 @@
     "href": "tareas_por_hacer.html#diapositivas",
     "title": "Tareas por hacer",
     "section": "",
-    "text": "Crear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Tarea 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas"
+    "text": "Crear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Reto 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Reto 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas"
   },
   {
     "objectID": "tareas_por_hacer.html#recursos-y-estructura-del-proyecto",
@@ -1414,18 +1414,18 @@
     "text": "Actualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión"
   },
   {
-    "objectID": "tareas_por_hacer.html#tareas-para-estudiantes",
-    "href": "tareas_por_hacer.html#tareas-para-estudiantes",
+    "objectID": "tareas_por_hacer.html#retos-para-estudiantes",
+    "href": "tareas_por_hacer.html#retos-para-estudiantes",
     "title": "Tareas por hacer",
     "section": "",
-    "text": "Crear tareas/tarea1-figura-fea.qmd (concurso ggplot2 feo)\nCrear tareas/tarea1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Tarea 1 — enlace en tarea1-figura-fea.qmd y en s03\nCrear tareas/tarea2-paquete-raro.qmd (presentar paquete de R)"
+    "text": "Crear retos/reto1-figura-fea.qmd (concurso ggplot2 feo)\nCrear retos/reto1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Reto 1 — enlace en reto1-figura-fea.qmd y en s03\nCrear retos/reto2-paquete-raro.qmd (presentar paquete de R)"
   },
   {
     "objectID": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
     "href": "tareas_por_hacer.html#estructura-de-sesiones-preliminar",
     "title": "Tareas por hacer",
     "section": "",
-    "text": "#\nFecha\nTema\nTarea\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Tarea 1\n\n\n4\nMié 10\nTarea 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Tarea 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nTarea 2 + Cierre, integración, buenas prácticas"
+    "text": "#\nFecha\nTema\nReto\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Reto 1\n\n\n4\nMié 10\nReto 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Reto 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nReto 2 + Cierre, integración, buenas prácticas"
   },
   {
     "objectID": "tareas_por_hacer.html#tabla-de-comandos",
@@ -1433,41 +1433,6 @@
     "title": "Tareas por hacer",
     "section": "",
     "text": "Situación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
-  },
-  {
-    "objectID": "tareas/tarea1-figura-fea.html",
-    "href": "tareas/tarea1-figura-fea.html",
-    "title": "Tarea 1 · El concurso de la figura más fea",
-    "section": "",
-    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras)."
-  },
-  {
-    "objectID": "tareas/tarea1-figura-fea.html#el-reto",
-    "href": "tareas/tarea1-figura-fea.html#el-reto",
-    "title": "Tarea 1 · El concurso de la figura más fea",
-    "section": "",
-    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras)."
-  },
-  {
-    "objectID": "tareas/tarea1-figura-fea.html#criterios-de-evaluación-de-fealdad",
-    "href": "tareas/tarea1-figura-fea.html#criterios-de-evaluación-de-fealdad",
-    "title": "Tarea 1 · El concurso de la figura más fea",
-    "section": "Criterios de evaluación (de fealdad)",
-    "text": "Criterios de evaluación (de fealdad)\n\n💀 Ilegibilidad: ¿Es imposible leer las etiquetas o los ejes?\n🤢 Combinación de colores: ¿Duele mirarla?\n😵 Tipo de gráfica: ¿Es el tipo de gráfica más inapropiado para esos datos?\n🎨 Creatividad: ¿Hay algo inesperadamente horrible que nadie más pensó?\n⚙️ Dominio de ggplot2: A más horrible y más líneas de código, más puntos."
-  },
-  {
-    "objectID": "tareas/tarea1-figura-fea.html#lo-que-debes-entregar",
-    "href": "tareas/tarea1-figura-fea.html#lo-que-debes-entregar",
-    "title": "Tarea 1 · El concurso de la figura más fea",
-    "section": "Lo que debes entregar",
-    "text": "Lo que debes entregar\nUn script .R con el código que produce tu figura. Nómbralo con tu nombre, por ejemplo: tarea1_maria_garcia.R, y súbelo a la carpeta compartida de OneDrive antes de la Sesión 4.\nEl script debe comenzar por cargar los paquetes necesarios al inicio, por ejemplo:\n\n# Cargar paquetes necesarios\nlibrary(ggplot2)\nlibrary(ggthemes)\n\n# Aquí va el código para crear tu figura fea...\nggplot(..., aes(...)) +\n    geom_...() +\n    theme_...() +\n    scale_...() +\n    annotate(...) +\n    coord_...(...)\n\nLo presentas en la Sesión 4 (máximo 3 minutos): muestras el código y el resultado. El grupo vota por la más fea."
-  },
-  {
-    "objectID": "tareas/tarea1-figura-fea.html#pistas-de-lo-que-no-debes-hacer-normalmente",
-    "href": "tareas/tarea1-figura-fea.html#pistas-de-lo-que-no-debes-hacer-normalmente",
-    "title": "Tarea 1 · El concurso de la figura más fea",
-    "section": "Pistas (de lo que no debes hacer normalmente)",
-    "text": "Pistas (de lo que no debes hacer normalmente)\n\n# Algunas funciones que pueden ayudarte en el lado oscuro:\ntheme() # puedes cambiar ABSOLUTAMENTE TODO el aspecto\nscale_colour_manual() # paletas de colores propias\nelement_text() # tamaño, color, ángulo de texto\ncoord_polar() # transforma cualquier gráfica en algo circular\nannotate() # agrega texto, líneas, formas encima\n\n\n\n\n\n\n\nTipInspiración\n\n\n\nBusca “chartjunk”, “bad data visualization” o “how not to visualize data” para encontrar ejemplos de lo que el mundo académico considera un pecado. Tu trabajo es superar eso."
   },
   {
     "objectID": "glosario.html",
@@ -1481,7 +1446,7 @@
     "href": "glosario.html#operadores-y-sintaxis",
     "title": "Referencia rápida",
     "section": "Operadores y sintaxis",
-    "text": "Operadores y sintaxis\nElementos del lenguaje R que no requieren cargar ningún paquete.\n\n\n\nElemento\nDescripción\nSesiones\n\n\n\n\n&lt;-\nOperador de asignación: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.\nS1S2S3S4S5S6S7\n\n\n|&gt;\nPipe nativo (R ≥ 4.1): pasa el resultado de la izquierda como primer argumento de la función de la derecha. Permite encadenar operaciones de arriba a abajo. Atajo en RStudio: Ctrl+Shift+M.\nS3S4S5S6S7\n\n\n%&gt;%\nPipe de magrittr: funciona igual que |&gt; en la gran mayoría de los casos. Común en tutoriales y código anterior a 2021; proviene del paquete magrittr, incluido en tidyverse.\nS3\n\n\n%in%\nComprueba si cada elemento del vector de la izquierda aparece en el vector de la derecha. Devuelve un vector lógico (TRUE/FALSE).\nS3\n\n\nif (cond) { } else { }\nCondicional básico: ejecuta el primer bloque cuando la condición es TRUE y el segundo cuando es FALSE. Solo evalúa un valor escalar, no un vector completo.\nS5\n\n\nnombre &lt;- function(arg) { }\nDefine una función propia. El cuerpo entre llaves contiene el código que se ejecuta al llamarla. R devuelve automáticamente el último valor evaluado dentro del cuerpo.\nS5"
+    "text": "Operadores y sintaxis\nElementos del lenguaje R que no requieren cargar ningún paquete.\n\n\n\nElemento\nDescripción\nSesiones\n\n\n\n\n&lt;-\nAsignar: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.\nS1S2S3S4S5S6S7\n\n\n|&gt;\nPipe nativo (R ≥ 4.1): pasa el resultado de la izquierda como primer argumento de la función de la derecha. Permite encadenar operaciones de arriba a abajo. Atajo en RStudio: Ctrl+Shift+M.\nS3S4S5S6S7\n\n\n%&gt;%\nPipe de magrittr: funciona igual que |&gt; en la gran mayoría de los casos. Común en tutoriales y código anterior a 2021; proviene del paquete magrittr, incluido en tidyverse.\nS3\n\n\n%in%\nComprueba si cada elemento del vector de la izquierda aparece en el vector de la derecha. Devuelve un vector lógico (TRUE/FALSE).\nS3\n\n\nif (cond) { } else { }\nCondicional básico: ejecuta el primer bloque cuando la condición es TRUE y el segundo cuando es FALSE. Solo evalúa un valor escalar, no un vector completo.\nS5\n\n\nnombre &lt;- function(arg) { }\nDefine una función propia. El cuerpo entre llaves contiene el código que se ejecuta al llamarla. R devuelve automáticamente el último valor evaluado dentro del cuerpo.\nS5"
   },
   {
     "objectID": "glosario.html#r-base",
@@ -1561,6 +1526,41 @@
     "text": "tinytex\nPaquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ntinytex::install_tinytex()\nInstala TinyTeX en el sistema. Se ejecuta una sola vez. Después, cambiar format: pdf en el YAML de un documento Quarto genera un PDF sin configuración adicional.\nS6"
   },
   {
+    "objectID": "retos/reto1-figura-fea.html",
+    "href": "retos/reto1-figura-fea.html",
+    "title": "Reto 1 · El concurso de la figura más fea",
+    "section": "",
+    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras)."
+  },
+  {
+    "objectID": "retos/reto1-figura-fea.html#el-reto",
+    "href": "retos/reto1-figura-fea.html#el-reto",
+    "title": "Reto 1 · El concurso de la figura más fea",
+    "section": "",
+    "text": "Durante la primera semana aprendiste a crear gráficas en ggplot2. Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer: tu misión es crear la figura estadística más horrible, ilegible, confusa y estéticamente ofensiva que seas capaz de producir.\nLa única regla es que el gráfico debe generarse completamente en R, usando ggplot2 (y los paquetes que quieras)."
+  },
+  {
+    "objectID": "retos/reto1-figura-fea.html#criterios-de-evaluación-de-fealdad",
+    "href": "retos/reto1-figura-fea.html#criterios-de-evaluación-de-fealdad",
+    "title": "Reto 1 · El concurso de la figura más fea",
+    "section": "Criterios de evaluación (de fealdad)",
+    "text": "Criterios de evaluación (de fealdad)\n\n💀 Ilegibilidad: ¿Es imposible leer las etiquetas o los ejes?\n🤢 Combinación de colores: ¿Duele mirarla?\n😵 Tipo de gráfica: ¿Es el tipo de gráfica más inapropiado para esos datos?\n🎨 Creatividad: ¿Hay algo inesperadamente horrible que nadie más pensó?\n⚙️ Dominio de ggplot2: A más horrible y más líneas de código, más puntos."
+  },
+  {
+    "objectID": "retos/reto1-figura-fea.html#lo-que-debes-entregar",
+    "href": "retos/reto1-figura-fea.html#lo-que-debes-entregar",
+    "title": "Reto 1 · El concurso de la figura más fea",
+    "section": "Lo que debes entregar",
+    "text": "Lo que debes entregar\nUn script .R con el código que produce tu figura. Nómbralo con tu nombre, por ejemplo: reto1_maria_garcia.R, y súbelo a la carpeta compartida de OneDrive antes de la Sesión 4.\nEl script debe comenzar por cargar los paquetes necesarios al inicio, por ejemplo:\n\n# Cargar paquetes necesarios\nlibrary(ggplot2)\nlibrary(ggthemes)\n\n# Aquí va el código para crear tu figura fea...\nggplot(..., aes(...)) +\n    geom_...() +\n    theme_...() +\n    scale_...() +\n    annotate(...) +\n    coord_...(...)\n\nLo presentas en la Sesión 4 (máximo 3 minutos): muestras el código y el resultado. El grupo vota por la más fea."
+  },
+  {
+    "objectID": "retos/reto1-figura-fea.html#pistas-de-lo-que-no-debes-hacer-normalmente",
+    "href": "retos/reto1-figura-fea.html#pistas-de-lo-que-no-debes-hacer-normalmente",
+    "title": "Reto 1 · El concurso de la figura más fea",
+    "section": "Pistas (de lo que no debes hacer normalmente)",
+    "text": "Pistas (de lo que no debes hacer normalmente)\n\n# Algunas funciones que pueden ayudarte en el lado oscuro:\ntheme() # puedes cambiar ABSOLUTAMENTE TODO el aspecto\nscale_colour_manual() # paletas de colores propias\nelement_text() # tamaño, color, ángulo de texto\ncoord_polar() # transforma cualquier gráfica en algo circular\nannotate() # agrega texto, líneas, formas encima\n\n\n\n\n\n\n\nTipInspiración\n\n\n\nBusca “chartjunk”, “bad data visualization” o “how not to visualize data” para encontrar ejemplos de lo que el mundo académico considera un pecado. Tu trabajo es superar eso."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Maneja, explora y visualiza datos con R",
@@ -1579,14 +1579,14 @@
     "href": "index.html#sesiones",
     "title": "Maneja, explora y visualiza datos con R",
     "section": "Sesiones",
-    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-402\nPrimeros pasos en R y RStudio\nDiapositivas · script_ejemplo.R\n\n\n2\nJue 4 jun\nA-402\nVisualizaciones con ggplot2\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\nDiapositivas · encuesta_bruta.xlsx → Tarea 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R Entrega Tarea 1\nDiapositivas · notas.csv · registro.xlsx\n\n\n5\nJue 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\nDiapositivas\n\n\n6\nVie 12 jun\nB-211\nReportes reproducibles con Quarto\nDiapositivas → Tarea 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto: tablas, citas y formatos\nDiapositivas\n\n\n8\nJue 18 jun\nA-404\nQuarto: figuras, integración y publicación\n—\n\n\n9\nVie 19 jun\nA-402\nTarea 2 · Cierre e integración · Buenas prácticas de trabajo en R Entrega Tarea 2\n—"
+    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-402\nPrimeros pasos en R y RStudio\nDiapositivas · script_ejemplo.R\n\n\n2\nJue 4 jun\nA-402\nVisualizaciones con ggplot2\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\nDiapositivas · encuesta_bruta.xlsx → Reto 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R Entrega Reto 1\nDiapositivas · notas.csv · registro.xlsx\n\n\n5\nJue 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\nDiapositivas\n\n\n6\nVie 12 jun\nB-211\nReportes reproducibles con Quarto\nDiapositivas → Reto 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto: tablas, citas y formatos\nDiapositivas\n\n\n8\nJue 18 jun\nA-404\nQuarto: figuras, integración y publicación\n—\n\n\n9\nVie 19 jun\nA-402\nReto 2 · Cierre e integración · Buenas prácticas de trabajo en R Entrega Reto 2\n—"
   },
   {
-    "objectID": "index.html#tareas",
-    "href": "index.html#tareas",
+    "objectID": "index.html#retos",
+    "href": "index.html#retos",
     "title": "Maneja, explora y visualiza datos con R",
-    "section": "Tareas",
-    "text": "Tareas\n\nTarea 1 · El concurso de la figura más fea\nTarea 2 · Presenta un paquete de R"
+    "section": "Retos",
+    "text": "Retos\n\nReto 1 · El concurso de la figura más fea\nReto 2 · Presenta un paquete de R"
   },
   {
     "objectID": "index.html#profesor",
@@ -1607,7 +1607,7 @@
     "href": "sesiones/s01/slides.html#el-sitio-del-curso",
     "title": "Sesión 1",
     "section": "El sitio del curso",
-    "text": "El sitio del curso\n\n\nAquí encontrarás todo el material del curso:\n\nDiapositivas de cada sesión\nArchivos de datos y materiales para las actividades\nDescripciones detalladas de las tareas\n\nÁbrelo ahora en tu computador (o teléfono).\n\n\njdleongomez.github.io/curso-r"
+    "text": "El sitio del curso\n\n\nAquí encontrarás todo el material del curso:\n\nDiapositivas de cada sesión\nArchivos de datos y materiales para las actividades\nDescripciones detalladas de los retos\n\nÁbrelo ahora en tu computador (o teléfono).\n\n\njdleongomez.github.io/curso-r"
   },
   {
     "objectID": "sesiones/s01/slides.html#agenda",
@@ -1936,14 +1936,14 @@
     "href": "sesiones/s04/slides.html#agenda",
     "title": "Sesión 4",
     "section": "Agenda",
-    "text": "Agenda\n\nTarea 1: el concurso de la figura más fea\nProyectos de R y rutas relativas\nImportar CSV: read_csv() y el problema latinoamericano\nImportar Excel: read_excel() con argumentos clave\nGuardar datos procesados\nEl flujo de trabajo reproducible"
+    "text": "Agenda\n\nReto 1: el concurso de la figura más fea\nProyectos de R y rutas relativas\nImportar CSV: read_csv() y el problema latinoamericano\nImportar Excel: read_excel() con argumentos clave\nGuardar datos procesados\nEl flujo de trabajo reproducible"
   },
   {
     "objectID": "sesiones/s04/slides.html#section",
     "href": "sesiones/s04/slides.html#section",
     "title": "Sesión 4",
     "section": "",
-    "text": "Tarea 1\n\n\nEl concurso de la figura más fea"
+    "text": "Reto 1\n\n\nEl concurso de la figura más fea"
   },
   {
     "objectID": "sesiones/s04/slides.html#las-presentaciones",
