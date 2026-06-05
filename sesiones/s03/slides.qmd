@@ -193,9 +193,9 @@ Sus funciones principales se llaman **verbos**:
 
 | Verbo | Qué hace |
 |---|---|
-| `select()` | Elige columnas |
-| `rename()` | Cambia el nombre de columnas |
-| `filter()` | Elige filas según una condición |
+| `select()` | Selecciona columnas |
+| `rename()` | Renombra columnas |
+| `filter()` | Filtra filas según una condición |
 | `mutate()` | Crea o sobreescribe columnas |
 | `summarise()` | Resume datos en una o pocas filas |
 | `group_by()` | Agrupa filas para operar por grupo |
@@ -296,12 +296,17 @@ Usa `==` para comparar igualdad (no `=`). Los operadores habituales: `==` igual,
 
 ## `filter()`: varias condiciones con AND
 
-Separar condiciones con `,` equivale a AND (se deben cumplir **todas**):
+Separar condiciones con `,` o con `&` equivalen a AND (se deben cumplir **todas**):
 
 ```{r}
-filter(pinguinos, species == "Adelie", body_mass_g > 4000)
+filter(pinguinos, species == "Adelie" & body_mass_g > 4000)
 ```
 
+
+```{r}
+#| eval: false
+filter(pinguinos, species == "Adelie", body_mass_g > 4000)
+```
 ---
 
 ## `filter()`: condiciones con OR
@@ -449,7 +454,7 @@ summarise(
 
 ## `group_by()` + `summarise()`: resumen por grupos
 
-`group_by()` divide el data frame en grupos; `summarise()` opera dentro de cada uno. Por ahora, lo hacemos en dos pasos:
+`group_by()` divide el data frame en grupos; `summarise()` opera dentro de cada uno. Podemos agrupar por una o más variables:
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -602,7 +607,7 @@ pinguinos |>
     summarise(masa_media_kg = mean(body_mass_kg))
 ```
 
-Un solo resultado. Sin objetos intermedios. Se lee como una receta.
+Un solo resultado sin objetos intermedios. Se lee como una receta.
 
 ---
 
@@ -716,7 +721,7 @@ Un CSV o un data frame en R son *machine-readable*: cada columna tiene un tipo f
 ## Más problemas de Excel {.smaller}
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="48%"}
 **Reproducibilidad**
 
 - Cuando calculas algo en Excel, queda el resultado pero no el proceso
@@ -725,11 +730,12 @@ Un CSV o un data frame en R son *machine-readable*: cada columna tiene un tipo f
 
 **Escala**
 
-- Maneja mal tablas muy grandes (más de unos cientos de miles de filas)
+- Serios problemas con tablas muy grandes (más de unos cientos de miles de filas)
 - Un archivo con muchas fórmulas se vuelve lento e inestable
 :::
-
-::: {.column width="50%"}
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
 **Formato propietario**
 
 - Depende de Microsoft para abrirlo correctamente
@@ -1256,7 +1262,7 @@ Algunas preguntas posibles:
 ##  {background-color="#6b1220" .actividad}
 
 ::: actividad-num
-Tarea 1
+Reto 1
 :::
 
 ::: actividad-title
@@ -1269,7 +1275,7 @@ Para la Sesión 4 · Entrega el *script* · El grupo vota
 
 ---
 
-## Tarea 1: el concurso de la figura más fea
+## Reto 1: el concurso de la figura más fea
 
 **Tu misión**: crear la figura estadística más horrible, ilegible y estéticamente ofensiva que seas capaz de producir en R.
 
@@ -1280,7 +1286,7 @@ Para la Sesión 4 · Entrega el *script* · El grupo vota
 - El grupo vota por la más fea
 
 ::: tip-box
-[→ Instrucciones completas y criterios de evaluación](../../tareas/tarea1-figura-fea.html)
+[→ Instrucciones completas y criterios de evaluación](../../retos/reto1-figura-fea.html)
 
 [→ Otro ejemplo de inspiración (código)](https://gist.github.com/emilyriederer/2bf4f67d7e198f8359b61706c82e42ee)
 :::

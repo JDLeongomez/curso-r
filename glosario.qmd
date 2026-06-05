@@ -36,7 +36,7 @@ Elementos del lenguaje R que no requieren cargar ningún paquete.
 <tbody>
 <tr class="fn-row">
 <td><code>&lt;-</code></td>
-<td>Operador de asignación: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.</td>
+<td><strong>Asignar</strong>: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.</td>
 <td><span class="s-badge">S1</span><span class="s-badge">S2</span><span class="s-badge">S3</span><span class="s-badge">S4</span><span class="s-badge">S5</span><span class="s-badge">S6</span><span class="s-badge">S7</span></td>
 </tr>
 <tr class="fn-row">

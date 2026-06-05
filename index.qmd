@@ -74,7 +74,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>Vie 5 jun</td>
       <td><span class="salon-a402">A-402</span></td>
       <td>Manejo y transformación de datos con dplyr y pipes</td>
-      <td><a href="sesiones/s03/slides.html" class="slides-label">Diapositivas</a> · <a href="sesiones/s03/datos/encuesta_bruta.xlsx" class="data-label">encuesta_bruta.xlsx</a> <span class="tarea-label" style="margin-left:8px;">→ Tarea 1</span></td>
+      <td><a href="sesiones/s03/slides.html" class="slides-label">Diapositivas</a> · <a href="sesiones/s03/datos/encuesta_bruta.xlsx" class="data-label">encuesta_bruta.xlsx</a> <span class="tarea-label" style="margin-left:8px;">→ Reto 1</span></td>
     </tr>
 
     <!-- Semana 2 -->
@@ -87,7 +87,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>4</td>
       <td>Mié 10 jun</td>
       <td><span class="salon-a402">A-402</span></td>
-      <td>Importar y organizar datos: Excel, CSV y proyectos de R <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 1</span></td>
+      <td>Importar y organizar datos: Excel, CSV y proyectos de R <span class="tarea-label" style="margin-left:8px;">Entrega Reto 1</span></td>
       <td><a href="sesiones/s04/slides.html" class="slides-label">Diapositivas</a> · <a href="sesiones/s04/datos/notas.csv" class="data-label">notas.csv</a> · <a href="sesiones/s04/datos/registro.xlsx" class="data-label">registro.xlsx</a></td>
     </tr>
     <tr>
@@ -102,7 +102,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>Vie 12 jun</td>
       <td><span class="salon-b211">B-211</span></td>
       <td>Reportes reproducibles con Quarto</td>
-      <td><a href="sesiones/s06/slides.html" class="slides-label">Diapositivas</a> <span class="tarea-label" style="margin-left:8px;">→ Tarea 2</span></td>
+      <td><a href="sesiones/s06/slides.html" class="slides-label">Diapositivas</a> <span class="tarea-label" style="margin-left:8px;">→ Reto 2</span></td>
     </tr>
 
     <!-- Semana 3 -->
@@ -129,7 +129,7 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>9</td>
       <td>Vie 19 jun</td>
       <td><span class="salon-a402">A-402</span></td>
-      <td>Tarea 2 · Cierre e integración · Buenas prácticas de trabajo en R <span class="tarea-label" style="margin-left:8px;">Entrega Tarea 2</span></td>
+      <td>Reto 2 · Cierre e integración · Buenas prácticas de trabajo en R <span class="tarea-label" style="margin-left:8px;">Entrega Reto 2</span></td>
       <td>—</td>
     </tr>
 
@@ -137,10 +137,10 @@ No se requieren conocimientos previos de programación ni estadística.
 </table>
 ```
 
-## Tareas
+## Retos
 
-- [**Tarea 1** · El concurso de la figura más fea](tareas/tarea1-figura-fea.html)
-- [**Tarea 2** · Presenta un paquete de R](tareas/tarea2-paquete-raro.html)
+- [**Reto 1** · El concurso de la figura más fea](retos/reto1-figura-fea.html)
+- [**Reto 2** · Presenta un paquete de R](retos/reto2-paquete-raro.html)
 
 ## Profesor
 

@@ -20,9 +20,9 @@ curso-r/
 ├── programa.qmd            # Objetivos, contenidos y recursos
 ├── sesiones/
 │   ├── s01/ … s09/         # Presentaciones (revealjs) por sesión
-├── tareas/
-│   ├── tarea1-figura-fea.qmd
-│   └── tarea2-paquete-raro.qmd
+├── retos/
+│   ├── reto1-figura-fea.qmd
+│   └── reto2-paquete-raro.qmd
 ├── datos/                  # Bases de datos compartidas
 ├── estilos/
 │   ├── slides.scss         # Tema visual de las presentaciones

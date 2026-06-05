@@ -32,7 +32,7 @@ execute:
 :::{.nonincremental}
 - Diapositivas de cada sesión
 - Archivos de datos y materiales para las actividades
-- Descripciones detalladas de las tareas
+- Descripciones detalladas de los retos
 :::
 
 Ábrelo ahora en tu computador (o teléfono).

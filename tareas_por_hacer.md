@@ -30,15 +30,15 @@
   - [x] Añadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)
 - [x] Crear diapositivas sesión 3 — pipe + dplyr
   - [x] Crear `sesiones/s03/datos/encuesta_bruta.xlsx` (base de datos GAD-7 simulada con problemas típicos de Excel)
-  - [x] Añadir sección Tarea 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)
+  - [x] Añadir sección Reto 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)
 - [x] Crear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R
 - [x] Crear diapositivas sesión 5 — Automatización de análisis con funciones y simulación
 - [x] Crear diapositivas sesión 6 — Reportes reproducibles con Quarto
-  - [x] Añadir anuncio Tarea 2 al final de s06
+  - [x] Añadir anuncio Reto 2 al final de s06
 - [x] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
   - [x] Crear `sesiones/s07/referencias.bib` (R, tidyverse, Spitzer 2006)
 - [ ] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
-- [ ] Crear diapositivas sesión 9 — Tarea 2 + Cierre, integración, buenas prácticas
+- [ ] Crear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas
 
 ## Recursos y estructura del proyecto
 
@@ -58,28 +58,28 @@
 - [ ] Actualizar `glosario.qmd` con funciones de S8 al completar esa sesión
 - [ ] Actualizar `glosario.qmd` con funciones de S9 al completar esa sesión
 
-## Tareas para estudiantes
+## Retos para estudiantes
 
-- [x] Crear `tareas/tarea1-figura-fea.qmd` (concurso ggplot2 feo)
-- [x] Crear `tareas/tarea1/` (carpeta en el repo para guardar scripts recibidos)
-- [x] Carpeta OneDrive para entregas de Tarea 1 — enlace en `tarea1-figura-fea.qmd` y en s03
-- [x] Crear `tareas/tarea2-paquete-raro.qmd` (presentar paquete de R)
+- [x] Crear `retos/reto1-figura-fea.qmd` (concurso ggplot2 feo)
+- [x] Crear `retos/reto1/` (carpeta en el repo para guardar scripts recibidos)
+- [x] Carpeta OneDrive para entregas de Reto 1 — enlace en `reto1-figura-fea.qmd` y en s03
+- [x] Crear `retos/reto2-paquete-raro.qmd` (presentar paquete de R)
 
 ---
 
 ## Estructura de sesiones (preliminar)
 
-| # | Fecha   | Tema                                              | Tarea            |
+| # | Fecha   | Tema                                              | Reto             |
 |---|---------|---------------------------------------------------|------------------|
 | 1 | Mié 3   | Intro a R, RStudio, sintaxis, primera figura      | Explorar ggplot2 |
 | 2 | Jue 4   | ggplot2 en profundidad                            |                  |
-| 3 | Vie 5   | Pipe nativo + dplyr                               | **← Tarea 1**    |
-| 4 | Mié 10  | *Tarea 1* + datos externos, proyectos, CSV        |                  |
+| 3 | Vie 5   | Pipe nativo + dplyr                               | **← Reto 1**     |
+| 4 | Mié 10  | *Reto 1* + datos externos, proyectos, CSV         |                  |
 | 5 | Jue 11  | Funciones, condicionales y simulación             |                  |
-| 6 | Vie 12  | Documentos reproducibles (Quarto)                 | **← Tarea 2**    |
+| 6 | Vie 12  | Documentos reproducibles (Quarto)                 | **← Reto 2**     |
 | 7 | Mié 17  | Quarto: tablas, citas y formatos                  |                  |
 | 8 | Jue 18  | Quarto: figuras, integración y publicación        |                  |
-| 9 | Vie 19  | *Tarea 2* + Cierre, integración, buenas prácticas |                  |
+| 9 | Vie 19  | *Reto 2* + Cierre, integración, buenas prácticas  |                  |
 
 ## Tabla de comandos
 

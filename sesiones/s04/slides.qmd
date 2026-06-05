@@ -37,7 +37,7 @@ calificaciones <- read_excel("datos/registro.xlsx",
 
 ## Agenda
 
-- Tarea 1: el concurso de la figura más fea
+- Reto 1: el concurso de la figura más fea
 - Proyectos de R y rutas relativas
 - Importar CSV: `read_csv()` y el problema latinoamericano
 - Importar Excel: `read_excel()` con argumentos clave
@@ -49,7 +49,7 @@ calificaciones <- read_excel("datos/registro.xlsx",
 ## {background-color="#121834"}
 
 ::: parte-num
-Tarea 1
+Reto 1
 :::
 
 ::: section-title-text

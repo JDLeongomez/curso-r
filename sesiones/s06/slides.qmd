@@ -687,7 +687,7 @@ Tres preguntas antes del cierre.
 ## {background-color="#6b1220" .actividad}
 
 ::: actividad-num
-Tarea 2
+Reto 2
 :::
 
 ::: actividad-title
@@ -700,7 +700,7 @@ Para la Sesión 9 · Máximo 5 min · Demostración en vivo
 
 ---
 
-## Tarea 2: presenta un paquete de R {.smaller}
+## Reto 2: presenta un paquete de R {.smaller}
 
 **Tu misión**: encontrar un paquete de R que te llame la atención y presentárselo al grupo.
 
@@ -714,7 +714,7 @@ Para la Sesión 9 · Máximo 5 min · Demostración en vivo
 ::: tip-box
 El paquete ojalá sea sorprendente. R tiene más de 23 000 paquetes: algunos hacen cosas absurdas, otros hacen cosas increíbles.
 
-[→ Instrucciones completas y ejemplos de inspiración](../../tareas/tarea2-paquete-raro.html)
+[→ Instrucciones completas y ejemplos de inspiración](../../retos/reto2-paquete-raro.html)
 :::
 
 ---

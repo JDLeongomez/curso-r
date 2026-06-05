@@ -38,12 +38,12 @@ website:
             text: "S8 · Versiones y colaboración con Git y GitHub"
           - href: sesiones/s09/slides.html
             text: "S9 · Herramientas y buenas prácticas"
-      - text: Tareas
+      - text: Retos
         menu:
-          - href: tareas/tarea1-figura-fea.html
-            text: "Tarea 1 · Figura fea"
-          - href: tareas/tarea2-paquete-raro.html
-            text: "Tarea 2 · Paquete raro"
+          - href: retos/reto1-figura-fea.html
+            text: "Reto 1 · Figura fea"
+          - href: retos/reto2-paquete-raro.html
+            text: "Reto 2 · Paquete raro"
       - href: glosario.html
         text: Referencia
 

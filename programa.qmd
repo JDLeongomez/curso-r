@@ -26,7 +26,7 @@ Al finalizar el curso, los participantes serán capaces de:
 | 2 | Jueves 4 jun | <span class="salon-a402">A-402</span> | Visualizaciones con ggplot2 · Geometrías · `aes()` · Temas y paletas |
 | 3 | Viernes 5 jun | <span class="salon-a402">A-402</span> | Manejo y transformación de datos con dplyr y pipes |
 
-**Tarea 1** asignada al final de la sesión 3.
+**Reto 1** asignado al final de la sesión 3.
 
 ### Semana 2 — 10, 11 y 12 de junio
 
@@ -36,7 +36,7 @@ Al finalizar el curso, los participantes serán capaces de:
 | 5 | Jueves 11 jun | <span class="salon-a402">A-402</span> | Automatización de análisis con funciones y simulación |
 | 6 | Viernes 12 jun | <span class="salon-b211">B-211</span> | Reportes reproducibles con Quarto |
 
-**Entrega Tarea 1** al inicio de la sesión 4. **Tarea 2** asignada al final de la sesión 6.
+**Entrega Reto 1** al inicio de la sesión 4. **Reto 2** asignado al final de la sesión 6.
 
 ### Semana 3 — 17, 18 y 19 de junio
 
@@ -44,15 +44,15 @@ Al finalizar el curso, los participantes serán capaces de:
 |---|-----|-------|------|
 | 7 | Miércoles 17 jun | <span class="salon-a404">A-404</span> | Quarto: tablas, citas y formatos |
 | 8 | Jueves 18 jun | <span class="salon-a404">A-404</span> | Quarto: figuras, integración y publicación |
-| 9 | Viernes 19 jun | <span class="salon-a402">A-402</span> | Tarea 2 · Cierre e integración · Buenas prácticas de trabajo en R |
+| 9 | Viernes 19 jun | <span class="salon-a402">A-402</span> | Reto 2 · Cierre e integración · Buenas prácticas de trabajo en R |
 
-**Entrega Tarea 2** al inicio de la sesión 9.
+**Entrega Reto 2** al inicio de la sesión 9.
 
 ## Evaluación
 
 El curso no tiene calificación. Para obtener el **certificado de participación** se requiere asistencia al 90 % de las sesiones (mínimo 8 de 9 sesiones).
 
-Las dos tareas son solamente ejercicios de exploración y no se califican, pero se presentan ante el grupo.
+Los dos retos son solamente ejercicios de exploración y no se califican, pero se presentan ante el grupo.
 
 ## Recursos
 

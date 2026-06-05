@@ -1,0 +1,70 @@
+---
+title: "Reto 1 · El concurso de la figura más fea"
+subtitle: "Asignada al final de la Sesión 3 · Presentación en la Sesión 4"
+format: html
+---
+
+## El reto
+
+Durante la primera semana aprendiste a crear gráficas en `ggplot2`.
+Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer:
+**tu misión es crear la figura estadística más horrible, ilegible,
+confusa y estéticamente ofensiva que seas capaz de producir**.
+
+La única regla es que el gráfico debe generarse **completamente en R**,
+usando `ggplot2` (y los paquetes que quieras).
+
+## Criterios de evaluación (de fealdad)
+
+- 💀 **Ilegibilidad**: ¿Es imposible leer las etiquetas o los ejes?
+- 🤢 **Combinación de colores**: ¿Duele mirarla?
+- 😵 **Tipo de gráfica**: ¿Es el tipo de gráfica más inapropiado para esos datos?
+- 🎨 **Creatividad**: ¿Hay algo inesperadamente horrible que nadie más pensó?
+- ⚙️ **Dominio de ggplot2**: A más horrible y más líneas de código, más puntos.
+
+## Lo que debes entregar
+
+Un *script* `.R` con el código que produce tu figura.
+Nómbralo con tu nombre, por ejemplo: `reto1_maria_garcia.R`, y **súbelo a la
+[carpeta compartida de OneDrive](https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgCeBz0ZIgE8Q7pb3asBbZiWATaUw6mmJh4-K3UuslEvgiU?e=MozWcw)**
+antes de la Sesión 4.
+
+El script debe comenzar por cargar los paquetes necesarios al inicio, por ejemplo:
+
+```{r}
+#| eval: false
+# Cargar paquetes necesarios
+library(ggplot2)
+library(ggthemes)
+
+# Aquí va el código para crear tu figura fea...
+ggplot(..., aes(...)) +
+    geom_...() +
+    theme_...() +
+    scale_...() +
+    annotate(...) +
+    coord_...(...)
+```
+
+Lo presentas en la Sesión 4 (máximo 3 minutos): muestras el código y el resultado.
+El grupo vota por la más fea.
+
+## Pistas (de lo que *no* debes hacer normalmente)
+
+```{r}
+#| eval: false
+# Algunas funciones que pueden ayudarte en el lado oscuro:
+theme() # puedes cambiar ABSOLUTAMENTE TODO el aspecto
+scale_colour_manual() # paletas de colores propias
+element_text() # tamaño, color, ángulo de texto
+coord_polar() # transforma cualquier gráfica en algo circular
+annotate() # agrega texto, líneas, formas encima
+```
+
+::: {.callout-tip}
+## Inspiración
+
+Busca "chartjunk", "bad data visualization" o "how not to visualize data"
+para encontrar ejemplos de lo que el mundo académico considera un pecado.
+Tu trabajo es superar eso.
+:::
