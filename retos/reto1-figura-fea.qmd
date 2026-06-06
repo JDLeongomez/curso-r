@@ -8,10 +8,10 @@ format: html
 
 Durante la primera semana aprendiste a crear gráficas en `ggplot2`.
 Ahora vamos a hacer exactamente lo contrario de lo que deberías hacer:
-**tu misión es crear la figura estadística más horrible, ilegible,
+**el reto ahora es crear la figura estadística más horrible, ilegible,
 confusa y estéticamente ofensiva que seas capaz de producir**.
 
-La única regla es que el gráfico debe generarse **completamente en R**,
+La única regla es que el gráfico debe generarse completamente en R,
 usando `ggplot2` (y los paquetes que quieras).
 
 ## Criterios de evaluación (de fealdad)
@@ -68,3 +68,10 @@ Busca "chartjunk", "bad data visualization" o "how not to visualize data"
 para encontrar ejemplos de lo que el mundo académico considera un pecado.
 Tu trabajo es superar eso.
 :::
+
+## Resultados
+
+Las figuras se presentaron en la Sesión 4. Puedes ver los *scripts* y las
+figuras de todos los participantes en la presentación correspondiente:
+
+[→ Ver todas las figuras](../sesiones/s04/reto1-figuras.html){.btn .btn-primary target="_blank"}

@@ -4,8 +4,7 @@
   <img src="imagenes/logo.svg" alt="logo" />
 </div>
 
-Materiales del curso introductorio **Maneja, explora y visualiza datos con R**,
-ofrecido de forma gratuita en la Universidad El Bosque (Bogotá, Colombia).
+Materiales del curso introductorio **Maneja, explora y visualiza datos con R**, ofrecido de forma gratuita en la Universidad El Bosque (Bogotá, Colombia).
 
 - **Sitio web del curso:** `https://jdleongomez.github.io/curso-r/`
 - **Fechas:** 3 – 19 de junio de 2026 (miércoles, jueves y viernes)
@@ -20,10 +19,12 @@ curso-r/
 ├── programa.qmd            # Objetivos, contenidos y recursos
 ├── sesiones/
 │   ├── s01/ … s09/         # Presentaciones (revealjs) por sesión
+│   └── s04/
+│       ├── scripts/        # Scripts .R del Reto 1 (uno por estudiante)
+│       └── reto1-figuras.qmd  # Presentación con los scripts y figuras del Reto 1
 ├── retos/
-│   ├── reto1-figura-fea.qmd
+│   ├── reto1-figura-fea.qmd   # Enunciado y criterios del Reto 1
 │   └── reto2-paquete-raro.qmd
-├── datos/                  # Bases de datos compartidas
 ├── estilos/
 │   ├── slides.scss         # Tema visual de las presentaciones
 │   └── sitio.scss          # Tema visual del sitio web

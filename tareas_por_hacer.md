@@ -63,6 +63,7 @@
 - [x] Crear `retos/reto1-figura-fea.qmd` (concurso ggplot2 feo)
 - [x] Crear `retos/reto1/` (carpeta en el repo para guardar scripts recibidos)
 - [x] Carpeta OneDrive para entregas de Reto 1 — enlace en `reto1-figura-fea.qmd` y en s03
+- [x] Crear `sesiones/s04/reto1-figuras.qmd` (presentación auto-generada: slide por estudiante con script + figura; slide de galería final para votar)
 - [x] Crear `retos/reto2-paquete-raro.qmd` (presentar paquete de R)
 
 ---

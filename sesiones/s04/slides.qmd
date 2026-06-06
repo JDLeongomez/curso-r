@@ -63,14 +63,15 @@ El concurso de la figura más fea
 Cada persona tiene **máximo 3 minutos**:
 
 :::: nonincremental
-1. Muestra tu figura en pantalla
-2. Explica brevemente qué decisiones tomaste para hacerla horrible
-3. El grupo vota por la más fea
+1. Explica brevemente qué decisiones tomaste para hacerla horrible
+2. Al final el grupo vota por la más fea
 ::::
 
 ::: tip-box
-Mientras presentas, mantén el *script* abierto: puede que alguien quiera ver el código de algún truco que usaste.
+Mientras presentas, el *script* estará visible para que puedas explicarlo y por si alguien quiere ver el código de algún truco que usaste.
 :::
+
+[→ Abrir presentación de figuras](reto1-figuras.html){target="_blank"}
 
 ---
 

@@ -1,0 +1,139 @@
+---
+title: "Reto 1"
+subtitle: "El concurso de la figura más fea"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-10"
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+execute:
+  echo: false
+  warning: false
+  message: false
+  cache: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+scripts_dir <- "scripts"
+fig_dir     <- "figuras"
+dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)
+
+name_from_file <- function(fname) {
+  stem <- tools::file_path_sans_ext(fname)
+  stem <- sub("^reto1_", "", stem)
+  stem <- gsub("_", " ", stem)
+  str_to_title(stem)
+}
+
+script_files <- sort(list.files(scripts_dir, pattern = "^reto1_.*\\.R$"))
+
+students <- map(script_files, function(fname) {
+  name     <- name_from_file(fname)
+  code     <- readLines(file.path(scripts_dir, fname), warn = FALSE)
+  fig_path <- file.path(fig_dir, sub("\\.R$", ".png", fname))
+
+  ok <- tryCatch({
+    tmp <- tempfile(fileext = ".png")
+    png(tmp, width = 900, height = 600, res = 150)
+    withr::with_dir(scripts_dir, {
+      source(fname, echo = FALSE, print.eval = TRUE, local = FALSE)
+    })
+    dev.off()
+    p <- ggplot2::last_plot()
+    if (is.null(p) || !inherits(p, "ggplot")) stop("el script no produjo un ggplot")
+    ggsave(fig_path, p, width = 7, height = 4.5, dpi = 150, bg = "white")
+    TRUE
+  }, error = function(e) {
+    try(dev.off(), silent = TRUE)
+    message("⚠ ", name, ": ", e$message)
+    FALSE
+  })
+
+  list(name = name, code = code, fig_path = fig_path, ok = ok)
+})
+
+n_ok <- sum(map_lgl(students, "ok"))
+```
+
+## Criterios de votación {.smaller}
+
+:::: nonincremental
+- 💀 **Ilegibilidad**: ¿Es imposible leer las etiquetas o los ejes?
+- 🤢 **Colores**: ¿Duele mirarla?
+- 😵 **Tipo de gráfica**: ¿Es el tipo más inapropiado para esos datos?
+- 🎨 **Creatividad**: ¿Hay algo inesperadamente horrible?
+- ⚙️ **Dominio de ggplot2**: A más horrible y más código, más puntos
+::::
+
+`r n_ok` figuras en competencia · Máximo 3 minutos por presentación
+
+
+```{r}
+#| results: asis
+
+for (d in students) {
+  if (!d$ok) next
+
+  code_str <- paste(d$code, collapse = "\n")
+
+  cat("\n---\n\n")
+  cat(sprintf("## %s {.smaller}\n\n", d$name))
+  cat("::::: columns\n")
+  cat("::: {.column style=\"width:45%;overflow-y:auto;max-height:560px;\"}\n\n")
+  cat("```r\n")
+  cat(code_str)
+  cat("\n```\n\n")
+  cat(":::\n")
+  cat("::: {.column style=\"width:55%;\"}\n\n")
+  cat(sprintf("![](%s){width=100%%}\n\n", d$fig_path))
+  cat(":::\n")
+  cat(":::::\n\n")
+}
+```
+
+## {background-color="#121834"}
+
+::: parte-num
+Votación
+:::
+
+::: section-title-text
+¿Cuál es la más fea?
+:::
+
+---
+
+## Elige a la ganadora {.smaller}
+
+```{r}
+#| results: asis
+
+valid <- Filter(function(d) d$ok, students)
+n     <- length(valid)
+cols  <- min(n, 4)
+
+cat(sprintf(
+  '<div style="display:grid;grid-template-columns:repeat(%d,1fr);gap:16px;align-items:start;">\n',
+  cols
+))
+for (d in valid) {
+  cat(sprintf(
+    '<div style="text-align:center"><img src="%s" style="width:100%%;border-radius:4px"><br><strong style="font-size:0.8em;">%s</strong></div>\n',
+    d$fig_path, d$name
+  ))
+}
+cat("</div>\n")
+```
