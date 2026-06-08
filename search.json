@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```ctd\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```bhi\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -322,6 +322,13 @@
     "text": "select(): patrones de nombre\nstarts_with(), ends_with() y contains() seleccionan columnas según su nombre:\n\n\n\nselect(pinguinos, species, starts_with(\"bill\"))\n\n# A tibble: 333 × 3\n   species bill_length_mm bill_depth_mm\n   &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;\n 1 Adelie            39.1          18.7\n 2 Adelie            39.5          17.4\n 3 Adelie            40.3          18  \n 4 Adelie            36.7          19.3\n 5 Adelie            39.3          20.6\n 6 Adelie            38.9          17.8\n 7 Adelie            39.2          19.6\n 8 Adelie            41.1          17.6\n 9 Adelie            38.6          21.2\n10 Adelie            34.6          21.1\n# ℹ 323 more rows\n\n\n\n\nselect(pinguinos, species, ends_with(\"_mm\"))\n\n# A tibble: 333 × 4\n   species bill_length_mm bill_depth_mm flipper_length_mm\n   &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;\n 1 Adelie            39.1          18.7               181\n 2 Adelie            39.5          17.4               186\n 3 Adelie            40.3          18                 195\n 4 Adelie            36.7          19.3               193\n 5 Adelie            39.3          20.6               190\n 6 Adelie            38.9          17.8               181\n 7 Adelie            39.2          19.6               195\n 8 Adelie            41.1          17.6               182\n 9 Adelie            38.6          21.2               191\n10 Adelie            34.6          21.1               198\n# ℹ 323 more rows"
   },
   {
+    "objectID": "sesiones/s03/slides.html#section-3",
+    "href": "sesiones/s03/slides.html#section-3",
+    "title": "Sesión 3",
+    "section": "",
+    "text": "Verbo 2\n\n\nrename(): renombrar columnas"
+  },
+  {
     "objectID": "sesiones/s03/slides.html#rename-renombrar-columnas",
     "href": "sesiones/s03/slides.html#rename-renombrar-columnas",
     "title": "Sesión 3",
@@ -329,11 +336,11 @@
     "text": "rename(): renombrar columnas\n\nrename(pinguinos, especie = species, masa_g = body_mass_g)\n\n# A tibble: 333 × 8\n   especie island    bill_length_mm bill_depth_mm flipper_length_mm masa_g sex  \n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;  &lt;int&gt; &lt;fct&gt;\n 1 Adelie  Torgersen           39.1          18.7               181   3750 male \n 2 Adelie  Torgersen           39.5          17.4               186   3800 fema…\n 3 Adelie  Torgersen           40.3          18                 195   3250 fema…\n 4 Adelie  Torgersen           36.7          19.3               193   3450 fema…\n 5 Adelie  Torgersen           39.3          20.6               190   3650 male \n 6 Adelie  Torgersen           38.9          17.8               181   3625 fema…\n 7 Adelie  Torgersen           39.2          19.6               195   4675 male \n 8 Adelie  Torgersen           41.1          17.6               182   3200 fema…\n 9 Adelie  Torgersen           38.6          21.2               191   3800 male \n10 Adelie  Torgersen           34.6          21.1               198   4400 male \n# ℹ 323 more rows\n# ℹ 1 more variable: year &lt;int&gt;\n\n\nLa sintaxis es siempre nuevo_nombre = nombre_actual."
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-3",
-    "href": "sesiones/s03/slides.html#section-3",
+    "objectID": "sesiones/s03/slides.html#section-4",
+    "href": "sesiones/s03/slides.html#section-4",
     "title": "Sesión 3",
     "section": "",
-    "text": "Verbo 2\n\n\nfilter() · elegir filas"
+    "text": "Verbo 3\n\n\nfilter() · elegir filas"
   },
   {
     "objectID": "sesiones/s03/slides.html#filter-filas-que-cumplen-una-condición",
@@ -364,18 +371,18 @@
     "text": "filter(): el operador %in%\n%in% comprueba si un valor pertenece a un conjunto. Es más limpio que escribir varios OR:\n\n# Sin %in%: repetitivo\nfilter(pinguinos, species == \"Adelie\" | species == \"Chinstrap\")\n\nEs equivalente a:\n\n# Con %in%: más claro\nfilter(pinguinos, species %in% c(\"Adelie\", \"Chinstrap\"))\n\n# A tibble: 214 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           36.7          19.3               193        3450\n 5 Adelie  Torgersen           39.3          20.6               190        3650\n 6 Adelie  Torgersen           38.9          17.8               181        3625\n 7 Adelie  Torgersen           39.2          19.6               195        4675\n 8 Adelie  Torgersen           41.1          17.6               182        3200\n 9 Adelie  Torgersen           38.6          21.2               191        3800\n10 Adelie  Torgersen           34.6          21.1               198        4400\n# ℹ 204 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n%in% devuelve TRUE si el valor de la izquierda aparece en algún lugar del vector de la derecha. ! invierte: !species %in% c(\"Adelie\", \"Chinstrap\") excluye esas dos especies."
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-4",
-    "href": "sesiones/s03/slides.html#section-4",
+    "objectID": "sesiones/s03/slides.html#section-5",
+    "href": "sesiones/s03/slides.html#section-5",
     "title": "Sesión 3",
     "section": "",
     "text": "Actividad · 2 min\n\n\nAND vs. OR: ¿quién se incluye?\n\n\nConsidera estos dos filtros sobre pinguinos:\nfilter(pinguinos, sex == \"female\", body_mass_g &gt; 4500)\nfilter(pinguinos, sex == \"female\" | body_mass_g &gt; 4500)\n¿Se incluiría una hembra que pesa 4100 g en cada caso?\n¿Y un macho que pesa 5000 g?"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-5",
-    "href": "sesiones/s03/slides.html#section-5",
+    "objectID": "sesiones/s03/slides.html#section-6",
+    "href": "sesiones/s03/slides.html#section-6",
     "title": "Sesión 3",
     "section": "",
-    "text": "Verbo 3\n\n\nmutate() · crear y transformar columnas"
+    "text": "Verbo 4\n\n\nmutate() · crear y transformar columnas"
   },
   {
     "objectID": "sesiones/s03/slides.html#mutate-crear-una-columna-nueva",
@@ -399,11 +406,11 @@
     "text": "mutate() + case_when(): recodificar\ncase_when() evalúa condiciones de arriba a abajo y asigna el valor de la primera que se cumpla:\n\nmutate(\n    pinguinos,\n    tamano = case_when(\n        body_mass_g &gt;= 5000 ~ \"Grande\",\n        body_mass_g &gt;= 3500 ~ \"Mediano\",\n        .default = \"Pequeño\"\n    )\n)\n\n# A tibble: 333 × 9\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           36.7          19.3               193        3450\n 5 Adelie  Torgersen           39.3          20.6               190        3650\n 6 Adelie  Torgersen           38.9          17.8               181        3625\n 7 Adelie  Torgersen           39.2          19.6               195        4675\n 8 Adelie  Torgersen           41.1          17.6               182        3200\n 9 Adelie  Torgersen           38.6          21.2               191        3800\n10 Adelie  Torgersen           34.6          21.1               198        4400\n# ℹ 323 more rows\n# ℹ 3 more variables: sex &lt;fct&gt;, year &lt;int&gt;, tamano &lt;chr&gt;"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-6",
-    "href": "sesiones/s03/slides.html#section-6",
+    "objectID": "sesiones/s03/slides.html#section-7",
+    "href": "sesiones/s03/slides.html#section-7",
     "title": "Sesión 3",
     "section": "",
-    "text": "Verbos 4 y 5\n\n\nsummarise() y group_by()"
+    "text": "Verbos 5 y 6\n\n\nsummarise() y group_by()"
   },
   {
     "objectID": "sesiones/s03/slides.html#summarise-colapsar-en-un-resumen",
@@ -427,15 +434,15 @@
     "text": "group_by() + mutate(): calcular dentro de grupos\nA diferencia de summarise(), mutate() devuelve una fila por observación original:\n\npor_especie &lt;- group_by(pinguinos, species)\nmutate(por_especie, masa_vs_especie = body_mass_g - mean(body_mass_g))\n\n# A tibble: 333 × 9\n# Groups:   species [3]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           36.7          19.3               193        3450\n 5 Adelie  Torgersen           39.3          20.6               190        3650\n 6 Adelie  Torgersen           38.9          17.8               181        3625\n 7 Adelie  Torgersen           39.2          19.6               195        4675\n 8 Adelie  Torgersen           41.1          17.6               182        3200\n 9 Adelie  Torgersen           38.6          21.2               191        3800\n10 Adelie  Torgersen           34.6          21.1               198        4400\n# ℹ 323 more rows\n# ℹ 3 more variables: sex &lt;fct&gt;, year &lt;int&gt;, masa_vs_especie &lt;dbl&gt;"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-7",
-    "href": "sesiones/s03/slides.html#section-7",
+    "objectID": "sesiones/s03/slides.html#section-8",
+    "href": "sesiones/s03/slides.html#section-8",
     "title": "Sesión 3",
     "section": "",
     "text": "Actividad · 8 min\n\n\nEncadenar verbos\n\n\nCon pinguinos, aplica los verbos que conoces y:\n\nFiltra solo las observaciones de la isla Dream\nAñade una columna masa_kg (masa en kilogramos)\nSelecciona solo species, sex, flipper_length_mm y masa_kg\n\n¿Qué dificultad aparece al hacerlo en pasos separados?"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-8",
-    "href": "sesiones/s03/slides.html#section-8",
+    "objectID": "sesiones/s03/slides.html#section-9",
+    "href": "sesiones/s03/slides.html#section-9",
     "title": "Sesión 3",
     "section": "",
     "text": "Parte 3\n\n\nEl problema de combinar verbos"
@@ -455,8 +462,8 @@
     "text": "O todo anidado (leer de adentro hacia afuera)\n\nsummarise(\n    group_by(\n        mutate(\n            filter(\n                select(pinguinos, species, sex, body_mass_g),\n                sex == \"female\"\n            ),\n            body_mass_kg = body_mass_g / 1000\n        ),\n        species\n    ),\n    masa_media_kg = mean(body_mass_kg)\n)\n\n# A tibble: 3 × 2\n  species   masa_media_kg\n  &lt;fct&gt;             &lt;dbl&gt;\n1 Adelie             3.37\n2 Chinstrap          3.53\n3 Gentoo             4.68\n\n\n\nEl orden de ejecución va de adentro hacia afuera, pero el orden de lectura va de arriba hacia abajo. Una sola coma en el lugar equivocado rompe todo."
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-9",
-    "href": "sesiones/s03/slides.html#section-9",
+    "objectID": "sesiones/s03/slides.html#section-10",
+    "href": "sesiones/s03/slides.html#section-10",
     "title": "Sesión 3",
     "section": "",
     "text": "Parte 4\n\n\nEl pipe |&gt;"
@@ -497,8 +504,8 @@
     "text": "Pipe + ggplot2: el pipeline completo\nLos datos pasan directamente de dplyr a ggplot2 sin crear objetos intermedios:\n\n\n\npinguinos |&gt;\n    filter(species != \"Gentoo\") |&gt;\n    group_by(species, sex) |&gt;\n    summarise(masa = mean(body_mass_g)) |&gt;\n    ggplot(aes(\n        x = species,\n        y = masa,\n        fill = sex\n    )) +\n    geom_col(position = \"dodge\") +\n    theme_minimal()"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-10",
-    "href": "sesiones/s03/slides.html#section-10",
+    "objectID": "sesiones/s03/slides.html#section-11",
+    "href": "sesiones/s03/slides.html#section-11",
     "title": "Sesión 3",
     "section": "",
     "text": "Parte 5\n\n\nPor qué Excel no es para datos de investigación"
@@ -543,11 +550,11 @@
     "href": "sesiones/s03/slides.html#cómo-diseñar-bien-una-base-de-datos",
     "title": "Sesión 3",
     "section": "Cómo diseñar bien una base de datos",
-    "text": "Cómo diseñar bien una base de datos\nMuchos problemas de limpieza se evitan desde el diseño de la encuesta.\n\n\nErrores comunes\n\nPreguntas abiertas donde alcanza una escala (si quieres medir estrés, usa 1-5, no texto libre)\nCategorías escritas de formas distintas: “Mujer”, “mujer”, “MUJER”, “M”\nDos variables en una celda: “Psicología, 3er semestre”\nCombinar datos, cálculos y notas en la misma hoja\n\n\nBuenas prácticas\n\nUna variable por columna, una observación por fila\nNombres de columna sin espacios ni acentos (snake_case; por ejemplo nivel_ansiedad)\nCategorías fijas con listas desplegables (Google Forms, KoboToolbox)\nCódigo de participante, no nombre (para anonimizar desde el inicio)\nUn archivo por fuente de datos"
+    "text": "Cómo diseñar bien una base de datos\nMuchos problemas de limpieza se evitan desde el diseño de la encuesta.\n\n\nErrores comunes\n\nPreguntas abiertas donde una escala es suficiente (si quieres medir estrés, usa 1-5, no texto libre)\nCategorías escritas de formas distintas: “Mujer”, “mujer”, “MUJER”, “M”\nDos variables en una celda: “Psicología, 3er semestre”\nCombinar datos, cálculos y notas en la misma hoja\n\n\nBuenas prácticas\n\nUna variable por columna, una observación por fila\nNombres de columna sin espacios ni acentos (snake_case; por ejemplo nivel_ansiedad)\nCategorías fijas con listas desplegables (Google Forms, KoboToolbox)\nCódigo de participante, no nombre (para anonimizar desde el inicio)\nUn archivo por fuente de datos"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-11",
-    "href": "sesiones/s03/slides.html#section-11",
+    "objectID": "sesiones/s03/slides.html#section-12",
+    "href": "sesiones/s03/slides.html#section-12",
     "title": "Sesión 3",
     "section": "",
     "text": "Parte 6\n\n\nAplicación: datos de psicología"
@@ -630,8 +637,8 @@
     "text": "Figura 3: nivel de ansiedad por género\n\n\n\nencuesta |&gt;\n    filter(genero != \"No binario\") |&gt;\n    ggplot(aes(\n        x = nivel_ansiedad,\n        fill = genero\n    )) +\n    geom_bar(position = \"dodge\") +\n    scale_fill_manual(values = c(\n        \"Mujer\"  = \"#6b1220\",\n        \"Hombre\" = \"#225faa\"\n    )) +\n    labs(\n        title = \"Nivel de ansiedad por género\",\n        x     = \"Nivel GAD-7\",\n        y     = \"Conteo\",\n        fill  = \"Género\"\n    ) +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\nEl pipeline llega hasta la figura: encuesta |&gt; filter(...) |&gt; ggplot(...) + geom_*(). Los datos pasan de dplyr a ggplot2 sin crear objetos intermedios."
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-12",
-    "href": "sesiones/s03/slides.html#section-12",
+    "objectID": "sesiones/s03/slides.html#section-13",
+    "href": "sesiones/s03/slides.html#section-13",
     "title": "Sesión 3",
     "section": "",
     "text": "Antes de terminar…\n\n\nQuiz rápido"
@@ -672,8 +679,8 @@
     "text": "A practicar\nUsa los datos de encuesta que limpiamos hoy y explora al menos una pregunta con un pipeline completo:\nencuesta |&gt;\n  filter(...) |&gt;\n  group_by(...) |&gt;\n  summarise(...) |&gt;\n  ggplot(aes(...)) +\n  geom_*() +\n  labs(...)\nAlgunas preguntas posibles:\n\n¿Varía el puntaje de ansiedad según el semestre?\n¿Hay diferencias entre carreras en los niveles de ansiedad severa?\n¿Cómo se distribuye la edad según el nivel de ansiedad?"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-13",
-    "href": "sesiones/s03/slides.html#section-13",
+    "objectID": "sesiones/s03/slides.html#section-14",
+    "href": "sesiones/s03/slides.html#section-14",
     "title": "Sesión 3",
     "section": "",
     "text": "Reto 1\n\n\nEl concurso de la figura más fea\n\n\nPara la Sesión 4 · Entrega el script · El grupo vota"
@@ -700,8 +707,8 @@
     "text": "Inspiración (2 de 2)\nAna Sofía Reyes, 2025\n\n\n\ntheme_dark() +\n    theme(\n        panel.background = element_rect(\n            fill = \"yellow\"\n        ),\n        plot.background = element_rect(\n            fill = \"pink\"\n        ),\n        legend.background = element_rect(\n            fill = \"cyan\"\n        )\n    ) +\n    annotate(\"text\",\n        x = 15, y = 300,\n        label = \"MUCHOS DATOS\",\n        color = \"red\", size = 10,\n        angle = 45\n    ) +\n    annotate(\"text\",\n        x = 30, y = 50,\n        label = \"💥 CARROS 💥\",\n        color = \"darkgreen\", size = 12,\n        angle = -30\n    )"
   },
   {
-    "objectID": "sesiones/s03/slides.html#section-14",
-    "href": "sesiones/s03/slides.html#section-14",
+    "objectID": "sesiones/s03/slides.html#section-15",
+    "href": "sesiones/s03/slides.html#section-15",
     "title": "Sesión 3",
     "section": "",
     "text": "Hasta la próxima sesión\n\n\n¡Gracias!\n\n\n\n\n jdleongomez.github.io/curso-r"
