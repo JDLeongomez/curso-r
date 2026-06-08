@@ -260,6 +260,18 @@ select(pinguinos, species, ends_with("_mm"))
 ::::
 ---
 
+## {background-color="#225faa"}
+
+::: parte-num
+Verbo 2
+:::
+
+::: section-title-text
+`rename()`: renombrar columnas
+:::
+
+---
+
 ## `rename()`: renombrar columnas
 
 ```{r}
@@ -273,7 +285,7 @@ La sintaxis es siempre `nuevo_nombre = nombre_actual`.
 ## {background-color="#225faa"}
 
 ::: parte-num
-Verbo 2
+Verbo 3
 :::
 
 ::: section-title-text
@@ -370,7 +382,7 @@ filter(pinguinos, sex == "female" | body_mass_g > 4500)
 ## {background-color="#225faa"}
 
 ::: parte-num
-Verbo 3
+Verbo 4
 :::
 
 ::: section-title-text
@@ -428,7 +440,7 @@ mutate(
 ## {background-color="#225faa"}
 
 ::: parte-num
-Verbos 4 y 5
+Verbos 5 y 6
 :::
 
 ::: section-title-text
@@ -814,7 +826,7 @@ Muchos problemas de limpieza se evitan desde el diseño de la encuesta.
 ::: {.column width="50%"}
 **Errores comunes**
 
-- Preguntas abiertas donde alcanza una escala (si quieres medir estrés, usa 1-5, no texto libre)
+- Preguntas abiertas donde una escala es suficiente (si quieres medir estrés, usa 1-5, no texto libre)
 - Categorías escritas de formas distintas: "Mujer", "mujer", "MUJER", "M"
 - Dos variables en una celda: "Psicología, 3er semestre"
 - Combinar datos, cálculos y notas en la misma hoja
