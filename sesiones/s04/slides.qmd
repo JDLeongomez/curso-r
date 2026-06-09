@@ -39,10 +39,10 @@ calificaciones <- read_excel("datos/registro.xlsx",
 
 - Reto 1: el concurso de la figura más fea
 - Proyectos de R y rutas relativas
-- Importar CSV: `read_csv()` y el problema latinoamericano
-- Importar Excel: `read_excel()` con argumentos clave
+- Importar CSV: `read_csv()` y el problema que tenemos en español
+- Importar Excel: `read_excel()` y los argumentos importantes
 - Guardar datos procesados
-- El flujo de trabajo reproducible
+- Un flujo de trabajo reproducible
 
 ---
 
@@ -145,7 +145,7 @@ Funciona en cualquier computador, siempre que haya una referencia fija desde la 
 
 ## El directorio de trabajo {.smaller}
 
-Esa carpeta de referencia se llama **directorio de trabajo**. Puedes verla con:
+Esa carpeta de referencia se llama **directorio de trabajo** (en R, *working directory* o `wd`). Puedes verla con:
 
 ```{r}
 #| eval: false
@@ -229,7 +229,10 @@ Crea tu proyecto del curso
 2. Nómbralo `curso_r` y elige una ubicación fácil de encontrar
 3. Dentro del proyecto, crea las carpetas `datos/`, `figuras/` y `scripts/`
 4. Abre un *script* nuevo (**File > New File > R Script**) y guárdalo en `scripts/` como `sesion4.R`
-5. Copia `encuesta_bruta.xlsx` de la Sesión 3 a la carpeta `datos/` del proyecto
+5. Descarga estos archivos y ponlos en la carpeta `datos/` del proyecto:
+   - [⬇ `encuesta_bruta.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx){style="color:#ffd88a;"} (Sesión 3)
+   - [⬇ `notas.csv`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv){style="color:#ffd88a;"}
+   - [⬇ `registro.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx){style="color:#ffd88a;"}
 ::::
 :::
 
@@ -259,13 +262,13 @@ id,carrera,estadistica,metodologia
 2,Medicina,3.7,4.1
 ```
 
-A diferencia de Excel, no hay fórmulas, colores ni metadatos ocultos. Lo que ves es lo que hay.
+A diferencia de Excel, no incluye fórmulas, colores ni metadatos ocultos. Ves exactamente lo que contiene el archivo... ¡sin redondear valores ni asumir que algo es una $%@! fecha! 😠.
 
 ---
 
 ## `read_csv()`: el formato internacional
 
-`read_csv()` espera **coma** como separador y **punto** como decimal (estándar internacional):
+`read_csv()` espera **coma** como separador y **punto** como decimal (estándar internacional más común):
 
 ::::: columns
 ::: {.column width="50%"}
@@ -289,7 +292,7 @@ Las columnas numéricas se leen como texto (`<chr>`) porque el separador es `;` 
 
 ---
 
-## El problema latinoamericano
+## El problema para quienes hablamos español
 
 En Excel configurado en español, al exportar a CSV se usa **punto y coma** como separador y **coma** como decimal:
 
@@ -331,7 +334,7 @@ Ahora `estadistica`, `metodologia` y `seminario` son numéricas (`<dbl>`).
 | `col_types` | Fuerza el tipo de cada columna | `col_types = "ccd"` |
 
 ::: tip-box
-Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, `skip` es tu primera herramienta. Prueba con `skip = 1`, revisa el resultado, y ajusta.
+Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, `skip` es la primera herramienta. Prueba con `skip = 1`, revisa el resultado, y ajusta.
 :::
 
 ---
@@ -347,14 +350,14 @@ Carga y explora `notas.csv`
 :::
 
 ::: actividad-desc
-[⬇ Descargar `notas.csv`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv)
+[⬇ Descargar `notas.csv`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv){style="color:#ffd88a;"} (si no lo has hecho)
 
 Guarda el archivo en la carpeta `datos/` de tu proyecto. Luego en tu *script*:
 
 :::: nonincremental
 1. Carga el archivo con `read_csv2()` y asígnalo a `notas`
-2. Usa `glimpse()` para verificar que las columnas numéricas son `<dbl>`
-3. Calcula el promedio de `estadistica` por carrera con `group_by()` + `summarise()`
+2. Usa `glimpse()` o `View()` para verificar que las columnas numéricas son `<dbl>`
+3. Calcula el promedio de la columna `estadistica` por carrera usando `group_by()` + `summarise()`
 ::::
 :::
 
@@ -462,7 +465,7 @@ Carga ambas hojas de `registro.xlsx`
 :::
 
 ::: actividad-desc
-[⬇ Descargar `registro.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx)
+[⬇ Descargar `registro.xlsx`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx){style="color:#ffd88a;"} (si no lo has hecho)
 
 Guarda el archivo en `datos/`. Luego:
 
@@ -470,7 +473,7 @@ Guarda el archivo en `datos/`. Luego:
 1. Usa `excel_sheets()` para ver los nombres de las hojas
 2. Carga `"Asistencia"` sin argumentos extra. Asígnalo a un objeto
 3. Carga `"Calificaciones"` con `skip = 2`. Asígnalo a otro objeto
-4. Compara los dos objetos con `glimpse()`
+4. Confirma la estructura de los dos objetos con `glimpse()` o `View()`
 ::::
 :::
 
@@ -641,7 +644,7 @@ Experimenta con:
 - Exportar el resultado con `write_csv()`, `write_csv2()` o `saveRDS()`
 
 ::: tip-box
-Si no tienes un archivo propio, usa `encuesta_bruta.xlsx` de la Sesión 3 desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código.
+Si no tienes un archivo propio, usa [⬇ `encuesta_bruta.xlsx` de la Sesión 3](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx){style="color:#ffd88a;"} desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código.
 :::
 
 {{< include ../_fin.qmd >}}

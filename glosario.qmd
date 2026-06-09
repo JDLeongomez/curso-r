@@ -55,6 +55,11 @@ Elementos del lenguaje R que no requieren cargar ningún paquete.
 <td><a href="sesiones/s03/slides.html" class="s-badge" target="_blank">S3</a></td>
 </tr>
 <tr class="fn-row">
+<td><code>paquete::funcion()</code></td>
+<td><strong>Operador de espacio de nombres</strong> (<code>::</code>): llama a una función indicando explícitamente de qué paquete proviene, sin necesidad de haberlo cargado con <code>library()</code>. Útil para funciones que se usan una sola vez (como <code>tinytex::install_tinytex()</code>) o para dejar claro el origen de una función cuando hay conflictos.</td>
+<td><a href="sesiones/s05/slides.html" class="s-badge" target="_blank">S5</a><a href="sesiones/s06/slides.html" class="s-badge" target="_blank">S6</a></td>
+</tr>
+<tr class="fn-row">
 <td><code>if (cond) { } else { }</code></td>
 <td>Condicional básico: ejecuta el primer bloque cuando la condición es <code>TRUE</code> y el segundo cuando es <code>FALSE</code>. Solo evalúa un valor escalar, no un vector completo.</td>
 <td><a href="sesiones/s05/slides.html" class="s-badge" target="_blank">S5</a></td>

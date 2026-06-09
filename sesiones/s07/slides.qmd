@@ -429,7 +429,7 @@ Añade citas a tu documento
 :::
 
 ::: actividad-desc
-[⬇ Descargar `referencias.bib`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s07/referencias.bib)
+[⬇ Descargar `referencias.bib`](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s07/referencias.bib){style="color:#ffd88a;"}
 
 Guarda el archivo en la **raíz de tu proyecto** `curso_r` (junto a `mi_reporte.qmd`). Luego:
 
