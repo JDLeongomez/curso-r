@@ -221,10 +221,10 @@ Juan David Leongómez
 <ul>
 <li class="fragment">Reto 1: el concurso de la figura más fea</li>
 <li class="fragment">Proyectos de R y rutas relativas</li>
-<li class="fragment">Importar CSV: <code>read_csv()</code> y el problema latinoamericano</li>
-<li class="fragment">Importar Excel: <code>read_excel()</code> con argumentos clave</li>
+<li class="fragment">Importar CSV: <code>read_csv()</code> y el problema que tenemos en español</li>
+<li class="fragment">Importar Excel: <code>read_excel()</code> y los argumentos importantes</li>
 <li class="fragment">Guardar datos procesados</li>
-<li class="fragment">El flujo de trabajo reproducible</li>
+<li class="fragment">Un flujo de trabajo reproducible</li>
 </ul>
 </section>
 <section id="section" class="slide level2" data-background-color="#121834">
@@ -295,7 +295,7 @@ Juan David Leongómez
 </section>
 <section id="el-directorio-de-trabajo" class="slide level2 smaller">
 <h2>El directorio de trabajo</h2>
-<p>Esa carpeta de referencia se llama <strong>directorio de trabajo</strong>. Puedes verla con:</p>
+<p>Esa carpeta de referencia se llama <strong>directorio de trabajo</strong> (en R, <em>working directory</em> o <code>wd</code>). Puedes verla con:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">getwd</span>()</span></code></pre></div>
 </div>
@@ -350,7 +350,12 @@ Juan David Leongómez
 <li>Nómbralo <code>curso_r</code> y elige una ubicación fácil de encontrar</li>
 <li>Dentro del proyecto, crea las carpetas <code>datos/</code>, <code>figuras/</code> y <code>scripts/</code></li>
 <li>Abre un <em>script</em> nuevo (<strong>File &gt; New File &gt; R Script</strong>) y guárdalo en <code>scripts/</code> como <code>sesion4.R</code></li>
-<li>Copia <code>encuesta_bruta.xlsx</code> de la Sesión 3 a la carpeta <code>datos/</code> del proyecto</li>
+<li>Descarga estos archivos y ponlos en la carpeta <code>datos/</code> del proyecto:
+<ul>
+<li><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx" style="color:#ffd88a;">⬇ <code>encuesta_bruta.xlsx</code></a> (Sesión 3)</li>
+<li><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv" style="color:#ffd88a;">⬇ <code>notas.csv</code></a></li>
+<li><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx" style="color:#ffd88a;">⬇ <code>registro.xlsx</code></a></li>
+</ul></li>
 </ol>
 </div>
 </section>
@@ -370,11 +375,11 @@ Juan David Leongómez
 <pre><code>id,carrera,estadistica,metodologia
 1,Psicología,4.8,3.5
 2,Medicina,3.7,4.1</code></pre>
-<p>A diferencia de Excel, no hay fórmulas, colores ni metadatos ocultos. Lo que ves es lo que hay.</p>
+<p>A diferencia de Excel, no incluye fórmulas, colores ni metadatos ocultos. Ves exactamente lo que contiene el archivo… ¡sin redondear valores ni asumir que algo es una $%@! fecha! 😠.</p>
 </section>
 <section id="read_csv-el-formato-internacional" class="slide level2">
 <h2><code>read_csv()</code>: el formato internacional</h2>
-<p><code>read_csv()</code> espera <strong>coma</strong> como separador y <strong>punto</strong> como decimal (estándar internacional):</p>
+<p><code>read_csv()</code> espera <strong>coma</strong> como separador y <strong>punto</strong> como decimal (estándar internacional más común):</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -394,8 +399,8 @@ $ `id;carrera;estadistica;metodologia;seminario` &lt;chr&gt; "1;Psicología;4,8;
 </div></div>
 <p>Las columnas numéricas se leen como texto (<code>&lt;chr&gt;</code>) porque el separador es <code>;</code> y el decimal es <code>,</code>. Nada funciona.</p>
 </section>
-<section id="el-problema-latinoamericano" class="slide level2">
-<h2>El problema latinoamericano</h2>
+<section id="el-problema-para-quienes-hablamos-español" class="slide level2">
+<h2>El problema para quienes hablamos español</h2>
 <p>En Excel configurado en español, al exportar a CSV se usa <strong>punto y coma</strong> como separador y <strong>coma</strong> como decimal:</p>
 <pre><code>id;carrera;estadistica;metodologia
 1;Psicología;4,8;3,5</code></pre>
@@ -465,7 +470,7 @@ $ seminario   &lt;dbl&gt; 4.2, 3.9, 4.5, 3.8, 3.5, 4.7, NA, 4.0, 3.9, 4.8, 3.1, 
 </tbody>
 </table>
 <div class="tip-box">
-<p>Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, <code>skip</code> es tu primera herramienta. Prueba con <code>skip = 1</code>, revisa el resultado, y ajusta.</p>
+<p>Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, <code>skip</code> es la primera herramienta. Prueba con <code>skip = 1</code>, revisa el resultado, y ajusta.</p>
 </div>
 </section>
 <section id="section-4" class="slide level2 actividad" data-background-color="#6b1220">
@@ -477,12 +482,12 @@ $ seminario   &lt;dbl&gt; 4.2, 3.9, 4.5, 3.8, 3.5, 4.7, NA, 4.0, 3.9, 4.8, 3.1, 
 <p>Carga y explora <code>notas.csv</code></p>
 </div>
 <div class="actividad-desc">
-<p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv">⬇ Descargar <code>notas.csv</code></a></p>
+<p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/notas.csv" style="color:#ffd88a;">⬇ Descargar <code>notas.csv</code></a> (si no lo has hecho)</p>
 <p>Guarda el archivo en la carpeta <code>datos/</code> de tu proyecto. Luego en tu <em>script</em>:</p>
 <ol type="1">
 <li>Carga el archivo con <code>read_csv2()</code> y asígnalo a <code>notas</code></li>
-<li>Usa <code>glimpse()</code> para verificar que las columnas numéricas son <code>&lt;dbl&gt;</code></li>
-<li>Calcula el promedio de <code>estadistica</code> por carrera con <code>group_by()</code> + <code>summarise()</code></li>
+<li>Usa <code>glimpse()</code> o <code>View()</code> para verificar que las columnas numéricas son <code>&lt;dbl&gt;</code></li>
+<li>Calcula el promedio de la columna <code>estadistica</code> por carrera usando <code>group_by()</code> + <code>summarise()</code></li>
 </ol>
 </div>
 </section>
@@ -616,13 +621,13 @@ $ final    &lt;dbl&gt; NA, 4.0, 3.8, 3.7, 4.0, 4.2, 3.7, 4.0, NA, 4.5, 3.0, 4.1,
 <p>Carga ambas hojas de <code>registro.xlsx</code></p>
 </div>
 <div class="actividad-desc">
-<p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx">⬇ Descargar <code>registro.xlsx</code></a></p>
+<p><a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s04/datos/registro.xlsx" style="color:#ffd88a;">⬇ Descargar <code>registro.xlsx</code></a> (si no lo has hecho)</p>
 <p>Guarda el archivo en <code>datos/</code>. Luego:</p>
 <ol type="1">
 <li>Usa <code>excel_sheets()</code> para ver los nombres de las hojas</li>
 <li>Carga <code>"Asistencia"</code> sin argumentos extra. Asígnalo a un objeto</li>
 <li>Carga <code>"Calificaciones"</code> con <code>skip = 2</code>. Asígnalo a otro objeto</li>
-<li>Compara los dos objetos con <code>glimpse()</code></li>
+<li>Confirma la estructura de los dos objetos con <code>glimpse()</code> o <code>View()</code></li>
 </ol>
 </div>
 </section>
@@ -779,7 +784,7 @@ $ final    &lt;dbl&gt; NA, 4.0, 3.8, 3.7, 4.0, 4.2, 3.7, 4.0, NA, 4.5, 3.0, 4.1,
 <li class="fragment">Exportar el resultado con <code>write_csv()</code>, <code>write_csv2()</code> o <code>saveRDS()</code></li>
 </ul>
 <div class="tip-box">
-<p>Si no tienes un archivo propio, usa <code>encuesta_bruta.xlsx</code> de la Sesión 3 desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código.</p>
+<p>Si no tienes un archivo propio, usa <a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s03/datos/encuesta_bruta.xlsx" style="color:#ffd88a;">⬇ <code>encuesta_bruta.xlsx</code> de la Sesión 3</a> desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código.</p>
 </div>
 </section>
 <section id="section-9" class="slide level2" data-background-color="#121834">

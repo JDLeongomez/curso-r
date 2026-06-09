@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```bhi\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```opq\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -718,7 +718,7 @@
     "href": "sesiones/s04/slides.html#agenda",
     "title": "Sesión 4",
     "section": "Agenda",
-    "text": "Agenda\n\nReto 1: el concurso de la figura más fea\nProyectos de R y rutas relativas\nImportar CSV: read_csv() y el problema latinoamericano\nImportar Excel: read_excel() con argumentos clave\nGuardar datos procesados\nEl flujo de trabajo reproducible"
+    "text": "Agenda\n\nReto 1: el concurso de la figura más fea\nProyectos de R y rutas relativas\nImportar CSV: read_csv() y el problema que tenemos en español\nImportar Excel: read_excel() y los argumentos importantes\nGuardar datos procesados\nUn flujo de trabajo reproducible"
   },
   {
     "objectID": "sesiones/s04/slides.html#section",
@@ -760,7 +760,7 @@
     "href": "sesiones/s04/slides.html#el-directorio-de-trabajo",
     "title": "Sesión 4",
     "section": "El directorio de trabajo",
-    "text": "El directorio de trabajo\nEsa carpeta de referencia se llama directorio de trabajo. Puedes verla con:\n\ngetwd()\n\n[1] \"C:/Users/Ana/Documents\"\nEl problema es que el directorio de trabajo varía según cómo abriste R, y rara vez coincide con donde guardaste los archivos del proyecto. Por eso una ruta como \"datos/notas.csv\" falla:\nError: cannot open file 'datos/notas.csv': No such file or directory\nLo que necesitas es una forma de fijar el directorio de trabajo en la carpeta de tu proyecto, de forma automática y permanente."
+    "text": "El directorio de trabajo\nEsa carpeta de referencia se llama directorio de trabajo (en R, working directory o wd). Puedes verla con:\n\ngetwd()\n\n[1] \"C:/Users/Ana/Documents\"\nEl problema es que el directorio de trabajo varía según cómo abriste R, y rara vez coincide con donde guardaste los archivos del proyecto. Por eso una ruta como \"datos/notas.csv\" falla:\nError: cannot open file 'datos/notas.csv': No such file or directory\nLo que necesitas es una forma de fijar el directorio de trabajo en la carpeta de tu proyecto, de forma automática y permanente."
   },
   {
     "objectID": "sesiones/s04/slides.html#qué-es-un-proyecto-de-r",
@@ -781,7 +781,7 @@
     "href": "sesiones/s04/slides.html#section-2",
     "title": "Sesión 4",
     "section": "",
-    "text": "Actividad · 7 min\n\n\nCrea tu proyecto del curso\n\n\n\nFile &gt; New Project… &gt; New Directory &gt; New Project\nNómbralo curso_r y elige una ubicación fácil de encontrar\nDentro del proyecto, crea las carpetas datos/, figuras/ y scripts/\nAbre un script nuevo (File &gt; New File &gt; R Script) y guárdalo en scripts/ como sesion4.R\nCopia encuesta_bruta.xlsx de la Sesión 3 a la carpeta datos/ del proyecto"
+    "text": "Actividad · 7 min\n\n\nCrea tu proyecto del curso\n\n\n\nFile &gt; New Project… &gt; New Directory &gt; New Project\nNómbralo curso_r y elige una ubicación fácil de encontrar\nDentro del proyecto, crea las carpetas datos/, figuras/ y scripts/\nAbre un script nuevo (File &gt; New File &gt; R Script) y guárdalo en scripts/ como sesion4.R\nDescarga estos archivos y ponlos en la carpeta datos/ del proyecto:\n\n⬇ encuesta_bruta.xlsx (Sesión 3)\n⬇ notas.csv\n⬇ registro.xlsx"
   },
   {
     "objectID": "sesiones/s04/slides.html#section-3",
@@ -795,35 +795,35 @@
     "href": "sesiones/s04/slides.html#qué-es-un-archivo-csv",
     "title": "Sesión 4",
     "section": "¿Qué es un archivo CSV?",
-    "text": "¿Qué es un archivo CSV?\nCSV (Comma-Separated Values) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. Si abres un CSV en un editor de texto, verás algo así:\nid,carrera,estadistica,metodologia\n1,Psicología,4.8,3.5\n2,Medicina,3.7,4.1\nA diferencia de Excel, no hay fórmulas, colores ni metadatos ocultos. Lo que ves es lo que hay."
+    "text": "¿Qué es un archivo CSV?\nCSV (Comma-Separated Values) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. Si abres un CSV en un editor de texto, verás algo así:\nid,carrera,estadistica,metodologia\n1,Psicología,4.8,3.5\n2,Medicina,3.7,4.1\nA diferencia de Excel, no incluye fórmulas, colores ni metadatos ocultos. Ves exactamente lo que contiene el archivo… ¡sin redondear valores ni asumir que algo es una $%@! fecha! 😠."
   },
   {
     "objectID": "sesiones/s04/slides.html#read_csv-el-formato-internacional",
     "href": "sesiones/s04/slides.html#read_csv-el-formato-internacional",
     "title": "Sesión 4",
     "section": "read_csv(): el formato internacional",
-    "text": "read_csv(): el formato internacional\nread_csv() espera coma como separador y punto como decimal (estándar internacional):\n\n\n\nlibrary(tidyverse)\n\nnotas &lt;- read_csv(\"datos/notas.csv\")\nglimpse(notas)\n\n\n\n\nRows: 20\nColumns: 1\n$ `id;carrera;estadistica;metodologia;seminario` &lt;chr&gt; \"1;Psicología;4,8;3,5;4…\n\n\n\nLas columnas numéricas se leen como texto (&lt;chr&gt;) porque el separador es ; y el decimal es ,. Nada funciona."
+    "text": "read_csv(): el formato internacional\nread_csv() espera coma como separador y punto como decimal (estándar internacional más común):\n\n\n\nlibrary(tidyverse)\n\nnotas &lt;- read_csv(\"datos/notas.csv\")\nglimpse(notas)\n\n\n\n\nRows: 20\nColumns: 1\n$ `id;carrera;estadistica;metodologia;seminario` &lt;chr&gt; \"1;Psicología;4,8;3,5;4…\n\n\n\nLas columnas numéricas se leen como texto (&lt;chr&gt;) porque el separador es ; y el decimal es ,. Nada funciona."
   },
   {
-    "objectID": "sesiones/s04/slides.html#el-problema-latinoamericano",
-    "href": "sesiones/s04/slides.html#el-problema-latinoamericano",
+    "objectID": "sesiones/s04/slides.html#el-problema-para-quienes-hablamos-español",
+    "href": "sesiones/s04/slides.html#el-problema-para-quienes-hablamos-español",
     "title": "Sesión 4",
-    "section": "El problema latinoamericano",
-    "text": "El problema latinoamericano\nEn Excel configurado en español, al exportar a CSV se usa punto y coma como separador y coma como decimal:\nid;carrera;estadistica;metodologia\n1;Psicología;4,8;3,5\nLa solución es read_csv2(), que asume exactamente ese formato:\n\n\n\nnotas &lt;- read_csv2(\"datos/notas.csv\")\nglimpse(notas)\n\n\n\n\nRows: 20\nColumns: 5\n$ id          &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…\n$ carrera     &lt;chr&gt; \"Psicología\", \"Medicina\", \"Enfermería\", \"Psicología\", \"Med…\n$ estadistica &lt;dbl&gt; 4.8, 3.7, 4.2, 3.3, 2.8, 4.5, 3.9, 4.1, 3.6, 4.7, 2.5, 4.0…\n$ metodologia &lt;dbl&gt; 3.5, 4.1, 4.0, NA, 3.2, 4.3, 3.7, 3.8, 3.4, 4.5, 2.8, 4.2,…\n$ seminario   &lt;dbl&gt; 4.2, 3.9, 4.5, 3.8, 3.5, 4.7, NA, 4.0, 3.9, 4.8, 3.1, 3.7,…\n\n\n\nAhora estadistica, metodologia y seminario son numéricas (&lt;dbl&gt;)."
+    "section": "El problema para quienes hablamos español",
+    "text": "El problema para quienes hablamos español\nEn Excel configurado en español, al exportar a CSV se usa punto y coma como separador y coma como decimal:\nid;carrera;estadistica;metodologia\n1;Psicología;4,8;3,5\nLa solución es read_csv2(), que asume exactamente ese formato:\n\n\n\nnotas &lt;- read_csv2(\"datos/notas.csv\")\nglimpse(notas)\n\n\n\n\nRows: 20\nColumns: 5\n$ id          &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…\n$ carrera     &lt;chr&gt; \"Psicología\", \"Medicina\", \"Enfermería\", \"Psicología\", \"Med…\n$ estadistica &lt;dbl&gt; 4.8, 3.7, 4.2, 3.3, 2.8, 4.5, 3.9, 4.1, 3.6, 4.7, 2.5, 4.0…\n$ metodologia &lt;dbl&gt; 3.5, 4.1, 4.0, NA, 3.2, 4.3, 3.7, 3.8, 3.4, 4.5, 2.8, 4.2,…\n$ seminario   &lt;dbl&gt; 4.2, 3.9, 4.5, 3.8, 3.5, 4.7, NA, 4.0, 3.9, 4.8, 3.1, 3.7,…\n\n\n\nAhora estadistica, metodologia y seminario son numéricas (&lt;dbl&gt;)."
   },
   {
     "objectID": "sesiones/s04/slides.html#argumentos-útiles-de-read_csv-y-read_csv2",
     "href": "sesiones/s04/slides.html#argumentos-útiles-de-read_csv-y-read_csv2",
     "title": "Sesión 4",
     "section": "Argumentos útiles de read_csv() y read_csv2()",
-    "text": "Argumentos útiles de read_csv() y read_csv2()\n\n\n\n\n\n\n\n\nArgumento\nQué hace\nEjemplo\n\n\n\n\nskip\nOmite las primeras n filas\nskip = 2\n\n\nna\nDefine qué valores se tratan como NA\nna = c(\"\", \"N/A\", \"nd\")\n\n\ncol_names\nProporciona nombres de columna\ncol_names = c(\"id\", \"nota\")\n\n\nn_max\nLee solo las primeras n observaciones\nn_max = 100\n\n\ncol_types\nFuerza el tipo de cada columna\ncol_types = \"ccd\"\n\n\n\n\nCuando el archivo tiene un encabezado raro o filas de información antes de los datos, skip es tu primera herramienta. Prueba con skip = 1, revisa el resultado, y ajusta."
+    "text": "Argumentos útiles de read_csv() y read_csv2()\n\n\n\n\n\n\n\n\nArgumento\nQué hace\nEjemplo\n\n\n\n\nskip\nOmite las primeras n filas\nskip = 2\n\n\nna\nDefine qué valores se tratan como NA\nna = c(\"\", \"N/A\", \"nd\")\n\n\ncol_names\nProporciona nombres de columna\ncol_names = c(\"id\", \"nota\")\n\n\nn_max\nLee solo las primeras n observaciones\nn_max = 100\n\n\ncol_types\nFuerza el tipo de cada columna\ncol_types = \"ccd\"\n\n\n\n\nCuando el archivo tiene un encabezado raro o filas de información antes de los datos, skip es la primera herramienta. Prueba con skip = 1, revisa el resultado, y ajusta."
   },
   {
     "objectID": "sesiones/s04/slides.html#section-4",
     "href": "sesiones/s04/slides.html#section-4",
     "title": "Sesión 4",
     "section": "",
-    "text": "Actividad · 7 min\n\n\nCarga y explora notas.csv\n\n\n⬇ Descargar notas.csv\nGuarda el archivo en la carpeta datos/ de tu proyecto. Luego en tu script:\n\nCarga el archivo con read_csv2() y asígnalo a notas\nUsa glimpse() para verificar que las columnas numéricas son &lt;dbl&gt;\nCalcula el promedio de estadistica por carrera con group_by() + summarise()"
+    "text": "Actividad · 7 min\n\n\nCarga y explora notas.csv\n\n\n⬇ Descargar notas.csv (si no lo has hecho)\nGuarda el archivo en la carpeta datos/ de tu proyecto. Luego en tu script:\n\nCarga el archivo con read_csv2() y asígnalo a notas\nUsa glimpse() o View() para verificar que las columnas numéricas son &lt;dbl&gt;\nCalcula el promedio de la columna estadistica por carrera usando group_by() + summarise()"
   },
   {
     "objectID": "sesiones/s04/slides.html#section-5",
@@ -858,7 +858,7 @@
     "href": "sesiones/s04/slides.html#section-6",
     "title": "Sesión 4",
     "section": "",
-    "text": "Actividad · 7 min\n\n\nCarga ambas hojas de registro.xlsx\n\n\n⬇ Descargar registro.xlsx\nGuarda el archivo en datos/. Luego:\n\nUsa excel_sheets() para ver los nombres de las hojas\nCarga \"Asistencia\" sin argumentos extra. Asígnalo a un objeto\nCarga \"Calificaciones\" con skip = 2. Asígnalo a otro objeto\nCompara los dos objetos con glimpse()"
+    "text": "Actividad · 7 min\n\n\nCarga ambas hojas de registro.xlsx\n\n\n⬇ Descargar registro.xlsx (si no lo has hecho)\nGuarda el archivo en datos/. Luego:\n\nUsa excel_sheets() para ver los nombres de las hojas\nCarga \"Asistencia\" sin argumentos extra. Asígnalo a un objeto\nCarga \"Calificaciones\" con skip = 2. Asígnalo a otro objeto\nConfirma la estructura de los dos objetos con glimpse() o View()"
   },
   {
     "objectID": "sesiones/s04/slides.html#section-7",
@@ -914,7 +914,7 @@
     "href": "sesiones/s04/slides.html#a-practicar",
     "title": "Sesión 4",
     "section": "A practicar",
-    "text": "A practicar\nAntes de la próxima sesión, crea un proyecto .Rproj nuevo e importa al menos un archivo externo con una ruta relativa.\nExperimenta con:\n\nUn archivo CSV propio o descargado: read_csv(\"datos/mi_archivo.csv\")\nUn archivo Excel: read_excel(\"datos/mi_archivo.xlsx\", sheet = 1)\nExplorar la estructura con glimpse(), names() y head()\nLimpiar al menos un problema típico: nombres con espacios, filas sobrantes, tipos mal asignados\nExportar el resultado con write_csv(), write_csv2() o saveRDS()\n\n\nSi no tienes un archivo propio, usa encuesta_bruta.xlsx de la Sesión 3 desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código."
+    "text": "A practicar\nAntes de la próxima sesión, crea un proyecto .Rproj nuevo e importa al menos un archivo externo con una ruta relativa.\nExperimenta con:\n\nUn archivo CSV propio o descargado: read_csv(\"datos/mi_archivo.csv\")\nUn archivo Excel: read_excel(\"datos/mi_archivo.xlsx\", sheet = 1)\nExplorar la estructura con glimpse(), names() y head()\nLimpiar al menos un problema típico: nombres con espacios, filas sobrantes, tipos mal asignados\nExportar el resultado con write_csv(), write_csv2() o saveRDS()\n\n\nSi no tienes un archivo propio, usa ⬇ encuesta_bruta.xlsx de la Sesión 3 desde tu proyecto nuevo y verifica que la ruta relativa funciona sin modificar el código."
   },
   {
     "objectID": "sesiones/s04/slides.html#section-9",
@@ -1348,7 +1348,7 @@
     "href": "glosario.html#operadores-y-sintaxis",
     "title": "Glosario de R",
     "section": "Operadores y sintaxis",
-    "text": "Operadores y sintaxis\nElementos del lenguaje R que no requieren cargar ningún paquete.\n\n\n\nElemento\nDescripción\nSesiones\n\n\n\n\n&lt;-\nAsignar: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.\nS1S2S3S4S5S6S7\n\n\n|&gt;\nPipe nativo (R ≥ 4.1): pasa el resultado de la izquierda como primer argumento de la función de la derecha. Permite encadenar operaciones de arriba a abajo. Atajo en RStudio: Ctrl+Shift+M (Windows/Linux) o Cmd+Shift+M (Mac).\nS3S4S5S6S7\n\n\n%&gt;%\nPipe de magrittr: funciona igual que |&gt; en la gran mayoría de los casos. Común en tutoriales y código anterior a 2021; proviene del paquete magrittr, incluido en tidyverse.\nS3\n\n\n%in%\nComprueba si cada elemento del vector de la izquierda aparece en el vector de la derecha. Devuelve un vector lógico (TRUE/FALSE).\nS3\n\n\nif (cond) { } else { }\nCondicional básico: ejecuta el primer bloque cuando la condición es TRUE y el segundo cuando es FALSE. Solo evalúa un valor escalar, no un vector completo.\nS5\n\n\nnombre &lt;- function(arg) { }\nDefine una función propia. El cuerpo entre llaves contiene el código que se ejecuta al llamarla. R devuelve automáticamente el último valor evaluado dentro del cuerpo.\nS5"
+    "text": "Operadores y sintaxis\nElementos del lenguaje R que no requieren cargar ningún paquete.\n\n\n\nElemento\nDescripción\nSesiones\n\n\n\n\n&lt;-\nAsignar: evalúa la expresión de la derecha y guarda el resultado en el objeto nombrado a la izquierda.\nS1S2S3S4S5S6S7\n\n\n|&gt;\nPipe nativo (R ≥ 4.1): pasa el resultado de la izquierda como primer argumento de la función de la derecha. Permite encadenar operaciones de arriba a abajo. Atajo en RStudio: Ctrl+Shift+M (Windows/Linux) o Cmd+Shift+M (Mac).\nS3S4S5S6S7\n\n\n%&gt;%\nPipe de magrittr: funciona igual que |&gt; en la gran mayoría de los casos. Común en tutoriales y código anterior a 2021; proviene del paquete magrittr, incluido en tidyverse.\nS3\n\n\n%in%\nComprueba si cada elemento del vector de la izquierda aparece en el vector de la derecha. Devuelve un vector lógico (TRUE/FALSE).\nS3\n\n\npaquete::funcion()\nOperador de espacio de nombres (::): llama a una función indicando explícitamente de qué paquete proviene, sin necesidad de haberlo cargado con library(). Útil para funciones que se usan una sola vez (como tinytex::install_tinytex()) o para dejar claro el origen de una función cuando hay conflictos.\nS5S6\n\n\nif (cond) { } else { }\nCondicional básico: ejecuta el primer bloque cuando la condición es TRUE y el segundo cuando es FALSE. Solo evalúa un valor escalar, no un vector completo.\nS5\n\n\nnombre &lt;- function(arg) { }\nDefine una función propia. El cuerpo entre llaves contiene el código que se ejecuta al llamarla. R devuelve automáticamente el último valor evaluado dentro del cuerpo.\nS5"
   },
   {
     "objectID": "glosario.html#r-base",
