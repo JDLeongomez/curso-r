@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```opq\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```osd\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -795,7 +795,7 @@
     "href": "sesiones/s04/slides.html#qué-es-un-archivo-csv",
     "title": "Sesión 4",
     "section": "¿Qué es un archivo CSV?",
-    "text": "¿Qué es un archivo CSV?\nCSV (Comma-Separated Values) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. Si abres un CSV en un editor de texto, verás algo así:\nid,carrera,estadistica,metodologia\n1,Psicología,4.8,3.5\n2,Medicina,3.7,4.1\nA diferencia de Excel, no incluye fórmulas, colores ni metadatos ocultos. Ves exactamente lo que contiene el archivo… ¡sin redondear valores ni asumir que algo es una $%@! fecha! 😠."
+    "text": "¿Qué es un archivo CSV?\nCSV (Comma-Separated Values) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. El formato clásico usa coma como separador y punto como decimal:\nid,carrera,estadistica,metodologia\n1,Psicología,4.8,3.5\n2,Medicina,3.7,4.1\nA diferencia de Excel, no incluye fórmulas, colores ni metadatos ocultos. Ves exactamente lo que contiene el archivo… ¡sin redondear valores ni asumir que algo es una $%@! fecha! 😠."
   },
   {
     "objectID": "sesiones/s04/slides.html#read_csv-el-formato-internacional",
@@ -816,14 +816,14 @@
     "href": "sesiones/s04/slides.html#argumentos-útiles-de-read_csv-y-read_csv2",
     "title": "Sesión 4",
     "section": "Argumentos útiles de read_csv() y read_csv2()",
-    "text": "Argumentos útiles de read_csv() y read_csv2()\n\n\n\n\n\n\n\n\nArgumento\nQué hace\nEjemplo\n\n\n\n\nskip\nOmite las primeras n filas\nskip = 2\n\n\nna\nDefine qué valores se tratan como NA\nna = c(\"\", \"N/A\", \"nd\")\n\n\ncol_names\nProporciona nombres de columna\ncol_names = c(\"id\", \"nota\")\n\n\nn_max\nLee solo las primeras n observaciones\nn_max = 100\n\n\ncol_types\nFuerza el tipo de cada columna\ncol_types = \"ccd\"\n\n\n\n\nCuando el archivo tiene un encabezado raro o filas de información antes de los datos, skip es la primera herramienta. Prueba con skip = 1, revisa el resultado, y ajusta."
+    "text": "Argumentos útiles de read_csv() y read_csv2()\n\n\n\n\n\n\n\n\nArgumento\nQué hace\nEjemplo\n\n\n\n\nskip\nOmite las primeras n filas\nskip = 2\n\n\nna\nDefine qué valores se tratan como NA\nna = c(\"\", \"N/A\", \"nd\")\n\n\ncol_names\nProporciona nombres de columna\ncol_names = c(\"id\", \"nota\")\n\n\nn_max\nLee solo las primeras n observaciones\nn_max = 100\n\n\ncol_types\nDefine el tipo de cada columna\ncol_types = \"ccd\"\n\n\n\n\nCuando el archivo tiene un encabezado raro o filas de información antes de los datos, skip es la primera herramienta. Prueba con skip = 1, revisa el resultado, y ajusta."
   },
   {
     "objectID": "sesiones/s04/slides.html#section-4",
     "href": "sesiones/s04/slides.html#section-4",
     "title": "Sesión 4",
     "section": "",
-    "text": "Actividad · 7 min\n\n\nCarga y explora notas.csv\n\n\n⬇ Descargar notas.csv (si no lo has hecho)\nGuarda el archivo en la carpeta datos/ de tu proyecto. Luego en tu script:\n\nCarga el archivo con read_csv2() y asígnalo a notas\nUsa glimpse() o View() para verificar que las columnas numéricas son &lt;dbl&gt;\nCalcula el promedio de la columna estadistica por carrera usando group_by() + summarise()"
+    "text": "Actividad · 7 min\n\n\nCarga y explora notas.csv\n\n\n⬇ Descargar notas.csv (si no lo has hecho)\nGuarda el archivo en la carpeta datos/ de tu proyecto. Luego en tu script:\n\nCarga el archivo con read_csv2() y asígnalo a notas\nUsa glimpse() o View() para verificar que las columnas numéricas son &lt;dbl&gt;\nCalcula el promedio de la columna estadistica por carrera usando group_by() + summarise()\n\n\nnotas.csv tiene algunos NA. Si mean() genera NA en lugar de algún número, añade na.rm = TRUE: mean(estadistica, na.rm = TRUE)."
   },
   {
     "objectID": "sesiones/s04/slides.html#section-5",
