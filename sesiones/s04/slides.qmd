@@ -254,7 +254,7 @@ Importar CSV
 
 ## ¿Qué es un archivo CSV?
 
-CSV (*Comma-Separated Values*) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. Si abres un CSV en un editor de texto, verás algo así:
+CSV (*Comma-Separated Values*) es texto plano donde cada línea es una observación y las columnas se separan con un carácter delimitador. El formato clásico usa **coma** como separador y **punto** como decimal:
 
 ```
 id,carrera,estadistica,metodologia
@@ -331,7 +331,7 @@ Ahora `estadistica`, `metodologia` y `seminario` son numéricas (`<dbl>`).
 | `na` | Define qué valores se tratan como `NA` | `na = c("", "N/A", "nd")` |
 | `col_names` | Proporciona nombres de columna | `col_names = c("id", "nota")` |
 | `n_max` | Lee solo las primeras *n* observaciones | `n_max = 100` |
-| `col_types` | Fuerza el tipo de cada columna | `col_types = "ccd"` |
+| `col_types` | Define el tipo de cada columna | `col_types = "ccd"` |
 
 ::: tip-box
 Cuando el archivo tiene un encabezado raro o filas de información antes de los datos, `skip` es la primera herramienta. Prueba con `skip = 1`, revisa el resultado, y ajusta.
@@ -359,6 +359,10 @@ Guarda el archivo en la carpeta `datos/` de tu proyecto. Luego en tu *script*:
 2. Usa `glimpse()` o `View()` para verificar que las columnas numéricas son `<dbl>`
 3. Calcula el promedio de la columna `estadistica` por carrera usando `group_by()` + `summarise()`
 ::::
+
+::: tip-box
+`notas.csv` tiene algunos `NA`. Si `mean()` genera `NA` en lugar de algún número, añade `na.rm = TRUE`: `mean(estadistica, na.rm = TRUE)`.
+:::
 :::
 
 ---
