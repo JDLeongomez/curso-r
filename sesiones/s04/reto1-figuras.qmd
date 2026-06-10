@@ -45,27 +45,49 @@ students <- map(script_files, function(fname) {
   code     <- readLines(file.path(scripts_dir, fname), warn = FALSE)
   fig_path <- file.path(fig_dir, sub("\\.R$", ".png", fname))
 
-  ok <- tryCatch({
-    tmp <- tempfile(fileext = ".png")
-    png(tmp, width = 900, height = 600, res = 150)
-    withr::with_dir(scripts_dir, {
-      source(fname, echo = FALSE, print.eval = TRUE, local = FALSE)
-    })
-    dev.off()
-    p <- ggplot2::last_plot()
-    if (is.null(p) || !inherits(p, "ggplot")) stop("el script no produjo un ggplot")
-    ggsave(fig_path, p, width = 7, height = 4.5, dpi = 150, bg = "white")
+  ok <- if (file.exists(fig_path)) {
     TRUE
-  }, error = function(e) {
-    try(dev.off(), silent = TRUE)
-    message("⚠ ", name, ": ", e$message)
-    FALSE
-  })
+  } else {
+    tryCatch({
+      tmp <- tempfile(fileext = ".png")
+      png(tmp, width = 900, height = 600, res = 150)
+      withr::with_dir(scripts_dir, {
+        source(fname, echo = FALSE, print.eval = TRUE, local = FALSE)
+      })
+      dev.off()
+      p <- ggplot2::last_plot()
+      if (is.null(p) || !inherits(p, "ggplot")) stop("el script no produjo un ggplot")
+      ggsave(fig_path, p, width = 7, height = 4.5, dpi = 150, bg = "white")
+      TRUE
+    }, error = function(e) {
+      try(dev.off(), silent = TRUE)
+      message("⚠ ", name, ": ", e$message)
+      FALSE
+    })
+  }
 
   list(name = name, code = code, fig_path = fig_path, ok = ok)
 })
 
-n_ok <- sum(map_lgl(students, "ok"))
+n_ok   <- sum(map_lgl(students, "ok"))
+valid  <- Filter(function(d) d$ok, students)
+half1  <- valid[seq_len(ceiling(length(valid) / 2))]
+half2  <- valid[seq(ceiling(length(valid) / 2) + 1, length(valid))]
+
+emit_grid <- function(items) {
+  cols <- min(length(items), 3)
+  cat(sprintf(
+    '<div style="display:grid;grid-template-columns:repeat(%d,1fr);gap:16px;align-items:start;">\n',
+    cols
+  ))
+  for (d in items) {
+    cat(sprintf(
+      '<div style="text-align:center"><img src="%s" style="width:100%%;border-radius:4px"><br><strong style="font-size:0.8em;">%s</strong></div>\n',
+      d$fig_path, d$name
+    ))
+  }
+  cat("</div>\n")
+}
 ```
 
 ## Criterios de votación {.smaller}
@@ -120,20 +142,14 @@ Votación
 
 ```{r}
 #| results: asis
+emit_grid(half1)
+```
 
-valid <- Filter(function(d) d$ok, students)
-n     <- length(valid)
-cols  <- min(n, 4)
+---
 
-cat(sprintf(
-  '<div style="display:grid;grid-template-columns:repeat(%d,1fr);gap:16px;align-items:start;">\n',
-  cols
-))
-for (d in valid) {
-  cat(sprintf(
-    '<div style="text-align:center"><img src="%s" style="width:100%%;border-radius:4px"><br><strong style="font-size:0.8em;">%s</strong></div>\n',
-    d$fig_path, d$name
-  ))
-}
-cat("</div>\n")
+## Elige a la ganadora (cont.) {.smaller}
+
+```{r}
+#| results: asis
+emit_grid(half2)
 ```
