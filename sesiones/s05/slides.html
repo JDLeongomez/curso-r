@@ -658,7 +658,7 @@ Juan David Leongómez
 <span id="cb40-11"><a></a>        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Normal"</span>, <span class="st">"Uniforme"</span>, <span class="st">"Binomial"</span>)</span>
 <span id="cb40-12"><a></a>    )) <span class="sc">|&gt;</span></span>
 <span id="cb40-13"><a></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> valor, <span class="at">fill =</span> dist)) <span class="sc">+</span></span>
-<span id="cb40-14"><a></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb40-14"><a></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb40-15"><a></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>dist, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb40-16"><a></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
 <span id="cb40-17"><a></a>        <span class="st">"Normal"</span> <span class="ot">=</span> <span class="st">"#225faa"</span>, <span class="st">"Uniforme"</span> <span class="ot">=</span> <span class="st">"#5b9ad5"</span>,</span>
@@ -971,6 +971,7 @@ horas_sueno -0.29      0.21        1.00</code></pre>
 </div>
 </div>
 </div></div>
+<p>¿Qué tendrías que hacer para visualizar a distribución por <code>carrera</code>?</p>
 </section>
 <section id="section-8" class="slide level2 actividad" data-background-color="#6b1220">
 <h2></h2>

@@ -32,7 +32,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```kjn\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```uqu\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -1691,7 +1691,7 @@
     "href": "sesiones/s05/slides.html#cómo-se-ven-las-distribuciones",
     "title": "Sesión 5",
     "section": "Cómo se ven las distribuciones",
-    "text": "Cómo se ven las distribuciones\nrnorm() · runif() · rbinom() — distribuciones paramétricas\n\n\n\nset.seed(17)\ndata.frame(\n    Normal   = rnorm(1000, mean = 10, sd = 3),\n    Uniforme = runif(1000, min = 0, max = 20),\n    Binomial = rbinom(1000, size = 20, prob = 0.3)\n) |&gt;\n    pivot_longer(everything(),\n        names_to = \"dist\", values_to = \"valor\"\n    ) |&gt;\n    mutate(dist = factor(dist,\n        levels = c(\"Normal\", \"Uniforme\", \"Binomial\")\n    )) |&gt;\n    ggplot(aes(x = valor, fill = dist)) +\n    geom_histogram(bins = 20, show.legend = FALSE) +\n    facet_wrap(~dist, scales = \"free\", nrow = 1) +\n    scale_fill_manual(values = c(\n        \"Normal\" = \"#225faa\", \"Uniforme\" = \"#5b9ad5\",\n        \"Binomial\" = \"#7db87d\"\n    )) +\n    labs(x = NULL, y = \"Frecuencia\") +\n    theme_minimal()"
+    "text": "Cómo se ven las distribuciones\nrnorm() · runif() · rbinom() — distribuciones paramétricas\n\n\n\nset.seed(17)\ndata.frame(\n    Normal   = rnorm(1000, mean = 10, sd = 3),\n    Uniforme = runif(1000, min = 0, max = 20),\n    Binomial = rbinom(1000, size = 20, prob = 0.3)\n) |&gt;\n    pivot_longer(everything(),\n        names_to = \"dist\", values_to = \"valor\"\n    ) |&gt;\n    mutate(dist = factor(dist,\n        levels = c(\"Normal\", \"Uniforme\", \"Binomial\")\n    )) |&gt;\n    ggplot(aes(x = valor, fill = dist)) +\n    geom_histogram(binwidth = 1, show.legend = FALSE) +\n    facet_wrap(~dist, scales = \"free\", nrow = 1) +\n    scale_fill_manual(values = c(\n        \"Normal\" = \"#225faa\", \"Uniforme\" = \"#5b9ad5\",\n        \"Binomial\" = \"#7db87d\"\n    )) +\n    labs(x = NULL, y = \"Frecuencia\") +\n    theme_minimal()"
   },
   {
     "objectID": "sesiones/s05/slides.html#cómo-se-ven-las-distribuciones-1",
@@ -1761,7 +1761,7 @@
     "href": "sesiones/s05/slides.html#visualizar-la-distribución-de-niveles",
     "title": "Sesión 5",
     "section": "Visualizar la distribución de niveles",
-    "text": "Visualizar la distribución de niveles\n\n\n\ngad7_sim |&gt;\n    mutate(nivel_ansiedad = factor(\n        nivel_ansiedad,\n        levels = c(\"Mínima\", \"Leve\", \"Moderada\", \"Severa\")\n    )) |&gt;\n    ggplot(aes(x = nivel_ansiedad, fill = nivel_ansiedad)) +\n    geom_bar() +\n    scale_fill_manual(\n        values = c(\n            \"Mínima\" = \"#7db87d\", \"Leve\" = \"#f5c842\",\n            \"Moderada\" = \"#f0943a\", \"Severa\" = \"#c0392b\"\n        )\n    ) +\n    labs(x = \"Nivel de ansiedad\", y = \"Frecuencia\", fill = NULL) +\n    theme_minimal() +\n    theme(legend.position = \"none\")"
+    "text": "Visualizar la distribución de niveles\n\n\n\ngad7_sim |&gt;\n    mutate(nivel_ansiedad = factor(\n        nivel_ansiedad,\n        levels = c(\"Mínima\", \"Leve\", \"Moderada\", \"Severa\")\n    )) |&gt;\n    ggplot(aes(x = nivel_ansiedad, fill = nivel_ansiedad)) +\n    geom_bar() +\n    scale_fill_manual(\n        values = c(\n            \"Mínima\" = \"#7db87d\", \"Leve\" = \"#f5c842\",\n            \"Moderada\" = \"#f0943a\", \"Severa\" = \"#c0392b\"\n        )\n    ) +\n    labs(x = \"Nivel de ansiedad\", y = \"Frecuencia\", fill = NULL) +\n    theme_minimal() +\n    theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\n\n¿Qué tendrías que hacer para visualizar a distribución por carrera?"
   },
   {
     "objectID": "sesiones/s05/slides.html#section-8",
