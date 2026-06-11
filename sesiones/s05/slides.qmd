@@ -550,7 +550,7 @@ data.frame(
         levels = c("Normal", "Uniforme", "Binomial")
     )) |>
     ggplot(aes(x = valor, fill = dist)) +
-    geom_histogram(bins = 20, show.legend = FALSE) +
+    geom_histogram(binwidth = 1, show.legend = FALSE) +
     facet_wrap(~dist, scales = "free", nrow = 1) +
     scale_fill_manual(values = c(
         "Normal" = "#225faa", "Uniforme" = "#5b9ad5",
@@ -577,7 +577,7 @@ data.frame(
         levels = c("Normal", "Uniforme", "Binomial")
     )) |>
     ggplot(aes(x = valor, fill = dist)) +
-    geom_histogram(bins = 20, show.legend = FALSE) +
+    geom_histogram(binwidth = 1, show.legend = FALSE) +
     facet_wrap(~dist, scales = "free", nrow = 1) +
     scale_fill_manual(values = c(
         "Normal" = "#225faa", "Uniforme" = "#5b9ad5",
@@ -928,6 +928,8 @@ gad7_sim |>
 ```
 :::
 ::::
+
+¿Qué tendrías que hacer para visualizar a distribución por `carrera`?
 
 ---
 
