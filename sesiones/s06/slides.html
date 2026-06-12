@@ -221,7 +221,7 @@ Juan David Leongómez
 <ul>
 <li class="fragment">El problema del copiar y pegar</li>
 <li class="fragment">¿Qué es Quarto?</li>
-<li class="fragment">Tu primer documento Quarto</li>
+<li class="fragment">Un primer documento Quarto</li>
 <li class="fragment">Markdown: el lenguaje del texto</li>
 <li class="fragment">Bloques de código</li>
 <li class="fragment">Código en línea</li>
@@ -261,7 +261,7 @@ Juan David Leongómez
   <div style="color:#c0392b; padding-left:1em;">mean(gad7) → <strong>8.1</strong> ⚠ desactualizado</div>
 </div>
 <div class="tip-box">
-<p>Cada vez que los datos cambian, cada valor copiado a mano es un error potencial.</p>
+<p>Cada valor copiado a mano es potencialmente un error.</p>
 </div>
 </div></div>
 </section>
@@ -283,7 +283,7 @@ Juan David Leongómez
     <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">📝 documento.qmd</div>
     <div style="color:#444; font-size:0.9em; line-height:1.8;">
       texto en markdown<br>
-      ```uqu<br>
+      ```bvo<br>
       &nbsp;&nbsp;código R<br>
       ```<br>
       más texto…
@@ -310,7 +310,7 @@ Juan David Leongómez
 <p>Es posible que encuentres archivos <code>.Rmd</code> en tutoriales, repositorios o código de otras personas. R Markdown hace lo mismo que Quarto: combina texto y código en un documento reproducible.</p>
 <p>Ambos son creados por <strong>Posit</strong> (la empresa detrás de RStudio). Pero Quarto es la evolución de R Markdown.</p>
 <div class="tip-box">
-<p>Si ves un archivo <code>.Rmd</code> (que significa “R Markdown”), puedes leerlo sin problema: la estructura es casi idéntica. Para trabajo nuevo, usa siempre Quarto (<code>.qmd</code> que significa “Quarto Markdown”).</p>
+<p>Si ves un archivo <code>.Rmd</code> (que significa “R Markdown”), puedes abrirli sin problema y la estructura es casi idéntica. Pero para trabajos nuevos es mejior usar Quarto (<code>.qmd</code> que significa “Quarto Markdown”).</p>
 </div>
 </section>
 <section id="section-2" class="slide level2" data-background-color="#121834">
@@ -319,7 +319,7 @@ Juan David Leongómez
 <p>Parte 3</p>
 </div>
 <div class="section-title-text">
-<p>Tu primer documento Quarto</p>
+<p>Un primer documento Quarto</p>
 </div>
 </section>
 <section id="crear-un-documento-quarto" class="slide level2 smaller">
@@ -398,7 +398,7 @@ Juan David Leongómez
 </div>
 <div class="actividad-desc">
 <ol type="1">
-<li><strong>File › New File › Quarto Document…</strong> — título: “Mi primer análisis”, formato: HTML</li>
+<li><strong>File › New File › Quarto Document…</strong> <code>— título: "Mi primer análisis"</code>, <code>formato: HTML</code></li>
 <li>Guárdalo en la <strong>raíz</strong> de tu proyecto <code>curso_r</code> (no en <code>scripts/</code>), como <code>mi_reporte.qmd</code></li>
 <li>Haz clic en <strong>Render</strong> y observa el resultado en el navegador</li>
 <li>Cambia el título en el YAML y vuelve a renderizar</li>
@@ -420,9 +420,9 @@ Juan David Leongómez
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Lo que escribes (fuente)</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu"># Título principal</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu"># Encabezado nivel 1</span></span>
 <span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">## Sección</span></span>
+<span id="cb3-3"><a></a><span class="fu">## Encabezado nivel 3</span></span>
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a>Texto normal, **negrita** y *cursiva*.</span>
 <span id="cb3-6"><a></a></span>
@@ -440,8 +440,8 @@ Juan David Leongómez
 </div><div class="column" style="width:50%;">
 <p><strong>Lo que se ve (renderizado)</strong></p>
 <div style="font-size:0.9em; line-height:1.9;">
-  <h1 style="font-size:1.1em; margin:0.2em 0 0.1em; padding:0; border:none;">Título principal</h1>
-  <h2 style="font-size:0.95em; margin:0.2em 0 0.1em; padding:0; border:none;">Sección</h2>
+  <h1 style="font-size:1.1em; margin:0.2em 0 0.1em; padding:0; border:none;">Encabezado nivel 1</h1>
+  <h2 style="font-size:0.95em; margin:0.2em 0 0.1em; padding:0; border:none;">Encabezado nivel 2</h2>
   <p style="margin:0.2em 0;">Texto normal, <strong>negrita</strong> y <em>cursiva</em>.</p>
   <h3 style="font-size:0.85em; margin:0.3em 0 0.1em; padding:0; border:none;">Lista no ordenada</h3>
   <ul style="margin:0.1em 0; padding-left:1.4em;">
