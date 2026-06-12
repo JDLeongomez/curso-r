@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tareas_por_hacer – Curso de R · Junio 2026</title>
+<title>Guía rápida de Quarto – Curso de R · Junio 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -170,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Glosario de R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./guia-quarto.html"> 
+    <a class="nav-link active" href="./guia-quarto.html" aria-current="page"> 
 <span class="menu-text">Guía de Quarto</span></a>
   </li>  
 </ul>
@@ -188,228 +223,342 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
-  <ul>
-  <li><a href="#tareas-por-hacer" id="toc-tareas-por-hacer" class="nav-link active" data-scroll-target="#tareas-por-hacer">Tareas por hacer</a>
   <ul class="collapse">
-  <li><a href="#curso" id="toc-curso" class="nav-link" data-scroll-target="#curso">Curso</a></li>
-  <li><a href="#configuración-y-setup" id="toc-configuración-y-setup" class="nav-link" data-scroll-target="#configuración-y-setup">Configuración y setup</a></li>
-  <li><a href="#diapositivas" id="toc-diapositivas" class="nav-link" data-scroll-target="#diapositivas">Diapositivas</a></li>
-  <li><a href="#recursos-y-estructura-del-proyecto" id="toc-recursos-y-estructura-del-proyecto" class="nav-link" data-scroll-target="#recursos-y-estructura-del-proyecto">Recursos y estructura del proyecto</a></li>
-  <li><a href="#sitio-web" id="toc-sitio-web" class="nav-link" data-scroll-target="#sitio-web">Sitio web</a></li>
-  <li><a href="#retos-para-estudiantes" id="toc-retos-para-estudiantes" class="nav-link" data-scroll-target="#retos-para-estudiantes">Retos para estudiantes</a></li>
-  <li><a href="#estructura-de-sesiones-preliminar" id="toc-estructura-de-sesiones-preliminar" class="nav-link" data-scroll-target="#estructura-de-sesiones-preliminar">Estructura de sesiones (preliminar)</a></li>
-  <li><a href="#tabla-de-comandos" id="toc-tabla-de-comandos" class="nav-link" data-scroll-target="#tabla-de-comandos">Tabla de comandos</a></li>
-  </ul></li>
+  <li><a href="#estructura-de-un-archivo-.qmd" id="toc-estructura-de-un-archivo-.qmd" class="nav-link active" data-scroll-target="#estructura-de-un-archivo-.qmd">Estructura de un archivo <code>.qmd</code></a></li>
+  <li><a href="#encabezado-yaml" id="toc-encabezado-yaml" class="nav-link" data-scroll-target="#encabezado-yaml">Encabezado YAML</a></li>
+  <li><a href="#markdown-el-lenguaje-del-texto" id="toc-markdown-el-lenguaje-del-texto" class="nav-link" data-scroll-target="#markdown-el-lenguaje-del-texto">Markdown: el lenguaje del texto</a></li>
+  <li><a href="#bloques-de-código" id="toc-bloques-de-código" class="nav-link" data-scroll-target="#bloques-de-código">Bloques de código</a></li>
+  <li><a href="#código-en-línea" id="toc-código-en-línea" class="nav-link" data-scroll-target="#código-en-línea">Código en línea</a></li>
+  <li><a href="#formatos-de-salida" id="toc-formatos-de-salida" class="nav-link" data-scroll-target="#formatos-de-salida">Formatos de salida</a></li>
+  <li><a href="#renderizar-el-documento" id="toc-renderizar-el-documento" class="nav-link" data-scroll-target="#renderizar-el-documento">Renderizar el documento</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Guía rápida de Quarto</h1>
+<p class="subtitle lead">Referencia de sintaxis para documentos reproducibles</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="tareas-por-hacer" class="level1">
-<h1>Tareas por hacer</h1>
-<section id="curso" class="level2">
-<h2 class="anchored" data-anchor-id="curso">Curso</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Definir estructura del repositorio y GitHub Pages</label></li>
-<li><label><input type="checkbox" checked="">Planear orden y contenidos de las sesiones (estructura preliminar acordada)</label></li>
-<li><label><input type="checkbox" checked="">Confirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)</label></li>
-<li><label><input type="checkbox">Pedir a estudiantes que creen cuenta en GitHub antes de S7</label></li>
-</ul>
-</section>
-<section id="configuración-y-setup" class="level2">
-<h2 class="anchored" data-anchor-id="configuración-y-setup">Configuración y setup</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Crear <code>_quarto.yml</code> base</label></li>
-<li><label><input type="checkbox" checked="">Crear <code>estilos/slides.scss</code> y <code>estilos/sitio.scss</code></label></li>
-<li><label><input type="checkbox" checked="">Crear workflow de GitHub Actions (<code>publish.yml</code>)</label></li>
-<li><label><input type="checkbox" checked="">Crear <code>.gitignore</code></label></li>
-<li><label><input type="checkbox" checked="">Crear favicon (<code>imagenes/favicon.svg</code>)</label></li>
-<li><label><input type="checkbox" checked="">Añadir favicon al <code>_quarto.yml</code> (<code>website: favicon: imagenes/favicon.svg</code>)</label></li>
-<li><label><input type="checkbox" checked="">Añadir snippet de links en nueva pestaña al <code>_quarto.yml</code></label></li>
-<li><label><input type="checkbox" checked="">Diagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)</label></li>
-<li><label><input type="checkbox" checked="">Línea <code>logo:</code> en <code>sesiones/s01/slides.qmd</code> — no existe, no hay problema</label></li>
-<li><label><input type="checkbox" checked="">Instalar extensión codefocus y activarla en <code>sesiones/_metadata.yml</code></label></li>
-<li><label><input type="checkbox" checked="">Completar menú Sesiones en <code>_quarto.yml</code> con las 9 sesiones agrupadas por semana</label></li>
-</ul>
-</section>
-<section id="diapositivas" class="level2">
-<h2 class="anchored" data-anchor-id="diapositivas">Diapositivas</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 1 (borrador completo)</label></li>
-<li><label><input type="checkbox" checked="">Mejorar diapositivas sesión 1</label></li>
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 2 — ggplot2 en profundidad</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Añadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)</label></li>
-<li><label><input type="checkbox" checked="">Añadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)</label></li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 3 — pipe + dplyr</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Crear <code>sesiones/s03/datos/encuesta_bruta.xlsx</code> (base de datos GAD-7 simulada con problemas típicos de Excel)</label></li>
-<li><label><input type="checkbox" checked="">Añadir sección Reto 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)</label></li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R</label></li>
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 5 — Automatización de análisis con funciones y simulación</label></li>
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 6 — Reportes reproducibles con Quarto</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Añadir anuncio Reto 2 al final de s06</label></li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Crear <code>sesiones/s07/referencias.bib</code> (R, tidyverse, Spitzer 2006)</label></li>
-</ul></li>
-<li><label><input type="checkbox">Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación</label></li>
-<li><label><input type="checkbox">Crear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas</label></li>
-</ul>
-</section>
-<section id="recursos-y-estructura-del-proyecto" class="level2">
-<h2 class="anchored" data-anchor-id="recursos-y-estructura-del-proyecto">Recursos y estructura del proyecto</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Crear <code>plantilla_proyecto/</code> con estructura lista para descargar (<code>curso_r.Rproj</code>, <code>datos/</code>, <code>figuras/</code>, <code>scripts/</code>)</label></li>
-<li><label><input type="checkbox" checked="">Revisar y corregir consistencia de rutas y carpetas en s02–s07</label></li>
-</ul>
-</section>
-<section id="sitio-web" class="level2">
-<h2 class="anchored" data-anchor-id="sitio-web">Sitio web</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Actualizar sección <code>#sesiones</code> en <code>index.qmd</code> (temas, salones con colores)</label></li>
-<li><label><input type="checkbox" checked="">Actualizar sección <code>#contenidos-por-semana</code> en <code>programa.qmd</code> (temas, salones con colores)</label></li>
-<li><label><input type="checkbox">Añadir enlace a diapositivas en <code>index.qmd</code> a medida que se completen (s04–s09)</label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">s04 — enlace añadido</label></li>
-<li><label><input type="checkbox" checked="">s05 — enlace añadido</label></li>
-<li><label><input type="checkbox" checked="">s06 — enlace añadido</label></li>
-<li><label><input type="checkbox" checked="">s07 — enlace añadido</label></li>
-</ul></li>
-<li><label><input type="checkbox" checked="">Crear página de referencia rápida (<code>glosario.qmd</code>) con funciones y paquetes de S1–S7</label></li>
-<li><label><input type="checkbox">Actualizar <code>glosario.qmd</code> con funciones de S8 al completar esa sesión</label></li>
-<li><label><input type="checkbox">Actualizar <code>glosario.qmd</code> con funciones de S9 al completar esa sesión</label></li>
-</ul>
-</section>
-<section id="retos-para-estudiantes" class="level2">
-<h2 class="anchored" data-anchor-id="retos-para-estudiantes">Retos para estudiantes</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Crear <code>retos/reto1-figura-fea.qmd</code> (concurso ggplot2 feo)</label></li>
-<li><label><input type="checkbox" checked="">Crear <code>retos/reto1/</code> (carpeta en el repo para guardar scripts recibidos)</label></li>
-<li><label><input type="checkbox" checked="">Carpeta OneDrive para entregas de Reto 1 — enlace en <code>reto1-figura-fea.qmd</code> y en s03</label></li>
-<li><label><input type="checkbox" checked="">Crear <code>sesiones/s04/reto1-figuras.qmd</code> (presentación auto-generada: slide por estudiante con script + figura; slide de galería final para votar)</label></li>
-<li><label><input type="checkbox" checked="">Crear <code>retos/reto2-paquete-raro.qmd</code> (presentar paquete de R)</label></li>
-</ul>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Esta página es una referencia rápida de la sintaxis de Quarto cubierta en el curso. Está organizada para consulta mientras trabajas en tu propio documento.</p>
+<section id="estructura-de-un-archivo-.qmd" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-de-un-archivo-.qmd">Estructura de un archivo <code>.qmd</code></h2>
+<p>Un archivo Quarto tiene tres partes:</p>
+<div style="font-family:monospace; font-size:0.92em; line-height:2; background:#f5f5f3; border-radius:8px; padding:1em 1.4em; margin:1em 0;">
+  <span style="background:#eeedfe; color:#3d2fa0; padding:2px 8px; border-radius:3px; font-weight:700;">YAML</span>&nbsp;&nbsp;
+  Encabezado entre <code>---</code>: título, autor, formato de salida<br>
+  <span style="background:#ddeaf8; color:#1a4070; padding:2px 8px; border-radius:3px; font-weight:700;">Markdown</span>&nbsp;&nbsp;
+  Texto con formato: encabezados, negrita, listas, enlaces…<br>
+  <span style="background:#d4f0e4; color:#1a5c38; padding:2px 8px; border-radius:3px; font-weight:700;">Código</span>&nbsp;&nbsp;
+  Bloques <code>```{r}…```</code> que se ejecutan al renderizar
+</div>
+<p>Ejemplo mínimo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Mi análisis"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Ana García"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introducción</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Texto en **Markdown**.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="estructura-de-sesiones-preliminar" class="level2">
-<h2 class="anchored" data-anchor-id="estructura-de-sesiones-preliminar">Estructura de sesiones (preliminar)</h2>
+<section id="encabezado-yaml" class="level2">
+<h2 class="anchored" data-anchor-id="encabezado-yaml">Encabezado YAML</h2>
+<p>El YAML va al inicio del archivo, entre dos líneas <code>---</code>. Las claves más comunes:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 3%">
-<col style="width: 11%">
-<col style="width: 62%">
+<col style="width: 26%">
+<col style="width: 34%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clave</th>
+<th>Ejemplo</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td><code>"Mi análisis"</code></td>
+<td>Título del documento</td>
+</tr>
+<tr class="even">
+<td><code>author</code></td>
+<td><code>"Ana García"</code></td>
+<td>Nombre del autor</td>
+</tr>
+<tr class="odd">
+<td><code>date</code></td>
+<td><code>"2026-06-12"</code></td>
+<td>Fecha (o <code>today</code> para la fecha actual)</td>
+</tr>
+<tr class="even">
+<td><code>lang</code></td>
+<td><code>es</code></td>
+<td>Idioma: traduce etiquetas automáticas (“Figura”, “Tabla de contenidos”…)</td>
+</tr>
+<tr class="odd">
+<td><code>format</code></td>
+<td><code>html</code> / <code>pdf</code> / <code>docx</code></td>
+<td>Formato de salida</td>
+</tr>
+<tr class="even">
+<td><code>toc</code></td>
+<td><code>true</code></td>
+<td>Incluye tabla de contenidos</td>
+</tr>
+<tr class="odd">
+<td><code>number-sections</code></td>
+<td><code>true</code></td>
+<td>Numera los encabezados automáticamente</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>lang: es es importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sin <code>lang: es</code>, Quarto usa inglés para las etiquetas automáticas: “Figure 1” en lugar de “Figura 1”, “Table of Contents” en lugar de “Tabla de contenidos”, etc.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="markdown-el-lenguaje-del-texto" class="level2">
+<h2 class="anchored" data-anchor-id="markdown-el-lenguaje-del-texto">Markdown: el lenguaje del texto</h2>
+<section id="encabezados" class="level3">
+<h3 class="anchored" data-anchor-id="encabezados">Encabezados</h3>
+<p>Los encabezados estructuran el cuerpo del documento. No son el título del documento, que se define en el YAML con <code>title:</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Encabezado nivel 1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Encabezado nivel 2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Encabezado nivel 3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="énfasis-y-código" class="level3">
+<h3 class="anchored" data-anchor-id="énfasis-y-código">Énfasis y código</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sintaxis</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>**negrita**</code></td>
+<td><strong>negrita</strong></td>
+</tr>
+<tr class="even">
+<td><code>*cursiva*</code></td>
+<td><em>cursiva</em></td>
+</tr>
+<tr class="odd">
+<td><code>`código en línea`</code></td>
+<td><code>código en línea</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="listas" class="level3">
+<h3 class="anchored" data-anchor-id="listas">Listas</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Elemento sin orden</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Otro elemento</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Sub-elemento</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Primer paso</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Segundo paso</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="enlaces-e-imágenes" class="level3">
+<h3 class="anchored" data-anchor-id="enlaces-e-imágenes">Enlaces e imágenes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">texto del enlace</span><span class="co">](https://r-project.org)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="al">![descripción de la imagen](ruta/imagen.png)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="bloques-de-código" class="level2">
+<h2 class="anchored" data-anchor-id="bloques-de-código">Bloques de código</h2>
+<p>Un bloque de código (<em>chunk</em>) contiene código R que se ejecuta al renderizar. Las opciones se escriben al inicio del bloque con <code>#|</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Distribución del puntaje GAD-7"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>encuesta <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ansiedad_total)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"#225faa"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="opciones-de-bloque" class="level3">
+<h3 class="anchored" data-anchor-id="opciones-de-bloque">Opciones de bloque</h3>
+<table class="caption-top table">
+<colgroup>
 <col style="width: 22%">
+<col style="width: 37%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>#</th>
-<th>Fecha</th>
-<th>Tema</th>
-<th>Reto</th>
+<th>Opción</th>
+<th style="text-align: center;">Por defecto</th>
+<th>Qué controla</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>Mié 3</td>
-<td>Intro a R, RStudio, sintaxis, primera figura</td>
-<td>Explorar ggplot2</td>
+<td><code>echo</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se muestra el código en el documento?</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>Jue 4</td>
-<td>ggplot2 en profundidad</td>
-<td></td>
+<td><code>eval</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se ejecuta el código?</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>Vie 5</td>
-<td>Pipe nativo + dplyr</td>
-<td><strong>← Reto 1</strong></td>
+<td><code>include</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td><code>false</code> ejecuta el código pero no muestra nada</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>Mié 10</td>
-<td><em>Reto 1</em> + datos externos, proyectos, CSV</td>
-<td></td>
+<td><code>warning</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se muestran las advertencias?</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>Jue 11</td>
-<td>Funciones, condicionales y simulación</td>
-<td></td>
+<td><code>message</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td>¿Se muestran los mensajes de carga de paquetes?</td>
 </tr>
 <tr class="even">
-<td>6</td>
-<td>Vie 12</td>
-<td>Documentos reproducibles (Quarto)</td>
-<td><strong>← Reto 2</strong></td>
+<td><code>fig-height</code></td>
+<td style="text-align: center;"><code>5</code></td>
+<td>Alto de la figura en pulgadas</td>
 </tr>
 <tr class="odd">
-<td>7</td>
-<td>Mié 17</td>
-<td>Quarto: tablas, citas y formatos</td>
-<td></td>
+<td><code>fig-width</code></td>
+<td style="text-align: center;"><code>7</code></td>
+<td>Ancho de la figura en pulgadas</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td>Jue 18</td>
-<td>Quarto: figuras, integración y publicación</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>Vie 19</td>
-<td><em>Reto 2</em> + Cierre, integración, buenas prácticas</td>
-<td></td>
+<td><code>fig-cap</code></td>
+<td style="text-align: center;">—</td>
+<td>Pie de figura; se numera automáticamente con <code>lang: es</code></td>
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bloque de configuración
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es habitual tener un primer bloque con <code>#| include: false</code> que carga los paquetes y los datos. Ese bloque se ejecuta pero no aparece en el documento:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos/mi_archivo.xlsx"</span>, <span class="at">skip =</span> <span class="dv">2</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<hr>
 </section>
-<section id="tabla-de-comandos" class="level2">
-<h2 class="anchored" data-anchor-id="tabla-de-comandos">Tabla de comandos</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 51%">
-<col style="width: 48%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Situación</th>
-<th>Comando</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Trabajando en una sesión</td>
-<td><code>quarto render sesiones/s01/slides.qmd</code></td>
-</tr>
-<tr class="even">
-<td>Revisar el sitio completo antes de publicar</td>
-<td><code>quarto render</code></td>
-</tr>
-<tr class="odd">
-<td>Necesitas preview en vivo (excepcional)</td>
-<td><code>quarto preview sesiones/s01/slides.qmd</code></td>
-</tr>
-<tr class="even">
-<td>Matar procesos huérfanos</td>
-<td><code>pkill -f "quarto preview"</code></td>
-</tr>
-</tbody>
-</table>
+</section>
+<section id="código-en-línea" class="level2">
+<h2 class="anchored" data-anchor-id="código-en-línea">Código en línea</h2>
+<p>Con <code>`r `</code> puedes insertar el resultado de una expresión R directamente en el texto del documento:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>La muestra incluyó <span class="in">`r nrow(encuesta)`</span> participantes.</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>La media fue <span class="in">`r round(mean(encuesta$ansiedad_total), 1)`</span> puntos.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Al renderizar, esas expresiones se reemplazan por sus valores calculados. Si los datos cambian, los valores del texto se actualizan solos.</p>
+<hr>
+</section>
+<section id="formatos-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="formatos-de-salida">Formatos de salida</h2>
+<p>El formato se controla con la clave <code>format</code> en el YAML. Puedes añadir opciones específicas de cada formato:</p>
+<section id="html" class="level3">
+<h3 class="anchored" data-anchor-id="html">HTML</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>self-contained: true</code> genera un único archivo <code>.html</code> que incluye todo (imágenes, estilos). Útil para compartir por correo.</p>
+</section>
+<section id="pdf" class="level3">
+<h3 class="anchored" data-anchor-id="pdf">PDF</h3>
+<p>Requiere LaTeX instalado. La opción más sencilla es TinyTeX:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Una vez instalado:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="word" class="level3">
+<h3 class="anchored" data-anchor-id="word">Word</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Útil para compartir con colaboradores que no usan R.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Cambiar de formato sin tocar el contenido
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Puedes cambiar el formato en cualquier momento modificando solo la línea <code>format:</code> del YAML. El texto, los bloques de código y las opciones de bloque no cambian.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="renderizar-el-documento" class="level2">
+<h2 class="anchored" data-anchor-id="renderizar-el-documento">Renderizar el documento</h2>
+<p>Desde RStudio: botón <strong>Render</strong> o atajo <code>Ctrl+Shift+K</code>.</p>
+<p>Desde la terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render mi_documento.qmd</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si hay un error en algún bloque de código, el renderizado se detiene y muestra en qué bloque ocurrió.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

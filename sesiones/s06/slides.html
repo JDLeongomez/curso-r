@@ -253,12 +253,12 @@ Juan David Leongómez
 </div><div class="column" style="width:50%;">
 <div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:1em 1.2em; line-height:2;">
   <div>📊 <strong>analisis.R</strong></div>
-  <div style="color:#225faa; padding-left:1em;">mean(gad7) → <strong>8.3</strong></div>
+  <div style="color:#225faa; padding-left:1em;">mean(ansiedad_total) → <strong>8.3</strong></div>
   <div style="margin-top:0.5em;">⬇ copiar y pegar</div>
   <div style="margin-top:0.5em;">📄 <strong>informe.docx</strong></div>
   <div style="padding-left:1em; color:#444">"La media fue de <strong>8.3</strong> puntos…"</div>
   <div style="margin-top:0.5em;">⬇ datos corregidos</div>
-  <div style="color:#c0392b; padding-left:1em;">mean(gad7) → <strong>8.1</strong> ⚠ desactualizado</div>
+  <div style="color:#c0392b; padding-left:1em;">mean(ansiedad_total) → <strong>8.1</strong> ⚠ desactualizado</div>
 </div>
 <div class="tip-box">
 <p>Cada valor copiado a mano es potencialmente un error.</p>
@@ -283,7 +283,7 @@ Juan David Leongómez
     <div style="font-weight:700; color:#121834; margin-bottom:0.4em;">📝 documento.qmd</div>
     <div style="color:#444; font-size:0.9em; line-height:1.8;">
       texto en markdown<br>
-      ```bvo<br>
+      ```ahl<br>
       &nbsp;&nbsp;código R<br>
       ```<br>
       más texto…
@@ -342,9 +342,14 @@ Juan David Leongómez
 <span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Análisis de ansiedad GAD-7"</span></span>
 <span id="cb1-3"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Ana García"</span></span>
 <span id="cb1-4"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2026-06-12"</span></span>
-<span id="cb1-5"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-6"><a></a><span class="pp">---</span></span></code></pre></div>
+<span id="cb1-5"><a></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> es</span></span>
+<span id="cb1-6"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-7"><a></a><span class="pp">---</span></span></code></pre></div>
 <p>Controla el título, el autor, la fecha y el formato de salida. Todo lo que aparece debajo del segundo <code>---</code> es el cuerpo del documento.</p>
+<div class="tip-box">
+<p><code>date: today</code> inserta automáticamente la fecha en que se renderiza el documento, sin tener que escribirla a mano cada vez:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb2-1"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span></code></pre></div>
+</div>
 <div class="tip-box">
 <p>Si abres el documento en el <strong>editor visual</strong> de RStudio (botón <em>Visual</em> arriba a la izquierda), puedes editar el encabezado con un formulario en lugar de escribir el YAML a mano.</p>
 </div>
@@ -374,7 +379,7 @@ Juan David Leongómez
 <div class="column" style="width:50%;">
 <p>Desde RStudio: botón <strong>Render</strong> o atajo <code>Ctrl+Shift+K</code></p>
 <p>Desde la terminal:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a>quarto render mi_documento.qmd</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a></a>quarto render mi_documento.qmd</span></code></pre></div>
 </div><div class="column" style="width:50%;">
 <div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:0.9em 1.2em; line-height:2;">
   <div style="color:#225faa; font-weight:700;">Al renderizar, Quarto:</div>
@@ -420,23 +425,23 @@ Juan David Leongómez
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Lo que escribes (fuente)</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu"># Encabezado nivel 1</span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">## Encabezado nivel 3</span></span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>Texto normal, **negrita** y *cursiva*.</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="fu">### Lista no ordenada</span></span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a><span class="ss">- </span>Elemento de lista</span>
-<span id="cb3-10"><a></a><span class="ss">- </span>Otro elemento</span>
-<span id="cb3-11"><a></a></span>
-<span id="cb3-12"><a></a><span class="fu">### Lista ordenada</span></span>
-<span id="cb3-13"><a></a></span>
-<span id="cb3-14"><a></a><span class="ss">1. </span>Primero</span>
-<span id="cb3-15"><a></a><span class="ss">2. </span>Segundo</span>
-<span id="cb3-16"><a></a></span>
-<span id="cb3-17"><a></a><span class="co">[</span><span class="ot">Enlace</span><span class="co">](https://r-project.org)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="fu"># Encabezado nivel 1</span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="fu">## Encabezado nivel 2</span></span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a>Texto normal, **negrita** y *cursiva*.</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="fu">### Lista no ordenada</span></span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a><span class="ss">- </span>Elemento de lista</span>
+<span id="cb4-10"><a></a><span class="ss">- </span>Otro elemento</span>
+<span id="cb4-11"><a></a></span>
+<span id="cb4-12"><a></a><span class="fu">### Lista ordenada</span></span>
+<span id="cb4-13"><a></a></span>
+<span id="cb4-14"><a></a><span class="ss">1. </span>Primero</span>
+<span id="cb4-15"><a></a><span class="ss">2. </span>Segundo</span>
+<span id="cb4-16"><a></a></span>
+<span id="cb4-17"><a></a><span class="co">[</span><span class="ot">Enlace</span><span class="co">](https://r-project.org)</span></span></code></pre></div>
 </div><div class="column" style="width:50%;">
 <p><strong>Lo que se ve (renderizado)</strong></p>
 <div style="font-size:0.9em; line-height:1.9;">
@@ -456,6 +461,9 @@ Juan David Leongómez
   <a href="https://r-project.org">Enlace</a>
 </div>
 </div></div>
+<div class="tip-box">
+<p><code>#</code> y <code>##</code> son encabezados del cuerpo del documento, no el título. El título, el autor y la fecha se definen en el YAML (<code>title:</code>, <code>author:</code>, <code>date:</code>), no con <code>#</code>.</p>
+</div>
 </section>
 <section id="section-5" class="slide level2" data-background-color="#121834">
 <h2></h2>
@@ -469,17 +477,17 @@ Juan David Leongómez
 <section id="los-bloques-de-código" class="slide level2 smaller">
 <h2>Los bloques de código</h2>
 <p>Un bloque de código (<em>chunk</em>) es una sección del documento donde va código ejecutable. Quarto admite R, Python, Julia, Bash y otros lenguajes, e incluso permite mezclar varios en el mismo documento. El lenguaje se indica entre llaves:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="in">```{r}        &lt;- R</span></span>
-<span id="cb4-2"><a></a><span class="st">```</span><span class="at">{python}   &lt;- Python</span></span>
-<span id="cb4-3"><a></a><span class="st">```</span>{bash}     <span class="ot">&lt;-</span> <span class="fu">Bash</span> (terminal)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb5-1"><a></a><span class="in">```{r}        &lt;- R</span></span>
+<span id="cb5-2"><a></a><span class="st">```</span><span class="at">{python}   &lt;- Python</span></span>
+<span id="cb5-3"><a></a><span class="st">```</span>{bash}     <span class="ot">&lt;-</span> <span class="fu">Bash</span> (terminal)</span></code></pre></div>
 <p>En este curso usamos R, así que nuestros bloques llevan siempre <code>{r}</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb5-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb5-2"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
-<span id="cb5-3"><a></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb6-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb6-3"><a></a><span class="in">```</span></span></code></pre></div>
 <div class="fragment">
 <p>Al renderizar, el bloque se ejecuta y el resultado aparece justo debajo en el documento:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.6</code></pre>
 </div>
@@ -527,46 +535,83 @@ Juan David Leongómez
 </table>
 <div class="fragment">
 <p>Ejemplo: mostrar solo el resultado, sin el código:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb8-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb8-2"><a></a><span class="co">#| echo: false</span></span>
-<span id="cb8-3"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
-<span id="cb8-4"><a></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb9-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb9-2"><a></a><span class="co">#| echo: false</span></span>
+<span id="cb9-3"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb9-4"><a></a><span class="in">```</span></span></code></pre></div>
 </div>
 </section>
 <section id="una-figura-en-un-documento" class="slide level2 smaller">
 <h2>Una figura en un documento</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb9-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb9-2"><a></a><span class="co">#| echo: false</span></span>
-<span id="cb9-3"><a></a><span class="co">#| fig-height: 4</span></span>
-<span id="cb9-4"><a></a></span>
-<span id="cb9-5"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-6"><a></a></span>
-<span id="cb9-7"><a></a>gad7_demo <span class="sc">|&gt;</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gad7)) <span class="sc">+</span></span>
-<span id="cb9-9"><a></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb9-10"><a></a>    <span class="at">fill =</span> <span class="st">"#225faa"</span>, <span class="at">bins =</span> <span class="dv">22</span></span>
-<span id="cb9-11"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-12"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-13"><a></a>    <span class="at">x =</span> <span class="st">"Puntaje GAD-7"</span>,</span>
-<span id="cb9-14"><a></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
-<span id="cb9-15"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-16"><a></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb9-17"><a></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb10-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a></a><span class="co">#| include: false</span></span>
+<span id="cb10-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-4"><a></a><span class="fu">library</span>(readxl)</span>
+<span id="cb10-5"><a></a>encuesta <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb10-6"><a></a>  <span class="st">"datos/encuesta_bruta.xlsx"</span>, <span class="at">skip =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-7"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"..."</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">tolower</span>(<span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"_"</span>, .)),</span>
+<span id="cb10-9"><a></a>    <span class="fu">starts_with</span>(<span class="st">"GAD"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a></a>  <span class="fu">mutate</span>(<span class="at">ansiedad_total =</span></span>
+<span id="cb10-11"><a></a>    gad_1 <span class="sc">+</span> gad_2 <span class="sc">+</span> gad_3 <span class="sc">+</span></span>
+<span id="cb10-12"><a></a>    gad_4 <span class="sc">+</span> gad_5 <span class="sc">+</span> gad_6 <span class="sc">+</span> gad_7)</span>
+<span id="cb10-13"><a></a><span class="in">```</span></span>
+<span id="cb10-14"><a></a></span>
+<span id="cb10-15"><a></a><span class="in">```{r}</span></span>
+<span id="cb10-16"><a></a><span class="co">#| echo: false</span></span>
+<span id="cb10-17"><a></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb10-18"><a></a><span class="co">#| fig-cap: "Distribución del puntaje GAD-7"</span></span>
+<span id="cb10-19"><a></a>encuesta <span class="sc">|&gt;</span></span>
+<span id="cb10-20"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ansiedad_total)) <span class="sc">+</span></span>
+<span id="cb10-21"><a></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb10-22"><a></a>    <span class="at">fill =</span> <span class="st">"#225faa"</span>, <span class="at">binwidth =</span> <span class="dv">1</span></span>
+<span id="cb10-23"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-24"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-25"><a></a>    <span class="at">x =</span> <span class="st">"Puntaje total GAD-7"</span>,</span>
+<span id="cb10-26"><a></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb10-27"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-28"><a></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-29"><a></a><span class="in">```</span></span></code></pre></div>
 </div><div class="column" style="width:52%;">
 <div class="cell">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura 1. Distribución del puntaje GAD-7"><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" alt="Figura 1. Distribución del puntaje GAD-7"></a></p>
+<figcaption>Figura 1. Distribución del puntaje GAD-7</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 <div class="tip-box">
-<p><code>fig-height</code> y <code>fig-width</code> controlan el tamaño de la figura en el documento (en pulgadas). <code>fig-cap: "Mi figura"</code> añade un pie de figura numerado automáticamente.</p>
+<p><code>fig-height</code> y <code>fig-width</code> controlan el tamaño de la figura (en pulgadas). <code>fig-cap</code> añade un pie de figura numerado automáticamente.</p>
+</div>
+</section>
+<section id="el-idioma-del-documento" class="slide level2 smaller">
+<h2>El idioma del documento</h2>
+<p>Con <code>fig-cap</code>, Quarto etiqueta la figura automáticamente. El idioma de esa etiqueta depende de <code>lang</code> en el YAML:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Sin <code>lang: es</code></strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb11-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div>
+<p>La etiqueta aparece en inglés:</p>
+<blockquote>
+<p><strong>Figure 1:</strong> Distribución del puntaje GAD-7</p>
+</blockquote>
+</div><div class="column" style="width:50%;">
+<p><strong>Con <code>lang: es</code></strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb12-1"><a></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> es</span></span>
+<span id="cb12-2"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div>
+<p>La etiqueta aparece en español:</p>
+<blockquote>
+<p><strong>Figura 1:</strong> Distribución del puntaje GAD-7</p>
+</blockquote>
+</div></div>
+<div class="tip-box">
+<p><code>lang: es</code> también traduce otros textos automáticos: “Table of Contents” → “Tabla de contenidos”, “References” → “Referencias”, “Warning” → “Advertencia”, entre otros.</p>
 </div>
 </section>
 <section id="section-6" class="slide level2" data-background-color="#121834">
@@ -581,13 +626,13 @@ Juan David Leongómez
 <section id="insertar-resultados-dentro-del-texto" class="slide level2 smaller">
 <h2>Insertar resultados dentro del texto</h2>
 <p>Con <code>`r `</code> puedes insertar el resultado de una expresión R directamente en una oración:</p>
-<pre style="background:#f6f8fa; border-radius:4px; padding:0.75em 1em; font-size:0.85em; line-height:1.8; font-family: monospace;"><code>La muestra incluyó `r nrow(gad7_demo)` participantes.
-La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
-(DE = `r round(sd(gad7_demo$gad7), 1)`).</code></pre>
+<pre style="background:#f6f8fa; border-radius:4px; padding:0.75em 1em; font-size:0.85em; line-height:1.8; font-family: monospace;"><code>La muestra incluyó `r nrow(encuesta)` participantes.
+La media del puntaje GAD-7 fue `r round(mean(encuesta$ansiedad_total), 1)` puntos
+(DE = `r round(sd(encuesta$ansiedad_total), 1)`).</code></pre>
 <div class="fragment">
 <p>Al renderizar, eso produce:</p>
 <blockquote>
-<p>La muestra incluyó 200 participantes. La media del puntaje GAD-7 fue 8 puntos (DE = 4.6).</p>
+<p>La muestra incluyó 180 participantes. La media del puntaje GAD-7 fue 10.3 puntos (DE = 2.7).</p>
 </blockquote>
 <p>Cuando cambien los datos, esos valores se actualizan solos al volver a renderizar.</p>
 </div>
@@ -603,7 +648,7 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 <div class="actividad-desc">
 <ol type="1">
 <li>Verifica que <code>encuesta_bruta.xlsx</code> está en <code>curso_r/datos/</code> (si no, cópialo ahora desde donde lo guardaste en la Sesión 3)</li>
-<li>En tu documento <code>mi_reporte.qmd</code>, añade una sección <code>## Resultados</code></li>
+<li>En tu documento <code>mi_reporte.qmd</code>, añade una nueva sección <code># Resultados</code></li>
 <li>Inserta un bloque de código que cargue los datos con <code>read_excel("datos/encuesta_bruta.xlsx", skip = 2)</code> y produzca un histograma o gráfica de barras</li>
 <li>Escribe una oración con al menos un valor calculado con código en línea: número de observaciones, una media o una proporción</li>
 </ol>
@@ -621,7 +666,7 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 <section id="html-el-formato-principal" class="slide level2 smaller">
 <h2>HTML: el formato principal</h2>
 <p>El formato HTML es el más completo y el más fácil de usar:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb10-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb13-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Ventajas</strong></p>
@@ -633,16 +678,29 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 </ul>
 </div><div class="column" style="width:50%;">
 <p><strong>Opciones útiles</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb11-1"><a></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb11-2"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb11-3"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">           # tabla de contenidos</span></span>
-<span id="cb11-4"><a></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">        # niveles de encabezado</span></span>
-<span id="cb11-5"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span><span class="co">        # tema visual</span></span>
-<span id="cb11-6"><a></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # un solo archivo</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb14-1"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb14-2"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb14-3"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">           # tabla de contenidos</span></span>
+<span id="cb14-4"><a></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">        # niveles de encabezado</span></span>
+<span id="cb14-5"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span><span class="co">        # tema visual</span></span>
+<span id="cb14-6"><a></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # un solo archivo</span></span></code></pre></div>
 </div></div>
 </section>
-<section id="pdf-de-markdown-a-papel" class="slide level2 smaller">
-<h2>PDF: de Markdown a papel</h2>
+<section id="qué-es-latex" class="slide level2 smaller">
+<h2>¿Qué es LaTeX?</h2>
+<p><strong>LaTeX</strong> es un sistema de composición tipográfica de alta calidad creado en los años 80. A diferencia de Word, no decides cómo se ve el texto: describes el contenido con marcas y LaTeX aplica tipografía profesional de forma automática.</p>
+<p>Es el estándar en publicación científica y académica: matemáticas, física, estadística, lingüística. La mayoría de revistas científicas aceptan o exigen archivos <code>.tex</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../imagenes/latex.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../imagenes/latex.svg" class="quarto-figure quarto-figure-center" width="300"></a></p>
+</figure>
+</div>
+<div class="tip-box">
+<p>No necesitas aprender LaTeX para usarlo con Quarto. Quarto genera el <code>.tex</code> por ti; LaTeX solo tiene que estar instalado en tu computador.</p>
+</div>
+</section>
+<section id="generar-archivos-pdf" class="slide level2 smaller">
+<h2>Generar archivos PDF</h2>
 <p>Generar un PDF requiere un sistema de composición tipográfica llamado <strong>LaTeX</strong>. Es el estándar en publicación académica.</p>
 <p>El camino que recorre tu documento:</p>
 <div style="display:flex; align-items:center; gap:0.8em; font-family:monospace; font-size:0.82em; margin:1em 0; flex-wrap:wrap;">
@@ -655,11 +713,11 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 <div class="fragment">
 <p>Instalar LaTeX completo ocupa unos 4 GB. Para uso con Quarto basta con <strong>TinyTeX</strong>, una versión mínima:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
-<span id="cb12-2"><a></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
+<span id="cb15-2"><a></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 </div>
 <p>Una vez instalado, solo hay que cambiar el formato en el YAML:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb13-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb16-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span></code></pre></div>
 </div>
 </section>
 <section id="pandoc-el-traductor-universal" class="slide level2 smaller">
@@ -785,7 +843,7 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 <p><a href="../../retos/reto2-paquete-raro.html">→ Instrucciones completas y ejemplos de inspiración</a></p>
 </div>
 </section>
-<section id="a-practicar" class="slide level2">
+<section id="a-practicar" class="slide level2 smaller">
 <h2>A practicar</h2>
 <p>Antes de la próxima sesión, completa tu mini informe con los datos de la Sesión 3 o con datos propios.</p>
 <p>El documento debe tener al menos:</p>
@@ -798,6 +856,9 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 </ul>
 <div class="tip-box">
 <p>Si quieres ir más lejos, cambia <code>format: html</code> por <code>format: pdf</code> en el YAML después de instalar TinyTeX, y verifica que el mismo documento se renderiza correctamente como PDF.</p>
+</div>
+<div class="tip-box">
+<p>Para consultar la sintaxis en cualquier momento: <a href="../../guia-quarto.html">→ Guía rápida de Quarto</a></p>
 </div>
 </section>
 <section id="section-10" class="slide level2" data-background-color="#121834">
@@ -814,7 +875,7 @@ La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos
 <p><img data-src="../../imagenes/qr-code.svg" width="300"> <span style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;">jdleongomez.github.io/curso-r</span></p>
 </div>
 </div><div class="column" style="width:60%;">
-<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
+<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
 </div></div>
 
 
