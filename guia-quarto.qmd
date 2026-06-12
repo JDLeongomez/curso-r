@@ -1,0 +1,232 @@
+---
+title: "Guía rápida de Quarto"
+subtitle: "Referencia de sintaxis para documentos reproducibles"
+toc: true
+toc-depth: 2
+---
+
+Esta página es una referencia rápida de la sintaxis de Quarto cubierta en el curso.
+Está organizada para consulta mientras trabajas en tu propio documento.
+
+## Estructura de un archivo `.qmd`
+
+Un archivo Quarto tiene tres partes:
+
+```{=html}
+<div style="font-family:monospace; font-size:0.92em; line-height:2; background:#f5f5f3; border-radius:8px; padding:1em 1.4em; margin:1em 0;">
+  <span style="background:#eeedfe; color:#3d2fa0; padding:2px 8px; border-radius:3px; font-weight:700;">YAML</span>&nbsp;&nbsp;
+  Encabezado entre <code>---</code>: título, autor, formato de salida<br>
+  <span style="background:#ddeaf8; color:#1a4070; padding:2px 8px; border-radius:3px; font-weight:700;">Markdown</span>&nbsp;&nbsp;
+  Texto con formato: encabezados, negrita, listas, enlaces…<br>
+  <span style="background:#d4f0e4; color:#1a5c38; padding:2px 8px; border-radius:3px; font-weight:700;">Código</span>&nbsp;&nbsp;
+  Bloques <code>```{r}…```</code> que se ejecutan al renderizar
+</div>
+```
+
+Ejemplo mínimo:
+
+````markdown
+---
+title: "Mi análisis"
+author: "Ana García"
+lang: es
+format: html
+---
+
+# Introducción
+
+Texto en **Markdown**.
+
+```{{r}}
+mean(c(3, 7, 5, 9, 4))
+```
+````
+
+---
+
+## Encabezado YAML
+
+El YAML va al inicio del archivo, entre dos líneas `---`. Las claves más comunes:
+
+| Clave | Ejemplo | Qué hace |
+|-------|---------|----------|
+| `title` | `"Mi análisis"` | Título del documento |
+| `author` | `"Ana García"` | Nombre del autor |
+| `date` | `"2026-06-12"` | Fecha (o `today` para la fecha actual) |
+| `lang` | `es` | Idioma: traduce etiquetas automáticas ("Figura", "Tabla de contenidos"…) |
+| `format` | `html` / `pdf` / `docx` | Formato de salida |
+| `toc` | `true` | Incluye tabla de contenidos |
+| `number-sections` | `true` | Numera los encabezados automáticamente |
+
+::: {.callout-tip}
+## lang: es es importante
+
+Sin `lang: es`, Quarto usa inglés para las etiquetas automáticas: "Figure 1" en lugar de "Figura 1", "Table of Contents" en lugar de "Tabla de contenidos", etc.
+:::
+
+---
+
+## Markdown: el lenguaje del texto
+
+### Encabezados
+
+Los encabezados estructuran el cuerpo del documento. No son el título del documento, que se define en el YAML con `title:`.
+
+```markdown
+# Encabezado nivel 1
+
+## Encabezado nivel 2
+
+### Encabezado nivel 3
+```
+
+### Énfasis y código
+
+| Sintaxis | Resultado |
+|----------|-----------|
+| `**negrita**` | **negrita** |
+| `*cursiva*` | *cursiva* |
+| `` `código en línea` `` | `código en línea` |
+
+### Listas
+
+```markdown
+- Elemento sin orden
+- Otro elemento
+  - Sub-elemento
+
+1. Primer paso
+2. Segundo paso
+```
+
+### Enlaces e imágenes
+
+```markdown
+[texto del enlace](https://r-project.org)
+
+![descripción de la imagen](ruta/imagen.png)
+```
+
+---
+
+## Bloques de código
+
+Un bloque de código (*chunk*) contiene código R que se ejecuta al renderizar.
+Las opciones se escriben al inicio del bloque con `#|`:
+
+````markdown
+```{{r}}
+#| echo: false
+#| fig-height: 4
+#| fig-cap: "Distribución del puntaje GAD-7"
+
+encuesta |>
+  ggplot(aes(x = ansiedad_total)) +
+  geom_histogram(fill = "#225faa") +
+  theme_minimal()
+```
+````
+
+### Opciones de bloque
+
+| Opción | Por defecto | Qué controla |
+|--------|:-----------:|--------------|
+| `echo` | `true` | ¿Se muestra el código en el documento? |
+| `eval` | `true` | ¿Se ejecuta el código? |
+| `include` | `true` | `false` ejecuta el código pero no muestra nada |
+| `warning` | `true` | ¿Se muestran las advertencias? |
+| `message` | `true` | ¿Se muestran los mensajes de carga de paquetes? |
+| `fig-height` | `5` | Alto de la figura en pulgadas |
+| `fig-width` | `7` | Ancho de la figura en pulgadas |
+| `fig-cap` | — | Pie de figura; se numera automáticamente con `lang: es` |
+
+::: {.callout-tip}
+## Bloque de configuración
+
+Es habitual tener un primer bloque con `#| include: false` que carga los paquetes y los datos. Ese bloque se ejecuta pero no aparece en el documento:
+
+````markdown
+```{{r}}
+#| include: false
+library(tidyverse)
+library(readxl)
+
+datos <- read_excel("datos/mi_archivo.xlsx", skip = 2)
+```
+````
+:::
+
+---
+
+## Código en línea
+
+Con `` `r ` `` puedes insertar el resultado de una expresión R directamente en el texto del documento:
+
+```markdown
+La muestra incluyó `r nrow(encuesta)` participantes.
+La media fue `r round(mean(encuesta$ansiedad_total), 1)` puntos.
+```
+
+Al renderizar, esas expresiones se reemplazan por sus valores calculados. Si los datos cambian, los valores del texto se actualizan solos.
+
+---
+
+## Formatos de salida
+
+El formato se controla con la clave `format` en el YAML. Puedes añadir opciones específicas de cada formato:
+
+### HTML
+
+```yaml
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    self-contained: true
+```
+
+`self-contained: true` genera un único archivo `.html` que incluye todo (imágenes, estilos). Útil para compartir por correo.
+
+### PDF
+
+Requiere LaTeX instalado. La opción más sencilla es TinyTeX:
+
+```r
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+Una vez instalado:
+
+```yaml
+format: pdf
+```
+
+### Word
+
+```yaml
+format: docx
+```
+
+Útil para compartir con colaboradores que no usan R.
+
+::: {.callout-tip}
+## Cambiar de formato sin tocar el contenido
+
+Puedes cambiar el formato en cualquier momento modificando solo la línea `format:` del YAML. El texto, los bloques de código y las opciones de bloque no cambian.
+:::
+
+---
+
+## Renderizar el documento
+
+Desde RStudio: botón **Render** o atajo `Ctrl+Shift+K`.
+
+Desde la terminal:
+
+```bash
+quarto render mi_documento.qmd
+```
+
+Si hay un error en algún bloque de código, el renderizado se detiene y muestra en qué bloque ocurrió.
