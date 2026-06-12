@@ -43,7 +43,7 @@ gad7_demo <- data.frame(
 
 - El problema del copiar y pegar
 - ¿Qué es Quarto?
-- Tu primer documento Quarto
+- Un primer documento Quarto
 - Markdown: el lenguaje del texto
 - Bloques de código
 - Código en línea
@@ -93,7 +93,7 @@ El flujo habitual sin herramientas de reproducibilidad:
 ```
 
 ::: tip-box
-Cada vez que los datos cambian, cada valor copiado a mano es un error potencial.
+Cada valor copiado a mano es potencialmente un error.
 :::
 :::
 :::::
@@ -157,7 +157,7 @@ Es posible que encuentres archivos `.Rmd` en tutoriales, repositorios o código 
 Ambos son creados por **Posit** (la empresa detrás de RStudio). Pero Quarto es la evolución de R Markdown.
 
 ::: tip-box
-Si ves un archivo `.Rmd` (que significa "R Markdown"), puedes leerlo sin problema: la estructura es casi idéntica. Para trabajo nuevo, usa siempre Quarto (`.qmd` que significa "Quarto Markdown").
+Si ves un archivo `.Rmd` (que significa "R Markdown"), puedes abrirli sin problema y la estructura es casi idéntica. Pero para trabajos nuevos es mejior usar Quarto (`.qmd` que significa "Quarto Markdown").
 :::
 
 ---
@@ -169,7 +169,7 @@ Parte 3
 :::
 
 ::: section-title-text
-Tu primer documento Quarto
+Un primer documento Quarto
 :::
 
 ---
@@ -286,7 +286,7 @@ Tu primer documento Quarto
 
 ::: actividad-desc
 :::: nonincremental
-1. **File › New File › Quarto Document...** — título: "Mi primer análisis", formato: HTML
+1. **File › New File › Quarto Document...** `— título: "Mi primer análisis"`, `formato: HTML`
 2. Guárdalo en la **raíz** de tu proyecto `curso_r` (no en `scripts/`), como `mi_reporte.qmd`
 3. Haz clic en **Render** y observa el resultado en el navegador
 4. Cambia el título en el YAML y vuelve a renderizar
@@ -316,9 +316,9 @@ Markdown es la forma en que Quarto entiende el formato del texto. El editor visu
 **Lo que escribes (fuente)**
 
 ```markdown
-# Título principal
+# Encabezado nivel 1
 
-## Sección
+## Encabezado nivel 3
 
 Texto normal, **negrita** y *cursiva*.
 
@@ -340,8 +340,8 @@ Texto normal, **negrita** y *cursiva*.
 
 ```{=html}
 <div style="font-size:0.9em; line-height:1.9;">
-  <h1 style="font-size:1.1em; margin:0.2em 0 0.1em; padding:0; border:none;">Título principal</h1>
-  <h2 style="font-size:0.95em; margin:0.2em 0 0.1em; padding:0; border:none;">Sección</h2>
+  <h1 style="font-size:1.1em; margin:0.2em 0 0.1em; padding:0; border:none;">Encabezado nivel 1</h1>
+  <h2 style="font-size:0.95em; margin:0.2em 0 0.1em; padding:0; border:none;">Encabezado nivel 2</h2>
   <p style="margin:0.2em 0;">Texto normal, <strong>negrita</strong> y <em>cursiva</em>.</p>
   <h3 style="font-size:0.85em; margin:0.3em 0 0.1em; padding:0; border:none;">Lista no ordenada</h3>
   <ul style="margin:0.1em 0; padding-left:1.4em;">
