@@ -1,0 +1,600 @@
+---
+title: "Sesión 8"
+subtitle: "Quarto: figuras, integración y publicación"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-18"
+date-format: long
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(knitr)
+library(gt)
+library(palmerpenguins)
+
+pinguinos <- penguins |> drop_na()
+```
+
+## Agenda
+
+- Figuras: caption, tamaño y alineación
+- Referencias cruzadas para figuras
+- Layout de múltiples figuras
+- El documento integrado
+- Publicación en Quarto Pub
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1
+:::
+
+::: section-title-text
+Figuras en documentos Quarto
+:::
+
+<img src="../../imagenes/ggplot2.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
+
+---
+
+## Opciones de figura {.smaller}
+
+Las figuras en bloques de código aceptan opciones que controlan su apariencia en el documento:
+
+::::: columns
+::: {.column width="48%"}
+````markdown
+```{{r}}
+#| echo: false
+#| fig-cap: "Masa corporal por especie"
+#| fig-width: 6
+#| fig-height: 3.5
+#| fig-align: center
+
+pinguinos |>
+  ggplot(aes(x = species,
+             y = body_mass_g,
+             fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = "Especie",
+       y = "Masa corporal (g)") +
+  theme_minimal()
+```
+````
+:::
+::: {.column width="52%"}
+```{r}
+#| echo: false
+#| fig-height: 3.5
+pinguinos |>
+  ggplot(aes(x = species, y = body_mass_g, fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  scale_fill_manual(values = c("#225faa", "#6b1220", "#121834")) +
+  labs(x = "Especie", y = "Masa corporal (g)") +
+  theme_minimal()
+```
+:::
+:::::
+
+---
+
+## Opciones de figura {.smaller}
+
+| Opción | Descripción |
+|--------|-------------|
+| `fig-cap` | Pie de figura (aparece debajo de la imagen) |
+| `fig-width` | Ancho en pulgadas (por defecto: 7) |
+| `fig-height` | Alto en pulgadas (por defecto: 5) |
+| `fig-align` | Alineación: `left`, `center`, `right` |
+| `fig-alt` | Texto alternativo para lectores de pantalla |
+| `out-width` | Ancho en el documento como porcentaje (`"70%"`) |
+
+::: tip-box
+`fig-alt` no aparece en el documento visible, pero es leído por tecnologías de asistencia. Añadirlo es buena práctica: `fig-alt: "Diagrama de caja que muestra la distribución de masa corporal de tres especies de pingüinos"`.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad 1 · 8 min
+:::
+
+::: actividad-title
+Añade una figura con caption
+:::
+
+::: actividad-desc
+En tu documento `mi_reporte.qmd`, inserta o modifica un bloque de código con una figura de `ggplot2`:
+
+:::: nonincremental
+1. Añade `#| fig-cap: "..."` con una descripción de la figura
+2. Ajusta `#| fig-width:` y `#| fig-height:` hasta que la figura se vea bien
+3. Añade `#| echo: false` para que solo aparezca la figura, sin el código
+4. Renderiza y comprueba el resultado en el navegador
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 2
+:::
+
+::: section-title-text
+Referencias cruzadas para figuras
+:::
+
+---
+
+## `fig-`: el prefijo para referencias {.smaller}
+
+Igual que `tbl-` para tablas, las figuras usan el prefijo `fig-` en el `label`:
+
+::::: columns
+::: {.column width="52%"}
+**En el bloque de código:**
+
+````markdown
+```{{r}}
+#| label: fig-masas
+#| fig-cap: "Masa corporal por especie de pingüino"
+#| echo: false
+
+pinguinos |>
+  ggplot(aes(x = species,
+             y = body_mass_g,
+             fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  ...
+```
+````
+
+**En el texto:**
+
+```markdown
+Como se observa en la @fig-masas,
+la especie Gentoo tiene la mayor
+masa corporal.
+```
+:::
+::: {.column width="48%"}
+::: tip-box
+Quarto numera las figuras automáticamente en documentos (HTML, PDF, Word). El prefijo `fig-` en el `label` es obligatorio y la figura debe tener `fig-cap` para que la referencia cruzada funcione.
+:::
+
+**Resultado renderizado:**
+
+Como se observa en la [Figura 1]{style="color:#225faa; text-decoration:underline;"}, la especie Gentoo tiene la mayor masa corporal.
+:::
+:::::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad 2 · 8 min
+:::
+
+::: actividad-title
+Referencias cruzadas en tu documento
+:::
+
+::: actividad-desc
+En tu documento `mi_reporte.qmd`:
+
+:::: nonincremental
+1. Añade `#| label: fig-xxx` a tu figura (reemplaza `xxx` con un nombre corto)
+2. Escribe `@fig-xxx` en el texto para citar la figura
+3. Si tienes una tabla `gt` con `#| label: tbl-xxx`, cítala con `@tbl-xxx`
+4. Renderiza y verifica que los números y los enlaces aparecen correctamente
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 3
+:::
+
+::: section-title-text
+Layout de múltiples figuras
+:::
+
+---
+
+## Varias figuras en un bloque {.smaller}
+
+Con `fig-layout-ncol` y `fig-subcap` puedes colocar varias figuras lado a lado desde un solo bloque de código:
+
+::::: columns
+::: {.column width="50%"}
+````markdown
+```{{r}}
+#| label: fig-comparacion
+#| fig-cap: "Variables morfológicas"
+#| fig-subcap:
+#|   - "Masa corporal (g)"
+#|   - "Longitud del pico (mm)"
+#| fig-layout-ncol: 2
+#| fig-height: 3
+#| echo: false
+
+pinguinos |>
+  ggplot(aes(x = species,
+             y = body_mass_g,
+             fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = NULL, y = "Masa (g)") +
+  theme_minimal()
+
+pinguinos |>
+  ggplot(aes(x = species,
+             y = bill_length_mm,
+             fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = NULL, y = "Pico (mm)") +
+  theme_minimal()
+```
+````
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-layout-ncol: 2
+#| fig-height: 2.8
+pinguinos |>
+  ggplot(aes(x = species, y = body_mass_g, fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  scale_fill_manual(values = c("#225faa", "#6b1220", "#121834")) +
+  labs(x = NULL, y = "Masa (g)") +
+  theme_minimal()
+
+pinguinos |>
+  ggplot(aes(x = species, y = bill_length_mm, fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  scale_fill_manual(values = c("#225faa", "#6b1220", "#121834")) +
+  labs(x = NULL, y = "Pico (mm)") +
+  theme_minimal()
+```
+:::
+:::::
+
+---
+
+## Imágenes externas: `include_graphics()` {.smaller}
+
+Para incluir una imagen guardada en disco (un mapa, una captura de pantalla, un esquema):
+
+::::: columns
+::: {.column width="52%"}
+**Con `knitr::include_graphics()`** (permite referencia cruzada):
+
+````markdown
+```{{r}}
+#| label: fig-esquema
+#| fig-cap: "Estructura del proyecto"
+#| out-width: "60%"
+#| fig-align: center
+
+knitr::include_graphics("imagenes/esquema.png")
+```
+````
+
+**Con Markdown** (más simple, sin referencia cruzada):
+
+```markdown
+![Descripción](imagenes/logo.png){width="60%"}
+```
+:::
+::: {.column width="48%"}
+::: tip-box
+`knitr::include_graphics()` es la opción correcta cuando necesitas citar la imagen en el texto con `@fig-xxx`. La ruta va relativa al archivo `.qmd`.
+
+`out-width` controla el tamaño de visualización como porcentaje del ancho disponible, sin afectar la resolución original de la imagen.
+:::
+:::
+:::::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 4
+:::
+
+::: section-title-text
+El documento integrado
+:::
+
+---
+
+## Opciones globales de ejecución {.smaller}
+
+En lugar de repetir las mismas opciones en cada bloque, defínelas una sola vez en el YAML:
+
+::::: columns
+::: {.column width="48%"}
+```yaml
+---
+title: "Mi análisis"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+```
+
+Con `echo: false` global, ningún bloque mostrará el código. Para anularlo en un bloque concreto, agrega la opción directamente en ese bloque:
+
+````markdown
+```{{r}}
+#| echo: true
+summary(pinguinos)
+```
+````
+:::
+::: {.column width="52%"}
+| Opción global | Efecto |
+|---|---|
+| `echo: false` | Oculta el código en todos los bloques |
+| `warning: false` | Suprime advertencias |
+| `message: false` | Suprime mensajes de paquetes |
+| `eval: false` | No ejecuta ningún bloque |
+| `cache: true` | Guarda resultados en caché |
+
+::: tip-box
+Las opciones del YAML son los valores por defecto. Las opciones en un bloque individual siempre las anulan.
+:::
+:::
+:::::
+
+---
+
+## Estructura de un documento completo {.smaller}
+
+Un documento bien organizado integra todos los elementos que hemos visto:
+
+```{=html}
+<div style="font-family:monospace; font-size:0.8em; background:#f5f5f3; border-radius:8px; padding:1em 1.4em; line-height:2.1;">
+  <div><span style="color:#3d2fa0; font-weight:700;">---</span></div>
+  <div style="padding-left:1.2em; color:#666;">title, author, date, format, bibliography, csl, execute</div>
+  <div><span style="color:#3d2fa0; font-weight:700;">---</span></div>
+  <div style="margin-top:0.5em;"><span style="background:#d4f0e4; color:#1a5c38; padding:1px 6px; border-radius:3px; font-weight:700;">```{r} setup</span> <span style="color:#888;">← #| include: false · cargar paquetes y datos</span></div>
+  <div style="margin-top:0.4em;"><span style="color:#1a5c38; font-weight:700;"># Introducción</span> <span style="color:#888;">← texto con código en línea</span></div>
+  <div style="margin-top:0.4em;"><span style="color:#1a5c38; font-weight:700;"># Método</span> <span style="color:#888;">← descripción de datos y análisis</span></div>
+  <div style="margin-top:0.4em;"><span style="color:#1a5c38; font-weight:700;"># Resultados</span></div>
+  <div style="padding-left:1.2em; color:#888;">figuras con <code>@fig-xxx</code> · tablas con <code>@tbl-xxx</code> · valores con <code>&#96;r ...&#96;</code></div>
+  <div style="margin-top:0.4em;"><span style="color:#1a5c38; font-weight:700;"># Conclusiones</span></div>
+  <div style="margin-top:0.4em;"><span style="color:#1a5c38; font-weight:700;"># Referencias</span> <span style="color:#888;">← generadas automáticamente por Quarto</span></div>
+</div>
+```
+
+::: {.fragment}
+::: tip-box
+El bloque `setup` carga paquetes y datos antes que cualquier otro bloque. Con `#| include: false`, el código se ejecuta pero no aparece ni el código ni los mensajes de carga en el documento final.
+:::
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad 3 · 10 min
+:::
+
+::: actividad-title
+Organiza y completa tu documento
+:::
+
+::: actividad-desc
+Dale a tu `mi_reporte.qmd` la estructura de un documento completo:
+
+:::: nonincremental
+1. Añade `execute: echo: false` al YAML (código oculto por defecto)
+2. Crea un bloque `setup` al inicio con `#| include: false` que cargue todos los paquetes y datos
+3. Verifica que tienes: secciones (`#`), al menos una figura con `@fig-`, una tabla con `@tbl-` y al menos una cita con `@clave`
+4. Renderiza sin errores y revisa que todas las referencias son correctas
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 5
+:::
+
+::: section-title-text
+Publicación
+:::
+
+<img src="../../imagenes/quarto.png" style="position:absolute; bottom:30px; right:30px; width:110px; filter:drop-shadow(0 0 6px rgba(255,255,255,0.4));" />
+
+---
+
+## Un archivo para compartir {.smaller}
+
+Por defecto, un documento HTML de Quarto genera varios archivos auxiliares. Para compartirlo como un único archivo portable:
+
+```yaml
+---
+format:
+  html:
+    embed-resources: true
+---
+```
+
+Esto incrusta CSS, JavaScript e imágenes directamente en el `.html`, que se puede enviar por correo o abrir sin conexión desde cualquier ordenador.
+
+::: tip-box
+En versiones anteriores de Quarto la opción era `self-contained: true`, que sigue funcionando. La opción actual y recomendada es `embed-resources: true`.
+:::
+
+---
+
+## Quarto Pub: publicar en la web {.smaller}
+
+[Quarto Pub](https://quartopub.com) es un servicio gratuito de Posit para publicar documentos Quarto con un solo comando desde la terminal de RStudio:
+
+:::: nonincremental
+1. Crea una cuenta en [quartopub.com](https://quartopub.com)
+2. Desde la terminal de RStudio, en la raíz de tu proyecto:
+
+```{style="font-size: 1.1em;"}
+quarto publish quarto-pub mi_reporte.qmd
+```
+
+3. La primera vez pedirá que inicies sesión en el navegador
+4. Quarto sube el documento y abre la URL pública
+::::
+
+::: {.fragment}
+::: tip-box
+La URL tiene la forma `tuusuario.quarto.pub/nombre-del-documento`. Volver a publicar con el mismo comando actualiza el documento en la misma URL.
+:::
+:::
+
+---
+
+## Otras opciones de publicación {.smaller}
+
+| Servicio | Comando | Ideal para |
+|---|---|---|
+| **Quarto Pub** | `quarto publish quarto-pub` | Documentos individuales, acceso público gratuito |
+| **GitHub Pages** | `quarto publish gh-pages` | Sitios completos, integración con git |
+| **Posit Connect** | `quarto publish connect` | Entornos corporativos o académicos |
+| **Netlify** | `quarto publish netlify` | Sitios con dominio personalizado |
+
+::: tip-box
+Para este curso, Quarto Pub es la opción más directa. Si ya usas GitHub y quieres publicar más contenido, GitHub Pages es el siguiente paso natural: es lo que usa el propio sitio de este curso.
+:::
+
+---
+
+## {background-color="#6b1220" .actividad}
+
+::: actividad-num
+Actividad final · 20 min
+:::
+
+::: actividad-title
+Publica tu documento en Quarto Pub
+:::
+
+::: actividad-desc
+:::: nonincremental
+1. Crea una cuenta en [quartopub.com](https://quartopub.com) si aún no tienes una
+2. Asegúrate de que tu `mi_reporte.qmd` renderiza sin errores
+3. Desde la terminal de RStudio (pestaña *Terminal*, no *Console*):
+
+```{style="font-size: 1.1em;"}
+quarto publish quarto-pub mi_reporte.qmd
+```
+
+4. Copia la URL pública y compártela en el chat
+::::
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Antes de terminar...
+:::
+
+::: section-title-text
+Quiz rápido
+:::
+
+---
+
+## Quiz · 1 de 3
+
+**¿Qué opción de bloque añade un pie de figura en el documento y hace posible citarla con `@fig-xxx`?**
+
+::: nonincremental
+- a) `fig-title`
+- b) `fig-label`
+- c) `fig-cap`
+- d) `caption`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **c)** `fig-cap` añade el pie de figura y, junto con `label: fig-xxx`, habilita la referencia cruzada. Sin `fig-cap` no se genera la referencia aunque exista el `label`.
+:::
+:::
+
+---
+
+## Quiz · 2 de 3
+
+**Un bloque de código genera dos figuras. ¿Qué opción las coloca lado a lado en el documento?**
+
+::: nonincremental
+- a) `fig-layout: side`
+- b) `fig-ncol: 2`
+- c) `layout: columns`
+- d) `fig-layout-ncol: 2`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **d)** `fig-layout-ncol: 2` distribuye en dos columnas las figuras producidas por el bloque. Combinado con `fig-subcap` permite añadir un subtítulo individual a cada figura.
+:::
+:::
+
+---
+
+## Quiz · 3 de 3
+
+**Quieres que tu documento HTML sea un único archivo portable que no dependa de archivos externos. ¿Qué opción usas en el YAML?**
+
+::: nonincremental
+- a) `standalone: true`
+- b) `embed-resources: true`
+- c) `format: single-html`
+- d) `output: bundle`
+:::
+
+::: {.fragment}
+::: respuesta
+✓ **b)** `embed-resources: true` incrusta todos los recursos (CSS, JavaScript, imágenes) en el propio archivo `.html`. El resultado es un único archivo que se puede compartir o abrir sin conexión.
+:::
+:::
+
+---
+
+{{< include ../_fin.qmd >}}

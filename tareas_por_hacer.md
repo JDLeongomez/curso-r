@@ -37,7 +37,7 @@
   - [x] Añadir anuncio Reto 2 al final de s06
 - [x] Crear diapositivas sesión 7 — Quarto: tablas, citas y formatos
   - [x] Crear `sesiones/s07/referencias.bib` (R, tidyverse, Spitzer 2006)
-- [ ] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
+- [x] Crear diapositivas sesión 8 — Quarto: figuras, integración y publicación
 - [ ] Crear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas
 
 ## Recursos y estructura del proyecto
@@ -54,8 +54,9 @@
   - [x] s05 — enlace añadido
   - [x] s06 — enlace añadido
   - [x] s07 — enlace añadido
+  - [x] s08 — enlace añadido
 - [x] Crear página de referencia rápida (`glosario.qmd`) con funciones y paquetes de S1–S7
-- [ ] Actualizar `glosario.qmd` con funciones de S8 al completar esa sesión
+- [x] Actualizar `glosario.qmd` con funciones de S8 al completar esa sesión
 - [ ] Actualizar `glosario.qmd` con funciones de S9 al completar esa sesión
 
 ## Retos para estudiantes
