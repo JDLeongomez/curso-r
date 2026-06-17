@@ -46,6 +46,8 @@ website:
             text: "Reto 2 · Paquete raro"
       - href: glosario.html
         text: Glosario de R
+      - href: guia-quarto.html
+        text: Guía de Quarto
 
 format:
   html:

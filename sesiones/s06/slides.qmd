@@ -28,15 +28,10 @@ execute:
 library(tidyverse)
 library(readxl)
 
-set.seed(42)
-gad7_demo <- data.frame(
-  gad7      = round(pmax(0, pmin(21, rnorm(200, mean = 8, sd = 5)))),
-  bienestar = round(pmax(0, pmin(100, rnorm(200, mean = 65, sd = 15)))),
-  carrera   = sample(
-    c("Psicología", "Medicina", "Enfermería", "Nutrición"),
-    200, replace = TRUE
-  )
-)
+encuesta <- read_excel("datos/encuesta_bruta.xlsx", skip = 2) |>
+  select(-starts_with("...")) |>
+  rename_with(~ tolower(gsub(" ", "_", .)), starts_with("GAD")) |>
+  mutate(ansiedad_total = gad_1 + gad_2 + gad_3 + gad_4 + gad_5 + gad_6 + gad_7)
 ```
 
 ## Agenda
@@ -83,12 +78,12 @@ El flujo habitual sin herramientas de reproducibilidad:
 ```{=html}
 <div style="font-family:monospace; font-size:0.78em; background:#f5f5f3; border-radius:8px; padding:1em 1.2em; line-height:2;">
   <div>📊 <strong>analisis.R</strong></div>
-  <div style="color:#225faa; padding-left:1em;">mean(gad7) → <strong>8.3</strong></div>
+  <div style="color:#225faa; padding-left:1em;">mean(ansiedad_total) → <strong>8.3</strong></div>
   <div style="margin-top:0.5em;">⬇ copiar y pegar</div>
   <div style="margin-top:0.5em;">📄 <strong>informe.docx</strong></div>
   <div style="padding-left:1em; color:#444">"La media fue de <strong>8.3</strong> puntos…"</div>
   <div style="margin-top:0.5em;">⬇ datos corregidos</div>
-  <div style="color:#c0392b; padding-left:1em;">mean(gad7) → <strong>8.1</strong> ⚠ desactualizado</div>
+  <div style="color:#c0392b; padding-left:1em;">mean(ansiedad_total) → <strong>8.1</strong> ⚠ desactualizado</div>
 </div>
 ```
 
@@ -203,11 +198,20 @@ El encabezado va al principio del archivo, entre dos líneas de `---`:
 title: "Análisis de ansiedad GAD-7"
 author: "Ana García"
 date: "2026-06-12"
+lang: es
 format: html
 ---
 ```
 
 Controla el título, el autor, la fecha y el formato de salida. Todo lo que aparece debajo del segundo `---` es el cuerpo del documento.
+
+::: tip-box
+`date: today` inserta automáticamente la fecha en que se renderiza el documento, sin tener que escribirla a mano cada vez:
+
+```yaml
+date: today
+```
+:::
 
 ::: tip-box
 Si abres el documento en el **editor visual** de RStudio (botón *Visual* arriba a la izquierda), puedes editar el encabezado con un formulario en lugar de escribir el YAML a mano.
@@ -318,7 +322,7 @@ Markdown es la forma en que Quarto entiende el formato del texto. El editor visu
 ```markdown
 # Encabezado nivel 1
 
-## Encabezado nivel 3
+## Encabezado nivel 2
 
 Texto normal, **negrita** y *cursiva*.
 
@@ -358,6 +362,10 @@ Texto normal, **negrita** y *cursiva*.
 ```
 :::
 :::::
+
+::: tip-box
+`#` y `##` son encabezados del cuerpo del documento, no el título. El título, el autor y la fecha se definen en el YAML (`title:`, `author:`, `date:`), no con `#`.
+:::
 
 ---
 
@@ -432,18 +440,30 @@ mean(c(3, 7, 5, 9, 4))
 ::: {.column width="48%"}
 ````markdown
 ```{{r}}
+#| include: false
+library(tidyverse)
+library(readxl)
+encuesta <- read_excel(
+  "datos/encuesta_bruta.xlsx", skip = 2) |>
+  select(-starts_with("...")) |>
+  rename_with(~ tolower(gsub(" ", "_", .)),
+    starts_with("GAD")) |>
+  mutate(ansiedad_total =
+    gad_1 + gad_2 + gad_3 +
+    gad_4 + gad_5 + gad_6 + gad_7)
+```
+
+```{{r}}
 #| echo: false
 #| fig-height: 4
-
-library(tidyverse)
-
-gad7_demo |>
-  ggplot(aes(x = gad7)) +
+#| fig-cap: "Distribución del puntaje GAD-7"
+encuesta |>
+  ggplot(aes(x = ansiedad_total)) +
   geom_histogram(
-    fill = "#225faa", bins = 22
+    fill = "#225faa", binwidth = 1
   ) +
   labs(
-    x = "Puntaje GAD-7",
+    x = "Puntaje total GAD-7",
     y = "Frecuencia"
   ) +
   theme_minimal()
@@ -453,18 +473,55 @@ gad7_demo |>
 ::: {.column width="52%"}
 ```{r}
 #| echo: false
-#| fig-height: 3.5
-gad7_demo |>
-  ggplot(aes(x = gad7)) +
-  geom_histogram(fill = "#225faa", bins = 22) +
-  labs(x = "Puntaje GAD-7", y = "Frecuencia") +
+#| fig-height: 3.2
+#| fig-cap: "Figura 1. Distribución del puntaje GAD-7"
+encuesta |>
+  ggplot(aes(x = ansiedad_total)) +
+  geom_histogram(fill = "#225faa", binwidth = 1) +
+  labs(x = "Puntaje total GAD-7", y = "Frecuencia") +
   theme_minimal()
 ```
 :::
 :::::
 
 ::: tip-box
-`fig-height` y `fig-width` controlan el tamaño de la figura en el documento (en pulgadas). `fig-cap: "Mi figura"` añade un pie de figura numerado automáticamente.
+`fig-height` y `fig-width` controlan el tamaño de la figura (en pulgadas). `fig-cap` añade un pie de figura numerado automáticamente.
+:::
+
+---
+
+## El idioma del documento {.smaller}
+
+Con `fig-cap`, Quarto etiqueta la figura automáticamente. El idioma de esa etiqueta depende de `lang` en el YAML:
+
+::::: columns
+::: {.column width="50%"}
+**Sin `lang: es`**
+
+```yaml
+format: html
+```
+
+La etiqueta aparece en inglés:
+
+> **Figure 1:** Distribución del puntaje GAD-7
+:::
+::: {.column width="50%"}
+**Con `lang: es`**
+
+```yaml
+lang: es
+format: html
+```
+
+La etiqueta aparece en español:
+
+> **Figura 1:** Distribución del puntaje GAD-7
+:::
+:::::
+
+::: tip-box
+`lang: es` también traduce otros textos automáticos: "Table of Contents" → "Tabla de contenidos", "References" → "Referencias", "Warning" → "Advertencia", entre otros.
 :::
 
 ---
@@ -486,15 +543,15 @@ Código en línea
 Con `` `r ` `` puedes insertar el resultado de una expresión R directamente en una oración:
 
 ```{=html}
-<pre style="background:#f6f8fa; border-radius:4px; padding:0.75em 1em; font-size:0.85em; line-height:1.8; font-family: monospace;"><code>La muestra incluyó &#96;r nrow(gad7_demo)&#96; participantes.
-La media del puntaje GAD-7 fue &#96;r round(mean(gad7_demo$gad7), 1)&#96; puntos
-(DE = &#96;r round(sd(gad7_demo$gad7), 1)&#96;).</code></pre>
+<pre style="background:#f6f8fa; border-radius:4px; padding:0.75em 1em; font-size:0.85em; line-height:1.8; font-family: monospace;"><code>La muestra incluyó &#96;r nrow(encuesta)&#96; participantes.
+La media del puntaje GAD-7 fue &#96;r round(mean(encuesta$ansiedad_total), 1)&#96; puntos
+(DE = &#96;r round(sd(encuesta$ansiedad_total), 1)&#96;).</code></pre>
 ```
 
 ::: {.fragment}
 Al renderizar, eso produce:
 
-> La muestra incluyó `r nrow(gad7_demo)` participantes. La media del puntaje GAD-7 fue `r round(mean(gad7_demo$gad7), 1)` puntos (DE = `r round(sd(gad7_demo$gad7), 1)`).
+> La muestra incluyó `r nrow(encuesta)` participantes. La media del puntaje GAD-7 fue `r round(mean(encuesta$ansiedad_total), 1)` puntos (DE = `r round(sd(encuesta$ansiedad_total), 1)`).
 
 Cuando cambien los datos, esos valores se actualizan solos al volver a renderizar.
 :::
@@ -514,7 +571,7 @@ Un mini informe
 ::: actividad-desc
 :::: nonincremental
 1. Verifica que `encuesta_bruta.xlsx` está en `curso_r/datos/` (si no, cópialo ahora desde donde lo guardaste en la Sesión 3)
-2. En tu documento `mi_reporte.qmd`, añade una sección `## Resultados`
+2. En tu documento `mi_reporte.qmd`, añade una nueva sección `# Resultados`
 3. Inserta un bloque de código que cargue los datos con `read_excel("datos/encuesta_bruta.xlsx", skip = 2)` y produzca un histograma o gráfica de barras
 4. Escribe una oración con al menos un valor calculado con código en línea: número de observaciones, una media o una proporción
 ::::
@@ -569,7 +626,21 @@ format:
 
 ---
 
-## PDF: de Markdown a papel {.smaller}
+## ¿Qué es LaTeX? {.smaller}
+
+**LaTeX** es un sistema de composición tipográfica de alta calidad creado en los años 80. A diferencia de Word, no decides cómo se ve el texto: describes el contenido con marcas y LaTeX aplica tipografía profesional de forma automática.
+
+Es el estándar en publicación científica y académica: matemáticas, física, estadística, lingüística. La mayoría de revistas científicas aceptan o exigen archivos `.tex`.
+
+![](../../imagenes/latex.svg){width=300 fig-align="center"}
+
+::: tip-box
+No necesitas aprender LaTeX para usarlo con Quarto. Quarto genera el `.tex` por ti; LaTeX solo tiene que estar instalado en tu computador.
+:::
+
+---
+
+## Generar archivos PDF {.smaller}
 
 Generar un PDF requiere un sistema de composición tipográfica llamado **LaTeX**. Es el estándar en publicación académica.
 
@@ -719,7 +790,7 @@ El paquete ojalá sea sorprendente. R tiene más de 23 000 paquetes: algunos hac
 
 ---
 
-## A practicar
+## A practicar {.smaller}
 
 Antes de la próxima sesión, completa tu mini informe con los datos de la Sesión 3 o con datos propios.
 
@@ -733,6 +804,10 @@ El documento debe tener al menos:
 
 ::: tip-box
 Si quieres ir más lejos, cambia `format: html` por `format: pdf` en el YAML después de instalar TinyTeX, y verifica que el mismo documento se renderiza correctamente como PDF.
+:::
+
+::: tip-box
+Para consultar la sintaxis en cualquier momento: [→ Guía rápida de Quarto](../../guia-quarto.html)
 :::
 
 {{< include ../_fin.qmd >}}
