@@ -961,6 +961,11 @@ ul.task-list li input[type="checkbox"] {
 <td>Convierte un data frame en una tabla con formato para documentos HTML, PDF o Word. Solución rápida para tablas sencillas; para tablas más elaboradas usa el paquete <strong>gt</strong>.</td>
 <td><a href="sesiones/s07/slides.html" class="s-badge" target="_blank">S7</a></td>
 </tr>
+<tr class="fn-row even">
+<td><code>include_graphics(path)</code></td>
+<td>Incluye una imagen externa (PNG, JPG, SVG…) en un documento Quarto. Admite las mismas opciones de bloque que las figuras generadas con código (<code>fig-cap</code>, <code>fig-align</code>, <code>out-width</code>…) y permite referencias cruzadas con <code>@fig-xxx</code>. Preferible a la sintaxis Markdown <code>![]()</code> cuando se necesita etiquetar la figura.</td>
+<td><a href="sesiones/s08/slides.html" class="s-badge" target="_blank">S8</a></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -999,6 +1004,21 @@ ul.task-list li input[type="checkbox"] {
 <tr class="fn-row odd">
 <td><code>tab_spanner(label, columns)</code></td>
 <td>Agrupa varias columnas bajo un encabezado común. <code>label</code> es el texto del encabezado; <code>columns</code> es el vector de columnas agrupadas.</td>
+<td><a href="sesiones/s07/slides.html" class="s-badge" target="_blank">S7</a></td>
+</tr>
+<tr class="fn-row even">
+<td><code>tab_source_note(source_note)</code></td>
+<td>Añade una nota de fuente al pie de la tabla. Útil para citar el origen de los datos.</td>
+<td><a href="sesiones/s07/slides.html" class="s-badge" target="_blank">S7</a></td>
+</tr>
+<tr class="fn-row odd">
+<td><code>tab_footnote(footnote, locations)</code></td>
+<td>Añade una nota al pie vinculada a una celda, fila, columna o encabezado específico. <code>locations</code> indica dónde aparece el marcador de la nota.</td>
+<td><a href="sesiones/s07/slides.html" class="s-badge" target="_blank">S7</a></td>
+</tr>
+<tr class="fn-row even">
+<td><code>cells_column_labels(columns)</code></td>
+<td>Dentro de <code>tab_footnote()</code> u otras funciones de <code>locations</code>, apunta al encabezado de una o varias columnas.</td>
 <td><a href="sesiones/s07/slides.html" class="s-badge" target="_blank">S7</a></td>
 </tr>
 </tbody>

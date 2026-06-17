@@ -236,15 +236,38 @@ Juan David Leongómez
 <p>Tablas</p>
 </div>
 </section>
+<section id="section-1" class="slide level2 actividad" data-background-color="#6b1220">
+<h2></h2>
+<div class="actividad-num">
+<p>Actividad 1 · 5 min</p>
+</div>
+<div class="actividad-title">
+<p>Recordatorio: resume <code>pinguinos</code> con <code>dplyr</code></p>
+</div>
+<div class="actividad-desc">
+<p>En un bloque de código en tu documento <code>.qmd</code>, crea el objeto <code>resumen</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a>pinguinos <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>resumen <span class="ot">&lt;-</span> pinguinos <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a></a>    <span class="fu">summarise</span>(</span>
+<span id="cb1-6"><a></a>        <span class="at">n          =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-7"><a></a>        <span class="at">masa_media =</span> <span class="fu">mean</span>(body_mass_g),</span>
+<span id="cb1-8"><a></a>        <span class="at">masa_sd    =</span> <span class="fu">sd</span>(body_mass_g),</span>
+<span id="cb1-9"><a></a>        <span class="at">pico_medio =</span> <span class="fu">mean</span>(bill_length_mm)</span>
+<span id="cb1-10"><a></a>    )</span></code></pre></div>
+<p>Lo usarás en las actividades siguientes para crear tablas.</p>
+</div>
+</section>
 <section id="kable-tablas-al-instante" class="slide level2 smaller">
 <h2><code>kable()</code>: tablas al instante</h2>
 <p><code>kable()</code> del paquete <code>knitr</code> convierte cualquier data frame en una tabla con una sola línea:</p>
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>resumen <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>resumen <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:52%;">
 <div class="cell">
@@ -287,6 +310,9 @@ Juan David Leongómez
 </div>
 </div></div>
 <p>Suficiente para explorar datos o incluir una tabla rápida. Para presentaciones y publicaciones, <code>gt</code> ofrece mucho más control.</p>
+<div class="tip-box">
+<p><code>kable()</code> tiene muchas opciones adicionales, y en compañia del paquete <code>kableExtra</code> permite hacer tablas complejas tanto en <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_html.html">HTML</a> como en <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">LaTeX</a> (PDF). Sin embargo, en esta sesión nos centraremos en <code>gt</code>.</p>
+</div>
 </section>
 <section id="tablas-con-gt" class="slide level2 smaller" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Tablas con <code>gt</code></h2>
@@ -294,10 +320,10 @@ Juan David Leongómez
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a></a><span class="fu">library</span>(gt)</span>
-<span id="cb2-2" class="hljs-ln-code"><a></a></span>
-<span id="cb2-3" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
-<span id="cb2-4" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb3-1" class="hljs-ln-code"><a></a><span class="fu">library</span>(gt)</span>
+<span id="cb3-2" class="hljs-ln-code"><a></a></span>
+<span id="cb3-3" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
+<span id="cb3-4" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>()</span></code></pre></div>
 </div>
 </div><div class="column" style="width:52%;">
 <div class="cell">
@@ -797,19 +823,19 @@ Juan David Leongómez
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb3-1" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
-<span id="cb3-2" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-3" class="hljs-ln-code"><a></a>    <span class="fu">tab_header</span>(</span>
-<span id="cb3-4" class="hljs-ln-code"><a></a>        <span class="at">title    =</span> <span class="st">"Pingüinos de Palmer"</span>,</span>
-<span id="cb3-5" class="hljs-ln-code"><a></a>        <span class="at">subtitle =</span> <span class="st">"Resumen por especie"</span></span>
-<span id="cb3-6" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb3-7" class="hljs-ln-code"><a></a>    <span class="fu">cols_label</span>(</span>
-<span id="cb3-8" class="hljs-ln-code"><a></a>        <span class="at">species    =</span> <span class="st">"Especie"</span>,</span>
-<span id="cb3-9" class="hljs-ln-code"><a></a>        <span class="at">n          =</span> <span class="st">"N"</span>,</span>
-<span id="cb3-10" class="hljs-ln-code"><a></a>        <span class="at">masa_media =</span> <span class="st">"Media (g)"</span>,</span>
-<span id="cb3-11" class="hljs-ln-code"><a></a>        <span class="at">masa_sd    =</span> <span class="st">"DE (g)"</span>,</span>
-<span id="cb3-12" class="hljs-ln-code"><a></a>        <span class="at">pico_medio =</span> <span class="st">"Pico (mm)"</span></span>
-<span id="cb3-13" class="hljs-ln-code"><a></a>    )</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
+<span id="cb4-2" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-3" class="hljs-ln-code"><a></a>    <span class="fu">tab_header</span>(</span>
+<span id="cb4-4" class="hljs-ln-code"><a></a>        <span class="at">title    =</span> <span class="st">"Pingüinos de Palmer"</span>,</span>
+<span id="cb4-5" class="hljs-ln-code"><a></a>        <span class="at">subtitle =</span> <span class="st">"Resumen por especie"</span></span>
+<span id="cb4-6" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb4-7" class="hljs-ln-code"><a></a>    <span class="fu">cols_label</span>(</span>
+<span id="cb4-8" class="hljs-ln-code"><a></a>        <span class="at">species    =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb4-9" class="hljs-ln-code"><a></a>        <span class="at">n          =</span> <span class="st">"N"</span>,</span>
+<span id="cb4-10" class="hljs-ln-code"><a></a>        <span class="at">masa_media =</span> <span class="st">"Media (g)"</span>,</span>
+<span id="cb4-11" class="hljs-ln-code"><a></a>        <span class="at">masa_sd    =</span> <span class="st">"DE (g)"</span>,</span>
+<span id="cb4-12" class="hljs-ln-code"><a></a>        <span class="at">pico_medio =</span> <span class="st">"Pico (mm)"</span></span>
+<span id="cb4-13" class="hljs-ln-code"><a></a>    )</span></code></pre></div>
 </div>
 </div><div class="column" style="width:52%;">
 <div class="cell">
@@ -1315,27 +1341,27 @@ Juan David Leongómez
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
-<span id="cb4-2" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb4-3" class="hljs-ln-code"><a></a>    <span class="fu">tab_header</span>(</span>
-<span id="cb4-4" class="hljs-ln-code"><a></a>        <span class="at">title    =</span> <span class="st">"Pingüinos de Palmer"</span>,</span>
-<span id="cb4-5" class="hljs-ln-code"><a></a>        <span class="at">subtitle =</span> <span class="st">"Resumen por especie"</span></span>
-<span id="cb4-6" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb4-7" class="hljs-ln-code"><a></a>    <span class="fu">cols_label</span>(</span>
-<span id="cb4-8" class="hljs-ln-code"><a></a>        <span class="at">species    =</span> <span class="st">"Especie"</span>,</span>
-<span id="cb4-9" class="hljs-ln-code"><a></a>        <span class="at">n          =</span> <span class="st">"N"</span>,</span>
-<span id="cb4-10" class="hljs-ln-code"><a></a>        <span class="at">masa_media =</span> <span class="st">"Media (g)"</span>,</span>
-<span id="cb4-11" class="hljs-ln-code"><a></a>        <span class="at">masa_sd    =</span> <span class="st">"DE (g)"</span>,</span>
-<span id="cb4-12" class="hljs-ln-code"><a></a>        <span class="at">pico_medio =</span> <span class="st">"Pico (mm)"</span></span>
-<span id="cb4-13" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb4-14" class="hljs-ln-code"><a></a>    <span class="fu">fmt_number</span>(</span>
-<span id="cb4-15" class="hljs-ln-code"><a></a>        <span class="at">columns  =</span> <span class="fu">c</span>(masa_media, masa_sd, pico_medio),</span>
-<span id="cb4-16" class="hljs-ln-code"><a></a>        <span class="at">decimals =</span> <span class="dv">1</span></span>
-<span id="cb4-17" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb4-18" class="hljs-ln-code"><a></a>    <span class="fu">tab_spanner</span>(</span>
-<span id="cb4-19" class="hljs-ln-code"><a></a>        <span class="at">label   =</span> <span class="st">"Masa corporal"</span>,</span>
-<span id="cb4-20" class="hljs-ln-code"><a></a>        <span class="at">columns =</span> <span class="fu">c</span>(masa_media, masa_sd)</span>
-<span id="cb4-21" class="hljs-ln-code"><a></a>    )</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
+<span id="cb5-2" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-3" class="hljs-ln-code"><a></a>    <span class="fu">tab_header</span>(</span>
+<span id="cb5-4" class="hljs-ln-code"><a></a>        <span class="at">title    =</span> <span class="st">"Pingüinos de Palmer"</span>,</span>
+<span id="cb5-5" class="hljs-ln-code"><a></a>        <span class="at">subtitle =</span> <span class="st">"Resumen por especie"</span></span>
+<span id="cb5-6" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb5-7" class="hljs-ln-code"><a></a>    <span class="fu">cols_label</span>(</span>
+<span id="cb5-8" class="hljs-ln-code"><a></a>        <span class="at">species    =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb5-9" class="hljs-ln-code"><a></a>        <span class="at">n          =</span> <span class="st">"N"</span>,</span>
+<span id="cb5-10" class="hljs-ln-code"><a></a>        <span class="at">masa_media =</span> <span class="st">"Media (g)"</span>,</span>
+<span id="cb5-11" class="hljs-ln-code"><a></a>        <span class="at">masa_sd    =</span> <span class="st">"DE (g)"</span>,</span>
+<span id="cb5-12" class="hljs-ln-code"><a></a>        <span class="at">pico_medio =</span> <span class="st">"Pico (mm)"</span></span>
+<span id="cb5-13" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb5-14" class="hljs-ln-code"><a></a>    <span class="fu">fmt_number</span>(</span>
+<span id="cb5-15" class="hljs-ln-code"><a></a>        <span class="at">columns  =</span> <span class="fu">c</span>(masa_media, masa_sd, pico_medio),</span>
+<span id="cb5-16" class="hljs-ln-code"><a></a>        <span class="at">decimals =</span> <span class="dv">1</span></span>
+<span id="cb5-17" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb5-18" class="hljs-ln-code"><a></a>    <span class="fu">tab_spanner</span>(</span>
+<span id="cb5-19" class="hljs-ln-code"><a></a>        <span class="at">label   =</span> <span class="st">"Masa corporal"</span>,</span>
+<span id="cb5-20" class="hljs-ln-code"><a></a>        <span class="at">columns =</span> <span class="fu">c</span>(masa_media, masa_sd)</span>
+<span id="cb5-21" class="hljs-ln-code"><a></a>    )</span></code></pre></div>
 </div>
 </div><div class="column" style="width:52%;">
 <div class="cell">
@@ -1848,45 +1874,601 @@ Masa corporal
 </div>
 </div></div>
 </section>
+<section id="tablas-con-gt-3" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Tablas con <code>gt</code></h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a>resumen <span class="sc">|&gt;</span></span>
+<span id="cb6-2" class="hljs-ln-code"><a></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-3" class="hljs-ln-code"><a></a>    <span class="fu">tab_header</span>(</span>
+<span id="cb6-4" class="hljs-ln-code"><a></a>        <span class="at">title    =</span> <span class="st">"Pingüinos de Palmer"</span>,</span>
+<span id="cb6-5" class="hljs-ln-code"><a></a>        <span class="at">subtitle =</span> <span class="st">"Resumen por especie"</span></span>
+<span id="cb6-6" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb6-7" class="hljs-ln-code"><a></a>    <span class="fu">cols_label</span>(</span>
+<span id="cb6-8" class="hljs-ln-code"><a></a>        <span class="at">species    =</span> <span class="st">"Especie"</span>,</span>
+<span id="cb6-9" class="hljs-ln-code"><a></a>        <span class="at">n          =</span> <span class="st">"N"</span>,</span>
+<span id="cb6-10" class="hljs-ln-code"><a></a>        <span class="at">masa_media =</span> <span class="st">"Media (g)"</span>,</span>
+<span id="cb6-11" class="hljs-ln-code"><a></a>        <span class="at">masa_sd    =</span> <span class="st">"DE (g)"</span>,</span>
+<span id="cb6-12" class="hljs-ln-code"><a></a>        <span class="at">pico_medio =</span> <span class="st">"Pico (mm)"</span></span>
+<span id="cb6-13" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb6-14" class="hljs-ln-code"><a></a>    <span class="fu">fmt_number</span>(</span>
+<span id="cb6-15" class="hljs-ln-code"><a></a>        <span class="at">columns  =</span> <span class="fu">c</span>(masa_media, masa_sd, pico_medio),</span>
+<span id="cb6-16" class="hljs-ln-code"><a></a>        <span class="at">decimals =</span> <span class="dv">1</span></span>
+<span id="cb6-17" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb6-18" class="hljs-ln-code"><a></a>    <span class="fu">tab_spanner</span>(</span>
+<span id="cb6-19" class="hljs-ln-code"><a></a>        <span class="at">label   =</span> <span class="st">"Masa corporal"</span>,</span>
+<span id="cb6-20" class="hljs-ln-code"><a></a>        <span class="at">columns =</span> <span class="fu">c</span>(masa_media, masa_sd)</span>
+<span id="cb6-21" class="hljs-ln-code"><a></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb6-22" class="hljs-ln-code"><a></a>    <span class="fu">tab_source_note</span>(<span class="st">"Fuente: Gorman et al. (2014)"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-23" class="hljs-ln-code"><a></a>    <span class="fu">tab_footnote</span>(</span>
+<span id="cb6-24" class="hljs-ln-code"><a></a>        <span class="at">footnote  =</span> <span class="st">"Medida en milímetros"</span>,</span>
+<span id="cb6-25" class="hljs-ln-code"><a></a>        <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(pico_medio)</span>
+<span id="cb6-26" class="hljs-ln-code"><a></a>    )</span></code></pre></div>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="hpmqjpgetc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hpmqjpgetc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hpmqjpgetc thead, #hpmqjpgetc tbody, #hpmqjpgetc tfoot, #hpmqjpgetc tr, #hpmqjpgetc td, #hpmqjpgetc th {
+  border-style: none;
+}
+
+#hpmqjpgetc p {
+  margin: 0;
+  padding: 0;
+}
+
+#hpmqjpgetc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hpmqjpgetc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hpmqjpgetc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hpmqjpgetc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hpmqjpgetc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hpmqjpgetc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hpmqjpgetc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hpmqjpgetc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hpmqjpgetc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hpmqjpgetc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hpmqjpgetc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hpmqjpgetc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hpmqjpgetc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hpmqjpgetc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hpmqjpgetc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hpmqjpgetc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hpmqjpgetc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hpmqjpgetc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hpmqjpgetc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hpmqjpgetc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hpmqjpgetc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hpmqjpgetc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hpmqjpgetc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hpmqjpgetc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hpmqjpgetc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hpmqjpgetc .gt_left {
+  text-align: left;
+}
+
+#hpmqjpgetc .gt_center {
+  text-align: center;
+}
+
+#hpmqjpgetc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hpmqjpgetc .gt_font_normal {
+  font-weight: normal;
+}
+
+#hpmqjpgetc .gt_font_bold {
+  font-weight: bold;
+}
+
+#hpmqjpgetc .gt_font_italic {
+  font-style: italic;
+}
+
+#hpmqjpgetc .gt_super {
+  font-size: 65%;
+}
+
+#hpmqjpgetc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hpmqjpgetc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hpmqjpgetc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hpmqjpgetc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hpmqjpgetc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hpmqjpgetc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hpmqjpgetc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hpmqjpgetc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hpmqjpgetc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<td colspan="5" class="gt_heading gt_title gt_font_normal">Pingüinos de Palmer</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Resumen por especie</td>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="species" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Especie</th>
+<th rowspan="2" id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">N</th>
+<th colspan="2" id="Masa corporal" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Masa corporal
+</div></th>
+<th rowspan="2" id="pico_medio" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pico (mm)<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="masa_media" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Media (g)</th>
+<th id="masa_sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DE (g)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Adelie</td>
+<td class="gt_row gt_right" headers="n">146</td>
+<td class="gt_row gt_right" headers="masa_media">3,706.2</td>
+<td class="gt_row gt_right" headers="masa_sd">458.6</td>
+<td class="gt_row gt_right" headers="pico_medio">38.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="species">Chinstrap</td>
+<td class="gt_row gt_right" headers="n">68</td>
+<td class="gt_row gt_right" headers="masa_media">3,733.1</td>
+<td class="gt_row gt_right" headers="masa_sd">384.3</td>
+<td class="gt_row gt_right" headers="pico_medio">48.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Gentoo</td>
+<td class="gt_row gt_right" headers="n">119</td>
+<td class="gt_row gt_right" headers="masa_media">5,092.4</td>
+<td class="gt_row gt_right" headers="masa_sd">501.5</td>
+<td class="gt_row gt_right" headers="pico_medio">47.6</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_footnotes odd">
+<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Medida en milímetros</td>
+</tr>
+<tr class="gt_sourcenotes even">
+<td colspan="5" class="gt_sourcenote">Fuente: Gorman et al. (2014)</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div></div>
+<div class="tip-box">
+<p><code>gt</code> tiene muchas opciones adicionales. Puedes explorarlas en la <a href="https://gt.rstudio.com/articles/gt.html">documentación oficial</a>.</p>
+</div>
+</section>
 <section id="referencias-cruzadas-tablas-en-documentos" class="slide level2 smaller">
 <h2>Referencias cruzadas: tablas en documentos</h2>
-<p>En un documento Quarto (no en estas diapositivas), puedes etiquetar una tabla y citarla en el texto:</p>
+<p>En un documento Quarto (no en presentaciones revealjs), puedes etiquetar una tabla y citarla en el texto:</p>
 <div class="columns">
 <div class="column" style="width:52%;">
 <p><strong>En el bloque de código:</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb5-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb5-2"><a></a><span class="co">#| label: tbl-resumen</span></span>
-<span id="cb5-3"><a></a><span class="co">#| tbl-cap: "Pingüinos de Palmer: resumen por especie"</span></span>
-<span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a>resumen <span class="sc">|&gt;</span> <span class="fu">gt</span>() <span class="sc">|&gt;</span> ...</span>
-<span id="cb5-6"><a></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb7-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a></a><span class="co">#| label: tbl-resumen</span></span>
+<span id="cb7-3"><a></a><span class="co">#| tbl-cap: "Pingüinos de Palmer: resumen por especie"</span></span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a>resumen <span class="sc">|&gt;</span> <span class="fu">gt</span>() <span class="sc">|&gt;</span> ...</span>
+<span id="cb7-6"><a></a><span class="in">```</span></span></code></pre></div>
 <p><strong>En el texto:</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb6-1"><a></a>Como se observa en la @tbl-resumen, la</span>
-<span id="cb6-2"><a></a>especie Gentoo tiene la mayor masa corporal.</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb8-1"><a></a>Como se observa en la @tbl-resumen, la</span>
+<span id="cb8-2"><a></a>especie Gentoo tiene la mayor masa corporal.</span></code></pre></div>
+<p><strong>Resultado renderizado:</strong></p>
+<p>Como se observa en la <span style="color:#225faa; text-decoration:underline;">Tabla 1</span>, la especie Gentoo tiene la mayor masa corporal.</p>
 </div><div class="column" style="width:48%;">
 <div class="tip-box">
-<p>Quarto numera las tablas automáticamente y genera el enlace. El prefijo <code>tbl-</code> en el <code>label</code> es obligatorio para que funcione la referencia. Lo mismo aplica para figuras con el prefijo <code>fig-</code> (en la siguiente sesión).</p>
+<p>La numeración automática y las referencias cruzadas funcionan en documentos (HTML, PDF, Word), <strong>no en presentaciones revealjs</strong>. El prefijo <code>tbl-</code> en el <code>label</code> es obligatorio. Lo mismo aplica para figuras con el prefijo <code>fig-</code> (en la siguiente sesión).</p>
 </div>
 </div></div>
 </section>
-<section id="section-1" class="slide level2 actividad" data-background-color="#6b1220">
+<section id="section-2" class="slide level2 actividad" data-background-color="#6b1220">
 <h2></h2>
 <div class="actividad-num">
-<p>Actividad 1 · 8 min</p>
+<p>Actividad 2 · 6 min</p>
 </div>
 <div class="actividad-title">
 <p>Una tabla <code>gt</code> en tu documento</p>
 </div>
 <div class="actividad-desc">
-<p>En el documento <code>.qmd</code> que abriste en s06, añade una sección nueva e inserta un bloque de código que:</p>
+<p>En tu documento <code>.qmd</code>, añade una sección nueva con una tabla a partir del objeto <code>resumen</code> que ya creaste:</p>
 <ol type="1">
-<li>Calcule un resumen de <code>pinguinos</code> con <code>group_by()</code> + <code>summarise()</code></li>
-<li>Convierta el resultado en tabla con <code>gt()</code></li>
-<li>Añada título con <code>tab_header()</code> y etiquete las columnas con <code>cols_label()</code></li>
+<li>Convierte <code>resumen</code> en tabla con <code>gt()</code></li>
+<li>Añade un título con <code>tab_header()</code></li>
+<li>Etiqueta las columnas con <code>cols_label()</code></li>
 </ol>
 </div>
 </section>
-<section id="section-2" class="slide level2" data-background-color="#121834">
+<section id="section-3" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 2</p>
@@ -1898,18 +2480,23 @@ Masa corporal
 <section id="el-archivo-.bib" class="slide level2 smaller">
 <h2>El archivo <code>.bib</code></h2>
 <p>Las referencias se guardan en un archivo de texto con extensión <code>.bib</code>. Cada entrada tiene un tipo (<code>@Article</code>, <code>@Book</code>, <code>@Manual</code>…), una <strong>clave única</strong> y los campos de la referencia:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bibtex number-lines"><code class="sourceCode bibtex"><span id="cb7-1"><a></a><span class="va">@Article</span>{<span class="ot">Spitzer2006</span>,</span>
-<span id="cb7-2"><a></a>  <span class="dt">title</span>   = {A Brief Measure for Assessing Generalized Anxiety Disorder},</span>
-<span id="cb7-3"><a></a>  <span class="dt">author</span>  = {Robert L. Spitzer and Kurt Kroenke and Janet B. W. Williams</span>
-<span id="cb7-4"><a></a>             and Bernd Löwe},</span>
-<span id="cb7-5"><a></a>  <span class="dt">journal</span> = {Archives of Internal Medicine},</span>
-<span id="cb7-6"><a></a>  <span class="dt">year</span>    = {2006},</span>
-<span id="cb7-7"><a></a>  <span class="dt">volume</span>  = {166},</span>
-<span id="cb7-8"><a></a>  <span class="dt">number</span>  = {10},</span>
-<span id="cb7-9"><a></a>  <span class="dt">pages</span>   = {1092--1097},</span>
-<span id="cb7-10"><a></a>  <span class="dt">doi</span>     = {10.1001/archinte.166.10.1092},</span>
-<span id="cb7-11"><a></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bibtex number-lines"><code class="sourceCode bibtex"><span id="cb9-1"><a></a><span class="va">@Article</span>{<span class="ot">Spitzer2006</span>,</span>
+<span id="cb9-2"><a></a>  <span class="dt">title</span>   = {A Brief Measure for Assessing Generalized Anxiety Disorder},</span>
+<span id="cb9-3"><a></a>  <span class="dt">author</span>  = {Robert L. Spitzer and Kurt Kroenke and Janet B. W. Williams</span>
+<span id="cb9-4"><a></a>             and Bernd Löwe},</span>
+<span id="cb9-5"><a></a>  <span class="dt">journal</span> = {Archives of Internal Medicine},</span>
+<span id="cb9-6"><a></a>  <span class="dt">year</span>    = {2006},</span>
+<span id="cb9-7"><a></a>  <span class="dt">volume</span>  = {166},</span>
+<span id="cb9-8"><a></a>  <span class="dt">number</span>  = {10},</span>
+<span id="cb9-9"><a></a>  <span class="dt">pages</span>   = {1092--1097},</span>
+<span id="cb9-10"><a></a>  <span class="dt">doi</span>     = {10.1001/archinte.166.10.1092},</span>
+<span id="cb9-11"><a></a>}</span></code></pre></div>
 <p>La clave <code>Spitzer2006</code> es la que usarás para citar. Puedes elegir cualquier clave, pero un formato como <code>AutorAño</code> es claro y fácil de recordar.</p>
+<div class="tip-box">
+<p>Los autores van siempre separados por <code>and</code>. Para indicar explícitamente el(los) apellido(s), usa la forma <code>Apellido, Nombre</code>; esto es indispensable para autores con dos apellidos:</p>
+<p><code>{Leongómez, Juan David and Wickham, Hadley}</code></p>
+<p>Con <code>Nombre Apellido</code>, BibTeX puede confundir cuál es el apellido.</p>
+</div>
 </section>
 <section id="fuentes-de-bibtex" class="slide level2 smaller">
 <h2>Fuentes de BibTeX</h2>
@@ -1940,12 +2527,12 @@ Masa corporal
 <section id="configurar-el-yaml-del-documento" class="slide level2 smaller">
 <h2>Configurar el YAML del documento</h2>
 <p>Añade dos líneas al YAML de tu documento Quarto:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb8-1"><a></a><span class="pp">---</span></span>
-<span id="cb8-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mi reporte"</span></span>
-<span id="cb8-3"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb8-4"><a></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> referencias.bib</span></span>
-<span id="cb8-5"><a></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> https://www.zotero.org/styles/apa</span></span>
-<span id="cb8-6"><a></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb10-1"><a></a><span class="pp">---</span></span>
+<span id="cb10-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mi reporte"</span></span>
+<span id="cb10-3"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb10-4"><a></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> referencias.bib</span></span>
+<span id="cb10-5"><a></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> https://www.zotero.org/styles/apa</span></span>
+<span id="cb10-6"><a></a><span class="pp">---</span></span></code></pre></div>
 <p><code>bibliography</code> apunta al archivo <code>.bib</code>. <code>csl</code> define el estilo de citas: el enlace descarga el estilo APA directamente desde el repositorio de Zotero, sin necesidad de guardar ningún archivo.</p>
 <div class="tip-box">
 <p>Puedes usar cualquier estilo del repositorio <a href="https://www.zotero.org/styles">zotero.org/styles</a>. Busca por nombre de revista o estilo, copia el enlace y pégalo en <code>csl:</code>. La lista de referencias aparece automáticamente al final del documento.</p>
@@ -1987,20 +2574,21 @@ Masa corporal
 </section>
 <section id="citar-r-y-sus-paquetes" class="slide level2 smaller">
 <h2>Citar R y sus paquetes</h2>
-<p><code>citation()</code> devuelve la referencia de R o de cualquier paquete. <code>toBibtex()</code> la convierte al formato BibTeX listo para copiar al <code>.bib</code>:</p>
+<p><code>citation()</code> devuelve la referencia de R o de cualquier paquete:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Citar R</span></span>
-<span id="cb9-2"><a></a><span class="fu">citation</span>()</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="co"># Citar un paquete</span></span>
-<span id="cb9-5"><a></a><span class="fu">citation</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># Citar R</span></span>
+<span id="cb11-2"><a></a><span class="fu">citation</span>()</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="co"># Citar un paquete</span></span>
+<span id="cb11-5"><a></a><span class="fu">citation</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div>
 </div>
+<p><code>toBibtex()</code> la convierte al formato BibTeX listo para copiar al <code>.bib</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Obtener el BibTeX</span></span>
-<span id="cb10-2"><a></a><span class="fu">toBibtex</span>(<span class="fu">citation</span>())</span>
-<span id="cb10-3"><a></a><span class="fu">toBibtex</span>(<span class="fu">citation</span>(<span class="st">"ggplot2"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Obtener el BibTeX</span></span>
+<span id="cb12-2"><a></a><span class="fu">toBibtex</span>(<span class="fu">citation</span>())</span>
+<span id="cb12-3"><a></a><span class="fu">toBibtex</span>(<span class="fu">citation</span>(<span class="st">"ggplot2"</span>))</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -2018,13 +2606,13 @@ Masa corporal
 </div>
 </div></div>
 <div class="tip-box">
-<p>Si usas datos o herramientas de R en un trabajo académico, citar R y los paquetes relevantes es una buena práctica. Muchos revisores ya lo esperan.</p>
+<p>Si usas datos o herramientas de R en un trabajo académico, citar R y los paquetes relevantes es una buena práctica. Muchos revisores ya lo esperan y es lo minimo que podemos hacer para dar crétido a las y los autores de paquetes que usamos.</p>
 </div>
 </section>
-<section id="section-3" class="slide level2 actividad" data-background-color="#6b1220">
+<section id="section-4" class="slide level2 actividad" data-background-color="#6b1220">
 <h2></h2>
 <div class="actividad-num">
-<p>Actividad 2 · 8 min</p>
+<p>Actividad 3 · 8 min</p>
 </div>
 <div class="actividad-title">
 <p>Añade citas a tu documento</p>
@@ -2036,11 +2624,12 @@ Masa corporal
 <li>Añade <code>bibliography: referencias.bib</code> y <code>csl: https://www.zotero.org/styles/apa</code> al YAML</li>
 <li>Cita <code>@tidyverse</code> en algún párrafo del documento</li>
 <li>Obtén el BibTeX de <code>citation("gt")</code> con <code>toBibtex()</code>, añádelo al <code>.bib</code> y cítalo</li>
+<li>Agrega algunas citas a artículos científicos</li>
 <li>Renderiza y verifica que la lista de referencias aparece al final</li>
 </ol>
 </div>
 </section>
-<section id="section-4" class="slide level2" data-background-color="#121834">
+<section id="section-5" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Parte 3</p>
@@ -2054,14 +2643,14 @@ Masa corporal
 <p>Opciones del YAML que mejoran la navegación del documento:</p>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb12-1"><a></a><span class="pp">---</span></span>
-<span id="cb12-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mi reporte"</span></span>
-<span id="cb12-3"><a></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb12-4"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb12-5"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb12-6"><a></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<span id="cb12-7"><a></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb12-8"><a></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb14-1"><a></a><span class="pp">---</span></span>
+<span id="cb14-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mi reporte"</span></span>
+<span id="cb14-3"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb14-4"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb14-5"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb14-6"><a></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb14-7"><a></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb14-8"><a></a><span class="pp">---</span></span></code></pre></div>
 </div><div class="column" style="width:52%;">
 <table class="caption-top">
 <thead>
@@ -2092,33 +2681,33 @@ Masa corporal
 <h2><code>code-fold</code> y temas HTML</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb13-1"><a></a><span class="pp">---</span></span>
-<span id="cb13-2"><a></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb13-3"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb13-4"><a></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb13-5"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
-<span id="cb13-6"><a></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb15-1"><a></a><span class="pp">---</span></span>
+<span id="cb15-2"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb15-3"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb15-4"><a></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-5"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb15-6"><a></a><span class="pp">---</span></span></code></pre></div>
 <p><code>code-fold: true</code> oculta el código por defecto pero deja un botón “Show code” para quien quiera verlo. Útil para reportes donde el texto es lo principal.</p>
-<p>Otros temas disponibles: <code>flatly</code>, <code>minty</code>, <code>journal</code>, <code>lumen</code>, <code>pulse</code>, <code>sandstone</code>, <code>united</code>, <code>yeti</code>.</p>
+<p>Otros temas disponibles: <code>flatly</code>, <code>minty</code>, <code>journal</code>, <code>lumen</code>, <code>pulse</code>, <code>sandstone</code>, <code>united</code>, <code>yeti</code>, entre otros.</p>
 </div><div class="column" style="width:52%;">
 <div class="tip-box">
 <p>Puedes previsualizar todos los temas en <a href="https://quarto.org/docs/output-formats/html-themes.html">quarto.org/docs/output-formats/html-themes.html</a></p>
-<p>El tema <code>cosmo</code> y <code>flatly</code> son opciones limpias y legibles. <code>journal</code> imita el estilo de una publicación académica.</p>
+<p>El tema <code>cosmo</code> y <code>flatly</code>, por ejemplo, son opciones limpias y legibles. <code>journal</code> imita el estilo de una publicación académica.</p>
 </div>
 </div></div>
 </section>
 <section id="otros-formatos-de-salida" class="slide level2 smaller">
 <h2>Otros formatos de salida</h2>
 <p>Con Quarto puedes cambiar el formato de salida con solo editar el YAML:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb14-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span><span class="co">   # Word</span></span>
-<span id="cb14-2"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span><span class="co">    # PDF (requiere LaTeX)</span></span>
-<span id="cb14-3"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span><span class="co">   # HTML (el más completo y flexible)</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb16-1"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span><span class="co">   # Word</span></span>
+<span id="cb16-2"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span><span class="co">    # PDF (requiere LaTeX)</span></span>
+<span id="cb16-3"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span><span class="co">   # HTML (el más completo y flexible)</span></span></code></pre></div>
 <p>Para Word (<code>docx</code>), la mayoría de opciones de HTML funcionan igual. Es útil cuando el destinatario necesita un archivo editable o cuando la institución exige ese formato.</p>
 <div class="tip-box">
-<p>Para PDF se necesita una instalación de LaTeX. Si no tienes LaTeX, puedes instalar <code>tinytex</code> desde R con <code>tinytex::install_tinytex()</code>. Pero para este curso, HTML es suficiente para todo lo que haremos.</p>
+<p>Para PDF se necesita una instalación de LaTeX. Si no tienes LaTeX, puedes instalar <code>tinytex</code> desde R con <code>tinytex::install_tinytex()</code>.</p>
 </div>
 </section>
-<section id="section-5" class="slide level2 actividad" data-background-color="#6b1220">
+<section id="section-6" class="slide level2 actividad" data-background-color="#6b1220">
 <h2></h2>
 <div class="actividad-num">
 <p>Actividad final · 15 min</p>
@@ -2130,15 +2719,15 @@ Masa corporal
 <p>Edita el YAML y el contenido de tu documento <code>.qmd</code> para que incluya:</p>
 <ol type="1">
 <li>Tabla de contenido (<code>toc: true</code>) y secciones numeradas</li>
-<li>Un tema HTML distinto al defecto (prueba <code>cosmo</code> o <code>flatly</code>)</li>
+<li>Un tema HTML distinto al defecto (prueba <code>cosmo</code>, <code>flatly</code> o <a href="https://quarto.org/docs/output-formats/html-themes.html">cualquier otro</a>)</li>
 <li><code>code-fold: true</code> para que el código esté oculto por defecto</li>
-<li>La tabla <code>gt</code> de la Actividad 1, con su referencia cruzada (<code>@tbl-xxx</code>) en el texto</li>
+<li>La tabla <code>gt</code> de la Actividad 2, con su referencia cruzada (<code>@tbl-xxx</code>) en el texto</li>
 <li>Al menos dos citas de la bibliografía</li>
 </ol>
 <p>Renderiza y revisa el resultado en el navegador.</p>
 </div>
 </section>
-<section id="section-6" class="slide level2" data-background-color="#121834">
+<section id="section-7" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Antes de terminar…</p>
@@ -2219,7 +2808,7 @@ Masa corporal
 <section class="slide level2">
 
 </section>
-<section id="section-7" class="slide level2" data-background-color="#121834">
+<section id="section-8" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
 <p>Hasta la próxima sesión</p>

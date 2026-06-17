@@ -18,7 +18,7 @@
     "href": "index.html#sesiones",
     "title": "Maneja, explora y visualiza datos con R",
     "section": "Sesiones",
-    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-402\nPrimeros pasos en R y RStudio\nDiapositivas · script_ejemplo.R\n\n\n2\nJue 4 jun\nA-402\nVisualizaciones con ggplot2\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\nDiapositivas · encuesta_bruta.xlsx → Reto 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R Entrega Reto 1\nDiapositivas · notas.csv · registro.xlsx\n\n\n5\nJue 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\nDiapositivas\n\n\n6\nVie 12 jun\nB-211\nReportes reproducibles con Quarto\nDiapositivas → Reto 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto: tablas, citas y formatos\nDiapositivas\n\n\n8\nJue 18 jun\nA-404\nQuarto: figuras, integración y publicación\n—\n\n\n9\nVie 19 jun\nA-402\nReto 2 · Cierre e integración · Buenas prácticas de trabajo en R Entrega Reto 2\n—"
+    "text": "Sesiones\n\n\n\n#\nFecha\nSalón\nTema\nMateriales\n\n\n\n\nSEMANA 1\n\n\n1\nMié 3 jun\nA-402\nPrimeros pasos en R y RStudio\nDiapositivas · script_ejemplo.R\n\n\n2\nJue 4 jun\nA-402\nVisualizaciones con ggplot2\nDiapositivas\n\n\n3\nVie 5 jun\nA-402\nManejo y transformación de datos con dplyr y pipes\nDiapositivas · encuesta_bruta.xlsx → Reto 1\n\n\nSEMANA 2\n\n\n4\nMié 10 jun\nA-402\nImportar y organizar datos: Excel, CSV y proyectos de R Entrega Reto 1\nDiapositivas · notas.csv · registro.xlsx\n\n\n5\nJue 11 jun\nA-402\nAutomatización de análisis con funciones y simulación\nDiapositivas\n\n\n6\nVie 12 jun\nB-211\nReportes reproducibles con Quarto\nDiapositivas → Reto 2\n\n\nSEMANA 3\n\n\n7\nMié 17 jun\nA-404\nQuarto: tablas, citas y formatos\nDiapositivas\n\n\n8\nJue 18 jun\nA-404\nQuarto: figuras, integración y publicación\nDiapositivas\n\n\n9\nVie 19 jun\nA-402\nReto 2 · Cierre e integración · Buenas prácticas de trabajo en R Entrega Reto 2\n—"
   },
   {
     "objectID": "index.html#retos",
@@ -109,14 +109,14 @@
     "href": "glosario.html#knitr",
     "title": "Glosario de R",
     "section": "knitr",
-    "text": "knitr\nPaquete de generación de documentos. Se carga con library(knitr) y es el motor que Quarto usa internamente para ejecutar los bloques de código.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nkable(x, digits, col.names)\nConvierte un data frame en una tabla con formato para documentos HTML, PDF o Word. Solución rápida para tablas sencillas; para tablas más elaboradas usa el paquete gt.\nS7"
+    "text": "knitr\nPaquete de generación de documentos. Se carga con library(knitr) y es el motor que Quarto usa internamente para ejecutar los bloques de código.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\nkable(x, digits, col.names)\nConvierte un data frame en una tabla con formato para documentos HTML, PDF o Word. Solución rápida para tablas sencillas; para tablas más elaboradas usa el paquete gt.\nS7\n\n\ninclude_graphics(path)\nIncluye una imagen externa (PNG, JPG, SVG…) en un documento Quarto. Admite las mismas opciones de bloque que las figuras generadas con código (fig-cap, fig-align, out-width…) y permite referencias cruzadas con @fig-xxx. Preferible a la sintaxis Markdown ![]() cuando se necesita etiquetar la figura.\nS8"
   },
   {
     "objectID": "glosario.html#gt",
     "href": "glosario.html#gt",
     "title": "Glosario de R",
     "section": "gt",
-    "text": "gt\nPaquete para crear tablas de publicación con control detallado del formato.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ngt(data)\nCrea una tabla gt a partir de un data frame. Las funciones de formato se añaden con el pipe |&gt;, igual que en ggplot2 con +.\nS7\n\n\ntab_header(title, subtitle)\nAñade un título y un subtítulo encima de la tabla.\nS7\n\n\ncols_label(...)\nDefine las etiquetas visibles de las columnas. Sintaxis: nombre_columna = \"Etiqueta visible\".\nS7\n\n\nfmt_number(columns, decimals)\nFormatea columnas numéricas: controla el número de decimales y los separadores de miles.\nS7\n\n\ntab_spanner(label, columns)\nAgrupa varias columnas bajo un encabezado común. label es el texto del encabezado; columns es el vector de columnas agrupadas.\nS7"
+    "text": "gt\nPaquete para crear tablas de publicación con control detallado del formato.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ngt(data)\nCrea una tabla gt a partir de un data frame. Las funciones de formato se añaden con el pipe |&gt;, igual que en ggplot2 con +.\nS7\n\n\ntab_header(title, subtitle)\nAñade un título y un subtítulo encima de la tabla.\nS7\n\n\ncols_label(...)\nDefine las etiquetas visibles de las columnas. Sintaxis: nombre_columna = \"Etiqueta visible\".\nS7\n\n\nfmt_number(columns, decimals)\nFormatea columnas numéricas: controla el número de decimales y los separadores de miles.\nS7\n\n\ntab_spanner(label, columns)\nAgrupa varias columnas bajo un encabezado común. label es el texto del encabezado; columns es el vector de columnas agrupadas.\nS7\n\n\ntab_source_note(source_note)\nAñade una nota de fuente al pie de la tabla. Útil para citar el origen de los datos.\nS7\n\n\ntab_footnote(footnote, locations)\nAñade una nota al pie vinculada a una celda, fila, columna o encabezado específico. locations indica dónde aparece el marcador de la nota.\nS7\n\n\ncells_column_labels(columns)\nDentro de tab_footnote() u otras funciones de locations, apunta al encabezado de una o varias columnas.\nS7"
   },
   {
     "objectID": "glosario.html#faux",
@@ -550,7 +550,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```ahl\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```gmm\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
@@ -1106,41 +1106,6 @@
     "text": "Elige a la ganadora (cont.)\n\n\nMaria Isabel Meza\n\n\nMario Cordoba\n\n\nMonica Echeverria\n\n\nSantiago Quiroga"
   },
   {
-    "objectID": "retos/reto2-paquete-raro.html",
-    "href": "retos/reto2-paquete-raro.html",
-    "title": "Reto 2 · Presenta un paquete de R",
-    "section": "",
-    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
-  },
-  {
-    "objectID": "retos/reto2-paquete-raro.html#el-reto",
-    "href": "retos/reto2-paquete-raro.html#el-reto",
-    "title": "Reto 2 · Presenta un paquete de R",
-    "section": "",
-    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
-  },
-  {
-    "objectID": "retos/reto2-paquete-raro.html#lo-que-debes-presentar",
-    "href": "retos/reto2-paquete-raro.html#lo-que-debes-presentar",
-    "title": "Reto 2 · Presenta un paquete de R",
-    "section": "Lo que debes presentar",
-    "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
-  },
-  {
-    "objectID": "retos/reto2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "href": "retos/reto2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
-    "title": "Reto 2 · Presenta un paquete de R",
-    "section": "Algunas pistas de por dónde buscar",
-    "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
-  },
-  {
-    "objectID": "retos/reto2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "href": "retos/reto2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
-    "title": "Reto 2 · Presenta un paquete de R",
-    "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
-    "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores y lo puedas explicar con tus propias palabras."
-  },
-  {
     "objectID": "retos/reto1-figura-fea.html",
     "href": "retos/reto1-figura-fea.html",
     "title": "Reto 1 · El concurso de la figura más fea",
@@ -1181,6 +1146,216 @@
     "title": "Reto 1 · El concurso de la figura más fea",
     "section": "Resultados",
     "text": "Resultados\nLas figuras se presentaron en la Sesión 4. Puedes ver los scripts y las figuras de todos los participantes en la presentación correspondiente:\n→ Ver todas las figuras"
+  },
+  {
+    "objectID": "retos/reto2-paquete-raro.html",
+    "href": "retos/reto2-paquete-raro.html",
+    "title": "Reto 2 · Presenta un paquete de R",
+    "section": "",
+    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+  },
+  {
+    "objectID": "retos/reto2-paquete-raro.html#el-reto",
+    "href": "retos/reto2-paquete-raro.html#el-reto",
+    "title": "Reto 2 · Presenta un paquete de R",
+    "section": "",
+    "text": "R tiene más de 23 000 paquetes en CRAN y miles más en GitHub. Algunos son serios y ampliamente usados. Otros hacen cosas absurdas, inesperadas o simplemente raras, y eso los hace fascinantes.\nTu misión es encontrar un paquete de R que te llame la atención, entender qué hace, y mostrarle al grupo al menos una función de ese paquete: qué argumentos recibe, qué produce, y por qué lo encontraste interesante.\nEl paquete ojalá sea raro o sorprendente. La idea es que descubras qué tan absurdamente diverso es el ecosistema de R."
+  },
+  {
+    "objectID": "retos/reto2-paquete-raro.html#lo-que-debes-presentar",
+    "href": "retos/reto2-paquete-raro.html#lo-que-debes-presentar",
+    "title": "Reto 2 · Presenta un paquete de R",
+    "section": "Lo que debes presentar",
+    "text": "Lo que debes presentar\n\n¿Cómo se llama el paquete y para qué sirve?\n¿Dónde lo encontraste? (CRAN, GitHub, Twitter/X, un artículo, etc.)\nUna demostración en vivo: carga el paquete y ejecuta al menos una función, explicando sus argumentos principales y lo que produce.\n¿Por qué te pareció interesante, útil o simplemente raro?\n\nTienes máximo 5 minutos."
+  },
+  {
+    "objectID": "retos/reto2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "href": "retos/reto2-paquete-raro.html#algunas-pistas-de-por-dónde-buscar",
+    "title": "Reto 2 · Presenta un paquete de R",
+    "section": "Algunas pistas de por dónde buscar",
+    "text": "Algunas pistas de por dónde buscar\n\nCRAN Task Views para paquetes agrupados por área temática.\nrOpenSci para paquetes de ciencia abierta y datos científicos.\npak::pkg_search(\"tema que te interese\") para buscar desde la consola de R.\nBusca en Twitter/X o Mastodon con el hashtag #rstats.\nPídele a alguien que use R que te cuente cuál es el paquete más raro que conoce."
+  },
+  {
+    "objectID": "retos/reto2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "href": "retos/reto2-paquete-raro.html#algunos-ejemplos-de-paquetes-raros-para-inspirarte-no-para-copiar",
+    "title": "Reto 2 · Presenta un paquete de R",
+    "section": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)",
+    "text": "Algunos ejemplos de paquetes raros (para inspirarte, no para copiar)\n\n\n\n\n\n\n\nPaquete\n¿Qué hace?\n\n\n\n\ncowsay\nHace que un animal ASCII diga lo que tú quieras\n\n\nbeepr\nReproduce sonidos desde R\n\n\npraise\nGenera frases de elogio aleatorias\n\n\nfortunes\nImprime citas y aforismos de la comunidad de R\n\n\nggbernie\nPone a Bernie Sanders en tus gráficas de ggplot2\n\n\nrayshader\nHace mapas 3D impresionantes\n\n\nspotifyr\nAccede a la API de Spotify\n\n\nnasapower\nDescarga datos climáticos de la NASA\n\n\n\n\n\n\n\n\n\nNota¿Puedo usar un paquete “serio”?\n\n\n\nSí, siempre y cuando sea algo que genuinamente te interese y que no hayamos visto en el curso. Lo importante es que lo explores y lo puedas explicar con tus propias palabras."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#agenda",
+    "href": "sesiones/s08/slides.html#agenda",
+    "title": "Sesión 8",
+    "section": "Agenda",
+    "text": "Agenda\n\nFiguras: caption, tamaño y alineación\nReferencias cruzadas para figuras\nLayout de múltiples figuras\nEl documento integrado\nPublicación en Quarto Pub"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section",
+    "href": "sesiones/s08/slides.html#section",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Parte 1\n\n\nFiguras en documentos Quarto"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#opciones-de-figura",
+    "href": "sesiones/s08/slides.html#opciones-de-figura",
+    "title": "Sesión 8",
+    "section": "Opciones de figura",
+    "text": "Opciones de figura\nLas figuras en bloques de código aceptan opciones que controlan su apariencia en el documento:\n\n\n```{r}\n#| echo: false\n#| fig-cap: \"Masa corporal por especie\"\n#| fig-width: 6\n#| fig-height: 3.5\n#| fig-align: center\n\npinguinos |&gt;\n  ggplot(aes(x = species,\n             y = body_mass_g,\n             fill = species)) +\n  geom_boxplot(show.legend = FALSE) +\n  labs(x = \"Especie\",\n       y = \"Masa corporal (g)\") +\n  theme_minimal()\n```"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#opciones-de-figura-1",
+    "href": "sesiones/s08/slides.html#opciones-de-figura-1",
+    "title": "Sesión 8",
+    "section": "Opciones de figura",
+    "text": "Opciones de figura\n\n\n\nOpción\nDescripción\n\n\n\n\nfig-cap\nPie de figura (aparece debajo de la imagen)\n\n\nfig-width\nAncho en pulgadas (por defecto: 7)\n\n\nfig-height\nAlto en pulgadas (por defecto: 5)\n\n\nfig-align\nAlineación: left, center, right\n\n\nfig-alt\nTexto alternativo para lectores de pantalla\n\n\nout-width\nAncho en el documento como porcentaje (\"70%\")\n\n\n\n\nfig-alt no aparece en el documento visible, pero es leído por tecnologías de asistencia. Añadirlo es buena práctica: fig-alt: \"Diagrama de caja que muestra la distribución de masa corporal de tres especies de pingüinos\"."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-1",
+    "href": "sesiones/s08/slides.html#section-1",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Actividad 1 · 8 min\n\n\nAñade una figura con caption\n\n\nEn tu documento mi_reporte.qmd, inserta o modifica un bloque de código con una figura de ggplot2:\n\nAñade #| fig-cap: \"...\" con una descripción de la figura\nAjusta #| fig-width: y #| fig-height: hasta que la figura se vea bien\nAñade #| echo: false para que solo aparezca la figura, sin el código\nRenderiza y comprueba el resultado en el navegador"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-2",
+    "href": "sesiones/s08/slides.html#section-2",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Parte 2\n\n\nReferencias cruzadas para figuras"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#fig--el-prefijo-para-referencias",
+    "href": "sesiones/s08/slides.html#fig--el-prefijo-para-referencias",
+    "title": "Sesión 8",
+    "section": "fig-: el prefijo para referencias",
+    "text": "fig-: el prefijo para referencias\nIgual que tbl- para tablas, las figuras usan el prefijo fig- en el label:\n\n\nEn el bloque de código:\n```{r}\n#| label: fig-masas\n#| fig-cap: \"Masa corporal por especie de pingüino\"\n#| echo: false\n\npinguinos |&gt;\n  ggplot(aes(x = species,\n             y = body_mass_g,\n             fill = species)) +\n  geom_boxplot(show.legend = FALSE) +\n  ...\n```\nEn el texto:\nComo se observa en la @fig-masas,\nla especie Gentoo tiene la mayor\nmasa corporal.\n\n\nQuarto numera las figuras automáticamente en documentos (HTML, PDF, Word). El prefijo fig- en el label es obligatorio y la figura debe tener fig-cap para que la referencia cruzada funcione.\n\nResultado renderizado:\nComo se observa en la Figura 1, la especie Gentoo tiene la mayor masa corporal."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-3",
+    "href": "sesiones/s08/slides.html#section-3",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Actividad 2 · 8 min\n\n\nReferencias cruzadas en tu documento\n\n\nEn tu documento mi_reporte.qmd:\n\nAñade #| label: fig-xxx a tu figura (reemplaza xxx con un nombre corto)\nEscribe @fig-xxx en el texto para citar la figura\nSi tienes una tabla gt con #| label: tbl-xxx, cítala con @tbl-xxx\nRenderiza y verifica que los números y los enlaces aparecen correctamente"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-4",
+    "href": "sesiones/s08/slides.html#section-4",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Parte 3\n\n\nLayout de múltiples figuras"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#varias-figuras-en-un-bloque",
+    "href": "sesiones/s08/slides.html#varias-figuras-en-un-bloque",
+    "title": "Sesión 8",
+    "section": "Varias figuras en un bloque",
+    "text": "Varias figuras en un bloque\nCon fig-layout-ncol y fig-subcap puedes colocar varias figuras lado a lado desde un solo bloque de código:\n\n\n```{r}\n#| label: fig-comparacion\n#| fig-cap: \"Variables morfológicas\"\n#| fig-subcap:\n#|   - \"Masa corporal (g)\"\n#|   - \"Longitud del pico (mm)\"\n#| fig-layout-ncol: 2\n#| fig-height: 3\n#| echo: false\n\npinguinos |&gt;\n  ggplot(aes(x = species,\n             y = body_mass_g,\n             fill = species)) +\n  geom_boxplot(show.legend = FALSE) +\n  labs(x = NULL, y = \"Masa (g)\") +\n  theme_minimal()\n\npinguinos |&gt;\n  ggplot(aes(x = species,\n             y = bill_length_mm,\n             fill = species)) +\n  geom_boxplot(show.legend = FALSE) +\n  labs(x = NULL, y = \"Pico (mm)\") +\n  theme_minimal()\n```"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#imágenes-externas-include_graphics",
+    "href": "sesiones/s08/slides.html#imágenes-externas-include_graphics",
+    "title": "Sesión 8",
+    "section": "Imágenes externas: include_graphics()",
+    "text": "Imágenes externas: include_graphics()\nPara incluir una imagen guardada en disco (un mapa, una captura de pantalla, un esquema):\n\n\nCon knitr::include_graphics() (permite referencia cruzada):\n```{r}\n#| label: fig-esquema\n#| fig-cap: \"Estructura del proyecto\"\n#| out-width: \"60%\"\n#| fig-align: center\n\nknitr::include_graphics(\"imagenes/esquema.png\")\n```\nCon Markdown (más simple, sin referencia cruzada):\n![Descripción](imagenes/logo.png){width=\"60%\"}\n\n\nknitr::include_graphics() es la opción correcta cuando necesitas citar la imagen en el texto con @fig-xxx. La ruta va relativa al archivo .qmd.\nout-width controla el tamaño de visualización como porcentaje del ancho disponible, sin afectar la resolución original de la imagen."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-5",
+    "href": "sesiones/s08/slides.html#section-5",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Parte 4\n\n\nEl documento integrado"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#opciones-globales-de-ejecución",
+    "href": "sesiones/s08/slides.html#opciones-globales-de-ejecución",
+    "title": "Sesión 8",
+    "section": "Opciones globales de ejecución",
+    "text": "Opciones globales de ejecución\nEn lugar de repetir las mismas opciones en cada bloque, defínelas una sola vez en el YAML:\n\n\n---\ntitle: \"Mi análisis\"\nformat: html\nexecute:\n  echo: false\n  warning: false\n  message: false\n---\nCon echo: false global, ningún bloque mostrará el código. Para anularlo en un bloque concreto, agrega la opción directamente en ese bloque:\n```{r}\n#| echo: true\nsummary(pinguinos)\n```\n\n\n\n\nOpción global\nEfecto\n\n\n\n\necho: false\nOculta el código en todos los bloques\n\n\nwarning: false\nSuprime advertencias\n\n\nmessage: false\nSuprime mensajes de paquetes\n\n\neval: false\nNo ejecuta ningún bloque\n\n\ncache: true\nGuarda resultados en caché\n\n\n\n\nLas opciones del YAML son los valores por defecto. Las opciones en un bloque individual siempre las anulan."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#estructura-de-un-documento-completo",
+    "href": "sesiones/s08/slides.html#estructura-de-un-documento-completo",
+    "title": "Sesión 8",
+    "section": "Estructura de un documento completo",
+    "text": "Estructura de un documento completo\nUn documento bien organizado integra todos los elementos que hemos visto:\n\n  ---\n  title, author, date, format, bibliography, csl, execute\n  ---\n  ```{r} setup ← #| include: false · cargar paquetes y datos\n  # Introducción ← texto con código en línea\n  # Método ← descripción de datos y análisis\n  # Resultados\n  figuras con @fig-xxx · tablas con @tbl-xxx · valores con `r ...`\n  # Conclusiones\n  # Referencias ← generadas automáticamente por Quarto\n\n\n\nEl bloque setup carga paquetes y datos antes que cualquier otro bloque. Con #| include: false, el código se ejecuta pero no aparece ni el código ni los mensajes de carga en el documento final."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-6",
+    "href": "sesiones/s08/slides.html#section-6",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Actividad 3 · 10 min\n\n\nOrganiza y completa tu documento\n\n\nDale a tu mi_reporte.qmd la estructura de un documento completo:\n\nAñade execute: echo: false al YAML (código oculto por defecto)\nCrea un bloque setup al inicio con #| include: false que cargue todos los paquetes y datos\nVerifica que tienes: secciones (#), al menos una figura con @fig-, una tabla con @tbl- y al menos una cita con @clave\nRenderiza sin errores y revisa que todas las referencias son correctas"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-7",
+    "href": "sesiones/s08/slides.html#section-7",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Parte 5\n\n\nPublicación"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#un-archivo-para-compartir",
+    "href": "sesiones/s08/slides.html#un-archivo-para-compartir",
+    "title": "Sesión 8",
+    "section": "Un archivo para compartir",
+    "text": "Un archivo para compartir\nPor defecto, un documento HTML de Quarto genera varios archivos auxiliares. Para compartirlo como un único archivo portable:\n---\nformat:\n  html:\n    embed-resources: true\n---\nEsto incrusta CSS, JavaScript e imágenes directamente en el .html, que se puede enviar por correo o abrir sin conexión desde cualquier ordenador.\n\nEn versiones anteriores de Quarto la opción era self-contained: true, que sigue funcionando. La opción actual y recomendada es embed-resources: true."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#quarto-pub-publicar-en-la-web",
+    "href": "sesiones/s08/slides.html#quarto-pub-publicar-en-la-web",
+    "title": "Sesión 8",
+    "section": "Quarto Pub: publicar en la web",
+    "text": "Quarto Pub: publicar en la web\nQuarto Pub es un servicio gratuito de Posit para publicar documentos Quarto con un solo comando desde la terminal de RStudio:\n\nCrea una cuenta en quartopub.com\nDesde la terminal de RStudio, en la raíz de tu proyecto:\n\nquarto publish quarto-pub mi_reporte.qmd\n\nLa primera vez pedirá que inicies sesión en el navegador\nQuarto sube el documento y abre la URL pública\n\n\n\nLa URL tiene la forma tuusuario.quarto.pub/nombre-del-documento. Volver a publicar con el mismo comando actualiza el documento en la misma URL."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#otras-opciones-de-publicación",
+    "href": "sesiones/s08/slides.html#otras-opciones-de-publicación",
+    "title": "Sesión 8",
+    "section": "Otras opciones de publicación",
+    "text": "Otras opciones de publicación\n\n\n\n\n\n\n\n\nServicio\nComando\nIdeal para\n\n\n\n\nQuarto Pub\nquarto publish quarto-pub\nDocumentos individuales, acceso público gratuito\n\n\nGitHub Pages\nquarto publish gh-pages\nSitios completos, integración con git\n\n\nPosit Connect\nquarto publish connect\nEntornos corporativos o académicos\n\n\nNetlify\nquarto publish netlify\nSitios con dominio personalizado\n\n\n\n\nPara este curso, Quarto Pub es la opción más directa. Si ya usas GitHub y quieres publicar más contenido, GitHub Pages es el siguiente paso natural: es lo que usa el propio sitio de este curso."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-8",
+    "href": "sesiones/s08/slides.html#section-8",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Actividad final · 20 min\n\n\nPublica tu documento en Quarto Pub\n\n\n\nCrea una cuenta en quartopub.com si aún no tienes una\nAsegúrate de que tu mi_reporte.qmd renderiza sin errores\nDesde la terminal de RStudio (pestaña Terminal, no Console):\n\nquarto publish quarto-pub mi_reporte.qmd\n\nCopia la URL pública y compártela en el chat"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-9",
+    "href": "sesiones/s08/slides.html#section-9",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Antes de terminar…\n\n\nQuiz rápido"
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#quiz-1-de-3",
+    "href": "sesiones/s08/slides.html#quiz-1-de-3",
+    "title": "Sesión 8",
+    "section": "Quiz · 1 de 3",
+    "text": "Quiz · 1 de 3\n¿Qué opción de bloque añade un pie de figura en el documento y hace posible citarla con @fig-xxx?\n\n\nfig-title\n\n\nfig-label\n\n\nfig-cap\n\n\ncaption\n\n\n\n\n✓ c) fig-cap añade el pie de figura y, junto con label: fig-xxx, habilita la referencia cruzada. Sin fig-cap no se genera la referencia aunque exista el label."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#quiz-2-de-3",
+    "href": "sesiones/s08/slides.html#quiz-2-de-3",
+    "title": "Sesión 8",
+    "section": "Quiz · 2 de 3",
+    "text": "Quiz · 2 de 3\nUn bloque de código genera dos figuras. ¿Qué opción las coloca lado a lado en el documento?\n\n\nfig-layout: side\n\n\nfig-ncol: 2\n\n\nlayout: columns\n\n\nfig-layout-ncol: 2\n\n\n\n\n✓ d) fig-layout-ncol: 2 distribuye en dos columnas las figuras producidas por el bloque. Combinado con fig-subcap permite añadir un subtítulo individual a cada figura."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#quiz-3-de-3",
+    "href": "sesiones/s08/slides.html#quiz-3-de-3",
+    "title": "Sesión 8",
+    "section": "Quiz · 3 de 3",
+    "text": "Quiz · 3 de 3\nQuieres que tu documento HTML sea un único archivo portable que no dependa de archivos externos. ¿Qué opción usas en el YAML?\n\n\nstandalone: true\n\n\nembed-resources: true\n\n\nformat: single-html\n\n\noutput: bundle\n\n\n\n\n✓ b) embed-resources: true incrusta todos los recursos (CSS, JavaScript, imágenes) en el propio archivo .html. El resultado es un único archivo que se puede compartir o abrir sin conexión."
+  },
+  {
+    "objectID": "sesiones/s08/slides.html#section-10",
+    "href": "sesiones/s08/slides.html#section-10",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Hasta la próxima sesión\n\n\n¡Gracias!\n\n\n\n\n jdleongomez.github.io/curso-r"
   },
   {
     "objectID": "sesiones/s04/slides.html#agenda",
@@ -1407,11 +1582,18 @@
     "text": "Parte 1\n\n\nTablas"
   },
   {
+    "objectID": "sesiones/s07/slides.html#section-1",
+    "href": "sesiones/s07/slides.html#section-1",
+    "title": "Sesión 7",
+    "section": "",
+    "text": "Actividad 1 · 5 min\n\n\nRecordatorio: resume pinguinos con dplyr\n\n\nEn un bloque de código en tu documento .qmd, crea el objeto resumen:\npinguinos &lt;- penguins |&gt; drop_na()\n\nresumen &lt;- pinguinos |&gt;\n    group_by(species) |&gt;\n    summarise(\n        n          = n(),\n        masa_media = mean(body_mass_g),\n        masa_sd    = sd(body_mass_g),\n        pico_medio = mean(bill_length_mm)\n    )\nLo usarás en las actividades siguientes para crear tablas."
+  },
+  {
     "objectID": "sesiones/s07/slides.html#kable-tablas-al-instante",
     "href": "sesiones/s07/slides.html#kable-tablas-al-instante",
     "title": "Sesión 7",
     "section": "kable(): tablas al instante",
-    "text": "kable(): tablas al instante\nkable() del paquete knitr convierte cualquier data frame en una tabla con una sola línea:\n\n\n\nlibrary(knitr)\n\nresumen |&gt; kable()\n\n\n\n\n\n\n\nspecies\nn\nmasa_media\nmasa_sd\npico_medio\n\n\n\n\nAdelie\n146\n3706.164\n458.6201\n38.82397\n\n\nChinstrap\n68\n3733.088\n384.3351\n48.83382\n\n\nGentoo\n119\n5092.437\n501.4762\n47.56807\n\n\n\n\n\n\nSuficiente para explorar datos o incluir una tabla rápida. Para presentaciones y publicaciones, gt ofrece mucho más control."
+    "text": "kable(): tablas al instante\nkable() del paquete knitr convierte cualquier data frame en una tabla con una sola línea:\n\n\n\nlibrary(knitr)\n\nresumen |&gt; kable()\n\n\n\n\n\n\n\nspecies\nn\nmasa_media\nmasa_sd\npico_medio\n\n\n\n\nAdelie\n146\n3706.164\n458.6201\n38.82397\n\n\nChinstrap\n68\n3733.088\n384.3351\n48.83382\n\n\nGentoo\n119\n5092.437\n501.4762\n47.56807\n\n\n\n\n\n\nSuficiente para explorar datos o incluir una tabla rápida. Para presentaciones y publicaciones, gt ofrece mucho más control.\n\nkable() tiene muchas opciones adicionales, y en compañia del paquete kableExtra permite hacer tablas complejas tanto en HTML como en LaTeX (PDF). Sin embargo, en esta sesión nos centraremos en gt."
   },
   {
     "objectID": "sesiones/s07/slides.html#tablas-con-gt",
@@ -1435,22 +1617,29 @@
     "text": "Tablas con gt\n\n\n\nresumen |&gt;\n    gt() |&gt;\n    tab_header(\n        title    = \"Pingüinos de Palmer\",\n        subtitle = \"Resumen por especie\"\n    ) |&gt;\n    cols_label(\n        species    = \"Especie\",\n        n          = \"N\",\n        masa_media = \"Media (g)\",\n        masa_sd    = \"DE (g)\",\n        pico_medio = \"Pico (mm)\"\n    ) |&gt;\n    fmt_number(\n        columns  = c(masa_media, masa_sd, pico_medio),\n        decimals = 1\n    ) |&gt;\n    tab_spanner(\n        label   = \"Masa corporal\",\n        columns = c(masa_media, masa_sd)\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPingüinos de Palmer\n\n\nResumen por especie\n\n\nEspecie\nN\n\nMasa corporal\n\nPico (mm)\n\n\nMedia (g)\nDE (g)\n\n\n\n\nAdelie\n146\n3,706.2\n458.6\n38.8\n\n\nChinstrap\n68\n3,733.1\n384.3\n48.8\n\n\nGentoo\n119\n5,092.4\n501.5\n47.6"
   },
   {
+    "objectID": "sesiones/s07/slides.html#tablas-con-gt-3",
+    "href": "sesiones/s07/slides.html#tablas-con-gt-3",
+    "title": "Sesión 7",
+    "section": "Tablas con gt",
+    "text": "Tablas con gt\n\n\n\nresumen |&gt;\n    gt() |&gt;\n    tab_header(\n        title    = \"Pingüinos de Palmer\",\n        subtitle = \"Resumen por especie\"\n    ) |&gt;\n    cols_label(\n        species    = \"Especie\",\n        n          = \"N\",\n        masa_media = \"Media (g)\",\n        masa_sd    = \"DE (g)\",\n        pico_medio = \"Pico (mm)\"\n    ) |&gt;\n    fmt_number(\n        columns  = c(masa_media, masa_sd, pico_medio),\n        decimals = 1\n    ) |&gt;\n    tab_spanner(\n        label   = \"Masa corporal\",\n        columns = c(masa_media, masa_sd)\n    ) |&gt;\n    tab_source_note(\"Fuente: Gorman et al. (2014)\") |&gt;\n    tab_footnote(\n        footnote  = \"Medida en milímetros\",\n        locations = cells_column_labels(pico_medio)\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPingüinos de Palmer\n\n\nResumen por especie\n\n\nEspecie\nN\n\nMasa corporal\n\nPico (mm)1\n\n\nMedia (g)\nDE (g)\n\n\n\n\nAdelie\n146\n3,706.2\n458.6\n38.8\n\n\nChinstrap\n68\n3,733.1\n384.3\n48.8\n\n\nGentoo\n119\n5,092.4\n501.5\n47.6\n\n\n\n1 Medida en milímetros\n\n\nFuente: Gorman et al. (2014)\n\n\n\n\n\n\n\n\n\n\ngt tiene muchas opciones adicionales. Puedes explorarlas en la documentación oficial."
+  },
+  {
     "objectID": "sesiones/s07/slides.html#referencias-cruzadas-tablas-en-documentos",
     "href": "sesiones/s07/slides.html#referencias-cruzadas-tablas-en-documentos",
     "title": "Sesión 7",
     "section": "Referencias cruzadas: tablas en documentos",
-    "text": "Referencias cruzadas: tablas en documentos\nEn un documento Quarto (no en estas diapositivas), puedes etiquetar una tabla y citarla en el texto:\n\n\nEn el bloque de código:\n```{r}\n#| label: tbl-resumen\n#| tbl-cap: \"Pingüinos de Palmer: resumen por especie\"\n\nresumen |&gt; gt() |&gt; ...\n```\nEn el texto:\nComo se observa en la @tbl-resumen, la\nespecie Gentoo tiene la mayor masa corporal.\n\n\nQuarto numera las tablas automáticamente y genera el enlace. El prefijo tbl- en el label es obligatorio para que funcione la referencia. Lo mismo aplica para figuras con el prefijo fig- (en la siguiente sesión)."
-  },
-  {
-    "objectID": "sesiones/s07/slides.html#section-1",
-    "href": "sesiones/s07/slides.html#section-1",
-    "title": "Sesión 7",
-    "section": "",
-    "text": "Actividad 1 · 8 min\n\n\nUna tabla gt en tu documento\n\n\nEn el documento .qmd que abriste en s06, añade una sección nueva e inserta un bloque de código que:\n\nCalcule un resumen de pinguinos con group_by() + summarise()\nConvierta el resultado en tabla con gt()\nAñada título con tab_header() y etiquete las columnas con cols_label()"
+    "text": "Referencias cruzadas: tablas en documentos\nEn un documento Quarto (no en presentaciones revealjs), puedes etiquetar una tabla y citarla en el texto:\n\n\nEn el bloque de código:\n```{r}\n#| label: tbl-resumen\n#| tbl-cap: \"Pingüinos de Palmer: resumen por especie\"\n\nresumen |&gt; gt() |&gt; ...\n```\nEn el texto:\nComo se observa en la @tbl-resumen, la\nespecie Gentoo tiene la mayor masa corporal.\nResultado renderizado:\nComo se observa en la Tabla 1, la especie Gentoo tiene la mayor masa corporal.\n\n\nLa numeración automática y las referencias cruzadas funcionan en documentos (HTML, PDF, Word), no en presentaciones revealjs. El prefijo tbl- en el label es obligatorio. Lo mismo aplica para figuras con el prefijo fig- (en la siguiente sesión)."
   },
   {
     "objectID": "sesiones/s07/slides.html#section-2",
     "href": "sesiones/s07/slides.html#section-2",
+    "title": "Sesión 7",
+    "section": "",
+    "text": "Actividad 2 · 6 min\n\n\nUna tabla gt en tu documento\n\n\nEn tu documento .qmd, añade una sección nueva con una tabla a partir del objeto resumen que ya creaste:\n\nConvierte resumen en tabla con gt()\nAñade un título con tab_header()\nEtiqueta las columnas con cols_label()"
+  },
+  {
+    "objectID": "sesiones/s07/slides.html#section-3",
+    "href": "sesiones/s07/slides.html#section-3",
     "title": "Sesión 7",
     "section": "",
     "text": "Parte 2\n\n\nCitas y referencias bibliográficas"
@@ -1460,7 +1649,7 @@
     "href": "sesiones/s07/slides.html#el-archivo-.bib",
     "title": "Sesión 7",
     "section": "El archivo .bib",
-    "text": "El archivo .bib\nLas referencias se guardan en un archivo de texto con extensión .bib. Cada entrada tiene un tipo (@Article, @Book, @Manual…), una clave única y los campos de la referencia:\n@Article{Spitzer2006,\n  title   = {A Brief Measure for Assessing Generalized Anxiety Disorder},\n  author  = {Robert L. Spitzer and Kurt Kroenke and Janet B. W. Williams\n             and Bernd Löwe},\n  journal = {Archives of Internal Medicine},\n  year    = {2006},\n  volume  = {166},\n  number  = {10},\n  pages   = {1092--1097},\n  doi     = {10.1001/archinte.166.10.1092},\n}\nLa clave Spitzer2006 es la que usarás para citar. Puedes elegir cualquier clave, pero un formato como AutorAño es claro y fácil de recordar."
+    "text": "El archivo .bib\nLas referencias se guardan en un archivo de texto con extensión .bib. Cada entrada tiene un tipo (@Article, @Book, @Manual…), una clave única y los campos de la referencia:\n@Article{Spitzer2006,\n  title   = {A Brief Measure for Assessing Generalized Anxiety Disorder},\n  author  = {Robert L. Spitzer and Kurt Kroenke and Janet B. W. Williams\n             and Bernd Löwe},\n  journal = {Archives of Internal Medicine},\n  year    = {2006},\n  volume  = {166},\n  number  = {10},\n  pages   = {1092--1097},\n  doi     = {10.1001/archinte.166.10.1092},\n}\nLa clave Spitzer2006 es la que usarás para citar. Puedes elegir cualquier clave, pero un formato como AutorAño es claro y fácil de recordar.\n\nLos autores van siempre separados por and. Para indicar explícitamente el(los) apellido(s), usa la forma Apellido, Nombre; esto es indispensable para autores con dos apellidos:\n{Leongómez, Juan David and Wickham, Hadley}\nCon Nombre Apellido, BibTeX puede confundir cuál es el apellido."
   },
   {
     "objectID": "sesiones/s07/slides.html#fuentes-de-bibtex",
@@ -1495,18 +1684,18 @@
     "href": "sesiones/s07/slides.html#citar-r-y-sus-paquetes",
     "title": "Sesión 7",
     "section": "Citar R y sus paquetes",
-    "text": "Citar R y sus paquetes\ncitation() devuelve la referencia de R o de cualquier paquete. toBibtex() la convierte al formato BibTeX listo para copiar al .bib:\n\n\n\n# Citar R\ncitation()\n\n# Citar un paquete\ncitation(\"ggplot2\")\n\n\n# Obtener el BibTeX\ntoBibtex(citation())\ntoBibtex(citation(\"ggplot2\"))\n\n\n\n\n@Manual{,\n  title = {R: A Language and Environment for Statistical Computing},\n  author = {{R Core Team}},\n  organization = {R Foundation for Statistical Computing},\n  address = {Vienna, Austria},\n  year = {2026},\n  doi = {10.32614/R.manuals},\n  url = {https://www.R-project.org/},\n}\n\n\n\n\nSi usas datos o herramientas de R en un trabajo académico, citar R y los paquetes relevantes es una buena práctica. Muchos revisores ya lo esperan."
-  },
-  {
-    "objectID": "sesiones/s07/slides.html#section-3",
-    "href": "sesiones/s07/slides.html#section-3",
-    "title": "Sesión 7",
-    "section": "",
-    "text": "Actividad 2 · 8 min\n\n\nAñade citas a tu documento\n\n\n⬇ Descargar referencias.bib\nGuarda el archivo en la raíz de tu proyecto curso_r (junto a mi_reporte.qmd). Luego:\n\nAñade bibliography: referencias.bib y csl: https://www.zotero.org/styles/apa al YAML\nCita @tidyverse en algún párrafo del documento\nObtén el BibTeX de citation(\"gt\") con toBibtex(), añádelo al .bib y cítalo\nRenderiza y verifica que la lista de referencias aparece al final"
+    "text": "Citar R y sus paquetes\ncitation() devuelve la referencia de R o de cualquier paquete:\n\n\n\n# Citar R\ncitation()\n\n# Citar un paquete\ncitation(\"ggplot2\")\n\ntoBibtex() la convierte al formato BibTeX listo para copiar al .bib:\n\n# Obtener el BibTeX\ntoBibtex(citation())\ntoBibtex(citation(\"ggplot2\"))\n\n\n\n\n@Manual{,\n  title = {R: A Language and Environment for Statistical Computing},\n  author = {{R Core Team}},\n  organization = {R Foundation for Statistical Computing},\n  address = {Vienna, Austria},\n  year = {2026},\n  doi = {10.32614/R.manuals},\n  url = {https://www.R-project.org/},\n}\n\n\n\n\nSi usas datos o herramientas de R en un trabajo académico, citar R y los paquetes relevantes es una buena práctica. Muchos revisores ya lo esperan y es lo minimo que podemos hacer para dar crétido a las y los autores de paquetes que usamos."
   },
   {
     "objectID": "sesiones/s07/slides.html#section-4",
     "href": "sesiones/s07/slides.html#section-4",
+    "title": "Sesión 7",
+    "section": "",
+    "text": "Actividad 3 · 8 min\n\n\nAñade citas a tu documento\n\n\n⬇ Descargar referencias.bib\nGuarda el archivo en la raíz de tu proyecto curso_r (junto a mi_reporte.qmd). Luego:\n\nAñade bibliography: referencias.bib y csl: https://www.zotero.org/styles/apa al YAML\nCita @tidyverse en algún párrafo del documento\nObtén el BibTeX de citation(\"gt\") con toBibtex(), añádelo al .bib y cítalo\nAgrega algunas citas a artículos científicos\nRenderiza y verifica que la lista de referencias aparece al final"
+  },
+  {
+    "objectID": "sesiones/s07/slides.html#section-5",
+    "href": "sesiones/s07/slides.html#section-5",
     "title": "Sesión 7",
     "section": "",
     "text": "Parte 3\n\n\nOpciones de formato"
@@ -1523,25 +1712,25 @@
     "href": "sesiones/s07/slides.html#code-fold-y-temas-html",
     "title": "Sesión 7",
     "section": "code-fold y temas HTML",
-    "text": "code-fold y temas HTML\n\n\n---\nformat:\n  html:\n    code-fold: true\n    theme: cosmo\n---\ncode-fold: true oculta el código por defecto pero deja un botón “Show code” para quien quiera verlo. Útil para reportes donde el texto es lo principal.\nOtros temas disponibles: flatly, minty, journal, lumen, pulse, sandstone, united, yeti.\n\n\nPuedes previsualizar todos los temas en quarto.org/docs/output-formats/html-themes.html\nEl tema cosmo y flatly son opciones limpias y legibles. journal imita el estilo de una publicación académica."
+    "text": "code-fold y temas HTML\n\n\n---\nformat:\n  html:\n    code-fold: true\n    theme: cosmo\n---\ncode-fold: true oculta el código por defecto pero deja un botón “Show code” para quien quiera verlo. Útil para reportes donde el texto es lo principal.\nOtros temas disponibles: flatly, minty, journal, lumen, pulse, sandstone, united, yeti, entre otros.\n\n\nPuedes previsualizar todos los temas en quarto.org/docs/output-formats/html-themes.html\nEl tema cosmo y flatly, por ejemplo, son opciones limpias y legibles. journal imita el estilo de una publicación académica."
   },
   {
     "objectID": "sesiones/s07/slides.html#otros-formatos-de-salida",
     "href": "sesiones/s07/slides.html#otros-formatos-de-salida",
     "title": "Sesión 7",
     "section": "Otros formatos de salida",
-    "text": "Otros formatos de salida\nCon Quarto puedes cambiar el formato de salida con solo editar el YAML:\nformat: docx   # Word\nformat: pdf    # PDF (requiere LaTeX)\nformat: html   # HTML (el más completo y flexible)\nPara Word (docx), la mayoría de opciones de HTML funcionan igual. Es útil cuando el destinatario necesita un archivo editable o cuando la institución exige ese formato.\n\nPara PDF se necesita una instalación de LaTeX. Si no tienes LaTeX, puedes instalar tinytex desde R con tinytex::install_tinytex(). Pero para este curso, HTML es suficiente para todo lo que haremos."
-  },
-  {
-    "objectID": "sesiones/s07/slides.html#section-5",
-    "href": "sesiones/s07/slides.html#section-5",
-    "title": "Sesión 7",
-    "section": "",
-    "text": "Actividad final · 15 min\n\n\nMini-reporte completo\n\n\nEdita el YAML y el contenido de tu documento .qmd para que incluya:\n\nTabla de contenido (toc: true) y secciones numeradas\nUn tema HTML distinto al defecto (prueba cosmo o flatly)\ncode-fold: true para que el código esté oculto por defecto\nLa tabla gt de la Actividad 1, con su referencia cruzada (@tbl-xxx) en el texto\nAl menos dos citas de la bibliografía\n\nRenderiza y revisa el resultado en el navegador."
+    "text": "Otros formatos de salida\nCon Quarto puedes cambiar el formato de salida con solo editar el YAML:\nformat: docx   # Word\nformat: pdf    # PDF (requiere LaTeX)\nformat: html   # HTML (el más completo y flexible)\nPara Word (docx), la mayoría de opciones de HTML funcionan igual. Es útil cuando el destinatario necesita un archivo editable o cuando la institución exige ese formato.\n\nPara PDF se necesita una instalación de LaTeX. Si no tienes LaTeX, puedes instalar tinytex desde R con tinytex::install_tinytex()."
   },
   {
     "objectID": "sesiones/s07/slides.html#section-6",
     "href": "sesiones/s07/slides.html#section-6",
+    "title": "Sesión 7",
+    "section": "",
+    "text": "Actividad final · 15 min\n\n\nMini-reporte completo\n\n\nEdita el YAML y el contenido de tu documento .qmd para que incluya:\n\nTabla de contenido (toc: true) y secciones numeradas\nUn tema HTML distinto al defecto (prueba cosmo, flatly o cualquier otro)\ncode-fold: true para que el código esté oculto por defecto\nLa tabla gt de la Actividad 2, con su referencia cruzada (@tbl-xxx) en el texto\nAl menos dos citas de la bibliografía\n\nRenderiza y revisa el resultado en el navegador."
+  },
+  {
+    "objectID": "sesiones/s07/slides.html#section-7",
+    "href": "sesiones/s07/slides.html#section-7",
     "title": "Sesión 7",
     "section": "",
     "text": "Antes de terminar…\n\n\nQuiz rápido"
@@ -1568,8 +1757,8 @@
     "text": "Quiz · 3 de 3\nQuieres que el código de tu documento esté oculto por defecto pero que el lector pueda verlo si quiere. ¿Qué opción usas en el YAML?\n\n\necho: false\n\n\nhide-code: true\n\n\ncode-fold: true\n\n\ncollapse: true\n\n\n\n\n✓ c) code-fold: true oculta el código pero añade un botón “Show code”. echo: false lo oculta sin posibilidad de verlo. Las otras dos opciones no existen en Quarto."
   },
   {
-    "objectID": "sesiones/s07/slides.html#section-7",
-    "href": "sesiones/s07/slides.html#section-7",
+    "objectID": "sesiones/s07/slides.html#section-8",
+    "href": "sesiones/s07/slides.html#section-8",
     "title": "Sesión 7",
     "section": "",
     "text": "Hasta la próxima sesión\n\n\n¡Gracias!\n\n\n\n\n jdleongomez.github.io/curso-r"
@@ -2405,7 +2594,7 @@
     "href": "tareas_por_hacer.html",
     "title": "Tareas por hacer",
     "section": "",
-    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Reto 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Reto 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\nCrear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07\n\n\n\n\n\nActualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión\n\n\n\n\n\nCrear retos/reto1-figura-fea.qmd (concurso ggplot2 feo)\nCrear retos/reto1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Reto 1 — enlace en reto1-figura-fea.qmd y en s03\nCrear sesiones/s04/reto1-figuras.qmd (presentación auto-generada: slide por estudiante con script + figura; slide de galería final para votar)\nCrear retos/reto2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nReto\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Reto 1\n\n\n4\nMié 10\nReto 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Reto 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nReto 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
+    "text": "Definir estructura del repositorio y GitHub Pages\nPlanear orden y contenidos de las sesiones (estructura preliminar acordada)\nConfirmar versión de RStudio en sala de cómputo (¿tiene Quarto integrado?)\nPedir a estudiantes que creen cuenta en GitHub antes de S7\n\n\n\n\n\nCrear _quarto.yml base\nCrear estilos/slides.scss y estilos/sitio.scss\nCrear workflow de GitHub Actions (publish.yml)\nCrear .gitignore\nCrear favicon (imagenes/favicon.svg)\nAñadir favicon al _quarto.yml (website: favicon: imagenes/favicon.svg)\nAñadir snippet de links en nueva pestaña al _quarto.yml\nDiagnosticar y corregir error de GitHub Actions (posiblemente logo faltante en s01)\nLínea logo: en sesiones/s01/slides.qmd — no existe, no hay problema\nInstalar extensión codefocus y activarla en sesiones/_metadata.yml\nCompletar menú Sesiones en _quarto.yml con las 9 sesiones agrupadas por semana\n\n\n\n\n\nCrear diapositivas sesión 1 (borrador completo)\nMejorar diapositivas sesión 1\nCrear diapositivas sesión 2 — ggplot2 en profundidad\n\nAñadir slide de presentación de tidyverse (con hex grid de los 9 paquetes)\nAñadir hex stickers de paquetes a sesiones (ggplot2, dplyr, readr, readxl, faux, quarto)\n\nCrear diapositivas sesión 3 — pipe + dplyr\n\nCrear sesiones/s03/datos/encuesta_bruta.xlsx (base de datos GAD-7 simulada con problemas típicos de Excel)\nAñadir sección Reto 1 al final de s03 (anuncio + descripción + ejemplos de inspiración)\n\nCrear diapositivas sesión 4 — Importar y organizar datos: Excel, CSV y proyectos de R\nCrear diapositivas sesión 5 — Automatización de análisis con funciones y simulación\nCrear diapositivas sesión 6 — Reportes reproducibles con Quarto\n\nAñadir anuncio Reto 2 al final de s06\n\nCrear diapositivas sesión 7 — Quarto: tablas, citas y formatos\n\nCrear sesiones/s07/referencias.bib (R, tidyverse, Spitzer 2006)\n\nCrear diapositivas sesión 8 — Quarto: figuras, integración y publicación\nCrear diapositivas sesión 9 — Reto 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\nCrear plantilla_proyecto/ con estructura lista para descargar (curso_r.Rproj, datos/, figuras/, scripts/)\nRevisar y corregir consistencia de rutas y carpetas en s02–s07\n\n\n\n\n\nActualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\ns08 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión\n\n\n\n\n\nCrear retos/reto1-figura-fea.qmd (concurso ggplot2 feo)\nCrear retos/reto1/ (carpeta en el repo para guardar scripts recibidos)\nCarpeta OneDrive para entregas de Reto 1 — enlace en reto1-figura-fea.qmd y en s03\nCrear sesiones/s04/reto1-figuras.qmd (presentación auto-generada: slide por estudiante con script + figura; slide de galería final para votar)\nCrear retos/reto2-paquete-raro.qmd (presentar paquete de R)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#\nFecha\nTema\nReto\n\n\n\n\n1\nMié 3\nIntro a R, RStudio, sintaxis, primera figura\nExplorar ggplot2\n\n\n2\nJue 4\nggplot2 en profundidad\n\n\n\n3\nVie 5\nPipe nativo + dplyr\n← Reto 1\n\n\n4\nMié 10\nReto 1 + datos externos, proyectos, CSV\n\n\n\n5\nJue 11\nFunciones, condicionales y simulación\n\n\n\n6\nVie 12\nDocumentos reproducibles (Quarto)\n← Reto 2\n\n\n7\nMié 17\nQuarto: tablas, citas y formatos\n\n\n\n8\nJue 18\nQuarto: figuras, integración y publicación\n\n\n\n9\nVie 19\nReto 2 + Cierre, integración, buenas prácticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSituación\nComando\n\n\n\n\nTrabajando en una sesión\nquarto render sesiones/s01/slides.qmd\n\n\nRevisar el sitio completo antes de publicar\nquarto render\n\n\nNecesitas preview en vivo (excepcional)\nquarto preview sesiones/s01/slides.qmd\n\n\nMatar procesos huérfanos\npkill -f \"quarto preview\""
   },
   {
     "objectID": "tareas_por_hacer.html#curso",
@@ -2440,7 +2629,7 @@
     "href": "tareas_por_hacer.html#sitio-web",
     "title": "Tareas por hacer",
     "section": "",
-    "text": "Actualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión"
+    "text": "Actualizar sección #sesiones en index.qmd (temas, salones con colores)\nActualizar sección #contenidos-por-semana en programa.qmd (temas, salones con colores)\nAñadir enlace a diapositivas en index.qmd a medida que se completen (s04–s09)\n\ns04 — enlace añadido\ns05 — enlace añadido\ns06 — enlace añadido\ns07 — enlace añadido\ns08 — enlace añadido\n\nCrear página de referencia rápida (glosario.qmd) con funciones y paquetes de S1–S7\nActualizar glosario.qmd con funciones de S8 al completar esa sesión\nActualizar glosario.qmd con funciones de S9 al completar esa sesión"
   },
   {
     "objectID": "tareas_por_hacer.html#retos-para-estudiantes",
