@@ -2,7 +2,7 @@
 title: "Guía rápida de Quarto"
 subtitle: "Referencia de sintaxis para documentos reproducibles"
 toc: true
-toc-depth: 2
+toc-depth: 3
 ---
 
 Esta página es una referencia rápida de la sintaxis de Quarto cubierta en el curso.
@@ -131,6 +131,7 @@ encuesta |>
 
 | Opción | Por defecto | Qué controla |
 |--------|:-----------:|--------------|
+| `label` | — | Identificador único del bloque. Para referencias cruzadas debe empezar por `fig-` (figuras) o `tbl-` (tablas) |
 | `echo` | `true` | ¿Se muestra el código en el documento? |
 | `eval` | `true` | ¿Se ejecuta el código? |
 | `include` | `true` | `false` ejecuta el código pero no muestra nada |
@@ -139,6 +140,9 @@ encuesta |>
 | `fig-height` | `5` | Alto de la figura en pulgadas |
 | `fig-width` | `7` | Ancho de la figura en pulgadas |
 | `fig-cap` | — | Pie de figura; se numera automáticamente con `lang: es` |
+| `fig-align` | `left` | Alineación de la figura: `left`, `center`, `right` |
+| `fig-alt` | — | Texto alternativo para lectores de pantalla (accesibilidad) |
+| `out-width` | — | Ancho de visualización en el documento: `"70%"`, `"400px"`… |
 
 ::: {.callout-tip}
 ## Bloque de configuración
@@ -230,3 +234,141 @@ quarto render mi_documento.qmd
 ```
 
 Si hay un error en algún bloque de código, el renderizado se detiene y muestra en qué bloque ocurrió.
+
+## Opciones globales de ejecución
+
+En lugar de repetir opciones en cada bloque, defínelas una sola vez en el YAML bajo `execute:`. Las opciones del bloque individual siempre las anulan.
+
+```yaml
+---
+title: "Mi análisis"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+```
+
+| Opción global | Efecto |
+|---|---|
+| `echo: false` | Oculta el código en todos los bloques |
+| `warning: false` | Suprime advertencias |
+| `message: false` | Suprime mensajes de carga de paquetes |
+| `eval: false` | No ejecuta ningún bloque |
+| `cache: true` | Guarda los resultados en caché para no volver a ejecutar bloques que no cambiaron |
+
+---
+
+## Referencias cruzadas
+
+Quarto numera figuras y tablas automáticamente y permite citarlas en el texto. Solo funciona en documentos (HTML, PDF, Word), no en presentaciones revealjs.
+
+**Figuras** — el `label` debe comenzar con `fig-` y el bloque debe tener `fig-cap`:
+
+````markdown
+```{{r}}
+#| label: fig-masas
+#| fig-cap: "Masa corporal por especie de pingüino"
+#| echo: false
+
+pinguinos |> ggplot(aes(x = species, y = body_mass_g)) + geom_boxplot()
+```
+
+Como se observa en la @fig-masas, la especie Gentoo tiene la mayor masa corporal.
+````
+
+**Tablas** — el `label` debe comenzar con `tbl-`:
+
+````markdown
+```{{r}}
+#| label: tbl-resumen
+#| tbl-cap: "Resumen por especie"
+
+knitr::kable(resumen)
+```
+
+Los resultados se muestran en la @tbl-resumen.
+````
+
+Quarto genera la numeración y los enlaces automáticamente. Sin `fig-cap` (o `tbl-cap`) no se crea la referencia aunque exista el `label`.
+
+---
+
+## Citas y referencias bibliográficas
+
+### El archivo `.bib`
+
+Las referencias se guardan en un archivo de texto con extensión `.bib`. Cada entrada tiene un tipo, una **clave única** y los campos:
+
+```bibtex
+@Article{Spitzer2006,
+  title   = {A Brief Measure for Assessing Generalized Anxiety Disorder},
+  author  = {Spitzer, Robert L. and Kroenke, Kurt and Williams, Janet B. W.
+             and Löwe, Bernd},
+  journal = {Archives of Internal Medicine},
+  year    = {2006},
+  volume  = {166},
+  pages   = {1092--1097},
+  doi     = {10.1001/archinte.166.10.1092},
+}
+```
+
+Guarda el archivo como `referencias.bib` en la raíz del proyecto, junto a tu `.qmd`. Las entradas las puedes obtener desde páginas de editoriales (ScienceDirect, Springer…) → "Export citation" → BibTeX, o desde el editor visual de RStudio (**Insert → Citation…**).
+
+### Vincular al documento
+
+```yaml
+---
+title: "Mi reporte"
+format: html
+bibliography: referencias.bib
+csl: https://www.zotero.org/styles/apa
+---
+```
+
+`csl` define el estilo de citas. Puedes usar cualquier estilo de [zotero.org/styles](https://www.zotero.org/styles). La lista de referencias aparece automáticamente al final del documento.
+
+### Citar en el texto
+
+| Sintaxis | Resultado |
+|---|---|
+| `@Spitzer2006` | Spitzer et al. (2006) |
+| `[@Spitzer2006]` | (Spitzer et al., 2006) |
+| `[@clave1; @clave2]` | (Autor1, año; Autor2, año) |
+| `[-@Spitzer2006]` | (2006) — suprime el autor |
+
+En el editor visual, escribir `@` abre un menú de autocompletado con todas las claves del `.bib`.
+
+### Citar R y sus paquetes
+
+```r
+citation()               # referencia de R base
+citation("ggplot2")      # referencia de un paquete
+toBibtex(citation())     # en formato BibTeX, listo para copiar al .bib
+```
+
+---
+
+## Archivo HTML portable
+
+Por defecto, un documento HTML de Quarto genera varios archivos auxiliares (CSS, JavaScript, imágenes). Para compartirlo como un único archivo que se puede enviar por correo o abrir sin conexión:
+
+```yaml
+---
+format:
+  html:
+    embed-resources: true
+---
+```
+
+Esto incrusta todos los recursos directamente en el `.html`.
+
+---
+
+## Para profundizar
+
+Esta guía cubre solo lo que usamos en el curso. Para ir más allá:
+
+- [**Quarto Documentation**](https://quarto.org/docs/guide/) — la documentación oficial, muy completa. Cubre todos los formatos de salida, opciones de figura, publicación, presentaciones y mucho más.
+- [**Quarto Tricks**](https://www.productive-r-workflow.com/quarto-tricks) — colección de trucos prácticos y poco conocidos para sacarle más partido a Quarto.

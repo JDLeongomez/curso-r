@@ -123,14 +123,14 @@ No se requieren conocimientos previos de programación ni estadística.
       <td>Jue 18 jun</td>
       <td><span class="salon-a404">A-404</span></td>
       <td>Quarto: figuras, integración y publicación</td>
-      <td><a href="sesiones/s08/slides.html" class="slides-label">Diapositivas</a></td>
+      <td><a href="sesiones/s08/slides.html" class="slides-label">Diapositivas</a> · <a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s08/ejemplo_reporte.qmd" class="data-label">ejemplo_reporte.qmd</a> · <a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s08/referencias.bib" class="data-label">referencias.bib</a></td>
     </tr>
     <tr>
       <td>9</td>
       <td>Vie 19 jun</td>
       <td><span class="salon-a402">A-402</span></td>
       <td>Reto 2 · Cierre e integración · Buenas prácticas de trabajo en R <span class="tarea-label" style="margin-left:8px;">Entrega Reto 2</span></td>
-      <td>—</td>
+      <td><a href="sesiones/s09/slides.html" class="slides-label">Diapositivas</a></td>
     </tr>
 
   </tbody>

@@ -1,0 +1,335 @@
+---
+title: "Sesión 9"
+subtitle: "Reto 2 · Cierre, integración y buenas prácticas"
+author: "Juan David Leongómez"
+institute: "Universidad El Bosque"
+date: "2026-06-19"
+date-format: long
+lang: es
+format:
+  revealjs:
+    theme: [default, ../../estilos/slides.scss]
+    slide-number: true
+    show-slide-number: all
+    code-line-numbers: true
+    highlight-style: github
+    transition: fade
+    width: 1280
+    height: 720
+    auto-animate: true
+title-slide-attributes:
+  data-background-color: "#121834"
+  data-background-image: ../../imagenes/logo.svg
+  data-background-position: "top center"
+  data-background-size: "20%"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+invisible(NULL)
+```
+
+## Agenda
+
+- **Parte 1** · Presentaciones del Reto 2
+- **Parte 2** · Buenas prácticas de trabajo en R
+- **Parte 3** · ¿Y ahora qué?
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 1
+:::
+
+::: section-title-text
+Reto 2 · Presenta un paquete de R
+:::
+
+---
+
+## Las presentaciones {.smaller}
+
+Tienes **máximo 5 minutos** para contarnos:
+
+1. Cómo se llama el paquete y para qué sirve
+2. Hacer una demostración en vivo de al menos una función
+4. Por qué te pareció interesante, útil o simplemente raro
+
+::: tip-box
+Recuerda tener tu *script* con el código de la demostración cargado y listo antes de tu turno.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 2
+:::
+
+::: section-title-text
+Buenas prácticas de trabajo en R
+:::
+
+---
+
+## El *script* autocontenido
+
+Un buen *script* puede ejecutarse de principio a fin en cualquier computador, sin intervención manual:
+
+```markdown
+# 1. Paquetes (siempre al inicio)
+library(tidyverse)
+library(readxl)
+
+# 2. Datos (con rutas relativas al proyecto)
+datos <- read_excel("datos/mi_archivo.xlsx")
+
+# 3. Limpieza y transformación
+datos_limpios <- datos |>
+  filter(!is.na(nota)) |>
+  mutate(aprobado = nota >= 3.0)
+
+# 4. Análisis y resultados
+resumen <- datos_limpios |>
+  summarise(media = mean(nota), n = n())
+```
+
+::: tip-box
+Sin `setwd()`. Sin rutas absolutas. Paquetes al inicio. Datos cargados desde archivo, nunca pegados directamente en el código.
+:::
+
+---
+
+## Proyectos de R y rutas relativas
+
+Trabajar siempre dentro de un **proyecto de R** (`.Rproj`):
+
+::::: columns
+::: {.column width="50%"}
+**Mal**
+
+```markdown
+# Solo funciona en tu computador
+setwd("C:/Users/maria/Desktop/curso")
+datos <- read_excel(
+  "C:/Users/maria/Desktop/curso/
+  datos/notas.xlsx"
+)
+```
+:::
+::: {.column width="50%"}
+**Bien**
+
+```markdown
+# Funciona en cualquier computador con el proyecto abierto
+datos <- read_excel("datos/notas.xlsx")
+```
+:::
+:::::
+
+::: tip-box
+El proyecto fija el directorio de trabajo a su carpeta raíz. Las rutas relativas hacen que el código sea portable y compartible.
+:::
+
+---
+
+## Nombrar bien marca la diferencia
+
+Los nombres de objetos y archivos son la primera documentación del código:
+
+| En lugar de... | Prefiere... |
+|---|---|
+| `x`, `df`, `temp`, `data2` | `encuesta`, `notas_limpias`, `resumen_grupo` |
+| `analisis FINAL v3.R` | `01_limpieza.R`, `02_analisis.R` |
+| `Mis Datos (1).xlsx` | `notas_s04.xlsx` |
+
+::: tip-box
+Usa `snake_case`: minúsculas y guión bajo. Sin espacios, sin tildes, sin caracteres especiales en nombres de archivos, objetos de R ni nombres de variables/columnas.
+:::
+
+---
+
+## Reproducibilidad: el objetivo final {.smaller}
+
+Tu análisis es reproducible cuando **cualquier persona** (o tú mismo en seis meses) puede:
+
+:::: nonincremental
+1. Abrir el proyecto
+2. Ejecutar el *script* de principio a fin
+3. Obtener exactamente los mismos resultados
+::::
+
+Para llegar ahí:
+
+- Proyecto de R + rutas relativas
+- *Script* autocontenido: paquetes y datos al inicio
+- Datos originales guardados sin modificar
+- Reportes en Quarto: el documento *es* el análisis
+
+::: tip-box
+La reproducibilidad es la base de la ciencia abierta y la transparencia científica. Un análisis que otros pueden verificar y reutilizar tiene más valor que uno que solo funciona en tu computador.
+:::
+
+---
+
+## {background-color="#121834"}
+
+::: parte-num
+Parte 3
+:::
+
+::: section-title-text
+¿Y ahora qué?
+:::
+
+---
+
+## Lo que aprendiste en 9 sesiones {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+::: {.fragment}
+**Visualizar**
+
+`ggplot2`: geometrías, estéticas, escalas, temas, composición con `patchwork`
+:::
+
+::: {.fragment}
+**Transformar datos**
+
+`dplyr`: filtrar, seleccionar, mutar, resumir, agrupar
+
+`tidyr`: pivotar y reorganizar
+
+`readr` / `readxl`: importar CSV y Excel con control total
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+**Automatizar**
+
+Funciones propias, condicionales, simulación con `rnorm()`, `runif()`, `rbinom()`, `sample()` y `faux::rnorm_multi()`
+:::
+
+::: {.fragment}
+**Comunicar**
+
+Quarto: reportes en HTML, PDF y Word; tablas con `gt`; figuras con referencias cruzadas; citas bibliográficas; publicación en la web
+:::
+:::
+:::::
+
+---
+
+## Quarto también hace presentaciones {background-color="#121834"}
+
+::: {style="text-align:center; color:#fff; font-size:0.85em; margin-bottom:1em;"}
+Todas las diapositivas de este curso fueron creadas con Quarto · **File → New File → Quarto Presentation**
+:::
+
+```{=html}
+<div style="display:flex; gap:1.4em; justify-content:center; margin-top:0.5em;">
+
+  <div style="background:rgba(255,255,255,0.08); border:2px solid #4a90d9; border-radius:12px; padding:1.2em 1.5em; width:30%; text-align:center;">
+    <div style="font-size:1.8em; margin-bottom:0.3em;">🌐</div>
+    <div style="color:#7ec8f7; font-weight:700; font-size:1em; margin-bottom:0.4em;">revealjs</div>
+    <div style="color:#cde; font-size:0.72em; line-height:1.5;">HTML interactivo en el navegador. Animaciones, código resaltado, modo presentador. El que usamos en este curso.</div>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.08); border:2px solid #aaa; border-radius:12px; padding:1.2em 1.5em; width:30%; text-align:center;">
+    <div style="font-size:1.8em; margin-bottom:0.3em;">📄</div>
+    <div style="color:#ddd; font-weight:700; font-size:1em; margin-bottom:0.4em;">Beamer (PDF)</div>
+    <div style="color:#cde; font-size:0.72em; line-height:1.5;">Presentaciones en PDF con el estilo académico clásico de LaTeX. Requiere TinyTeX.</div>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.08); border:2px solid #c8a; border-radius:12px; padding:1.2em 1.5em; width:30%; text-align:center;">
+    <div style="font-size:1.8em; margin-bottom:0.3em;">📊</div>
+    <div style="color:#e8c8a8; font-weight:700; font-size:1em; margin-bottom:0.4em;">PowerPoint</div>
+    <div style="color:#cde; font-size:0.72em; line-height:1.5;">Archivo <code style="background:rgba(255,255,255,0.1); padding:1px 4px; border-radius:3px;">.pptx</code> editable. No lo recomiendo pues es un formato propietario.</div>
+  </div>
+
+</div>
+```
+
+::: {style="text-align:center; margin-top:1.2em;"}
+[→ quarto.org/docs/presentations](https://quarto.org/docs/presentations/){style="color:#7ec8f7; font-size:0.8em;"}
+:::
+
+---
+
+## Para seguir aprendiendo
+
+- El [**sitio del curso**](../../index.html) queda disponible como referencia permanente
+  - Recuerda que la [**Guía de Quarto**](https://jdleongomez.github.io/curso-r/guia-quarto.html) y el [**Glosario de R**](https://jdleongomez.github.io/curso-r/glosario.html) resumen la información de lo que hemos usado
+- [**R for Data Science**](https://r4ds.hadley.nz/) (Hadley Wickham, gratis online): el libro de referencia del tidyverse
+- [**posit.community**](https://posit.community/): foro oficial; la comunidad responde rápido y con amabilidad
+- [**Quarto Documentation**](https://quarto.org/docs/guide/): referencia completa de Quarto
+- [**\#rstats**](https://twitter.com/hashtag/rstats) en Twitter/X y Mastodon: trucos, paquetes nuevos y proyectos de la comunidad
+
+::: tip-box
+La mejor forma de seguir aprendiendo es tener un proyecto propio: toma tus datos, una pregunta que te importe, y úsalos como excusa para aprender lo que necesites.
+:::
+
+---
+
+## ¿Para qué sirve R? {background-color="#121834"}
+
+::::{.fragment}
+
+```{r}
+#| fig-cap: "¡Para qué me invitan si ya saben cómo me pongo! (Sí, el meme lo hice yo 😂)"
+#| out-width: "31%"
+#| fig-align: center
+
+knitr::include_graphics("../../imagenes/tuba-R.jpg")
+```
+
+::::
+
+---
+
+## {background-color="#121834"}
+
+::: {style="text-align:center; color:#fff; font-size:0.9em; margin-bottom:0.8em;"}
+Antes de irte **comparte tu opinión sobre el curso**
+:::
+
+::: {style="text-align:center;"}
+![](../../imagenes/qr-code_ecuesta-cierre.svg){width="500px"}
+
+[Encuesta anónima · menos de 5 minutos]{style="color:rgba(255,255,255,0.7); font-size:0.65em; letter-spacing:0.04em;"}
+:::
+
+---
+
+## {background-color="#121834" auto-animate=true}
+
+::: parte-num
+Fin del curso
+:::
+
+::: section-title-text
+¡Gracias!
+:::
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {style="text-align: center; margin-top: 0em;"}
+![](../../imagenes/qr-code.svg){width="300px"}
+[jdleongomez.github.io/curso-r]{style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;"}
+:::
+:::
+::: {.column width="60%"}
+```{=html}
+<img data-id="logo" src="../../imagenes/logo.svg" style="width:100%;">
+```
+:::
+::::
+

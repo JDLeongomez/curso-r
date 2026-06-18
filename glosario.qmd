@@ -1,10 +1,11 @@
 ---
 title: "Glosario de R"
 subtitle: "Paquetes y funciones usados en el curso"
-toc-depth: 2
+toc-depth: 3
 ---
 
-Esta página reúne todas las funciones y paquetes cubiertos en las sesiones.
+Esta página reúne las funciones y paquetes cubiertos en las sesiones, no todas las que existen.
+Cada paquete tiene muchas más funciones de las que usamos aquí; los nombres de paquete enlazan a su documentación oficial para quien quiera explorar más.
 Las insignias de sesión indican en cuál(es) sesiones apareció cada función.
 El índice de la derecha permite ir directamente a cada paquete.
 
@@ -279,7 +280,7 @@ Funciones disponibles en R sin necesidad de cargar ningún paquete.
 </table>
 ```
 
-## ggplot2
+## [ggplot2](https://ggplot2.tidyverse.org/)
 
 Paquete de visualización basado en la *Grammar of Graphics*. Se carga con `library(ggplot2)` en S1 y con `library(tidyverse)` a partir de S2.
 
@@ -523,7 +524,7 @@ Paquete de visualización basado en la *Grammar of Graphics*. Se carga con `libr
 </table>
 ```
 
-## dplyr
+## [dplyr](https://dplyr.tidyverse.org/)
 
 Paquete de manipulación de datos. Parte de tidyverse; se carga con `library(tidyverse)`.
 
@@ -628,7 +629,7 @@ Paquete de manipulación de datos. Parte de tidyverse; se carga con `library(tid
 </table>
 ```
 
-## readr
+## [readr](https://readr.tidyverse.org/)
 
 Paquete para importar y exportar archivos de texto plano (CSV, TSV...). Parte de tidyverse.
 
@@ -662,7 +663,7 @@ Paquete para importar y exportar archivos de texto plano (CSV, TSV...). Parte de
 </table>
 ```
 
-## readxl
+## [readxl](https://readxl.tidyverse.org/)
 
 Paquete para importar archivos Excel (`.xlsx`, `.xls`). No forma parte del tidyverse básico; se instala y carga por separado con `library(readxl)`.
 
@@ -686,7 +687,7 @@ Paquete para importar archivos Excel (`.xlsx`, `.xls`). No forma parte del tidyv
 </table>
 ```
 
-## tidyr
+## [tidyr](https://tidyr.tidyverse.org/)
 
 Paquete para reorganizar y transformar datos. Parte de tidyverse.
 
@@ -710,7 +711,7 @@ Paquete para reorganizar y transformar datos. Parte de tidyverse.
 </table>
 ```
 
-## stringr
+## [stringr](https://stringr.tidyverse.org/)
 
 Paquete para manipulación de cadenas de texto. Parte de tidyverse.
 
@@ -729,7 +730,7 @@ Paquete para manipulación de cadenas de texto. Parte de tidyverse.
 </table>
 ```
 
-## knitr
+## [knitr](https://yihui.org/knitr/)
 
 Paquete de generación de documentos. Se carga con `library(knitr)` y es el motor que Quarto usa internamente para ejecutar los bloques de código.
 
@@ -753,7 +754,7 @@ Paquete de generación de documentos. Se carga con `library(knitr)` y es el moto
 </table>
 ```
 
-## gt
+## [gt](https://gt.rstudio.com/)
 
 Paquete para crear tablas de publicación con control detallado del formato.
 
@@ -807,7 +808,7 @@ Paquete para crear tablas de publicación con control detallado del formato.
 </table>
 ```
 
-## faux
+## [faux](https://debruine.github.io/faux/)
 
 Paquete para simular datos con estructura de correlaciones definida entre variables.
 
@@ -826,7 +827,31 @@ Paquete para simular datos con estructura de correlaciones definida entre variab
 </table>
 ```
 
-## tinytex
+## [patchwork](https://patchwork.data-imaginist.com/)
+
+Paquete para combinar múltiples gráficas de `ggplot2` en una sola figura compuesta.
+
+```{=html}
+<table class="glosario">
+<thead>
+<tr><th>Función</th><th>Descripción</th><th>Sesiones</th></tr>
+</thead>
+<tbody>
+<tr class="fn-row">
+<td><code>p1 + p2</code></td>
+<td>Coloca dos gráficas lado a lado. El operador <code>+</code> es la forma más directa de combinar objetos <code>ggplot2</code>; para apilarlos verticalmente se usa <code>/</code>.</td>
+<td><a href="sesiones/s08/slides.html" class="s-badge" target="_blank">S8</a></td>
+</tr>
+<tr class="fn-row">
+<td><code>plot_annotation(tag_levels)</code></td>
+<td>Añade etiquetas de panel a la composición. <code>tag_levels = "a"</code> genera (a), (b), (c)…; <code>"1"</code> genera (1), (2), (3)…; <code>"A"</code> genera mayúsculas; <code>"i"</code> genera romanos.</td>
+<td><a href="sesiones/s08/slides.html" class="s-badge" target="_blank">S8</a></td>
+</tr>
+</tbody>
+</table>
+```
+
+## [tinytex](https://yihui.org/tinytex/)
 
 Paquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.
 

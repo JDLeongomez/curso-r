@@ -2,6 +2,8 @@
 /.quarto/
 /_site/
 /_freeze/
+**/slides_cache/
+**/slides_files/
 
 # R
 .Rproj.user/
