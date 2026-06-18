@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "**/*.qmd"
+    - "!sesiones/s08/ejemplo_reporte.qmd"
 
 lang: es
 

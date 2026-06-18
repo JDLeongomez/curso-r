@@ -27,6 +27,15 @@ qué tan absurdamente diverso es el ecosistema de R.
 
 Tienes **máximo 5 minutos**.
 
+## Lo que debes entregar
+
+Un *script* `.R` con el código de tu demostración.
+Nómbralo con tu nombre, por ejemplo: `reto2_maria_garcia.R`, y **súbelo a la
+[carpeta compartida de OneDrive](https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgAfAYxBdb_TS6uZuSQhHRTmAXmAXqftB9OzEvd6hkrWPYY?e=tMpP1A)**
+antes de la Sesión 9.
+
+Es fundamental que el *script* cargue al inicio el o los paquetes que se van usar con `library()`, y que si necesitas archivos adicionales (por ejemplo, datos) también los subas a la misma carpeta, usando rutas relativas para cargarlos (por ejemplo, `read_csv("mis_datos.csv")`, no `read_csv("C:/Users/maria/...")`).
+
 ## Algunas pistas de por dónde buscar
 
 - [CRAN Task Views](https://cran.r-project.org/web/views/)
