@@ -219,11 +219,11 @@ Juan David Leongómez
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
 <ul>
-<li class="fragment">Figuras: caption, tamaño y alineación</li>
+<li class="fragment">Figuras: <em>caption</em>, tamaño y alineación</li>
 <li class="fragment">Referencias cruzadas para figuras</li>
-<li class="fragment">Layout de múltiples figuras</li>
+<li class="fragment">Composición de figuras con <code>patchwork</code></li>
 <li class="fragment">El documento integrado</li>
-<li class="fragment">Publicación en Quarto Pub</li>
+<li class="fragment">Publicación en Posit Connect Cloud</li>
 </ul>
 </section>
 <section id="section" class="slide level2" data-background-color="#121834">
@@ -315,7 +315,7 @@ Juan David Leongómez
 <p>Actividad 1 · 8 min</p>
 </div>
 <div class="actividad-title">
-<p>Añade una figura con caption</p>
+<p>Añade una figura con <em>caption</em></p>
 </div>
 <div class="actividad-desc">
 <p>En tu documento <code>mi_reporte.qmd</code>, inserta o modifica un bloque de código con una figura de <code>ggplot2</code>:</p>
@@ -355,9 +355,7 @@ Juan David Leongómez
 <span id="cb2-11"><a></a>  ...</span>
 <span id="cb2-12"><a></a><span class="in">```</span></span></code></pre></div>
 <p><strong>En el texto:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb3-1"><a></a>Como se observa en la @fig-masas,</span>
-<span id="cb3-2"><a></a>la especie Gentoo tiene la mayor</span>
-<span id="cb3-3"><a></a>masa corporal.</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb3-1"><a></a>Como se observa en la @fig-masas, la especie Gentoo tiene la mayor masa corporal.</span></code></pre></div>
 </div><div class="column" style="width:48%;">
 <div class="tip-box">
 <p>Quarto numera las figuras automáticamente en documentos (HTML, PDF, Word). El prefijo <code>fig-</code> en el <code>label</code> es obligatorio y la figura debe tener <code>fig-cap</code> para que la referencia cruzada funcione.</p>
@@ -390,53 +388,45 @@ Juan David Leongómez
 <p>Parte 3</p>
 </div>
 <div class="section-title-text">
-<p>Layout de múltiples figuras</p>
+<p>Composición de figuras con <code>patchwork</code></p>
 </div>
 </section>
-<section id="varias-figuras-en-un-bloque" class="slide level2 smaller">
-<h2>Varias figuras en un bloque</h2>
-<p>Con <code>fig-layout-ncol</code> y <code>fig-subcap</code> puedes colocar varias figuras lado a lado desde un solo bloque de código:</p>
+<section id="varias-figuras-con-patchwork" class="slide level2 smaller">
+<h2>Varias figuras con <code>patchwork</code></h2>
+<p><code>patchwork</code> combina objetos <code>ggplot2</code> con operadores simples y etiqueta los paneles automáticamente:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a></a><span class="co">#| label: fig-comparacion</span></span>
-<span id="cb4-3"><a></a><span class="co">#| fig-cap: "Variables morfológicas"</span></span>
-<span id="cb4-4"><a></a><span class="co">#| fig-subcap:</span></span>
-<span id="cb4-5"><a></a><span class="co">#|   - "Masa corporal (g)"</span></span>
-<span id="cb4-6"><a></a><span class="co">#|   - "Longitud del pico (mm)"</span></span>
-<span id="cb4-7"><a></a><span class="co">#| fig-layout-ncol: 2</span></span>
-<span id="cb4-8"><a></a><span class="co">#| fig-height: 3</span></span>
-<span id="cb4-9"><a></a><span class="co">#| echo: false</span></span>
-<span id="cb4-10"><a></a></span>
-<span id="cb4-11"><a></a>pinguinos <span class="sc">|&gt;</span></span>
-<span id="cb4-12"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species,</span>
-<span id="cb4-13"><a></a>             <span class="at">y =</span> body_mass_g,</span>
-<span id="cb4-14"><a></a>             <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb4-15"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-16"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
-<span id="cb4-17"><a></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb4-18"><a></a></span>
-<span id="cb4-19"><a></a>pinguinos <span class="sc">|&gt;</span></span>
-<span id="cb4-20"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species,</span>
-<span id="cb4-21"><a></a>             <span class="at">y =</span> bill_length_mm,</span>
-<span id="cb4-22"><a></a>             <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb4-23"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-24"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Pico (mm)"</span>) <span class="sc">+</span></span>
-<span id="cb4-25"><a></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb4-26"><a></a><span class="in">```</span></span></code></pre></div>
+<span id="cb4-2"><a></a><span class="co">#| label: fig-paneles</span></span>
+<span id="cb4-3"><a></a><span class="co">#| fig-cap: "Variables morfológicas por especie. (a) Masa corporal; (b) largo del pico."</span></span>
+<span id="cb4-4"><a></a><span class="co">#| echo: false</span></span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a>p1 <span class="ot">&lt;-</span> pinguinos <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g,</span>
+<span id="cb4-10"><a></a>             <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb4-11"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-14"><a></a></span>
+<span id="cb4-15"><a></a>p2 <span class="ot">&lt;-</span> pinguinos <span class="sc">|&gt;</span></span>
+<span id="cb4-16"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb4-17"><a></a>             <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb4-18"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb4-19"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Pico (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb4-20"><a></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-21"><a></a></span>
+<span id="cb4-22"><a></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span></span>
+<span id="cb4-23"><a></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"a"</span>)</span>
+<span id="cb4-24"><a></a><span class="in">```</span></span></code></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-fig-layout-ncol="2">
+<div class="cell">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/unnamed-chunk-3-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-2.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figura 1. Variables morfológicas por especie. (a) Masa corporal; (b) largo del pico."><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" alt="Figura 1. Variables morfológicas por especie. (a) Masa corporal; (b) largo del pico."></a></p>
+<figcaption>Figura 1. Variables morfológicas por especie. (a) Masa corporal; (b) largo del pico.</figcaption>
 </figure>
 </div>
 </div>
@@ -445,7 +435,7 @@ Juan David Leongómez
 </section>
 <section id="imágenes-externas-include_graphics" class="slide level2 smaller">
 <h2>Imágenes externas: <code>include_graphics()</code></h2>
-<p>Para incluir una imagen guardada en disco (un mapa, una captura de pantalla, un esquema):</p>
+<p>Para incluir una imagen desde disco o desde una URL:</p>
 <div class="columns">
 <div class="column" style="width:52%;">
 <p><strong>Con <code>knitr::include_graphics()</code></strong> (permite referencia cruzada):</p>
@@ -457,7 +447,7 @@ Juan David Leongómez
 <span id="cb5-6"><a></a></span>
 <span id="cb5-7"><a></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"imagenes/esquema.png"</span>)</span>
 <span id="cb5-8"><a></a><span class="in">```</span></span></code></pre></div>
-<p><strong>Con Markdown</strong> (más simple, sin referencia cruzada):</p>
+<p><strong>Con Markdown</strong> (simple, pero sin referencia cruzada):</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb6-1"><a></a><span class="al">![Descripción](imagenes/logo.png)</span>{width="60%"}</span></code></pre></div>
 </div><div class="column" style="width:48%;">
 <div class="tip-box">
@@ -532,7 +522,7 @@ Juan David Leongómez
 <section id="estructura-de-un-documento-completo" class="slide level2 smaller">
 <h2>Estructura de un documento completo</h2>
 <p>Un documento bien organizado integra todos los elementos que hemos visto:</p>
-<div style="font-family:monospace; font-size:0.8em; background:#f5f5f3; border-radius:8px; padding:1em 1.4em; line-height:2.1;">
+<div style="font-family:monospace; font-size:0.65em; background:#f5f5f3; border-radius:8px; padding:0.8em 1.2em; line-height:1.7;">
   <div><span style="color:#3d2fa0; font-weight:700;">---</span></div>
   <div style="padding-left:1.2em; color:#666;">title, author, date, format, bibliography, csl, execute</div>
   <div><span style="color:#3d2fa0; font-weight:700;">---</span></div>
@@ -546,8 +536,11 @@ Juan David Leongómez
 </div>
 <div class="fragment">
 <div class="tip-box">
-<p>El bloque <code>setup</code> carga paquetes y datos antes que cualquier otro bloque. Con <code>#| include: false</code>, el código se ejecuta pero no aparece ni el código ni los mensajes de carga en el documento final.</p>
+<p>El bloque <code>setup</code> carga paquetes y datos antes que cualquier otro bloque. <code>#| include: false</code> suprime el bloque por completo: ni el código, ni los resultados, ni los mensajes de carga aparecen en el documento. Es distinto de <code>#| echo: false</code>, que oculta el código pero sí muestra los resultados.</p>
 </div>
+</div>
+<div class="fragment">
+<p>Ejemplo descargable con figuras, tablas, referencias cruzadas y código en línea: <a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s08/ejemplo_reporte.qmd">ejemplo_reporte.qmd</a> · <a href="https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s08/referencias.bib">referencias.bib</a></p>
 </div>
 </section>
 <section id="section-6" class="slide level2 actividad" data-background-color="#6b1220">
@@ -591,64 +584,52 @@ Juan David Leongómez
 <p>En versiones anteriores de Quarto la opción era <code>self-contained: true</code>, que sigue funcionando. La opción actual y recomendada es <code>embed-resources: true</code>.</p>
 </div>
 </section>
-<section id="quarto-pub-publicar-en-la-web" class="slide level2 smaller">
-<h2>Quarto Pub: publicar en la web</h2>
-<p><a href="https://quartopub.com">Quarto Pub</a> es un servicio gratuito de Posit para publicar documentos Quarto con un solo comando desde la terminal de RStudio:</p>
+<section id="posit-connect-cloud-publicar-en-la-web" class="slide level2 smaller">
+<h2>Posit Connect Cloud: publicar en la web</h2>
+<p><a href="https://connect.posit.cloud">Posit Connect Cloud</a> es el servicio gratuito de Posit para publicar documentos Quarto directamente desde RStudio:</p>
 <ol type="1">
-<li>Crea una cuenta en <a href="https://quartopub.com">quartopub.com</a></li>
-<li>Desde la terminal de RStudio, en la raíz de tu proyecto:</li>
-</ol>
-<pre style="font-size: 1.1em;"><code>quarto publish quarto-pub mi_reporte.qmd</code></pre>
-<ol start="3" type="1">
+<li>Crea una cuenta en <a href="https://connect.posit.cloud">connect.posit.cloud</a></li>
+<li>Con tu <code>mi_reporte.qmd</code> abierto, haz clic en el botón <strong>Publish</strong> de la barra del editor (esquina superior derecha, icono de flecha azul)</li>
+<li>Selecciona <strong>Posit Connect Cloud</strong> → <strong>Publish Document…</strong></li>
 <li>La primera vez pedirá que inicies sesión en el navegador</li>
-<li>Quarto sube el documento y abre la URL pública</li>
+<li>RStudio sube el documento y abre la URL pública</li>
 </ol>
 <div class="fragment">
 <div class="tip-box">
-<p>La URL tiene la forma <code>tuusuario.quarto.pub/nombre-del-documento</code>. Volver a publicar con el mismo comando actualiza el documento en la misma URL.</p>
+<p>Posit Connect Cloud reemplaza a Quarto Pub, que dejó de aceptar nuevos proyectos. El proceso de publicación es idéntico: el botón <strong>Publish</strong> de RStudio gestiona todo.</p>
 </div>
 </div>
 </section>
 <section id="otras-opciones-de-publicación" class="slide level2 smaller">
 <h2>Otras opciones de publicación</h2>
 <table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Servicio</th>
-<th>Comando</th>
 <th>Ideal para</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Quarto Pub</strong></td>
-<td><code>quarto publish quarto-pub</code></td>
-<td>Documentos individuales, acceso público gratuito</td>
+<td><a href="https://quarto.org/docs/publishing/posit-connect-cloud.html"><strong>Posit Connect Cloud</strong></a></td>
+<td>Documentos individuales o colecciones, publicación gratuita con un clic desde RStudio</td>
 </tr>
 <tr class="even">
-<td><strong>GitHub Pages</strong></td>
-<td><code>quarto publish gh-pages</code></td>
-<td>Sitios completos, integración con git</td>
+<td><a href="https://quarto.org/docs/publishing/github-pages.html"><strong>GitHub Pages</strong></a></td>
+<td>Sitios completos con control de versiones; lo que usa el sitio de este curso</td>
 </tr>
 <tr class="odd">
-<td><strong>Posit Connect</strong></td>
-<td><code>quarto publish connect</code></td>
-<td>Entornos corporativos o académicos</td>
+<td><a href="https://quarto.org/docs/publishing/rstudio-connect.html"><strong>Posit Connect</strong></a></td>
+<td>Versión institucional o corporativa con control de acceso y despliegue privado</td>
 </tr>
 <tr class="even">
-<td><strong>Netlify</strong></td>
-<td><code>quarto publish netlify</code></td>
-<td>Sitios con dominio personalizado</td>
+<td><a href="https://quarto.org/docs/publishing/netlify.html"><strong>Netlify</strong></a></td>
+<td>Sitios con dominio personalizado y despliegue continuo</td>
 </tr>
 </tbody>
 </table>
 <div class="tip-box">
-<p>Para este curso, Quarto Pub es la opción más directa. Si ya usas GitHub y quieres publicar más contenido, GitHub Pages es el siguiente paso natural: es lo que usa el propio sitio de este curso.</p>
+<p>Para este curso, Posit Connect Cloud es la opción más directa. Si ya usas GitHub y quieres publicar más contenido, GitHub Pages es el siguiente paso natural (es lo que usa el sitio de este curso).</p>
 </div>
 </section>
 <section id="section-8" class="slide level2 actividad" data-background-color="#6b1220">
@@ -657,17 +638,14 @@ Juan David Leongómez
 <p>Actividad final · 20 min</p>
 </div>
 <div class="actividad-title">
-<p>Publica tu documento en Quarto Pub</p>
+<p>Publica tu documento en Posit Connect Cloud</p>
 </div>
 <div class="actividad-desc">
 <ol type="1">
-<li>Crea una cuenta en <a href="https://quartopub.com">quartopub.com</a> si aún no tienes una</li>
+<li>Crea una cuenta en <a href="https://connect.posit.cloud">connect.posit.cloud</a> si aún no tienes una</li>
 <li>Asegúrate de que tu <code>mi_reporte.qmd</code> renderiza sin errores</li>
-<li>Desde la terminal de RStudio (pestaña <em>Terminal</em>, no <em>Console</em>):</li>
-</ol>
-<pre style="font-size: 1.1em;"><code>quarto publish quarto-pub mi_reporte.qmd</code></pre>
-<ol start="4" type="1">
-<li>Copia la URL pública y compártela en el chat</li>
+<li>Haz clic en el botón <strong>Publish</strong> (esquina superior derecha del editor) → <strong>Posit Connect Cloud</strong> → <strong>Publish Document…</strong></li>
+<li>Copia la URL pública y compártela con alguien o ábrela desde tu celular</li>
 </ol>
 </div>
 </section>
@@ -705,24 +683,24 @@ Juan David Leongómez
 </section>
 <section id="quiz-2-de-3" class="slide level2">
 <h2>Quiz · 2 de 3</h2>
-<p><strong>Un bloque de código genera dos figuras. ¿Qué opción las coloca lado a lado en el documento?</strong></p>
+<p><strong>¿Qué función de <code>patchwork</code> añade etiquetas de panel (a, b, c…) a la composición?</strong></p>
 <ul>
 <li><ol type="a">
-<li><code>fig-layout: side</code></li>
+<li><code>label_panels("a")</code></li>
 </ol></li>
 <li><ol start="2" type="a">
-<li><code>fig-ncol: 2</code></li>
+<li><code>tag_plots(letters)</code></li>
 </ol></li>
 <li><ol start="3" type="a">
-<li><code>layout: columns</code></li>
+<li><code>plot_annotation(tag_levels = "a")</code></li>
 </ol></li>
 <li><ol start="4" type="a">
-<li><code>fig-layout-ncol: 2</code></li>
+<li><code>annotate(tag = "a")</code></li>
 </ol></li>
 </ul>
 <div class="fragment">
 <div class="respuesta">
-<p>✓ <strong>d)</strong> <code>fig-layout-ncol: 2</code> distribuye en dos columnas las figuras producidas por el bloque. Combinado con <code>fig-subcap</code> permite añadir un subtítulo individual a cada figura.</p>
+<p>✓ <strong>c)</strong> <code>plot_annotation(tag_levels = "a")</code> añade las etiquetas (a), (b), (c)… a cada panel. Se puede cambiar a números con <code>"1"</code>, romanos con <code>"i"</code>, o mayúsculas con <code>"A"</code>.</p>
 </div>
 </div>
 </section>
@@ -749,9 +727,6 @@ Juan David Leongómez
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-</section>
 <section id="section-10" class="slide level2" data-background-color="#121834">
 <h2></h2>
 <div class="parte-num">
@@ -766,7 +741,7 @@ Juan David Leongómez
 <p><img data-src="../../imagenes/qr-code.svg" width="300"> <span style="color: rgba(255, 255, 255, 0.92); font-size: 0.6em; letter-spacing: 0.04em;">jdleongomez.github.io/curso-r</span></p>
 </div>
 </div><div class="column" style="width:60%;">
-<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
+<p><a href="../../imagenes/logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../imagenes/logo.svg" style="width:100.0%" data-fig-pos="middle"></a></p>
 </div></div>
 
 
