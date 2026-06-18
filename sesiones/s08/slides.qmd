@@ -26,6 +26,7 @@ execute:
 ```{r}
 #| include: false
 library(tidyverse)
+library(patchwork)
 library(knitr)
 library(gt)
 library(palmerpenguins)
@@ -35,11 +36,11 @@ pinguinos <- penguins |> drop_na()
 
 ## Agenda
 
-- Figuras: caption, tamaño y alineación
+- Figuras: *caption*, tamaño y alineación
 - Referencias cruzadas para figuras
-- Layout de múltiples figuras
+- Composición de figuras con `patchwork`
 - El documento integrado
-- Publicación en Quarto Pub
+- Publicación en Posit Connect Cloud
 
 ---
 
@@ -122,7 +123,7 @@ Actividad 1 · 8 min
 :::
 
 ::: actividad-title
-Añade una figura con caption
+Añade una figura con *caption*
 :::
 
 ::: actividad-desc
@@ -176,9 +177,7 @@ pinguinos |>
 **En el texto:**
 
 ```markdown
-Como se observa en la @fig-masas,
-la especie Gentoo tiene la mayor
-masa corporal.
+Como se observa en la @fig-masas, la especie Gentoo tiene la mayor masa corporal.
 ```
 :::
 ::: {.column width="48%"}
@@ -224,64 +223,65 @@ Parte 3
 :::
 
 ::: section-title-text
-Layout de múltiples figuras
+Composición de figuras con `patchwork`
 :::
 
 ---
 
-## Varias figuras en un bloque {.smaller}
+## Varias figuras con `patchwork` {.smaller}
 
-Con `fig-layout-ncol` y `fig-subcap` puedes colocar varias figuras lado a lado desde un solo bloque de código:
+`patchwork` combina objetos `ggplot2` con operadores simples y etiqueta los paneles automáticamente:
 
 ::::: columns
 ::: {.column width="50%"}
 ````markdown
 ```{{r}}
-#| label: fig-comparacion
-#| fig-cap: "Variables morfológicas"
-#| fig-subcap:
-#|   - "Masa corporal (g)"
-#|   - "Longitud del pico (mm)"
-#| fig-layout-ncol: 2
-#| fig-height: 3
+#| label: fig-paneles
+#| fig-cap: "Variables morfológicas por especie. (a) Masa corporal; (b) largo del pico."
 #| echo: false
 
-pinguinos |>
-  ggplot(aes(x = species,
-             y = body_mass_g,
+library(patchwork)
+
+p1 <- pinguinos |>
+  ggplot(aes(x = species, y = body_mass_g,
              fill = species)) +
   geom_boxplot(show.legend = FALSE) +
   labs(x = NULL, y = "Masa (g)") +
   theme_minimal()
 
-pinguinos |>
-  ggplot(aes(x = species,
-             y = bill_length_mm,
+p2 <- pinguinos |>
+  ggplot(aes(x = species, y = bill_length_mm,
              fill = species)) +
   geom_boxplot(show.legend = FALSE) +
   labs(x = NULL, y = "Pico (mm)") +
   theme_minimal()
+
+p1 + p2 +
+  plot_annotation(tag_levels = "a")
 ```
 ````
 :::
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
-#| fig-layout-ncol: 2
-#| fig-height: 2.8
-pinguinos |>
+#| fig-cap: "Figura 1. Variables morfológicas por especie. (a) Masa corporal; (b) largo del pico."
+#| fig-height: 4.5
+
+p1 <- pinguinos |>
   ggplot(aes(x = species, y = body_mass_g, fill = species)) +
   geom_boxplot(show.legend = FALSE) +
   scale_fill_manual(values = c("#225faa", "#6b1220", "#121834")) +
   labs(x = NULL, y = "Masa (g)") +
   theme_minimal()
 
-pinguinos |>
+p2 <- pinguinos |>
   ggplot(aes(x = species, y = bill_length_mm, fill = species)) +
   geom_boxplot(show.legend = FALSE) +
   scale_fill_manual(values = c("#225faa", "#6b1220", "#121834")) +
   labs(x = NULL, y = "Pico (mm)") +
   theme_minimal()
+
+p1 + p2 + plot_annotation(tag_levels = "a")
 ```
 :::
 :::::
@@ -290,7 +290,7 @@ pinguinos |>
 
 ## Imágenes externas: `include_graphics()` {.smaller}
 
-Para incluir una imagen guardada en disco (un mapa, una captura de pantalla, un esquema):
+Para incluir una imagen desde disco o desde una URL:
 
 ::::: columns
 ::: {.column width="52%"}
@@ -307,7 +307,7 @@ knitr::include_graphics("imagenes/esquema.png")
 ```
 ````
 
-**Con Markdown** (más simple, sin referencia cruzada):
+**Con Markdown** (simple, pero sin referencia cruzada):
 
 ```markdown
 ![Descripción](imagenes/logo.png){width="60%"}
@@ -384,7 +384,7 @@ Las opciones del YAML son los valores por defecto. Las opciones en un bloque ind
 Un documento bien organizado integra todos los elementos que hemos visto:
 
 ```{=html}
-<div style="font-family:monospace; font-size:0.8em; background:#f5f5f3; border-radius:8px; padding:1em 1.4em; line-height:2.1;">
+<div style="font-family:monospace; font-size:0.65em; background:#f5f5f3; border-radius:8px; padding:0.8em 1.2em; line-height:1.7;">
   <div><span style="color:#3d2fa0; font-weight:700;">---</span></div>
   <div style="padding-left:1.2em; color:#666;">title, author, date, format, bibliography, csl, execute</div>
   <div><span style="color:#3d2fa0; font-weight:700;">---</span></div>
@@ -400,8 +400,12 @@ Un documento bien organizado integra todos los elementos que hemos visto:
 
 ::: {.fragment}
 ::: tip-box
-El bloque `setup` carga paquetes y datos antes que cualquier otro bloque. Con `#| include: false`, el código se ejecuta pero no aparece ni el código ni los mensajes de carga en el documento final.
+El bloque `setup` carga paquetes y datos antes que cualquier otro bloque. `#| include: false` suprime el bloque por completo: ni el código, ni los resultados, ni los mensajes de carga aparecen en el documento. Es distinto de `#| echo: false`, que oculta el código pero sí muestra los resultados.
 :::
+:::
+
+::: {.fragment}
+Ejemplo descargable con figuras, tablas, referencias cruzadas y código en línea: [ejemplo_reporte.qmd](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s08/ejemplo_reporte.qmd) · [referencias.bib](https://github.com/JDLeongomez/curso-r/raw/main/sesiones/s08/referencias.bib)
 :::
 
 ---
@@ -463,25 +467,21 @@ En versiones anteriores de Quarto la opción era `self-contained: true`, que sig
 
 ---
 
-## Quarto Pub: publicar en la web {.smaller}
+## Posit Connect Cloud: publicar en la web {.smaller}
 
-[Quarto Pub](https://quartopub.com) es un servicio gratuito de Posit para publicar documentos Quarto con un solo comando desde la terminal de RStudio:
+[Posit Connect Cloud](https://connect.posit.cloud) es el servicio gratuito de Posit para publicar documentos Quarto directamente desde RStudio:
 
 :::: nonincremental
-1. Crea una cuenta en [quartopub.com](https://quartopub.com)
-2. Desde la terminal de RStudio, en la raíz de tu proyecto:
-
-```{style="font-size: 1.1em;"}
-quarto publish quarto-pub mi_reporte.qmd
-```
-
-3. La primera vez pedirá que inicies sesión en el navegador
-4. Quarto sube el documento y abre la URL pública
+1. Crea una cuenta en [connect.posit.cloud](https://connect.posit.cloud)
+2. Con tu `mi_reporte.qmd` abierto, haz clic en el botón **Publish** de la barra del editor (esquina superior derecha, icono de flecha azul)
+3. Selecciona **Posit Connect Cloud** → **Publish Document...**
+4. La primera vez pedirá que inicies sesión en el navegador
+5. RStudio sube el documento y abre la URL pública
 ::::
 
 ::: {.fragment}
 ::: tip-box
-La URL tiene la forma `tuusuario.quarto.pub/nombre-del-documento`. Volver a publicar con el mismo comando actualiza el documento en la misma URL.
+Posit Connect Cloud reemplaza a Quarto Pub, que dejó de aceptar nuevos proyectos. El proceso de publicación es idéntico: el botón **Publish** de RStudio gestiona todo.
 :::
 :::
 
@@ -489,15 +489,15 @@ La URL tiene la forma `tuusuario.quarto.pub/nombre-del-documento`. Volver a publ
 
 ## Otras opciones de publicación {.smaller}
 
-| Servicio | Comando | Ideal para |
-|---|---|---|
-| **Quarto Pub** | `quarto publish quarto-pub` | Documentos individuales, acceso público gratuito |
-| **GitHub Pages** | `quarto publish gh-pages` | Sitios completos, integración con git |
-| **Posit Connect** | `quarto publish connect` | Entornos corporativos o académicos |
-| **Netlify** | `quarto publish netlify` | Sitios con dominio personalizado |
+| Servicio | Ideal para |
+|---|---|
+| [**Posit Connect Cloud**](https://quarto.org/docs/publishing/posit-connect-cloud.html) | Documentos individuales o colecciones, publicación gratuita con un clic desde RStudio |
+| [**GitHub Pages**](https://quarto.org/docs/publishing/github-pages.html) | Sitios completos con control de versiones; lo que usa el sitio de este curso |
+| [**Posit Connect**](https://quarto.org/docs/publishing/rstudio-connect.html) | Versión institucional o corporativa con control de acceso y despliegue privado |
+| [**Netlify**](https://quarto.org/docs/publishing/netlify.html) | Sitios con dominio personalizado y despliegue continuo |
 
 ::: tip-box
-Para este curso, Quarto Pub es la opción más directa. Si ya usas GitHub y quieres publicar más contenido, GitHub Pages es el siguiente paso natural: es lo que usa el propio sitio de este curso.
+Para este curso, Posit Connect Cloud es la opción más directa. Si ya usas GitHub y quieres publicar más contenido, GitHub Pages es el siguiente paso natural (es lo que usa el sitio de este curso).
 :::
 
 ---
@@ -509,20 +509,15 @@ Actividad final · 20 min
 :::
 
 ::: actividad-title
-Publica tu documento en Quarto Pub
+Publica tu documento en Posit Connect Cloud
 :::
 
 ::: actividad-desc
 :::: nonincremental
-1. Crea una cuenta en [quartopub.com](https://quartopub.com) si aún no tienes una
+1. Crea una cuenta en [connect.posit.cloud](https://connect.posit.cloud) si aún no tienes una
 2. Asegúrate de que tu `mi_reporte.qmd` renderiza sin errores
-3. Desde la terminal de RStudio (pestaña *Terminal*, no *Console*):
-
-```{style="font-size: 1.1em;"}
-quarto publish quarto-pub mi_reporte.qmd
-```
-
-4. Copia la URL pública y compártela en el chat
+3. Haz clic en el botón **Publish** (esquina superior derecha del editor) → **Posit Connect Cloud** → **Publish Document...**
+4. Copia la URL pública y compártela con alguien o ábrela desde tu celular
 ::::
 :::
 
@@ -561,18 +556,18 @@ Quiz rápido
 
 ## Quiz · 2 de 3
 
-**Un bloque de código genera dos figuras. ¿Qué opción las coloca lado a lado en el documento?**
+**¿Qué función de `patchwork` añade etiquetas de panel (a, b, c...) a la composición?**
 
 ::: nonincremental
-- a) `fig-layout: side`
-- b) `fig-ncol: 2`
-- c) `layout: columns`
-- d) `fig-layout-ncol: 2`
+- a) `label_panels("a")`
+- b) `tag_plots(letters)`
+- c) `plot_annotation(tag_levels = "a")`
+- d) `annotate(tag = "a")`
 :::
 
 ::: {.fragment}
 ::: respuesta
-✓ **d)** `fig-layout-ncol: 2` distribuye en dos columnas las figuras producidas por el bloque. Combinado con `fig-subcap` permite añadir un subtítulo individual a cada figura.
+✓ **c)** `plot_annotation(tag_levels = "a")` añade las etiquetas (a), (b), (c)... a cada panel. Se puede cambiar a números con `"1"`, romanos con `"i"`, o mayúsculas con `"A"`.
 :::
 :::
 
@@ -594,7 +589,5 @@ Quiz rápido
 ✓ **b)** `embed-resources: true` incrusta todos los recursos (CSS, JavaScript, imágenes) en el propio archivo `.html`. El resultado es un único archivo que se puede compartir o abrir sin conexión.
 :::
 :::
-
----
 
 {{< include ../_fin.qmd >}}

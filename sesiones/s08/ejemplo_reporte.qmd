@@ -1,0 +1,157 @@
+---
+title: "Análisis morfológico de pingüinos del archipiélago Palmer"
+subtitle: "Ejemplo de reporte reproducible con Quarto"
+author:
+  - name: Marie Curie
+    orcid: 0000-0002-7859-8394
+    email: m.curie@radium.fr
+    corresponding: true
+    affiliations:
+      - name: Institut du Radium
+        address: 1 rue Pierre et Marie Curie
+        city: Paris
+        country: France
+  - name: Pato Donald
+    orcid: 0000-0003-1416-1787
+    email: donald@patolandia.edu
+    affiliations:
+      - name: Universidad de Patolandia
+        department: Departamento de Ornitología Aplicada
+        city: Patolandia
+        country: Fantasía
+date: today
+lang: es
+format:
+  html:
+    toc: true
+    number-sections: true
+    embed-resources: true
+    theme: journal
+bibliography: referencias.bib
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(palmerpenguins)
+library(gt)
+library(patchwork)
+
+pinguinos <- penguins |> drop_na()
+```
+
+## Introducción
+
+Los datos de pingüinos del archipiélago Palmer [@gorman2014] incluyen mediciones morfológicas de `r nrow(pinguinos)` individuos de tres especies: *Adélie*, *Chinstrap* y *Gentoo*, recolectadas entre 2007 y 2009 en tres islas de la Antártida. Estos datos, disponibles en el paquete `palmerpenguins` [@palmerpenguins], permiten explorar diferencias morfológicas entre especies y la relación entre variables.
+
+El análisis se realizó en R [@R-base] con los paquetes `tidyverse` [@tidyverse], `ggplot2` [@ggplot2], `patchwork` [@patchwork] y `gt` [@gt].
+
+## Método
+
+### Datos
+
+Se excluyeron `r nrow(penguins) - nrow(pinguinos)` observaciones con valores faltantes, quedando `r nrow(pinguinos)` individuos para el análisis: `r pinguinos |> filter(species == "Adelie") |> nrow()` *Adélie*, `r pinguinos |> filter(species == "Chinstrap") |> nrow()` *Chinstrap* y `r pinguinos |> filter(species == "Gentoo") |> nrow()` *Gentoo*.
+
+### Variables
+
+Se analizaron cuatro variables morfológicas continuas: masa corporal (g), longitud del pico (mm), profundidad del pico (mm) y longitud de la aleta (mm).
+
+## Resultados
+
+### Estadísticos descriptivos
+
+La @tbl-resumen presenta las medias y desviaciones estándar de la masa corporal y la longitud del pico por especie.
+
+```{r}
+#| label: tbl-resumen
+#| tbl-cap: "Estadísticos descriptivos por especie de pingüino"
+
+pinguinos |>
+  group_by(species) |>
+  summarise(
+    n = n(),
+    masa_media = mean(body_mass_g),
+    masa_sd    = sd(body_mass_g),
+    pico_media = mean(bill_length_mm),
+    pico_sd    = sd(bill_length_mm),
+    .groups = "drop"
+  ) |>
+  gt() |>
+  fmt_number(columns = where(is.double), decimals = 1) |>
+  cols_label(
+    species    = "Especie",
+    n          = "n",
+    masa_media = "Media",
+    masa_sd    = "DE",
+    pico_media = "Media",
+    pico_sd    = "DE"
+  ) |>
+  tab_spanner(
+    label   = "Masa corporal (g)",
+    columns = c(masa_media, masa_sd)
+  ) |>
+  tab_spanner(
+    label   = "Longitud del pico (mm)",
+    columns = c(pico_media, pico_sd)
+  )
+```
+
+### Distribución morfológica por especie
+
+La @fig-morfologia muestra la distribución de masa corporal y longitud del pico por especie. La especie Gentoo registra la mayor masa corporal (media = `r pinguinos |> filter(species == "Gentoo") |> pull(body_mass_g) |> mean() |> round(0)` g), mientras que *Adélie* y *Chinstrap* son morfológicamente más similares entre sí en esta variable.
+
+```{r}
+#| label: fig-morfologia
+#| fig-cap: "Distribución morfológica por especie. (a) Masa corporal; (b) longitud del pico."
+#| fig-height: 4
+
+p1 <- pinguinos |>
+  ggplot(aes(x = species, y = body_mass_g, fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = "Especie", y = "Masa corporal (g)") +
+  theme_minimal()
+
+p2 <- pinguinos |>
+  ggplot(aes(x = species, y = bill_length_mm, fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = "Especie", y = "Longitud del pico (mm)") +
+  theme_minimal()
+
+p1 + p2 + plot_annotation(tag_levels = "a")
+```
+
+### Relación entre longitud del pico y masa corporal
+
+La @fig-dispersion muestra una relación positiva entre la longitud del pico y la masa corporal en las tres especies, aunque con diferente pendiente e intercepto, lo que sugiere que el pico es un buen discriminador entre ellas.
+
+```{r}
+#| label: fig-dispersion
+#| fig-cap: "Relación entre longitud del pico y masa corporal por especie."
+#| fig-height: 3.8
+#| fig-width: 6
+
+pinguinos |>
+  ggplot(aes(x = bill_length_mm, y = body_mass_g,
+             color = species, shape = species)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    x      = "Longitud del pico (mm)",
+    y      = "Masa corporal (g)",
+    color  = "Especie",
+    shape  = "Especie"
+  ) +
+  theme_minimal()
+```
+
+## Conclusiones
+
+Los resultados confirman diferencias morfológicas claras entre las tres especies. Gentoo sobresale por su mayor masa corporal, con una media de `r pinguinos |> filter(species == "Gentoo") |> pull(body_mass_g) |> mean() |> round(0)` g frente a `r pinguinos |> filter(species == "Adelie") |> pull(body_mass_g) |> mean() |> round(0)` g en *Adélie* y `r pinguinos |> filter(species == "Chinstrap") |> pull(body_mass_g) |> mean() |> round(0)` g en *Chinstrap*. La longitud del pico es la variable que mejor separa *Chinstrap* del resto (@fig-morfologia b). Los datos del archipiélago Palmer [@gorman2014] son un recurso valioso para la enseñanza de análisis exploratorio de datos.
+
+## Referencias

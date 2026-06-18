@@ -26,18 +26,18 @@ website:
             text: "S3 · Manejo y transformación de datos"
           - text: "— Semana 2 —"
           - href: sesiones/s04/slides.html
-            text: "S4 · Importar y organizar datos"
+            text: "S4 · Reto 1 · Importar y organizar datos"
           - href: sesiones/s05/slides.html
-            text: "S5 · Funciones y automatización"
+            text: "S5 · Automatización: funciones, condicionales y simulación"
           - href: sesiones/s06/slides.html
             text: "S6 · Reportes reproducibles con Quarto"
           - text: "— Semana 3 —"
           - href: sesiones/s07/slides.html
-            text: "S7 · Documentos y presentaciones con Quarto"
+            text: "S7 · Quarto: tablas, citas y formatos"
           - href: sesiones/s08/slides.html
-            text: "S8 · Versiones y colaboración con Git y GitHub"
+            text: "S8 · Quarto: figuras, integración y publicación"
           - href: sesiones/s09/slides.html
-            text: "S9 · Herramientas y buenas prácticas"
+            text: "S9 · Reto 2 · Cierre, integración y buenas prácticas"
       - text: Retos
         menu:
           - href: retos/reto1-figura-fea.html
