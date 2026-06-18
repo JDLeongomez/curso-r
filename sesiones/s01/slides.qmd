@@ -605,6 +605,7 @@ library(ggplot2)
 `diamonds` viene incluido con `ggplot2`. Contiene información de 53 940 diamantes.
 
 ```{r}
+#| eval: false
 View(diamonds)
 ```
 
