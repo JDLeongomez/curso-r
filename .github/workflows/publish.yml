@@ -41,7 +41,9 @@ jobs:
             "rmarkdown",
             "patchwork",
             "scales",
-            "ggthemes"
+            "ggthemes",
+            "faux",
+            "readxl"
           ))
         shell: Rscript {0}
 
