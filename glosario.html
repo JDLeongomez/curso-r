@@ -188,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#operadores-y-sintaxis" id="toc-operadores-y-sintaxis" class="nav-link active" data-scroll-target="#operadores-y-sintaxis">Operadores y sintaxis</a></li>
   <li><a href="#r-base" id="toc-r-base" class="nav-link" data-scroll-target="#r-base">R base</a></li>
   <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2">ggplot2</a></li>
@@ -200,6 +200,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#knitr" id="toc-knitr" class="nav-link" data-scroll-target="#knitr">knitr</a></li>
   <li><a href="#gt" id="toc-gt" class="nav-link" data-scroll-target="#gt">gt</a></li>
   <li><a href="#faux" id="toc-faux" class="nav-link" data-scroll-target="#faux">faux</a></li>
+  <li><a href="#patchwork" id="toc-patchwork" class="nav-link" data-scroll-target="#patchwork">patchwork</a></li>
   <li><a href="#tinytex" id="toc-tinytex" class="nav-link" data-scroll-target="#tinytex">tinytex</a></li>
   </ul>
 </nav>
@@ -227,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Esta página reúne todas las funciones y paquetes cubiertos en las sesiones. Las insignias de sesión indican en cuál(es) sesiones apareció cada función. El índice de la derecha permite ir directamente a cada paquete.</p>
+<p>Esta página reúne las funciones y paquetes cubiertos en las sesiones, no todas las que existen. Cada paquete tiene muchas más funciones de las que usamos aquí; los nombres de paquete enlazan a su documentación oficial para quien quiera explorar más. Las insignias de sesión indican en cuál(es) sesiones apareció cada función. El índice de la derecha permite ir directamente a cada paquete.</p>
 <div style="margin: 0 0 2em;">
   <input type="text" id="fn-search" class="search-input" placeholder="Busca por nombre de función, paquete o descripción…" autocomplete="off" spellcheck="false">
   <div id="no-results" style="display:none; color:#888; font-size:0.88em; margin-top:0.5em; font-style:italic;">
@@ -491,7 +492,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="ggplot2">ggplot2</h2>
+<h2 class="anchored" data-anchor-id="ggplot2"><a href="https://ggplot2.tidyverse.org/">ggplot2</a></h2>
 <p>Paquete de visualización basado en la <em>Grammar of Graphics</em>. Se carga con <code>library(ggplot2)</code> en S1 y con <code>library(tidyverse)</code> a partir de S2.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -735,7 +736,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="dplyr" class="level2">
-<h2 class="anchored" data-anchor-id="dplyr">dplyr</h2>
+<h2 class="anchored" data-anchor-id="dplyr"><a href="https://dplyr.tidyverse.org/">dplyr</a></h2>
 <p>Paquete de manipulación de datos. Parte de tidyverse; se carga con <code>library(tidyverse)</code>.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -840,7 +841,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="readr" class="level2">
-<h2 class="anchored" data-anchor-id="readr">readr</h2>
+<h2 class="anchored" data-anchor-id="readr"><a href="https://readr.tidyverse.org/">readr</a></h2>
 <p>Paquete para importar y exportar archivos de texto plano (CSV, TSV…). Parte de tidyverse.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -875,7 +876,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="readxl" class="level2">
-<h2 class="anchored" data-anchor-id="readxl">readxl</h2>
+<h2 class="anchored" data-anchor-id="readxl"><a href="https://readxl.tidyverse.org/">readxl</a></h2>
 <p>Paquete para importar archivos Excel (<code>.xlsx</code>, <code>.xls</code>). No forma parte del tidyverse básico; se instala y carga por separado con <code>library(readxl)</code>.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -900,7 +901,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="tidyr" class="level2">
-<h2 class="anchored" data-anchor-id="tidyr">tidyr</h2>
+<h2 class="anchored" data-anchor-id="tidyr"><a href="https://tidyr.tidyverse.org/">tidyr</a></h2>
 <p>Paquete para reorganizar y transformar datos. Parte de tidyverse.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -925,7 +926,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="stringr" class="level2">
-<h2 class="anchored" data-anchor-id="stringr">stringr</h2>
+<h2 class="anchored" data-anchor-id="stringr"><a href="https://stringr.tidyverse.org/">stringr</a></h2>
 <p>Paquete para manipulación de cadenas de texto. Parte de tidyverse.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -945,7 +946,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="knitr" class="level2">
-<h2 class="anchored" data-anchor-id="knitr">knitr</h2>
+<h2 class="anchored" data-anchor-id="knitr"><a href="https://yihui.org/knitr/">knitr</a></h2>
 <p>Paquete de generación de documentos. Se carga con <code>library(knitr)</code> y es el motor que Quarto usa internamente para ejecutar los bloques de código.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -970,7 +971,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="gt" class="level2">
-<h2 class="anchored" data-anchor-id="gt">gt</h2>
+<h2 class="anchored" data-anchor-id="gt"><a href="https://gt.rstudio.com/">gt</a></h2>
 <p>Paquete para crear tablas de publicación con control detallado del formato.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -1025,7 +1026,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="faux" class="level2">
-<h2 class="anchored" data-anchor-id="faux">faux</h2>
+<h2 class="anchored" data-anchor-id="faux"><a href="https://debruine.github.io/faux/">faux</a></h2>
 <p>Paquete para simular datos con estructura de correlaciones definida entre variables.</p>
 <table class="glosario caption-top table">
 <thead>
@@ -1044,8 +1045,33 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
+<section id="patchwork" class="level2">
+<h2 class="anchored" data-anchor-id="patchwork"><a href="https://patchwork.data-imaginist.com/">patchwork</a></h2>
+<p>Paquete para combinar múltiples gráficas de <code>ggplot2</code> en una sola figura compuesta.</p>
+<table class="glosario caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Función</th>
+<th data-quarto-table-cell-role="th">Descripción</th>
+<th data-quarto-table-cell-role="th">Sesiones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fn-row odd">
+<td><code>p1 + p2</code></td>
+<td>Coloca dos gráficas lado a lado. El operador <code>+</code> es la forma más directa de combinar objetos <code>ggplot2</code>; para apilarlos verticalmente se usa <code>/</code>.</td>
+<td><a href="sesiones/s08/slides.html" class="s-badge" target="_blank">S8</a></td>
+</tr>
+<tr class="fn-row even">
+<td><code>plot_annotation(tag_levels)</code></td>
+<td>Añade etiquetas de panel a la composición. <code>tag_levels = "a"</code> genera (a), (b), (c)…; <code>"1"</code> genera (1), (2), (3)…; <code>"A"</code> genera mayúsculas; <code>"i"</code> genera romanos.</td>
+<td><a href="sesiones/s08/slides.html" class="s-badge" target="_blank">S8</a></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="tinytex" class="level2">
-<h2 class="anchored" data-anchor-id="tinytex">tinytex</h2>
+<h2 class="anchored" data-anchor-id="tinytex"><a href="https://yihui.org/tinytex/">tinytex</a></h2>
 <p>Paquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.</p>
 <table class="glosario caption-top table">
 <thead>
