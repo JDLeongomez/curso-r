@@ -84,6 +84,13 @@
     "text": "Para seguir aprendiendo\n\nEl sitio del curso queda disponible como referencia permanente\n\nRecuerda que la Guía de Quarto y el Glosario de R resumen la información de lo que hemos usado\n\nR for Data Science (Hadley Wickham, gratis online): el libro de referencia del tidyverse\nposit.community: foro oficial; la comunidad responde rápido y con amabilidad\nQuarto Documentation: referencia completa de Quarto\n#rstats en Twitter/X y Mastodon: trucos, paquetes nuevos y proyectos de la comunidad\n\n\nLa mejor forma de seguir aprendiendo es tener un proyecto propio: toma tus datos, una pregunta que te importe, y úsalos como excusa para aprender lo que necesites."
   },
   {
+    "objectID": "sesiones/s09/slides.html#mantener-r-al-día",
+    "href": "sesiones/s09/slides.html#mantener-r-al-día",
+    "title": "Sesión 9",
+    "section": "Mantener R al día",
+    "text": "Mantener R al día\nPaquetes: actualizar periódicamente desde RStudio (Packages → Update) o con update.packages() en la consola. Hacerlo cada uno o dos meses es suficiente.\nR: descargar e instalar la nueva versión desde r-project.org. R no incluye actualizador automático.\n\nEn Windows y Mac, cada versión de R se instala de forma independiente, sin reemplazar las anteriores. Las versiones viejas quedan ocupando espacio y a veces causan confusión. Hay que desinstalarlas manualmente (en Windows: Configuración → Aplicaciones; en Mac: arrastrando la carpeta de la versión a la papelera)."
+  },
+  {
     "objectID": "sesiones/s09/slides.html#para-qué-sirve-r",
     "href": "sesiones/s09/slides.html#para-qué-sirve-r",
     "title": "Sesión 9",
@@ -1159,7 +1166,7 @@
     "href": "glosario.html",
     "title": "Glosario de R",
     "section": "",
-    "text": "Esta página reúne las funciones y paquetes cubiertos en las sesiones, no todas las que existen. Cada paquete tiene muchas más funciones de las que usamos aquí; los nombres de paquete enlazan a su documentación oficial para quien quiera explorar más. Las insignias de sesión indican en cuál(es) sesiones apareció cada función. El índice de la derecha permite ir directamente a cada paquete."
+    "text": "Esta página reúne las funciones y paquetes cubiertos en las sesiones, no todas las que existen. Las insignias de sesión indican en cuál(es) sesiones apareció cada función. El índice de la derecha permite ir directamente a cada paquete."
   },
   {
     "objectID": "glosario.html#operadores-y-sintaxis",
@@ -1250,7 +1257,7 @@
     "href": "glosario.html#tinytex",
     "title": "Glosario de R",
     "section": "tinytex",
-    "text": "tinytex\nPaquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ntinytex::install_tinytex()\nInstala TinyTeX en el sistema. Se ejecuta una sola vez. Después, cambiar format: pdf en el YAML de un documento Quarto genera un PDF sin configuración adicional.\nS6"
+    "text": "tinytex\nPaquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para generar documentos PDF con Quarto.\n\n\n\nFunción\nDescripción\nSesiones\n\n\n\n\ntinytex::install_tinytex()\nInstala TinyTeX en el sistema. Se ejecuta una sola vez. Después, cambiar format: pdf en el YAML de un documento Quarto genera un PDF sin configuración adicional.\nS6\n\n\n\n\n```"
   },
   {
     "objectID": "index.html",
@@ -2391,7 +2398,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```vzm\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```nsb\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
