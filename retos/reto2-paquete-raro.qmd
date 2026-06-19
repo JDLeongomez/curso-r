@@ -31,7 +31,7 @@ Tienes **máximo 5 minutos**.
 
 Un *script* `.R` con el código de tu demostración.
 Nómbralo con tu nombre, por ejemplo: `reto2_maria_garcia.R`, y **súbelo a la
-[carpeta compartida de OneDrive](https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgAfAYxBdb_TS6uZuSQhHRTmAXmAXqftB9OzEvd6hkrWPYY?e=tMpP1A)**
+[carpeta compartida de OneDrive](https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/jleongomez_unbosque_edu_co/IgAfAYxBdb_TS6uZuSQhHRTmAXmAXqftB9OzEvd6hkrWPYY?e=i5u7ao)**
 antes de la Sesión 9.
 
 Es fundamental que el *script* cargue al inicio el o los paquetes que se van usar con `library()`, y que si necesitas archivos adicionales (por ejemplo, datos) también los subas a la misma carpeta, usando rutas relativas para cargarlos (por ejemplo, `read_csv("mis_datos.csv")`, no `read_csv("C:/Users/maria/...")`).
