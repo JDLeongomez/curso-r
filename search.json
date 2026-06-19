@@ -2398,7 +2398,7 @@
     "href": "sesiones/s06/slides.html#texto-código-documento",
     "title": "Sesión 6",
     "section": "Texto + código = documento",
-    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```nsb\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
+    "text": "Texto + código = documento\nQuarto es un sistema de publicación que combina texto, código y resultados en un solo archivo. Al renderizarlo, el código se ejecuta y los resultados se insertan automáticamente en el documento.\n\n  \n    📝 documento.qmd\n    \n      texto en markdown\n      ```yrw\n        código R\n      ```\n      más texto…\n    \n  \n  →\n  \n    ⚙ Quarto\n    ejecuta el códigoinserta resultados\n  \n  →\n  \n    🌐 HTML\n    📄 PDF\n    📝 Word\n  \n\n\nCuando los datos cambian, basta con volver a renderizar. Todos los valores calculados se actualizan solos."
   },
   {
     "objectID": "sesiones/s06/slides.html#y-r-markdown",
