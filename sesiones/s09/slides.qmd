@@ -279,6 +279,18 @@ La mejor forma de seguir aprendiendo es tener un proyecto propio: toma tus datos
 
 ---
 
+## Mantener R al día
+
+**Paquetes:** actualizar periódicamente desde RStudio (*Packages → Update*) o con `update.packages()` en la consola. Hacerlo cada uno o dos meses es suficiente.
+
+**R:** descargar e instalar la nueva versión desde [r-project.org](https://www.r-project.org/). R no incluye actualizador automático.
+
+::: tip-box
+En **Windows y Mac**, cada versión de R se instala de forma independiente, sin reemplazar las anteriores. Las versiones viejas quedan ocupando espacio y a veces causan confusión. Hay que **desinstalarlas manualmente** (en Windows: *Configuración → Aplicaciones*; en Mac: arrastrando la carpeta de la versión a la papelera).
+:::
+
+---
+
 ## ¿Para qué sirve R? {background-color="#121834"}
 
 ::::{.fragment}

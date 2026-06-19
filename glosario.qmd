@@ -4,10 +4,16 @@ subtitle: "Paquetes y funciones usados en el curso"
 toc-depth: 3
 ---
 
-Esta página reúne las funciones y paquetes cubiertos en las sesiones, no todas las que existen.
-Cada paquete tiene muchas más funciones de las que usamos aquí; los nombres de paquete enlazan a su documentación oficial para quien quiera explorar más.
+Esta página reúne las funciones y paquetes cubiertos en las sesiones, no todas las que existen. 
 Las insignias de sesión indican en cuál(es) sesiones apareció cada función.
 El índice de la derecha permite ir directamente a cada paquete.
+
+::: {.callout-tip}
+## Haz clic en el nombre del paquete
+
+Los nombres de los paquetes enlazan a su documentación oficial: cada uno tiene muchas más funciones y argumentos de los que cubrimos aquí.
+:::
+
 
 ```{=html}
 <div style="margin: 0 0 2em;">
@@ -868,6 +874,8 @@ Paquete para instalar TinyTeX, una distribución mínima de LaTeX necesaria para
 </tr>
 </tbody>
 </table>
+```
+
 
 <script>
 (function () {
